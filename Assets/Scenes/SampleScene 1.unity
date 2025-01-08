@@ -713,7 +713,7 @@ MonoBehaviour:
   speed: 7.15
   accelerate: 11.99
   deAccelerate: 14.51
-  move: {fileID: -8099256006018764938, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
+  move: {fileID: -2325982558002633542, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
   speedCurve:
     serializedVersion: 2
     m_Curve:
@@ -866,11 +866,11 @@ MonoBehaviour:
   buildings:
   - {fileID: 6679143231120622472, guid: 2ca224368da4f4e4eb7bc68017fb228a, type: 3}
   - {fileID: 8234952303088971632, guid: a353dc4cb5fe1504b8bb56cb862ac15c, type: 3}
-  buildRange: 3
+  buildRange: 1.2
   buildIndicator: {fileID: 155556760}
   placementIndicator: {fileID: 1788312460}
   collisionRadius: 0.49
-  mousePositionInput: {fileID: -2325982558002633542, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
+  mousePositionInput: {fileID: 7663556139590389150, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
   mouseClick: {fileID: 8184959716252747568, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
 --- !u!70 &452178608
 CapsuleCollider2D:

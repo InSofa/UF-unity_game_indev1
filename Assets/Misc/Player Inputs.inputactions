@@ -24,13 +24,13 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MousePosition",
-                    "type": "PassThrough",
-                    "id": "892a29ca-aca1-49ae-9ba8-f18f7f76c120",
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "9b6ce8c6-09bc-492a-b0a4-bce8c1853df9",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -92,7 +92,7 @@
                 {
                     "name": "",
                     "id": "a320bac0-f36a-48ff-98c6-17bd113eceea",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "MnK",
@@ -102,12 +102,12 @@
                 },
                 {
                     "name": "",
-                    "id": "236e56ea-efc1-41fe-a9ec-eca7b9ac79c1",
+                    "id": "944c0362-9ac1-433d-8ca9-e049acaa8d72",
                     "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "MnK",
-                    "action": "MousePosition",
+                    "groups": "",
+                    "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
