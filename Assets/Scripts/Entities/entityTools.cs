@@ -65,11 +65,18 @@ namespace entityTools
         }
 
         //A* pathfinding funtionality, finding the right path depending on target priority(buildings, player, and bed)
-        public Vector2 moveDir(Vector2 targetPos)
-        {
-            Vector2 dir =  targetPos - new Vector2(parent.transform.position.x, parent.transform.position.y);
+        //Implement A* pathfinding funtionality, finding the right path depending on target priority(buildings, player, and bed)
+        public Vector2 moveDir(Vector2 targetPos) {
+            Vector2 dir = targetPos - new Vector2(parent.transform.position.x, parent.transform.position.y);
             dir.Normalize();
             return dir;
+
+            /*
+            switch (priority) {
+                case entityPriority.Nearest:
+                    return (insert A* func for nearest etc etc
+            }
+             */
         }
 
         public void damagePlayer(float dmg, GameObject self)
