@@ -46,7 +46,7 @@ public class basicEnemy : MonoBehaviour
             time -= Time.deltaTime;
             if(time <= 0)
             {
-                enemy.damagePlayer(damage);
+                enemy.damagePlayer(damage, this.gameObject);
                 time = attackCD;
             }
         }

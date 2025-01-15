@@ -72,9 +72,9 @@ namespace entityTools
             return dir;
         }
 
-        public void damagePlayer(float dmg)
+        public void damagePlayer(float dmg, GameObject self)
         {
-            ph.TakeDamage(dmg);
+            ph.TakeDamage(dmg, self);
         }
     }
 }
