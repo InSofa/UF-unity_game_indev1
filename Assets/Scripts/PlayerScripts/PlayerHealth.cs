@@ -13,7 +13,6 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     Slider healthSlider, healthSlider2;
 
-
     public void Start()
     {
         health = maxHealth;
@@ -32,6 +31,8 @@ public class PlayerHealth : MonoBehaviour
             healthSlider.gameObject.SetActive(!healthSlider.gameObject.activeSelf);
             healthSlider2.gameObject.SetActive(!healthSlider2.gameObject.activeSelf);
         }
+
+
     }
 
     public void TakeDamage(float damage, GameObject source)

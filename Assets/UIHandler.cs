@@ -14,9 +14,7 @@ public class UIHandler : MonoBehaviour
 
     private void Start() {
         currentScene = SceneManager.GetActiveScene().buildIndex;
-    }
-
-    private void Update() {
+        
         if (menuButton != null) {
             menuButton.action.started += togglePauseMenu;
         }
