@@ -14,9 +14,9 @@ public class turretProjectile : MonoBehaviour
         EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
         if (enemyHealth != null)
         {
+            Debug.Log("Destroyed myself?");
             enemyHealth.TakeDamage(damage);
             Destroy(this.gameObject);
-
         }
 
     }
