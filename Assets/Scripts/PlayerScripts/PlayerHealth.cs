@@ -39,26 +39,35 @@ public class PlayerHealth : MonoBehaviour
                 //Destroy(this.gameObject);
                 SceneManager.LoadScene(0);
             } else {
-                // [GLOBAL]
-                /* GlobalSoundComposer gsc = GameObject.Find("GlobalSoundComposer").GetComponent<GlobalSoundComposer>(); */
+
                 // [GLOBAL.TRACK]
                 /*
+                GlobalSoundComposer gsc = GameObject.Find("GlobalSoundComposer").GetComponent<GlobalSoundComposer>();
                 if (!gsc.TrackIsPlaying("music:generic/debug_track")) {
                     gsc.PlayTrack("music:generic/debug_track");
                 }
                 */
+
                 // [GLOBAL.SFX]
-                /* gsc.PlayFx("sfx:generic/debug"); */
-                // [LOCAL]
-                /* LocalSoundComposer lsc = this.GetComponent<LocalSoundComposer>(); */
+                /*
+                GlobalSoundComposer gsc = GameObject.Find("GlobalSoundComposer").GetComponent<GlobalSoundComposer>();
+                gsc.PlayFx("sfx:generic/debug");
+                */
+
                 // [LOCAL.TRACK] FAILS
                 /*
+                LocalSoundComposer lsc = this.GetComponent<LocalSoundComposer>();
                 if (!lsc.TrackIsPlaying("music:generic/debug_track")) {
                     lsc.PlayTrack("music:generic/debug_track");
                 }
                 */
+
                 // [LOCAL.SFX]
-                /* lsc.PlayFx("sfx:generic/debug"); */
+                /*
+                LocalSoundComposer lsc = this.GetComponent<LocalSoundComposer>();
+                lsc.PlayFx("sfx:generic/debug");
+                */
+
             }
         }
     }

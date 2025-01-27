@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d1f21f0afb43254fb38c3f88447fc36, type: 3}
   m_Name: debug_track
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 0}
-  audioMixerGroup: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: e8e05ff3448dbe14398939a66beea7a4, type: 3}
+  audioMixerGroup: {fileID: -3084080913633758465, guid: 1ccc81ed0a7999146ad3d8584424956b, type: 2}
   priority: 0
   volume: 0
   pitch: 0

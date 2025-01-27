@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: debug
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: bada57a1d99215240b12a4ef1d1ad06c, type: 3}
-  audioMixerGroup: {fileID: 0}
-  priority: 0
-  volume: 0
-  pitch: 0
-  spatialBlend: 0
+  audioMixerGroup: {fileID: 4894030178227831716, guid: 1ccc81ed0a7999146ad3d8584424956b, type: 2}
+  priority: 128
+  volume: 1
+  pitch: 1
+  spatialBlend: 1
