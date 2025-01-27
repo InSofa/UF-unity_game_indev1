@@ -15,6 +15,7 @@ public class LocalSoundComposer : MonoBehaviour
         soundEmitterPrefab = globalSoundComposer.soundEmitterPrefab;
         Registry = globalSoundComposer.Registry;
         TrackList = globalSoundComposer.TrackList;
+        //globalSoundComposer.InitiallyUpdateSerializers();
     }
 
     public void PlayFx(string id) {

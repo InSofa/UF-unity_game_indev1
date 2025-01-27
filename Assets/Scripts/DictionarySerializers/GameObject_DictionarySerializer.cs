@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [Serializable]
@@ -21,7 +22,7 @@ public class GameObject_DictionarySerializer : MonoBehaviour
     /// <param name="dictionary">The dictionary to link to this serializer.</param>
     public void LinkDictionary(Dictionary<string, GameObject> dictionary) {
         linkedDictionary = dictionary;
-        SynchronizeFromDictionary();
+        InitializeDictionarySync();
     }
 
     /// <summary>
@@ -53,6 +54,27 @@ public class GameObject_DictionarySerializer : MonoBehaviour
         foreach (var kvp in linkedDictionary) {
             entries.Add(new GameObject_DictionaryEntry { Key = kvp.Key, Value = kvp.Value });
         }
+    }
+
+    /// <summary>
+    /// Synchronizes the serialized list from the linked dictionary.
+    /// But keeps any pre-existing entries inside the serializer, it does this by saving the currnent entries in the seralizer,
+    /// then syncing using `SynchronizeFromDictionary` then finally re-merges the saved entries, beforing removing the save.
+    /// </summary>
+    public void InitializeDictionarySync() {
+        // Make sure we have the same entries in the linkedDictionary as in the serializer `SynchronizeFromDictionary()` is wrong
+        // as it will remove any entries that are not in the linkedDictionary
+        List<GameObject_DictionaryEntry> savedEntries = new List<GameObject_DictionaryEntry>(entries);
+
+        SynchronizeFromDictionary();
+
+        foreach (var entry in savedEntries) {
+            if (!entries.Contains(entry)) {
+                entries.Add(entry);
+            }
+        }
+
+        ApplyChanges();
     }
 
     private void OnValidate() {
