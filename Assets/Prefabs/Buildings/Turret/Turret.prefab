@@ -321,6 +321,9 @@ MonoBehaviour:
   range: 5
   projectileSpeed: 5
   shotCD: 0.5
+  lerpSpeed: 8.59
+  resetLerpDiff: 0.053
+  shootLerpDiff: 0.044
   projectile: {fileID: 6647337014671748361, guid: ad0dc174eaf8e1c44acde8c31d69a694, type: 3}
   firePoint: {fileID: 932001248231350935}
   pivot: {fileID: 5143662410117369877}

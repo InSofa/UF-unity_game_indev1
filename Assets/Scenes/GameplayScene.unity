@@ -923,8 +923,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7.15
-  accelerate: 11.99
-  deAccelerate: 14.51
+  accelerate: 14.07
+  deAccelerate: 17.26
   move: {fileID: -8099256006018764938, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
   speedCurve:
     serializedVersion: 2

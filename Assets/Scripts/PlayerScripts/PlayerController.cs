@@ -67,8 +67,8 @@ public class PlayerController : MonoBehaviour
     }
 
     void movementLogic() {
-        /*Basic lerp movement
-        Vector2 velocity = rb.velocity;
+        //Basic lerp movement
+        Vector2 velocity = rb.linearVelocity;
         float lerpFloatValue = accelerate;
 
         if(movementInput == Vector2.zero)
@@ -81,9 +81,9 @@ public class PlayerController : MonoBehaviour
         }
 
         velocity = Vector2.Lerp(velocity, movementInput * speed, lerpFloatValue * Time.fixedDeltaTime);
-        rb.velocity = velocity;
-        */
-
+        rb.linearVelocity = velocity;
+        
+        /*
         if (useSpeed == 0 || movementInput != Vector2.zero) {
             useInput = movementInput;
         }
@@ -102,5 +102,6 @@ public class PlayerController : MonoBehaviour
 
         velocity = useInput * useSpeed;
         rb.linearVelocity = velocity;
+        */
     }
 }

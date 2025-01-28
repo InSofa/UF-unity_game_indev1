@@ -8,7 +8,12 @@ public class basicTurret : MonoBehaviour
     Turret turret;
 
     [SerializeField]
-    float range, projectileSpeed, shotCD;
+    float range, projectileSpeed, shotCD, lerpSpeed;
+
+    [SerializeField]
+    [Range(0f, .5f)]
+    float resetLerpDiff, shootLerpDiff;
+
 
     float shotCDTime;
 
@@ -38,15 +43,25 @@ public class basicTurret : MonoBehaviour
 
         shotCDTime += Time.deltaTime;
         if (target != null) {
-            //Gets the direction in the form of a Vector2 and sets the pivot to that direction
-            pivot.right = target.transform.position - firePoint.position;
-            if (shotCDTime >= shotCD) {
+            //Gets the direction in the form of a Vector2 and lerps it to that direction
+            Vector2 direction = target.transform.position - firePoint.position;
+            pivot.right = Vector2.Lerp(pivot.right, direction, lerpSpeed * Time.deltaTime);
+            //pivot.right = target.transform.position - firePoint.position;
+
+            float diff = Vector2.Distance(pivot.right, direction);
+            Debug.Log(diff);
+
+            if (shotCDTime >= shotCD && diff > shootLerpDiff) {
                 shootTarget();
                 shotCDTime = 0;
             }
 
         } else {
-            pivot.right = Vector2.right;
+            if (Vector2.Distance(pivot.right, Vector2.right) > resetLerpDiff) {
+                pivot.right = Vector2.Lerp(pivot.right, Vector2.right, lerpSpeed * Time.deltaTime);
+            } else {
+                pivot.right = Vector2.right;
+            }
         }
     }
 
