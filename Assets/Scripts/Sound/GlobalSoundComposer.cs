@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -180,5 +181,40 @@ public class GlobalSoundComposer : MonoBehaviour {
         GameObject instance = TrackList[id];
         AudioSource audioSource = instance.GetComponent<AudioSource>();
         return audioSource.isPlaying;
+    }
+
+    public void InitiallyUpdateSerializers() {
+        trackListSerializer.InitializeDictionarySync();
+        registrySerializer.InitializeDictionarySync();
+    }
+
+    public void _DebugLogTracks() {
+        trackListSerializer.ApplyChanges();
+        // if length is 0 log that
+        if (TrackList.Count == 0) {
+            Debug.Log("TrackList is empty");
+        }
+        int i = 0;
+        foreach (KeyValuePair<string, UnityEngine.GameObject> kvp in TrackList) {
+            Debug.Log($"\nTL.Pair {i}");
+            Debug.Log(kvp.Key);
+            Debug.Log(kvp.Value);
+            i++;
+        }
+    }
+
+    public void _DebugLogRegistry() {
+        registrySerializer.ApplyChanges();
+        // if length is 0 log that
+        if (Registry.Count == 0) {
+            Debug.Log("Registry is empty");
+        }
+        int i = 0;
+        foreach (KeyValuePair<string, SoundClass> kvp in Registry) {
+            Debug.Log($"\nReg.Pair {i}");
+            Debug.Log(kvp.Key);
+            Debug.Log(kvp.Value);
+            i++;
+        }
     }
 }

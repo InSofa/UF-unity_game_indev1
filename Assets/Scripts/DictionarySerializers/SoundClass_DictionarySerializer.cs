@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using System;
+using System.Linq;
 
 [Serializable]
 public class SoundClass_DictionaryEntry {
@@ -22,7 +23,7 @@ public class SoundClass_DictionarySerializer : MonoBehaviour
     /// <param name="dictionary">The dictionary to link to this serializer.</param>
     public void LinkDictionary(Dictionary<string, SoundClass> dictionary) {
         linkedDictionary = dictionary;
-        SynchronizeFromDictionary();
+        InitializeDictionarySync();
     }
 
     /// <summary>
@@ -54,6 +55,27 @@ public class SoundClass_DictionarySerializer : MonoBehaviour
         foreach (var kvp in linkedDictionary) {
             entries.Add(new SoundClass_DictionaryEntry { Key = kvp.Key, Value = kvp.Value });
         }
+    }
+
+    /// <summary>
+    /// Synchronizes the serialized list from the linked dictionary.
+    /// But keeps any pre-existing entries inside the serializer, it does this by saving the currnent entries in the seralizer,
+    /// then syncing using `SynchronizeFromDictionary` then finally re-merges the saved entries, beforing removing the save.
+    /// </summary>
+    public void InitializeDictionarySync() {
+        // Make sure we have the same entries in the linkedDictionary as in the serializer `SynchronizeFromDictionary()` is wrong
+        // as it will remove any entries that are not in the linkedDictionary
+        List<SoundClass_DictionaryEntry> savedEntries = new List<SoundClass_DictionaryEntry>(entries);
+
+        SynchronizeFromDictionary();
+
+        foreach (var entry in savedEntries) {
+            if (!entries.Contains(entry)) {
+                entries.Add(entry);
+            }
+        }
+
+        ApplyChanges();
     }
 
     private void OnValidate() {
