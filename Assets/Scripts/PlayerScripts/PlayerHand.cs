@@ -69,8 +69,15 @@ public class PlayerHand : MonoBehaviour
         buildPos = v2Pos + lookDir;
         buildIndicator.transform.position = buildPos;
 
-        Vector2 placementSpot = new Vector2(Mathf.Round(buildPos.x), Mathf.Round(buildPos.y));
+        //+ .5f to center the placement indicator on the grid
+        Vector2 placementSpot = new Vector2(Mathf.Round(buildPos.x) + .5f, Mathf.Round(buildPos.y) + .5f);
         placementIndicator.transform.position = placementSpot;
+
+        if(placementIndicator.transform.position == new Vector3(Mathf.Round(transform.position.x) + .5f, Mathf.Round(transform.position.y) + .5f)) {
+            placementIndicator.gameObject.SetActive(false);
+        } else {
+            placementIndicator.gameObject.SetActive(true);
+        }
     }
 
     private void OnEnable()

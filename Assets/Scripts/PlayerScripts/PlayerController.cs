@@ -13,8 +13,6 @@ public class PlayerController : MonoBehaviour
     [Range(0f, 20f)]
     float speed;
 
-    float useSpeed;
-
     [Header("Basic lerp variables")]
 
     [SerializeField]
@@ -28,25 +26,10 @@ public class PlayerController : MonoBehaviour
     [Space]
 
     Vector2 movementInput;
-    Vector2 useInput;
 
     [Header("Input table(?)")]
     [SerializeField]
     InputActionReference move;
-
-
-    [Header("Curve acceleration variables")]
-    [SerializeField]
-    AnimationCurve speedCurve;
-
-    float curveTime;
-
-    [SerializeField]
-    float accelerationTime, deAccelerationTime = 1f;
-
-    [SerializeField]
-    //REMOVE LATER
-    Slider curveTimeSlider;
 
     // Start is called before the first frame update
     private void Start() {
@@ -82,26 +65,5 @@ public class PlayerController : MonoBehaviour
 
         velocity = Vector2.Lerp(velocity, movementInput * speed, lerpFloatValue * Time.fixedDeltaTime);
         rb.linearVelocity = velocity;
-        
-        /*
-        if (useSpeed == 0 || movementInput != Vector2.zero) {
-            useInput = movementInput;
-        }
-
-        Vector2 velocity = rb.linearVelocity;
-        if (movementInput == Vector2.zero) {
-            curveTime = Mathf.Clamp01(curveTime - (Time.deltaTime / deAccelerationTime));
-        }
-        else {
-            curveTime = Mathf.Clamp01(curveTime + (Time.deltaTime / accelerationTime));
-            useInput.Normalize();
-        }
-        curveTimeSlider.value = curveTime;
-
-        useSpeed = speedCurve.Evaluate(curveTime) * speed;
-
-        velocity = useInput * useSpeed;
-        rb.linearVelocity = velocity;
-        */
     }
 }
