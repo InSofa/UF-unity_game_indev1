@@ -11,20 +11,18 @@ public class pathfindingGrid : MonoBehaviour
 
     public Node[,] grid;
 
-    [SerializeField]
-    Transform player, cursor;
+
+    //Will be assigned in PlayerHand
+    [HideInInspector]
+    public Transform player, buildPlacement;
 
     private float nodeDiameter;
     private int gridSizeX, gridSizeY;
 
-    private void Start() {
+    private void Awake() {
         nodeDiameter = nodeRadius * 2;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
-        CreateGrid();
-    }
-
-    void Update() {
         CreateGrid();
     }
 
@@ -40,6 +38,28 @@ public class pathfindingGrid : MonoBehaviour
                 grid[x, y] = new Node(walkable, worldPoint);
             }
         }
+    }
+
+    public bool CreateBuilding(GameObject building) {
+        Node node = NodeFromWorldPoint(buildPlacement.position);
+        Node playerNode = NodeFromWorldPoint(player.position);
+        if (node.walkable && node != playerNode) {
+            node.building = Instantiate(building, node.worldPosition, Quaternion.identity);
+            node.walkable = false;
+            return true;
+        }
+        return false;
+    }
+
+    public bool RemoveBuilding() {
+        Node node = NodeFromWorldPoint(buildPlacement.position);
+        if (!node.walkable) {
+            Destroy(node.building);
+            node.building = null;
+            node.walkable = true;
+            return true;
+        }
+        return false;
     }
 
     public Node NodeFromWorldPoint(Vector3 worldPosition) {
@@ -59,10 +79,14 @@ public class pathfindingGrid : MonoBehaviour
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, gridWorldSize.y, 0));
         if (grid != null) {
             Node playerNode = NodeFromWorldPoint(player.position);
+            Node buildNode = NodeFromWorldPoint(buildPlacement.position);
             foreach (Node n in grid) {
                 Gizmos.color = n.walkable ? Color.white : Color.red;
                 if (playerNode == n) {
                     Gizmos.color = Color.cyan;
+                }
+                else if (buildNode == n) {
+                    Gizmos.color = new Color(1, 0.5f, 0);
                 }
                 Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeRadius * 2 * 0.4f));
             }

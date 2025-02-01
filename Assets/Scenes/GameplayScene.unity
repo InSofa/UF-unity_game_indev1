@@ -1192,8 +1192,8 @@ MonoBehaviour:
   pillows: 5
   pillowText: {fileID: 1774479167}
   buildings:
-  - {fileID: 6679143231120622472, guid: 2ca224368da4f4e4eb7bc68017fb228a, type: 3}
-  - {fileID: 8234952303088971632, guid: a353dc4cb5fe1504b8bb56cb862ac15c, type: 3}
+  - {fileID: 11400000, guid: 132174b85aff7ab4387ce814edb6aaa9, type: 2}
+  - {fileID: 11400000, guid: ac3e9c17e51aabb44af346d72781abba, type: 2}
   buildRange: 1.2
   buildIndicator: {fileID: 155556760}
   placementIndicator: {fileID: 1788312460}
@@ -1672,7 +1672,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &595954345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4606,7 +4606,7 @@ GameObject:
   - component: {fileID: 1663019739}
   - component: {fileID: 1663019738}
   m_Layer: 0
-  m_Name: pathfindingGrid
+  m_Name: PathfindingGrid
   m_TagString: PathfindingGrid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4630,6 +4630,7 @@ MonoBehaviour:
   gridWorldSize: {x: 30, y: 30}
   nodeRadius: 0.5
   player: {fileID: 951489001}
+  buildPlacement: {fileID: 0}
 --- !u!4 &1663019739
 Transform:
   m_ObjectHideFlags: 0
