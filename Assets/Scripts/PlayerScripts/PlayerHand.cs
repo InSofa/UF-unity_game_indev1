@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class PlayerHand : MonoBehaviour
 {
+    pathfindingGrid grid;
+
     [SerializeField]
     int pillows = 5;
 
@@ -17,7 +19,7 @@ public class PlayerHand : MonoBehaviour
     Camera cam;
 
     [SerializeField]
-    GameObject[] buildings;
+    BuildingScriptableObject[] buildings;
 
     int selectedBuilding = 0;
 
@@ -46,6 +48,10 @@ public class PlayerHand : MonoBehaviour
     {
         cam = Camera.main;
         pillowText.text = pillows.ToString();
+
+        grid = GameObject.Find("PathfindingGrid").GetComponent<pathfindingGrid>();
+        grid.player = transform;
+        grid.buildPlacement = buildIndicator;
     }
 
     private void Update()
@@ -69,18 +75,17 @@ public class PlayerHand : MonoBehaviour
         buildPos = v2Pos + lookDir;
         buildIndicator.transform.position = buildPos;
 
-        Vector2 placementSpot = new Vector2(Mathf.Round(buildPos.x), Mathf.Round(buildPos.y));
-        placementIndicator.transform.position = placementSpot;
+        placementIndicator.position = grid.NodeFromWorldPoint(buildPos).worldPosition;
     }
 
     private void OnEnable()
     {
-        mouseClick.action.started += placeTurret;
+        mouseClick.action.started += placeBuilding;
     }
 
     private void OnDisable()
     {
-        mouseClick.action.started -= placeTurret;
+        mouseClick.action.started -= placeBuilding;
     }
 
     public void addPillow(int amount)
@@ -98,30 +103,25 @@ public class PlayerHand : MonoBehaviour
         selectedBuilding = selection;
     }
 
-    private void placeTurret(InputAction.CallbackContext obj)
+    private void placeBuilding(InputAction.CallbackContext obj)
     {
-        //Vector2 clickPoint = cam.ScreenToWorldPoint(mousePos);
-        Vector2 clickPoint = buildPos;
-
-        Vector2 placementSpot = new Vector2(Mathf.Round(clickPoint.x), Mathf.Round(clickPoint.y));
-
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(placementSpot, collisionRadius);
-
-        if(colliders.Length > 0 || pillows <= 0)
-        {
-            Debug.Log("Can't place here");
+        if (pillows < buildings[selectedBuilding].buildingCost) {
+            Debug.Log("Not enough pillows");
             return;
         }
 
-        pillows--;
-        pillowText.text = pillows.ToString();
+        bool placed = grid.CreateBuilding(buildings[selectedBuilding].buildingPrefab);
 
-        Instantiate(buildings[selectedBuilding], placementSpot, Quaternion.identity);
+        if (placed) {
+            pillows -= buildings[selectedBuilding].buildingCost;
+            pillowText.text = pillows.ToString();
+            return;
+        }
+        Debug.Log("Cannot place building here");
     }
 
     private void OnDrawGizmos()
     {
-
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(transform.position, buildRange);
     }
