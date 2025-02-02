@@ -21,6 +21,11 @@ public class PathfindingGrid : MonoBehaviour
     private float nodeDiameter;
     private int gridSizeX, gridSizeY;
 
+    public int MaxSize {
+        get {
+            return gridSizeX * gridSizeY;
+        }
+    }
     private void Awake() {
         nodeDiameter = nodeRadius * 2;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
