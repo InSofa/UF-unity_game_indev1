@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class PlayerHand : MonoBehaviour
 {
-    pathfindingGrid grid;
+    PathfindingGrid grid;
 
     [SerializeField]
     int pillows = 5;
@@ -49,7 +49,7 @@ public class PlayerHand : MonoBehaviour
         cam = Camera.main;
         pillowText.text = pillows.ToString();
 
-        grid = GameObject.Find("PathfindingGrid").GetComponent<pathfindingGrid>();
+        grid = GameObject.Find("PathfindingGrid").GetComponent<PathfindingGrid>();
         grid.player = transform;
         grid.buildPlacement = buildIndicator;
     }
