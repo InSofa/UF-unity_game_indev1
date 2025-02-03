@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using entityTools;
 
 public class basicEnemy : MonoBehaviour
 {
     Rigidbody2D rb;
-    Enemy enemy;
+    EnemyHandler enemyHandler;
     Transform bedPosition;
     Transform playerPosition;
 
@@ -20,7 +19,8 @@ public class basicEnemy : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        enemy = new Enemy(entityPriority.Nearest, this.gameObject);
+
+        enemyHandler = GetComponent<EnemyHandler>();
 
         GameObject player = GameObject.Find("Player");
 
@@ -46,17 +46,17 @@ public class basicEnemy : MonoBehaviour
             time -= Time.deltaTime;
             if(time <= 0)
             {
-                enemy.damagePlayer(damage, this.gameObject);
+                enemyHandler.damagePlayer(damage, this.gameObject);
                 time = attackCD;
             }
         }
         else if (p_distance <= playerDetectionDistance && p_distance < distance)
         {
-            dir = enemy.moveDir(playerPosition.position);
+            dir = enemyHandler.moveDir(playerPosition.position);
         }
         else
         {
-            dir = enemy.moveDir(bedPosition.position);
+            dir = enemyHandler.moveDir(bedPosition.position);
         }
     }
 
