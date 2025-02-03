@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using entityTools;
 
 public class basicTurret : MonoBehaviour
 {
@@ -49,7 +48,7 @@ public class basicTurret : MonoBehaviour
             //pivot.right = target.transform.position - firePoint.position;
 
             float diff = Vector2.Distance(pivot.right, direction);
-            Debug.Log(diff);
+            //Debug.Log(diff);
 
             if (shotCDTime >= shotCD && diff > shootLerpDiff) {
                 shootTarget();

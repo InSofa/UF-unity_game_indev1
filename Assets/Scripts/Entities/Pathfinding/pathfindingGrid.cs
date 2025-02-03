@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PathfindingGrid : MonoBehaviour
 {
+    public static PathfindingGrid instance;
+
     [SerializeField]
     private LayerMask unwalkableMask;
     [SerializeField]
@@ -21,12 +23,15 @@ public class PathfindingGrid : MonoBehaviour
     private float nodeDiameter;
     private int gridSizeX, gridSizeY;
 
+    public List<EnemyHandler> enemies = new List<EnemyHandler>();
+
     public int MaxSize {
         get {
             return gridSizeX * gridSizeY;
         }
     }
     private void Awake() {
+        instance = this;
         nodeDiameter = nodeRadius * 2;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
@@ -52,7 +57,10 @@ public class PathfindingGrid : MonoBehaviour
         Node playerNode = NodeFromWorldPoint(player.position);
         if (node.walkable && node != playerNode) {
             node.building = Instantiate(building, node.worldPosition, Quaternion.identity);
-            node.walkable = false;
+
+            //Clear path for all enemies if a building is placed => they need to find a new path
+            enemies.ForEach(enemy => enemy.path = null);
+
             return true;
         }
         return false;
@@ -63,7 +71,10 @@ public class PathfindingGrid : MonoBehaviour
         if (!node.walkable) {
             Destroy(node.building);
             node.building = null;
-            node.walkable = true;
+
+            //Clear path for all enemies if a building is removed => they need to find a new path
+            enemies.ForEach(enemy => enemy.path = null);
+
             return true;
         }
         return false;
