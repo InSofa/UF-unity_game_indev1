@@ -59,7 +59,7 @@ public class PathfindingGrid : MonoBehaviour
             node.building = Instantiate(building, node.worldPosition, Quaternion.identity);
 
             //Clear path for all enemies if a building is placed => they need to find a new path
-            enemies.ForEach(enemy => enemy.path = null);
+            enemies.ForEach(enemy => enemy.refreshPath = true);
 
             return true;
         }
@@ -73,7 +73,7 @@ public class PathfindingGrid : MonoBehaviour
             node.building = null;
 
             //Clear path for all enemies if a building is removed => they need to find a new path
-            enemies.ForEach(enemy => enemy.path = null);
+            enemies.ForEach(enemy => enemy.refreshPath = true);
 
             return true;
         }

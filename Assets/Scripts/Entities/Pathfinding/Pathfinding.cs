@@ -108,7 +108,7 @@ public class Pathfinding : MonoBehaviour {
 
 public struct SimpleNode {
     public Vector2 worldPosition { get;}
-    public GameObject building { get; }
+    public GameObject building { get; set; }
 
     public SimpleNode(Vector2 worldPosition, GameObject building) {
         this.worldPosition = worldPosition;
