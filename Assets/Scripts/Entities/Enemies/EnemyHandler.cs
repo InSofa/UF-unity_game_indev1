@@ -26,6 +26,8 @@ public class EnemyHandler : MonoBehaviour {
     public List<SimpleNode> path;
     public bool refreshPath = false;
 
+    public float newNodeDistance = 0.5f;
+
     public void Start() {
         if (player == null || ph == null) {
             player = GameObject.Find("Player");
@@ -35,32 +37,32 @@ public class EnemyHandler : MonoBehaviour {
         PathfindingGrid.instance.enemies.Add(this);
         pathfinder = Pathfinding.instance;
     }
-    void GetPath(Vector2 targetPos) {
+    IEnumerator GetPath(Vector2 targetPos) {
         Debug.Log("Getting path");
         path = pathfinder.FindPath(transform.position, targetPos).ToList();
         Debug.Log("Path found " + path.Count);
+        yield return path;
     }
 
     //A* pathfinding funtionality, finding the right path depending on target priority(buildings, player, and bed)
     //Implement A* pathfinding funtionality, finding the right path depending on target priority(buildings, player, and bed)
     public Vector2 moveDir(Vector2 targetPos) {
-        if (path == null || refreshPath) {
+        if (path == null || refreshPath || path.Count <= 0) {
             currentTarget = targetPos;
-            GetPath(targetPos);
+            StartCoroutine(GetPath(targetPos));
+            //GetPath(targetPos);
             refreshPath = false;
-        } else if(path.Count >= 1){
+        } else{
             //The deltatime is added to make sure that low end devices don't break the pathfinding
-            if (Vector2.Distance(transform.position, currentTarget) < .5f * (Time.deltaTime * 60)) {
+            float diff = newNodeDistance * (Time.deltaTime * 144);
+            if (Vector2.Distance(transform.position, currentTarget) < diff) {
                 path.Remove(path[0]);
             }
             currentTarget = path[0].worldPosition;
-        } else {
-            GetPath(targetPos);
-        }
+        } 
 
         Vector2 dir = currentTarget - new Vector2(transform.position.x, transform.position.y);
         dir.Normalize();
-        print(dir);
 
         return dir;
 
@@ -80,6 +82,7 @@ public class EnemyHandler : MonoBehaviour {
 
 
     public void damagePlayer(float dmg, GameObject self) {
+        Debug.Log("Dealing damage to player");
         ph.TakeDamage(dmg, self);
     }
 
@@ -89,6 +92,7 @@ public class EnemyHandler : MonoBehaviour {
             var building = path[0].building;
             bool destroyed = building.GetComponent<BuildingHealth>().TakeDamage(dmg);
             if (destroyed) {
+                print("Building destroyed");
                 //For some reason the building is seen as readonly? check later, (nulling the building just in case it causes issues)
                 var node = path[0];
                 node.building = null;

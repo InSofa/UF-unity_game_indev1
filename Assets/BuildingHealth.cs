@@ -14,11 +14,12 @@ public class BuildingHealth : MonoBehaviour
     }
 
     public bool TakeDamage(int damage) {
-        print("Building took damage");
+
         currentHealth -= damage;
+        print("Building took damage, currenthp: " + currentHealth);
         if (currentHealth <= 0) {
-            PathfindingGrid.instance.RemoveBuilding();
-            Destroy(gameObject);
+            print("Building destroyed");
+            PathfindingGrid.instance.RemoveBuilding(transform.position);
             return true;
         }
         return false;

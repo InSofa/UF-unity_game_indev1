@@ -47,7 +47,7 @@ public class basicEnemy : MonoBehaviour
             time -= Time.deltaTime;
             if(time <= 0)
             {
-                enemyHandler.damagePlayer(damage, this.gameObject);
+                //enemyHandler.damagePlayer(damage, this.gameObject);
                 time = attackCD;
             }
         }
@@ -59,11 +59,14 @@ public class basicEnemy : MonoBehaviour
         {
             dir = enemyHandler.moveDir(bedPosition.position);
         }
+        print("Path count: " + enemyHandler.path.Count + "  Building:" + enemyHandler.path[0].building);
         if (enemyHandler.path.Count >= 1 && enemyHandler.path[0].building != null) {
+            print("WALKING TO BUILDING");
             obstacleDistance = Vector2.Distance(transform.position, enemyHandler.path[0].worldPosition);
             if (obstacleDistance <= attackRange) {
                 time -= Time.deltaTime;
                 if (time <= 0) {
+                    print("ATTACKING BUILDING");
                     enemyHandler.damageBuilding((int)damage);
                     time = attackCD;
                 }
@@ -76,5 +79,12 @@ public class basicEnemy : MonoBehaviour
         Vector2 velocity = rb.linearVelocity;
         velocity = Vector2.Lerp(velocity, dir * speed, acceleration);
         rb.linearVelocity = velocity;
+    }
+
+    public void OnDrawGizmos() {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, playerDetectionDistance);
     }
 }

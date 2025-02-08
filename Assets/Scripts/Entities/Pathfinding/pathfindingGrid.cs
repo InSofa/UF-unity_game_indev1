@@ -55,7 +55,7 @@ public class PathfindingGrid : MonoBehaviour
     public bool CreateBuilding(GameObject building) {
         Node node = NodeFromWorldPoint(buildPlacement.position);
         Node playerNode = NodeFromWorldPoint(player.position);
-        if (node.walkable && node != playerNode) {
+        if (node.walkable && node != playerNode && node.building == null) {
             node.building = Instantiate(building, node.worldPosition, Quaternion.identity);
 
             //Clear path for all enemies if a building is placed => they need to find a new path
@@ -66,9 +66,9 @@ public class PathfindingGrid : MonoBehaviour
         return false;
     }
 
-    public bool RemoveBuilding() {
-        Node node = NodeFromWorldPoint(buildPlacement.position);
-        if (!node.walkable) {
+    public bool RemoveBuilding(Vector2 removePosition) {
+        Node node = NodeFromWorldPoint(removePosition);
+        if (node.building != null) {
             Destroy(node.building);
             node.building = null;
 
@@ -120,7 +120,7 @@ public class PathfindingGrid : MonoBehaviour
             Node playerNode = NodeFromWorldPoint(player.position);
             Node buildNode = NodeFromWorldPoint(buildPlacement.position);
             foreach (Node n in grid) {
-                Gizmos.color = n.walkable ? Color.white : Color.red;
+                Gizmos.color = n.walkable && n.building == null ? Color.white : Color.red;
                 if (playerNode == n) {
                     Gizmos.color = Color.cyan;
                 }
