@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class basicEnemy : MonoBehaviour
@@ -10,10 +11,13 @@ public class basicEnemy : MonoBehaviour
     Transform playerPosition;
 
     [SerializeField]
-    float speed, speedVariance, acceleration, accelerationVariance, playerDetectionDistance, damage, attackRange, attackCD;
+    float speed, speedVariance, acceleration, accelerationVariance, playerDetectionDistance, attackRange, attackCD;
+
+    [SerializeField]
+    int damage;
 
     Vector2 dir;
-    float distance, p_distance, time;
+    float bedDistance, playerDistance, obstacleDistance,time;
 
     // Start is called before the first frame update
     void Start()
@@ -37,20 +41,34 @@ public class basicEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distance = Vector2.Distance(transform.position, bedPosition.position);
-        p_distance = Vector2.Distance(transform.position, playerPosition.position);
+        bedDistance = Vector2.Distance(transform.position, bedPosition.position);
+        playerDistance = Vector2.Distance(transform.position, playerPosition.position);
 
-        if(p_distance <= attackRange || distance <= attackRange)
+        time -= Time.deltaTime;
+        if (time < 0) {
+            enemyHandler.attack(damage);
+            time = attackCD;
+        }
+
+        if(playerDistance <= playerDetectionDistance && playerDistance < bedDistance) {
+            dir = enemyHandler.moveDir(playerPosition.position);
+        } else {
+            //Needs error handling, when it reaches the bed it usually returns an "index out of range" error
+            dir = enemyHandler.moveDir(bedPosition.position);
+        }
+
+        /*
+        if(playerDistance <= attackRange || bedDistance <= attackRange)
         {
             dir = Vector2.zero;
             time -= Time.deltaTime;
             if(time <= 0)
             {
-                enemyHandler.damagePlayer(damage, this.gameObject);
+                //enemyHandler.damagePlayer(damage, this.gameObject);
                 time = attackCD;
             }
         }
-        else if (p_distance <= playerDetectionDistance && p_distance < distance)
+        else if (playerDistance <= playerDetectionDistance && playerDistance < bedDistance)
         {
             dir = enemyHandler.moveDir(playerPosition.position);
         }
@@ -58,6 +76,20 @@ public class basicEnemy : MonoBehaviour
         {
             dir = enemyHandler.moveDir(bedPosition.position);
         }
+        print("Path count: " + enemyHandler.path.Count + "  Building:" + enemyHandler.path[0].building);
+        if (enemyHandler.path.Count >= 1 && enemyHandler.path[0].building != null) {
+            print("WALKING TO BUILDING");
+            obstacleDistance = Vector2.Distance(transform.position, enemyHandler.path[0].worldPosition);
+            if (obstacleDistance <= attackRange) {
+                time -= Time.deltaTime;
+                if (time <= 0) {
+                    print("ATTACKING BUILDING");
+                    enemyHandler.damageBuilding((int)damage);
+                    time = attackCD;
+                }
+            }
+        }
+        */
     }
 
     private void FixedUpdate()
@@ -65,5 +97,12 @@ public class basicEnemy : MonoBehaviour
         Vector2 velocity = rb.linearVelocity;
         velocity = Vector2.Lerp(velocity, dir * speed, acceleration);
         rb.linearVelocity = velocity;
+    }
+
+    public void OnDrawGizmos() {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, playerDetectionDistance);
     }
 }

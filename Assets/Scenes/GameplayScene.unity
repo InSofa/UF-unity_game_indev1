@@ -1776,7 +1776,7 @@ MonoBehaviour:
   enemy: {fileID: 4368807937532126786, guid: ec5c6415c5d601b4a8fbe44c0bca6f48, type: 3}
   enemiesToSpawn: 3
   pivot: {fileID: 1689609807}
-  timeBetweenWave: 15
+  timeBetweenWave: 1
 --- !u!4 &595954346
 Transform:
   m_ObjectHideFlags: 0
@@ -4802,7 +4802,7 @@ MonoBehaviour:
   unwalkableMask:
     serializedVersion: 2
     m_Bits: 256
-  gridWorldSize: {x: 30, y: 30}
+  gridWorldSize: {x: 100, y: 100}
   nodeRadius: 0.5
   player: {fileID: 951489001}
   buildPlacement: {fileID: 0}

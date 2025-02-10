@@ -31,12 +31,24 @@ public class PathfindingGrid : MonoBehaviour
         }
     }
     private void Awake() {
+        transform.position = Vector3.zero;
+
         instance = this;
         nodeDiameter = nodeRadius * 2;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
         CreateGrid();
     }
+
+    //Shitty solution to try and untangle enemies, as they sometimes get stuck walking into each other
+    /*
+    int i;
+    private void Update() {
+        if (i >= enemies.Count) {
+            i = 0;
+        }
+        enemies[i].refreshPath = true;
+    }*/
 
     private void CreateGrid() {
         grid = new Node[gridSizeX, gridSizeY];
@@ -55,25 +67,28 @@ public class PathfindingGrid : MonoBehaviour
     public bool CreateBuilding(GameObject building) {
         Node node = NodeFromWorldPoint(buildPlacement.position);
         Node playerNode = NodeFromWorldPoint(player.position);
-        if (node.walkable && node != playerNode) {
+        if (node.walkable && node != playerNode && node.building == null) {
             node.building = Instantiate(building, node.worldPosition, Quaternion.identity);
 
+            //For the sake of a cleaner hierarchy
+            node.building.transform.parent = transform;
+
             //Clear path for all enemies if a building is placed => they need to find a new path
-            enemies.ForEach(enemy => enemy.path = null);
+            enemies.ForEach(enemy => enemy.refreshPath = true);
 
             return true;
         }
         return false;
     }
 
-    public bool RemoveBuilding() {
-        Node node = NodeFromWorldPoint(buildPlacement.position);
-        if (!node.walkable) {
+    public bool RemoveBuilding(Vector2 removePosition) {
+        Node node = NodeFromWorldPoint(removePosition);
+        if (node.building != null) {
             Destroy(node.building);
             node.building = null;
 
             //Clear path for all enemies if a building is removed => they need to find a new path
-            enemies.ForEach(enemy => enemy.path = null);
+            enemies.ForEach(enemy => enemy.refreshPath = true);
 
             return true;
         }
@@ -120,7 +135,7 @@ public class PathfindingGrid : MonoBehaviour
             Node playerNode = NodeFromWorldPoint(player.position);
             Node buildNode = NodeFromWorldPoint(buildPlacement.position);
             foreach (Node n in grid) {
-                Gizmos.color = n.walkable ? Color.white : Color.red;
+                Gizmos.color = n.walkable && n.building == null ? Color.white : Color.red;
                 if (playerNode == n) {
                     Gizmos.color = Color.cyan;
                 }
