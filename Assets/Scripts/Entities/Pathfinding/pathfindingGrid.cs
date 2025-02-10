@@ -31,12 +31,24 @@ public class PathfindingGrid : MonoBehaviour
         }
     }
     private void Awake() {
+        transform.position = Vector3.zero;
+
         instance = this;
         nodeDiameter = nodeRadius * 2;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
         CreateGrid();
     }
+
+    //Shitty solution to try and untangle enemies, as they sometimes get stuck walking into each other
+    /*
+    int i;
+    private void Update() {
+        if (i >= enemies.Count) {
+            i = 0;
+        }
+        enemies[i].refreshPath = true;
+    }*/
 
     private void CreateGrid() {
         grid = new Node[gridSizeX, gridSizeY];
@@ -57,6 +69,9 @@ public class PathfindingGrid : MonoBehaviour
         Node playerNode = NodeFromWorldPoint(player.position);
         if (node.walkable && node != playerNode && node.building == null) {
             node.building = Instantiate(building, node.worldPosition, Quaternion.identity);
+
+            //For the sake of a cleaner hierarchy
+            node.building.transform.parent = transform;
 
             //Clear path for all enemies if a building is placed => they need to find a new path
             enemies.ForEach(enemy => enemy.refreshPath = true);

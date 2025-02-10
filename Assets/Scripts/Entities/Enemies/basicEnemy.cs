@@ -11,7 +11,10 @@ public class basicEnemy : MonoBehaviour
     Transform playerPosition;
 
     [SerializeField]
-    float speed, speedVariance, acceleration, accelerationVariance, playerDetectionDistance, damage, attackRange, attackCD;
+    float speed, speedVariance, acceleration, accelerationVariance, playerDetectionDistance, attackRange, attackCD;
+
+    [SerializeField]
+    int damage;
 
     Vector2 dir;
     float bedDistance, playerDistance, obstacleDistance,time;
@@ -41,6 +44,20 @@ public class basicEnemy : MonoBehaviour
         bedDistance = Vector2.Distance(transform.position, bedPosition.position);
         playerDistance = Vector2.Distance(transform.position, playerPosition.position);
 
+        time -= Time.deltaTime;
+        if (time < 0) {
+            enemyHandler.attack(damage);
+            time = attackCD;
+        }
+
+        if(playerDistance <= playerDetectionDistance && playerDistance < bedDistance) {
+            dir = enemyHandler.moveDir(playerPosition.position);
+        } else {
+            //Needs error handling, when it reaches the bed it usually returns an "index out of range" error
+            dir = enemyHandler.moveDir(bedPosition.position);
+        }
+
+        /*
         if(playerDistance <= attackRange || bedDistance <= attackRange)
         {
             dir = Vector2.zero;
@@ -72,6 +89,7 @@ public class basicEnemy : MonoBehaviour
                 }
             }
         }
+        */
     }
 
     private void FixedUpdate()
