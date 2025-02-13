@@ -50,13 +50,15 @@ public class basicEnemy : MonoBehaviour
             time = attackCD;
         }
 
-        if(playerDistance <= playerDetectionDistance && playerDistance < bedDistance) {
+        //Needs error handling, returns "index out of range. must be non negative and less than the size of the collection" (still works tho)
+        if (playerDistance <= playerDetectionDistance && playerDistance < bedDistance) {
             dir = enemyHandler.moveDir(playerPosition.position);
         } else {
-            //Needs error handling, when it reaches the bed it usually returns an "index out of range" error
             dir = enemyHandler.moveDir(bedPosition.position);
         }
 
+        //This was replaced by the above code, this would be more optimized if done properly
+        //Instead of attacking everytime it can it will only attack if within the range of the target (but since its a bit buggy with target picking it ends up ignoring a bunch of buildings)
         /*
         if(playerDistance <= attackRange || bedDistance <= attackRange)
         {
