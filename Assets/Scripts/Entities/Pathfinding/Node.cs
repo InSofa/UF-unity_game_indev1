@@ -26,7 +26,7 @@ public class Node : IHeapItem<Node> {
     public int fCost {
         get {
             if(building != null) {
-                return gCost + hCost + Mathf.RoundToInt(building.GetComponent<BuildingHealth>().currentHealth * 1.3f);
+                return gCost + hCost + Mathf.RoundToInt(building.GetComponent<BuildingHealth>().currentHealth * 2f);
             }
             return gCost + hCost;
         }
