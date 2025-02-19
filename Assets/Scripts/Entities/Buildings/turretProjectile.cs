@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class turretProjectile : MonoBehaviour
+public class TurretProjectile : MonoBehaviour
 {
     public float damage;
 
@@ -14,7 +14,6 @@ public class turretProjectile : MonoBehaviour
         EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
         if (enemyHealth != null)
         {
-            Debug.Log("Destroyed myself?");
             enemyHealth.TakeDamage(damage);
             Destroy(this.gameObject);
         }

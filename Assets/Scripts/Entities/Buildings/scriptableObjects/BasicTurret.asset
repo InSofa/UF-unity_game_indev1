@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: 
   buildingCost: 3
-  buildingHealth: 10
-  buildingDamage: 0
-  buildingRange: 0
+  buildingHealth: 100
+  buildingDamage: 23
+  buildingRange: 5
   buildingDescription: 
   buildingPrefab: {fileID: 6679143231120622472, guid: 2ca224368da4f4e4eb7bc68017fb228a, type: 3}

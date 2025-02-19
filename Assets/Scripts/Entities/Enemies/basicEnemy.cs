@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class basicEnemy : MonoBehaviour
+public class BasicEnemy : MonoBehaviour
 {
     Rigidbody2D rb;
     EnemyHandler enemyHandler;

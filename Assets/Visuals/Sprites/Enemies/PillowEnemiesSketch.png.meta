@@ -1,0 +1,393 @@
+fileFormatVersion: 2
+guid: 6f7b1d05bedee194abb356c9e537e982
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3352543912136917580
+    second: PillowEnemiesSketch_0
+  - first:
+      213: 9040577882946015201
+    second: PillowEnemiesSketch_1
+  - first:
+      213: 7180537296168778197
+    second: PillowEnemiesSketch_2
+  - first:
+      213: 3454039057760910690
+    second: PillowEnemiesSketch_3
+  - first:
+      213: 1463557060140357940
+    second: PillowEnemiesSketch_4
+  - first:
+      213: 1992082362941168510
+    second: PillowEnemiesSketch_5
+  - first:
+      213: 764327970421182011
+    second: PillowEnemiesSketch_6
+  - first:
+      213: 209849431310434454
+    second: PillowEnemiesSketch_7
+  - first:
+      213: 5603606165429942340
+    second: PillowEnemiesSketch_8
+  - first:
+      213: -1245894334954715942
+    second: PillowEnemiesSketch_9
+  - first:
+      213: 4685634073826203928
+    second: PillowEnemiesSketch_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 425
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PillowEnemiesSketch_1
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 1093
+        width: 650
+        height: 516
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ef004d7fa5967d70800000000000000
+      internalID: 9040577882946015201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PillowEnemiesSketch_2
+      rect:
+        serializedVersion: 2
+        x: 1686
+        y: 1092
+        width: 434
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d9759270a466a360800000000000000
+      internalID: 7180537296168778197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PillowEnemiesSketch_3
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 73
+        width: 308
+        height: 461
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26df92609363fef20800000000000000
+      internalID: 3454039057760910690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PillowEnemiesSketch_4
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 624
+        width: 261
+        height: 383
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4395e2654699f4410800000000000000
+      internalID: 1463557060140357940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PillowEnemiesSketch_5
+      rect:
+        serializedVersion: 2
+        x: 1026
+        y: 696
+        width: 398
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7bdd66ca5c45ab10800000000000000
+      internalID: 1992082362941168510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PillowEnemiesSketch_6
+      rect:
+        serializedVersion: 2
+        x: 1637
+        y: 606
+        width: 445
+        height: 407
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3e89d05d307b9a00800000000000000
+      internalID: 764327970421182011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PillowEnemiesSketch_7
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 70
+        width: 297
+        height: 425
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 690839922f889e200800000000000000
+      internalID: 209849431310434454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PillowEnemiesSketch_8
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 95
+        width: 685
+        height: 375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 448f3a74e1204cd40800000000000000
+      internalID: 5603606165429942340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PillowEnemiesSketch_9
+      rect:
+        serializedVersion: 2
+        x: 1619
+        y: 49
+        width: 473
+        height: 443
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad44a5114b1b5bee0800000000000000
+      internalID: -1245894334954715942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PillowEnemiesSketch_10
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 49
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81990e55d57b60140800000000000000
+      internalID: 4685634073826203928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c5adb263d91b2664cb85253f3723b8f2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PillowEnemiesSketch_1: 9040577882946015201
+      PillowEnemiesSketch_10: 4685634073826203928
+      PillowEnemiesSketch_2: 7180537296168778197
+      PillowEnemiesSketch_3: 3454039057760910690
+      PillowEnemiesSketch_4: 1463557060140357940
+      PillowEnemiesSketch_5: 1992082362941168510
+      PillowEnemiesSketch_6: 764327970421182011
+      PillowEnemiesSketch_7: 209849431310434454
+      PillowEnemiesSketch_8: 5603606165429942340
+      PillowEnemiesSketch_9: -1245894334954715942
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
