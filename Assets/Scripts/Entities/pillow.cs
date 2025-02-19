@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class pillow : MonoBehaviour
+public class Pillow : MonoBehaviour
 {
     public void OnTriggerEnter2D(Collider2D collision)
     {

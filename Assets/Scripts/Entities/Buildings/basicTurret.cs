@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class basicTurret : MonoBehaviour
+public class BasicTurret : MonoBehaviour
 {
     Turret turret;
+    BuildingScriptableObject bs;
 
     [SerializeField]
     float range, projectileSpeed, shotCD, lerpSpeed;
+
+    int damage;
 
     [SerializeField]
     [Range(0f, .5f)]
@@ -34,6 +37,10 @@ public class basicTurret : MonoBehaviour
     void Start()
     {
         turret = new Turret();
+
+        bs = GetComponent<BuildingHealth>().buildingScriptableObject;
+        range = bs.buildingRange;
+        damage = bs.buildingDamage;
     }
 
     // Update is called once per frame
@@ -73,5 +80,8 @@ public class basicTurret : MonoBehaviour
         //Launches the projectile towards the target
         Rigidbody2D local_projectileRb = local_projectile.GetComponent<Rigidbody2D>();
         local_projectileRb.AddForce(firePoint.right * projectileSpeed, ForceMode2D.Impulse);
+
+        //Sets the damage of the projectile
+        local_projectile.GetComponent<TurretProjectile>().damage = damage;
     }
 }
