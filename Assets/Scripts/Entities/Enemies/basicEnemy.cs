@@ -10,8 +10,28 @@ public class BasicEnemy : MonoBehaviour
     Transform bedPosition;
     Transform playerPosition;
 
+    [Header("Basic Enemy Stats")]
+
     [SerializeField]
-    float speed, speedVariance, acceleration, accelerationVariance, playerDetectionDistance, attackRange, attackCD;
+    float speed;
+
+    [SerializeField]
+    float speedVariance;
+
+    [SerializeField]
+    float acceleration;
+
+    [SerializeField]
+    float accelerationVariance;
+
+    [SerializeField]
+    float attackRange;
+
+    [SerializeField]
+    float attackCD;
+
+    [SerializeField]
+    float playerDetectionDistance;
 
     [SerializeField]
     int damage;

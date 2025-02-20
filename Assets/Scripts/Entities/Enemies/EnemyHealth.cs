@@ -39,7 +39,6 @@ public class EnemyHealth : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         originalMaterial = sr.material;
-        flashMaterial.color = flashColor;
 
         health = maxHealth;
     }
@@ -68,6 +67,14 @@ public class EnemyHealth : MonoBehaviour
 
     private void spawnPillows()
     {
+        if (maxPillows == 0) {
+            return;
+        }
+
+        if (pillowPrefab == null) {
+            throw new System.Exception("Pillow Prefab not set on " + gameObject.name);
+        }
+
         float amount = Mathf.RoundToInt(Random.Range(minPillows, maxPillows));
 
         for (int i = 0; i < amount; i++)
@@ -86,6 +93,7 @@ public class EnemyHealth : MonoBehaviour
         if (sr == null || flashMaterial == null) {
             yield break;
         }
+        flashMaterial.color = flashColor;
         sr.material = flashMaterial;
         yield return new WaitForSeconds(flashTime);
         sr.material = originalMaterial;
