@@ -1599,7 +1599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb7961d1b44ab14696c9b0d18d7cfa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pillows: 100
+  pillows: 5
   pillowText: {fileID: 1774479167}
   buildings:
   - {fileID: 11400000, guid: 132174b85aff7ab4387ce814edb6aaa9, type: 2}
@@ -2099,7 +2099,7 @@ MonoBehaviour:
   enemy: {fileID: 4368807937532126786, guid: ec5c6415c5d601b4a8fbe44c0bca6f48, type: 3}
   enemiesToSpawn: 3
   pivot: {fileID: 1689609807}
-  timeBetweenWave: 1
+  timeBetweenWave: 15
 --- !u!4 &595954346
 Transform:
   m_ObjectHideFlags: 0
