@@ -2095,7 +2095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9364da22cb721a649bf8f2bdf5c53ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpawnDist: 25
+  minSpawnDist: 80
   enemy: {fileID: 3013205706211699456, guid: 947b27e7df2e60f4c8040e645e399ccd, type: 3}
   enemiesToSpawn: 3
   pivot: {fileID: 1689609807}

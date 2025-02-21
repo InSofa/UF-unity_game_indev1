@@ -109,7 +109,7 @@ public class SpawnerEnemy : MonoBehaviour
         int spawnAmount = Random.Range(minSpawns, maxSpawns);
 
         for (int i = 0; i < spawnAmount; i++) {
-            Vector2 spawnLocation = new Vector2(Random.value, Random.value);
+            Vector2 spawnLocation = new Vector2(Random.value -.5f, Random.value - .5f);
             spawnLocation = spawnLocation.normalized * spawnRange;
 
             GameObject enemy = Instantiate(spawnPrefab, (Vector2)transform.position + spawnLocation, Quaternion.identity);
