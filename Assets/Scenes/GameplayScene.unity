@@ -1554,9 +1554,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2be080e426fda54d8209ed1a5be0ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 100
   healthSlider: {fileID: 1501079777}
-  canDie: 0
+  canDie: 1
 --- !u!114 &452178606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2095,7 +2095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9364da22cb721a649bf8f2bdf5c53ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpawnDist: 80
+  minSpawnDist: 25
   enemy: {fileID: 3013205706211699456, guid: 947b27e7df2e60f4c8040e645e399ccd, type: 3}
   enemiesToSpawn: 3
   pivot: {fileID: 1689609807}

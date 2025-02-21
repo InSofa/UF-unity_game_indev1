@@ -62,13 +62,13 @@ public class BasicTurret : MonoBehaviour
                 shotCDTime = 0;
             }
 
-        } else {
+        } /*else {
             if (Vector2.Distance(pivot.right, Vector2.right) > resetLerpDiff) {
                 pivot.right = Vector2.Lerp(pivot.right, Vector2.right, lerpSpeed * Time.deltaTime);
             } else {
                 pivot.right = Vector2.right;
             }
-        }
+        }*/
     }
 
     private void shootTarget()

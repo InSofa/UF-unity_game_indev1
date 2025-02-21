@@ -135,7 +135,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -172,7 +172,7 @@ MonoBehaviour:
   destroyParticle: {fileID: 0}
   flashMaterial: {fileID: 2100000, guid: eb0872da184994a468d3e91629d9c52d, type: 2}
   flashTime: 0.1
-  flashColor: {r: 0, g: 1, b: 0.08090758, a: 1}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
   pillowPrefab: {fileID: 0}
   minPillows: 0
   maxPillows: 0

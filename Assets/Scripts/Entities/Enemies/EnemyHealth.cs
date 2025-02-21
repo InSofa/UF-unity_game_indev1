@@ -47,7 +47,10 @@ public class EnemyHealth : MonoBehaviour
     {
         health -= damage;
 
-        if(health < 0)
+        StopAllCoroutines();
+        StartCoroutine(flash());
+
+        if (health < 0)
         {
             if(destroyParticle != null)
             {
@@ -60,9 +63,6 @@ public class EnemyHealth : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
-
-        StopAllCoroutines();
-        StartCoroutine(flash());
     }
 
     private void spawnPillows()
