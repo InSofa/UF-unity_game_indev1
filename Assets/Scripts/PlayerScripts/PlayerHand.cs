@@ -35,14 +35,22 @@ public class PlayerHand : MonoBehaviour
     [SerializeField]
     float collisionRadius;
 
-    Vector2 mousePos;
+    Vector2 lookDir;
+    PlayerInput pi;
 
     [SerializeField]
-    InputActionReference mousePositionInput;
+    InputActionReference lookInput;
+
 
     [SerializeField]
-    InputActionReference mouseClick;
+    InputActionReference buildInput;
 
+    [Header("Contoller settings")]
+    [SerializeField]
+    float joystickSensitivity = 3f;
+
+    [SerializeField]
+    bool rawJoystickInput = false;
 
     private void Start()
     {
@@ -50,6 +58,8 @@ public class PlayerHand : MonoBehaviour
         pillowText.text = pillows.ToString();
 
         PathfindingGrid.instance.buildPlacement = buildIndicator;
+
+        pi = GetComponent<PlayerInput>();
     }
 
     private void Update()
@@ -59,18 +69,31 @@ public class PlayerHand : MonoBehaviour
 
     private void takeInput()
     {
-        mousePos = mousePositionInput.action.ReadValue<Vector2>();
-        Vector2 worldMousePos = cam.ScreenToWorldPoint(mousePos);
-        Vector2 v2Pos = new Vector2(transform.position.x, transform.position.y);
+        if (pi.currentControlScheme == "MnK") {
+            Vector2 mousePos = lookInput.action.ReadValue<Vector2>();
+            Vector2 worldMousePos = cam.ScreenToWorldPoint(mousePos);
 
-        Vector2 lookDir =  worldMousePos - v2Pos;
-        if (lookDir.magnitude > buildRange)
-        {
-            lookDir.Normalize();
-            lookDir *= buildRange;
+            lookDir = worldMousePos - (Vector2)transform.position;
+            if (lookDir.magnitude > buildRange) {
+                lookDir.Normalize();
+                lookDir *= buildRange;
+            }
+        } else if(pi.currentControlScheme == "Gamepad") {
+            Vector2 joystickInput = lookInput.action.ReadValue<Vector2>();
+
+            if (rawJoystickInput) {
+                lookDir = joystickInput * buildRange;
+            } else {
+                lookDir += joystickInput * Time.deltaTime * joystickSensitivity;
+                if (lookDir.magnitude > buildRange) {
+                    lookDir.Normalize();
+                    lookDir *= buildRange;
+                }
+            }
         }
 
-        buildPos = v2Pos + lookDir;
+
+        buildPos = (Vector2)transform.position + lookDir;
         buildIndicator.transform.position = buildPos;
 
         placementIndicator.position = PathfindingGrid.instance.NodeFromWorldPoint(buildPos).worldPosition;
@@ -78,12 +101,12 @@ public class PlayerHand : MonoBehaviour
 
     private void OnEnable()
     {
-        mouseClick.action.started += placeBuilding;
+        buildInput.action.started += placeBuilding;
     }
 
     private void OnDisable()
     {
-        mouseClick.action.started -= placeBuilding;
+        buildInput.action.started -= placeBuilding;
     }
 
     public void addPillow(int amount)
