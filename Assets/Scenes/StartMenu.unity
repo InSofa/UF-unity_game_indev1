@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 394720284}
   - component: {fileID: 394720283}
   m_Layer: 5
-  m_Name: Start Button (1)
+  m_Name: Option Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -965,6 +965,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   menuButton: {fileID: 0}
   pauseMenu: {fileID: 1296876282}
+  pauseMenuInteractableObjects: []
 --- !u!1 &734885016
 GameObject:
   m_ObjectHideFlags: 0
