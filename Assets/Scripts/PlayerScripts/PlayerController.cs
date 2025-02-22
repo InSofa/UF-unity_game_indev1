@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public static GameObject player;
     Rigidbody2D rb;
 
     [SerializeField]
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
 
     // Start is called before the first frame update
     private void Start() {
+        player = this.gameObject;
         rb = GetComponent<Rigidbody2D>();
     }
 

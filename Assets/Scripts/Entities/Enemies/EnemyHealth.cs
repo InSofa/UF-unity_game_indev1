@@ -35,12 +35,14 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     float minPillows, maxPillows, spawnRange;
 
-    private void Start()
+    private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
         originalMaterial = sr.material;
 
         health = maxHealth;
+
+        EnemySpawner.instance.currentEnemies.Add(this.gameObject);
     }
 
     public void TakeDamage(float damage)
@@ -60,6 +62,7 @@ public class EnemyHealth : MonoBehaviour
 
             spawnPillows();
 
+            EnemySpawner.instance.currentEnemies.Remove(this.gameObject);
             Destroy(this.gameObject);
             return;
         }

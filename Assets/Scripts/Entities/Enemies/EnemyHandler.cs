@@ -12,7 +12,6 @@ public enum entityPriority {
 }
 
 public class EnemyHandler : MonoBehaviour {
-    private static GameObject player;
     private static PlayerHealth ph;
 
     Vector2 currentTarget;
@@ -34,16 +33,16 @@ public class EnemyHandler : MonoBehaviour {
     [SerializeField]
     private float attackDistance, attackRadius;
 
-    //Buildings & player usually
+    //Buildings & PlayerController.player usually
     private LayerMask attackLayers;
 
     private float timeSinceMove;
     private Vector2 lastPos = Vector2.zero;
 
     public void Start() {
-        if (player == null || ph == null) {
-            player = GameObject.Find("Player");
-            ph = player.GetComponent<PlayerHealth>();
+        if (PlayerController.player == null || ph == null) {
+            PlayerController.player = GameObject.Find("Player");
+            ph = PlayerController.player.GetComponent<PlayerHealth>();
         }
 
         PathfindingGrid.instance.enemies.Add(this);

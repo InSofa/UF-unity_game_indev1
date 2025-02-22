@@ -117,7 +117,7 @@ public class BasicEnemy : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 velocity = rb.linearVelocity;
-        velocity = Vector2.Lerp(velocity, dir * speed, acceleration);
+        velocity = Vector2.Lerp(velocity, dir * speed, acceleration * Time.fixedDeltaTime);
         rb.linearVelocity = velocity;
     }
 

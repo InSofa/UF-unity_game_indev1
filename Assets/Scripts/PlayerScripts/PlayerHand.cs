@@ -49,9 +49,7 @@ public class PlayerHand : MonoBehaviour
         cam = Camera.main;
         pillowText.text = pillows.ToString();
 
-        grid = GameObject.Find("PathfindingGrid").GetComponent<PathfindingGrid>();
-        grid.player = transform;
-        grid.buildPlacement = buildIndicator;
+        PathfindingGrid.instance.buildPlacement = buildIndicator;
     }
 
     private void Update()
@@ -75,7 +73,7 @@ public class PlayerHand : MonoBehaviour
         buildPos = v2Pos + lookDir;
         buildIndicator.transform.position = buildPos;
 
-        placementIndicator.position = grid.NodeFromWorldPoint(buildPos).worldPosition;
+        placementIndicator.position = PathfindingGrid.instance.NodeFromWorldPoint(buildPos).worldPosition;
     }
 
     private void OnEnable()
@@ -110,7 +108,7 @@ public class PlayerHand : MonoBehaviour
             return;
         }
 
-        bool placed = grid.CreateBuilding(buildings[selectedBuilding].buildingPrefab);
+        bool placed = PathfindingGrid.instance.CreateBuilding(buildings[selectedBuilding].buildingPrefab);
 
         if (placed) {
             pillows -= buildings[selectedBuilding].buildingCost;

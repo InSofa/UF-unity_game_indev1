@@ -18,7 +18,7 @@ public class PathfindingGrid : MonoBehaviour
 
     //Will be assigned in PlayerHand
     [HideInInspector]
-    public Transform player, buildPlacement;
+    public Transform buildPlacement;
 
     private float nodeDiameter;
     private int gridSizeX, gridSizeY;
@@ -66,7 +66,7 @@ public class PathfindingGrid : MonoBehaviour
 
     public bool CreateBuilding(GameObject building) {
         Node node = NodeFromWorldPoint(buildPlacement.position);
-        Node playerNode = NodeFromWorldPoint(player.position);
+        Node playerNode = NodeFromWorldPoint(PlayerController.player.transform.position);
         if (node.walkable && node != playerNode && node.building == null) {
             node.building = Instantiate(building, node.worldPosition, Quaternion.identity);
 
@@ -132,7 +132,7 @@ public class PathfindingGrid : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, gridWorldSize.y, 0));
         if (grid != null) {
-            Node playerNode = NodeFromWorldPoint(player.position);
+            Node playerNode = NodeFromWorldPoint(PlayerController.player.transform.position);
             Node buildNode = NodeFromWorldPoint(buildPlacement.position);
             foreach (Node n in grid) {
                 Gizmos.color = n.walkable && n.building == null ? Color.white : Color.red;

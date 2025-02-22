@@ -154,8 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   speedVariance: 0.3
-  acceleration: 0.02
-  accelerationVariance: 0.005
+  acceleration: 5
+  accelerationVariance: 0.5
   attackRange: 1.06
   attackCD: 0.8
   damage: 18

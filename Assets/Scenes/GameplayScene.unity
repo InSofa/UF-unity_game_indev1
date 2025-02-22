@@ -868,8 +868,8 @@ Transform:
   m_GameObject: {fileID: 230377024}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 100.5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 200, z: 1}
+  m_LocalPosition: {x: 50.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 100, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1014987191}
@@ -885,6 +885,7 @@ GameObject:
   - component: {fileID: 257325726}
   - component: {fileID: 257325725}
   - component: {fileID: 257325724}
+  - component: {fileID: 257325727}
   m_Layer: 7
   m_Name: Bed
   m_TagString: Bed
@@ -999,6 +1000,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &257325727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257325723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a5b6a354f7ec547991a8d6bf2418fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startNewWave: {fileID: 5011118438742677379, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
+  minInteractDistance: 4
+  interactVisuals: {fileID: 0}
 --- !u!1 &284803335
 GameObject:
   m_ObjectHideFlags: 0
@@ -1155,8 +1171,8 @@ Transform:
   m_GameObject: {fileID: 284803335}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -100.5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 200, z: 1}
+  m_LocalPosition: {x: -50.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 100, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1014987191}
@@ -2095,6 +2111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9364da22cb721a649bf8f2bdf5c53ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentEnemies: []
   minSpawnDist: 25
   enemy: {fileID: 3013205706211699456, guid: 947b27e7df2e60f4c8040e645e399ccd, type: 3}
   enemiesToSpawn: 3
@@ -5129,8 +5146,8 @@ Transform:
   m_GameObject: {fileID: 1593061824}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 100.5, z: 0}
-  m_LocalScale: {x: 202, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 50.5, z: 0}
+  m_LocalScale: {x: 101, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1014987191}
@@ -5304,7 +5321,7 @@ MonoBehaviour:
   unwalkableMask:
     serializedVersion: 2
     m_Bits: 256
-  gridWorldSize: {x: 200, y: 200}
+  gridWorldSize: {x: 100, y: 100}
   nodeRadius: 0.5
   player: {fileID: 951489001}
   buildPlacement: {fileID: 0}
@@ -5747,8 +5764,8 @@ Transform:
   m_GameObject: {fileID: 1758354904}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -100.5, z: 0}
-  m_LocalScale: {x: 202, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -50.5, z: 0}
+  m_LocalScale: {x: 101, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1014987191}

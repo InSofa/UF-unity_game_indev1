@@ -209,8 +209,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   speedVariance: 0.4
-  acceleration: 0.1
-  accelerationVariance: 0.01
+  acceleration: 10
+  accelerationVariance: 1
   attackRange: 0.75
   attackCD: 0.4
   playerDetectionDistance: 5
