@@ -1714,7 +1714,7 @@ MonoBehaviour:
   collisionRadius: 0.49
   lookInput: {fileID: 7663556139590389150, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
   buildInput: {fileID: 8184959716252747568, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
-  joystickSensitivity: 50
+  joystickSensitivity: 20
   rawJoystickInput: 0
 --- !u!70 &452178608
 CapsuleCollider2D:
@@ -4316,8 +4316,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SendPointerHoverToParent: 1
-  m_MoveRepeatDelay: 0.5
-  m_MoveRepeatRate: 0.1
+  m_MoveRepeatDelay: 0.05
+  m_MoveRepeatRate: 0.01
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
   m_PointAction: {fileID: 1054132383583890850, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
