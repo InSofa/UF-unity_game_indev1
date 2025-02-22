@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIHandler : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class UIHandler : MonoBehaviour
 
     [SerializeField]
     private GameObject pauseMenu;
+
+    [SerializeField]
+    GameObject[] pauseMenuInteractableObjects;
 
     private void Start() {
         currentScene = SceneManager.GetActiveScene().buildIndex;
@@ -49,6 +53,20 @@ public class UIHandler : MonoBehaviour
     public void togglePauseMenu(InputAction.CallbackContext obj) {
         if (currentScene == 1) {
             pauseMenu.SetActive(!pauseMenu.activeSelf);
+
+            // Enable/Disable Interactable Objects to make sure they dont interfere with UI navigation
+            for (int i = 0; i < pauseMenuInteractableObjects.Length; i++) {
+                Button button = pauseMenuInteractableObjects[i].GetComponent<Button>();
+                if (button != null) {
+                    button.interactable = pauseMenu.activeSelf;
+                    continue;
+                }
+
+                Slider slider = pauseMenuInteractableObjects[i].GetComponent<Slider>();
+                if (slider != null) {
+                    slider.interactable = pauseMenu.activeSelf;
+                }
+            }
         }
     }
 
