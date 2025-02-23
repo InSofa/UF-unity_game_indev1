@@ -81,18 +81,19 @@ public class PathfindingGrid : MonoBehaviour
         return false;
     }
 
-    public bool RemoveBuilding(Vector2 removePosition) {
+    public int? RemoveBuilding(Vector2 removePosition) {
         Node node = NodeFromWorldPoint(removePosition);
         if (node.building != null) {
+            int cost = node.building.GetComponent<BuildingHealth>().buildingScriptableObject.buildingSellValue;
             Destroy(node.building);
             node.building = null;
 
             //Clear path for all enemies if a building is removed => they need to find a new path
             enemies.ForEach(enemy => enemy.refreshPath = true);
 
-            return true;
+            return cost;
         }
-        return false;
+        return null;
     }
 
     public Node NodeFromWorldPoint(Vector3 worldPosition) {

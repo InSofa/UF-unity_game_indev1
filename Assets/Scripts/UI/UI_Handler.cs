@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -51,6 +52,11 @@ public class UIHandler : MonoBehaviour
     }
 
     public void togglePauseMenu(InputAction.CallbackContext obj) {
+        togglePauseMenu();
+    }
+    
+    //Incase we want to toggle pause menu via buttons or similar
+    public void togglePauseMenu() {
         if (currentScene == 1) {
             pauseMenu.SetActive(!pauseMenu.activeSelf);
 
@@ -68,6 +74,10 @@ public class UIHandler : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void toggleOptionsMenu() {
+    
     }
 
     public void toggleDebugOverlay(InputAction.CallbackContext obj)

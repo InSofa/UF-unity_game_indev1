@@ -43,7 +43,7 @@ public class PlayerHand : MonoBehaviour
 
 
     [SerializeField]
-    InputActionReference buildInput;
+    InputActionReference buildInput, sellBuildingInput;
 
     [Header("Contoller settings")]
     [SerializeField]
@@ -102,6 +102,7 @@ public class PlayerHand : MonoBehaviour
     private void OnEnable()
     {
         buildInput.action.started += placeBuilding;
+        sellBuildingInput.action.started += removeBuilding;
     }
 
     private void OnDisable()
@@ -139,6 +140,16 @@ public class PlayerHand : MonoBehaviour
             return;
         }
         Debug.Log("Cannot place building here");
+    }
+
+    private void removeBuilding(InputAction.CallbackContext obj) {
+        int? sellAmount = PathfindingGrid.instance.RemoveBuilding(buildPos);
+        if(sellAmount != null) {
+            Debug.Log("Sold building for " + sellAmount + " pillows");
+            addPillow((int)sellAmount);
+            return;
+        }
+        Debug.Log("No building to sell here");
     }
 
     private void OnDrawGizmos()
