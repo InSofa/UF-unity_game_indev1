@@ -7,11 +7,6 @@ using UnityEngine.UI;
 
 public class UIHandler : MonoBehaviour
 {
-    public enum Menus {
-        PAUSE,
-        OPTIONS
-    }
-
     [SerializeField]
     public GameObject debugOverlay;
 
@@ -27,7 +22,11 @@ public class UIHandler : MonoBehaviour
     private GameObject pauseMenu, optionsMenu;
 
     [SerializeField]
-    GameObject[] pauseMenuInteractableObjects, optionsMenuInteractableObjects;
+    GameObject[] pauseMenuInteractableObjects, optionsMenuInteractableObjects, mainInteractableObjects;
+
+    //0 = Gameplay/Main Menu, 1 = Pause Menu, 2 = Options Menu
+    int currentMenu = 0;
+
 
     private void Start() {
         currentScene = SceneManager.GetActiveScene().buildIndex;
@@ -59,30 +58,62 @@ public class UIHandler : MonoBehaviour
     }
 
     public void togglePauseMenu(InputAction.CallbackContext obj) {
-        toggleMenuHandler(Menus.PAUSE);
-    }
-    
-    //Incase we want to toggle pause menu via buttons or similar
-    public void toggleMenuHandler(Menus menuToToggle) {
-        if (currentScene == 1) {
-            toggleMenu(pauseMenu, pauseMenuInteractableObjects);
-        }
+        switchMenu(1);
     }
 
-    private void toggleMenu(GameObject menuToToggle, GameObject[] interactiveList) {
-        menuToToggle.SetActive(!menuToToggle.activeSelf);
+    //if newMenu = curentMenu, close menu and return to menu 0, else open newMenu
+    public void switchMenu(int newMenu) {
+        if(currentMenu == newMenu || newMenu == 0) {
+            currentMenu = 0;
+            updateMenu(null, mainInteractableObjects);
+            return;
+        }
+        switch (newMenu) {
+            case 1:
+                if (currentScene == 1) {
+                    updateMenu(pauseMenu, pauseMenuInteractableObjects);
+                }
+                break;
+            case 2:
+                updateMenu(optionsMenu, optionsMenuInteractableObjects);
+                break;
+        }
+        currentMenu = newMenu;
+    }
+
+    private void updateMenu(GameObject menuToShow, GameObject[] interactiveList) {
+        if(pauseMenu != null) pauseMenu.SetActive(false);
+        if (optionsMenu != null) optionsMenu.SetActive(false);
+
+        // Enable/Disable Interactable Objects to make sure they dont interfere with UI navigation
+        for (int i = 0; i < pauseMenuInteractableObjects.Length; i++) {
+            Selectable selectable = pauseMenuInteractableObjects[i].GetComponent<Selectable>();
+            if (selectable != null) {
+                selectable.interactable = false;
+            }
+        }
+
+        for (int i = 0; i < optionsMenuInteractableObjects.Length; i++) {
+            Selectable selectable = optionsMenuInteractableObjects[i].GetComponent<Selectable>();
+            if (selectable != null) {
+                selectable.interactable = false;
+            }
+        }
+
+        for (int i = 0; i < mainInteractableObjects.Length; i++) {
+            Selectable selectable = mainInteractableObjects[i].GetComponent<Selectable>();
+            if (selectable != null) {
+                selectable.interactable = false;
+            }
+        }
+
+        if(menuToShow != null) menuToShow.SetActive(true);
 
         // Enable/Disable Interactable Objects to make sure they dont interfere with UI navigation
         for (int i = 0; i < interactiveList.Length; i++) {
-            Button button = interactiveList[i].GetComponent<Button>();
-            if (button != null) {
-                button.interactable = menuToToggle.activeSelf;
-                continue;
-            }
-
-            Slider slider = interactiveList[i].GetComponent<Slider>();
-            if (slider != null) {
-                slider.interactable = menuToToggle.activeSelf;
+            Selectable selectable = interactiveList[i].GetComponent<Selectable>();
+            if (selectable != null) {
+                selectable.interactable = true;
             }
         }
     }
@@ -93,5 +124,18 @@ public class UIHandler : MonoBehaviour
         {
             debugOverlay.SetActive(!debugOverlay.activeSelf);
         }
+
+        /*
+        Button button = interactiveList[i].GetComponent<Button>();
+        if (button != null) {
+        button.interactable = menuToToggle.activeSelf;
+        continue;
+        }
+
+        Slider slider = interactiveList[i].GetComponent<Slider>();
+        if (slider != null) {
+        slider.interactable = menuToToggle.activeSelf;
+        }
+        */
     }
 }
