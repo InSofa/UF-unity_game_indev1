@@ -114,6 +114,9 @@ public class UIHandler : MonoBehaviour
             Selectable selectable = interactiveList[i].GetComponent<Selectable>();
             if (selectable != null) {
                 selectable.interactable = true;
+                if (i == 0) {
+                    selectable.Select();
+                }
             }
         }
     }
