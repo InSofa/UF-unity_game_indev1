@@ -45,13 +45,6 @@ public class PlayerHand : MonoBehaviour
     [SerializeField]
     InputActionReference buildInput, sellBuildingInput;
 
-    [Header("Contoller settings")]
-    [SerializeField]
-    float joystickSensitivity = 3f;
-
-    [SerializeField]
-    bool rawJoystickInput = false;
-
     private void Start()
     {
         cam = Camera.main;
@@ -81,10 +74,10 @@ public class PlayerHand : MonoBehaviour
         } else if(pi.currentControlScheme == "Gamepad") {
             Vector2 joystickInput = lookInput.action.ReadValue<Vector2>();
 
-            if (rawJoystickInput) {
+            if (Settings.rawJoystickInput) {
                 lookDir = joystickInput * buildRange;
             } else {
-                lookDir += joystickInput * Time.deltaTime * joystickSensitivity;
+                lookDir += joystickInput * Time.deltaTime * Settings.joystickLookSensitivity;
                 if (lookDir.magnitude > buildRange) {
                     lookDir.Normalize();
                     lookDir *= buildRange;
