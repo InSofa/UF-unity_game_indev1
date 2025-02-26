@@ -25,9 +25,6 @@ public class PlayerHealth : MonoBehaviour
         healthSlider.gameObject.SetActive(true);
     }
 
-    public void Update() {
-    }
-
     public void TakeDamage(float damage, GameObject source)
     {
         Debug.Log("took damage");

@@ -43,7 +43,23 @@ public class PlayerHand : MonoBehaviour
 
 
     [SerializeField]
-    InputActionReference buildInput, sellBuildingInput;
+    InputActionReference buildInput, sellBuildingInput, meleeSwitch;
+
+    [Header("Melee Attack")]
+    [SerializeField]
+    float meleeRange;
+
+    [SerializeField]
+    float meleeRadius;
+
+    [SerializeField]
+    int meleeDamage;
+
+    [SerializeField]
+    bool isMeleeMode = false;
+
+    [SerializeField]
+    LayerMask enemyLayer;
 
     private void Start()
     {
@@ -53,6 +69,9 @@ public class PlayerHand : MonoBehaviour
         PathfindingGrid.instance.buildPlacement = buildIndicator;
 
         pi = GetComponent<PlayerInput>();
+
+        buildInput.action.started += placeBuilding;
+        sellBuildingInput.action.started += removeBuilding;
     }
 
     private void Update()
@@ -92,6 +111,7 @@ public class PlayerHand : MonoBehaviour
         placementIndicator.position = PathfindingGrid.instance.NodeFromWorldPoint(buildPos).worldPosition;
     }
 
+    /*
     private void OnEnable()
     {
         buildInput.action.started += placeBuilding;
@@ -101,7 +121,8 @@ public class PlayerHand : MonoBehaviour
     private void OnDisable()
     {
         buildInput.action.started -= placeBuilding;
-    }
+        sellBuildingInput.action.started -= removeBuilding;
+    }*/
 
     public void addPillow(int amount)
     {
@@ -120,6 +141,11 @@ public class PlayerHand : MonoBehaviour
 
     private void placeBuilding(InputAction.CallbackContext obj)
     {
+        if(isMeleeMode) {
+            meleeAttack();
+            return;
+        }
+
         if (pillows < buildings[selectedBuilding].buildingCost) {
             Debug.Log("Not enough pillows");
             return;
@@ -136,6 +162,10 @@ public class PlayerHand : MonoBehaviour
     }
 
     private void removeBuilding(InputAction.CallbackContext obj) {
+        if (isMeleeMode) {
+            return;
+        }
+
         int? sellAmount = PathfindingGrid.instance.RemoveBuilding(buildPos);
         if(sellAmount != null) {
             Debug.Log("Sold building for " + sellAmount + " pillows");
@@ -145,8 +175,26 @@ public class PlayerHand : MonoBehaviour
         Debug.Log("No building to sell here");
     }
 
+    private void meleeAttack() {
+        Vector2 attackPos = (Vector2)transform.position + lookDir * meleeRange;
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPos, meleeRadius, enemyLayer);
+
+        foreach (Collider2D hitCollider in hitColliders) {
+            EnemyHealth eh = hitCollider.GetComponent<EnemyHealth>();
+            if(eh == null) {
+                continue;
+            }
+            eh.TakeDamage(meleeDamage);
+        }
+    }
+
     private void OnDrawGizmos()
     {
+        if (isMeleeMode) {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere((Vector2)transform.position + lookDir * meleeRange, meleeRadius);
+            return;
+        }
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(transform.position, buildRange);
     }
