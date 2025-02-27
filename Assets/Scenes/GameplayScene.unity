@@ -2077,9 +2077,9 @@ MonoBehaviour:
   lookInput: {fileID: 7663556139590389150, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
   buildInput: {fileID: 8184959716252747568, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
   sellBuildingInput: {fileID: -1683533180203926604, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
-  meleeSwitch: {fileID: 0}
-  meleeRange: 0.59
-  meleeRadius: 0.7
+  meleeSwitch: {fileID: 3197935253736536625, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
+  meleeRange: 1.62
+  meleeRadius: 0.59
   meleeDamage: 1
   isMeleeMode: 1
   enemyLayer:

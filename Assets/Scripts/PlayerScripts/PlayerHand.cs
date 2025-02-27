@@ -72,6 +72,7 @@ public class PlayerHand : MonoBehaviour
 
         buildInput.action.started += placeBuilding;
         sellBuildingInput.action.started += removeBuilding;
+        meleeSwitch.action.started += switchMeleeMode;
     }
 
     private void Update()
@@ -92,9 +93,9 @@ public class PlayerHand : MonoBehaviour
             }
         } else if(pi.currentControlScheme == "Gamepad") {
             Vector2 joystickInput = lookInput.action.ReadValue<Vector2>();
-
-            if (Settings.rawJoystickInput) {
-                lookDir = joystickInput * buildRange;
+            //Settings.rawJoystickInput
+            if (isMeleeMode) {
+                lookDir = joystickInput * meleeRange;
             } else {
                 lookDir += joystickInput * Time.deltaTime * Settings.joystickLookSensitivity;
                 if (lookDir.magnitude > buildRange) {
@@ -141,7 +142,7 @@ public class PlayerHand : MonoBehaviour
 
     private void placeBuilding(InputAction.CallbackContext obj)
     {
-        if(isMeleeMode) {
+        if(isMeleeMode == true) {
             meleeAttack();
             return;
         }
@@ -162,7 +163,7 @@ public class PlayerHand : MonoBehaviour
     }
 
     private void removeBuilding(InputAction.CallbackContext obj) {
-        if (isMeleeMode) {
+        if (isMeleeMode == true) {
             return;
         }
 
@@ -176,7 +177,7 @@ public class PlayerHand : MonoBehaviour
     }
 
     private void meleeAttack() {
-        Vector2 attackPos = (Vector2)transform.position + lookDir * meleeRange;
+        Vector2 attackPos = (Vector2)transform.position + lookDir;
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPos, meleeRadius, enemyLayer);
 
         foreach (Collider2D hitCollider in hitColliders) {
@@ -186,6 +187,10 @@ public class PlayerHand : MonoBehaviour
             }
             eh.TakeDamage(meleeDamage);
         }
+    }
+
+    private void switchMeleeMode(InputAction.CallbackContext obj) {
+        isMeleeMode = !isMeleeMode;
     }
 
     private void OnDrawGizmos()
