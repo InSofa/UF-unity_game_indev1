@@ -8,8 +8,6 @@ using UnityEngine.UI;
 
 public class PlayerHand : MonoBehaviour
 {
-    PathfindingGrid grid;
-
     [SerializeField]
     int pillows = 5;
 
@@ -41,9 +39,15 @@ public class PlayerHand : MonoBehaviour
     [SerializeField]
     InputActionReference lookInput;
 
+    [Header("Input Actions")]
+    [SerializeField]
+    InputActionReference buildInput;
 
     [SerializeField]
-    InputActionReference buildInput, sellBuildingInput, meleeSwitch;
+    InputActionReference sellBuildingInput;
+
+    [SerializeField]
+    InputActionReference meleeSwitch;
 
     [Header("Melee Attack")]
     [SerializeField]
@@ -112,7 +116,7 @@ public class PlayerHand : MonoBehaviour
         placementIndicator.position = PathfindingGrid.instance.NodeFromWorldPoint(buildPos).worldPosition;
     }
 
-    /*
+    
     private void OnEnable()
     {
         buildInput.action.started += placeBuilding;
@@ -123,7 +127,7 @@ public class PlayerHand : MonoBehaviour
     {
         buildInput.action.started -= placeBuilding;
         sellBuildingInput.action.started -= removeBuilding;
-    }*/
+    }
 
     public void addPillow(int amount)
     {
@@ -142,11 +146,6 @@ public class PlayerHand : MonoBehaviour
 
     private void placeBuilding(InputAction.CallbackContext obj)
     {
-        if(isMeleeMode == true) {
-            meleeAttack();
-            return;
-        }
-
         if (pillows < buildings[selectedBuilding].buildingCost) {
             Debug.Log("Not enough pillows");
             return;
@@ -163,10 +162,6 @@ public class PlayerHand : MonoBehaviour
     }
 
     private void removeBuilding(InputAction.CallbackContext obj) {
-        if (isMeleeMode == true) {
-            return;
-        }
-
         int? sellAmount = PathfindingGrid.instance.RemoveBuilding(buildPos);
         if(sellAmount != null) {
             Debug.Log("Sold building for " + sellAmount + " pillows");
@@ -176,7 +171,7 @@ public class PlayerHand : MonoBehaviour
         Debug.Log("No building to sell here");
     }
 
-    private void meleeAttack() {
+    private void meleeAttack(InputAction.CallbackContext obj) {
         Vector2 attackPos = (Vector2)transform.position + lookDir;
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPos, meleeRadius, enemyLayer);
 
@@ -190,7 +185,18 @@ public class PlayerHand : MonoBehaviour
     }
 
     private void switchMeleeMode(InputAction.CallbackContext obj) {
-        isMeleeMode = !isMeleeMode;
+        if(isMeleeMode) {
+            isMeleeMode = false;
+            buildInput.action.started += placeBuilding;
+            sellBuildingInput.action.started += removeBuilding;
+            buildInput.action.started -= meleeAttack;
+            return;
+        }
+
+        isMeleeMode = true;
+        buildInput.action.started -= placeBuilding;
+        sellBuildingInput.action.started -= removeBuilding;
+        buildInput.action.started += meleeAttack;
     }
 
     private void OnDrawGizmos()
