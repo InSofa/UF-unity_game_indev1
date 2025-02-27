@@ -27,7 +27,7 @@ public class PlayerHand : MonoBehaviour
     float buildRange = 1f;
 
     [SerializeField]
-    Transform buildIndicator, placementIndicator;
+    Transform buildIndicator, attackIndicator, placementIndicator, buildingIndicator;
 
 
     [SerializeField]
@@ -111,9 +111,23 @@ public class PlayerHand : MonoBehaviour
 
 
         buildPos = (Vector2)transform.position + lookDir;
-        buildIndicator.transform.position = buildPos;
+        if(isMeleeMode) {
+            attackIndicator.position = buildPos;
+            return;
+        } else {
+            buildIndicator.position = buildPos;
+            Node node = PathfindingGrid.instance.NodeFromWorldPoint(buildPos);
+            if(node.building != null) {
+                buildingIndicator.position = node.worldPosition;
+                buildingIndicator.gameObject.SetActive(true);
+                placementIndicator.gameObject.SetActive(false);
+            } else {
+                placementIndicator.position = node.worldPosition;
+                buildingIndicator.gameObject.SetActive(false);
+                placementIndicator.gameObject.SetActive(true);
+            }
+        }
 
-        placementIndicator.position = PathfindingGrid.instance.NodeFromWorldPoint(buildPos).worldPosition;
     }
 
     
@@ -190,6 +204,10 @@ public class PlayerHand : MonoBehaviour
             buildInput.action.started += placeBuilding;
             sellBuildingInput.action.started += removeBuilding;
             buildInput.action.started -= meleeAttack;
+
+            attackIndicator.gameObject.SetActive(false);
+            buildIndicator.gameObject.SetActive(true);
+            placementIndicator.gameObject.SetActive(true);
             return;
         }
 
@@ -197,6 +215,10 @@ public class PlayerHand : MonoBehaviour
         buildInput.action.started -= placeBuilding;
         sellBuildingInput.action.started -= removeBuilding;
         buildInput.action.started += meleeAttack;
+
+        attackIndicator.gameObject.SetActive(true);
+        buildIndicator.gameObject.SetActive(false);
+        placementIndicator.gameObject.SetActive(false);
     }
 
     private void OnDrawGizmos()

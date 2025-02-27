@@ -58,8 +58,18 @@ public class PathfindingGrid : MonoBehaviour
             for (int y = 0; y < gridSizeY; y++) {
                 Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.up * (y * nodeDiameter + nodeRadius);
 
-                bool walkable = !Physics2D.OverlapCircle(worldPoint, nodeRadius - .2f, unwalkableMask);
-                grid[x, y] = new Node(walkable, worldPoint, x, y);
+                Collider2D collider2D = Physics2D.OverlapCircle(worldPoint, nodeRadius - .2f, unwalkableMask);
+                bool walkable = true;
+                bool isBed = false;
+                if (collider2D != null) {
+                    if (collider2D.gameObject.CompareTag("Bed")) {
+                        isBed = true;
+                    } else {
+                        walkable = false;
+                    }
+                }
+
+                grid[x, y] = new Node(walkable, worldPoint, x, y, isBed);
             }
         }
     }
@@ -67,7 +77,7 @@ public class PathfindingGrid : MonoBehaviour
     public bool CreateBuilding(GameObject building) {
         Node node = NodeFromWorldPoint(buildPlacement.position);
         Node playerNode = NodeFromWorldPoint(PlayerController.player.transform.position);
-        if (node.walkable && node != playerNode && node.building == null) {
+        if (node.walkable && !node.isBed && node != playerNode && node.building == null) {
             node.building = Instantiate(building, node.worldPosition, Quaternion.identity);
 
             //For the sake of a cleaner hierarchy

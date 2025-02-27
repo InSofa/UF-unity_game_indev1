@@ -49,6 +49,10 @@ public class EnemyHandler : MonoBehaviour {
         pathfinder = Pathfinding.instance;
     }
     IEnumerator GetPath(Vector2 targetPos) {
+        if(targetPos == null) {
+            throw new System.ArgumentNullException("Target position is null");
+        }
+
         Debug.Log("Getting path");
         path = pathfinder.FindPath(transform.position, targetPos).ToList();
         Debug.Log("Path found " + path.Count);
