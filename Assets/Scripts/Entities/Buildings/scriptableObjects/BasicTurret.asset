@@ -15,7 +15,7 @@ MonoBehaviour:
   buildingName: 
   buildingCost: 5
   buildingSellValue: 3
-  buildingHealth: 100
+  buildingHealth: 20
   buildingDamage: 23
   buildingRange: 5
   buildingDescription: 
