@@ -1,0 +1,53 @@
+Ui.Navigation
+  Keyboard/Mouse
+    ""
+  
+  Xbox
+    "Navigate: <dpad>/<left_joystick>, Action: <A>"
+  
+  Playstation
+    "Navigate: <dpad>/<left_joystick>, Action: <cross>"
+
+
+InGame.General
+  Keyboard/Mouse
+    "Walk: <W,A,S,D>, Start Wave: <F>"
+  
+  Xbox
+    "Look Around: <right_joystick>, Walk: <left_joystick>, Start Wave: <X>"
+
+  Playstation
+    "Look Around: <right_joystick>, Walk: <left_joystick>, Start Wave: <square>"
+
+
+InGame.Melee
+  Keyboard/Mouse
+    "Attack: <left_click>, Build Mode: <R>"
+  
+  Xbox
+    "Attack: <A>, Build Mode: <B>"
+
+  Playstation
+    "Attack: <cross>, Build Mode: <circle>"
+
+
+InGame.Building
+  Keyboard/Mouse
+    "Change Building: <mouse> / <arrow_keys>, Place Building: <E>, Sell Building: <Q>, Melee Mode: <R>"
+  
+  Xbox
+    "Change Building: <dpad>, Place Building: <right_trigger>, Sell Building: <left_trigger>, Melee Mode: <B>"
+
+  Playstation
+    "Change Building: <dpad>, Place Building: <right_trigger>, Sell Building: <left_trigger>, Melee Mode: <circle>"
+
+
+Pause Menu
+  Keyboard/Mouse
+    "Press <ESC> to toggle pause menu"
+  
+  Xbox
+    "Press <menu_button> to toggle pause menu"
+
+  Playstation
+    "Press <options_button> to toggle pause menu"
