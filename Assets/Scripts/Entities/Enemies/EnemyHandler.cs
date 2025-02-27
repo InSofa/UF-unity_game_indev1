@@ -53,9 +53,9 @@ public class EnemyHandler : MonoBehaviour {
             throw new System.ArgumentNullException("Target position is null");
         }
 
-        Debug.Log("Getting path");
+        //Debug.Log("Getting path");
         path = pathfinder.FindPath(transform.position, targetPos).ToList();
-        Debug.Log("Path found " + path.Count);
+        //Debug.Log("Path found " + path.Count);
         yield return path;
     }
 
