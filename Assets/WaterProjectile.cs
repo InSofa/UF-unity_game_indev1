@@ -3,6 +3,7 @@ using UnityEngine;
 public class WaterProjectile : MonoBehaviour
 {
     public float falloffStrenght = 1f;
+    public float killVelocity = 0.5f;
 
     Rigidbody2D rb;
 
@@ -12,7 +13,7 @@ public class WaterProjectile : MonoBehaviour
 
     private void FixedUpdate() {
         rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, falloffStrenght * Time.fixedDeltaTime);
-        if(rb.linearVelocity.magnitude < 0.1f) {
+        if(rb.linearVelocity.magnitude < killVelocity) {
             Destroy(gameObject);
         }
     }

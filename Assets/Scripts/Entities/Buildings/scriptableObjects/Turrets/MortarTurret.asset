@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1c754323f588e84cadb4dc43c572146, type: 3}
-  m_Name: BasicTurret
+  m_Name: MortarTurret
   m_EditorClassIdentifier: 
-  buildingName: 
-  buildingCost: 5
-  buildingSellValue: 3
-  buildingHealth: 20
-  buildingDamage: 4
-  buildingRange: 5
-  shotCD: 0.05
-  projectileSpeed: 22
+  buildingName: Mortar
+  buildingCost: 7
+  buildingSellValue: 5
+  buildingHealth: 30
+  buildingDamage: 50
+  buildingRange: 20
+  shotCD: 1
+  projectileSpeed: 0.3
   buildingDescription: 
-  buildingPrefab: {fileID: 6679143231120622472, guid: 2ca224368da4f4e4eb7bc68017fb228a, type: 3}
+  buildingPrefab: {fileID: 4913011913050603389, guid: 163e67ca7365ae143bcbd9018b9d7de7, type: 3}

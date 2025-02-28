@@ -2098,7 +2098,7 @@ MonoBehaviour:
   pillows: 20
   pillowText: {fileID: 1774479167}
   buildings:
-  - {fileID: 11400000, guid: 132174b85aff7ab4387ce814edb6aaa9, type: 2}
+  - {fileID: 11400000, guid: 446ab1c8bd8fe0c4fadc69b9d7bf88d2, type: 2}
   - {fileID: 11400000, guid: ac3e9c17e51aabb44af346d72781abba, type: 2}
   buildRange: 2
   buildIndicator: {fileID: 1450019685}
@@ -2803,7 +2803,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentEnemies: []
   minSpawnDist: 25
-  enemy: {fileID: 3013205706211699456, guid: 947b27e7df2e60f4c8040e645e399ccd, type: 3}
+  enemy: {fileID: 4368807937532126786, guid: ec5c6415c5d601b4a8fbe44c0bca6f48, type: 3}
   enemiesToSpawn: 3
   pivot: {fileID: 1689609807}
 --- !u!4 &595954346
