@@ -194,7 +194,7 @@ MonoBehaviour:
   newNodeDistance: 0.5
   dir: {x: 1, y: 0}
   attackDistance: 0.33
-  attackRadius: 0.5
+  attackRadius: 0.7
 --- !u!114 &7137792942313717048
 MonoBehaviour:
   m_ObjectHideFlags: 0

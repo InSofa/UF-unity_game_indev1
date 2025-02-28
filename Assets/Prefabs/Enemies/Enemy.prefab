@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 8730296863800300851}
   - component: {fileID: 916561606395992458}
   - component: {fileID: 8906873789553459016}
-  - component: {fileID: 3473983246778059230}
   - component: {fileID: 2124211160060770884}
+  - component: {fileID: 3473983246778059230}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
@@ -177,26 +177,6 @@ MonoBehaviour:
   minPillows: 1
   maxPillows: 2
   spawnRange: 1
---- !u!114 &3473983246778059230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4368807937532126786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a27a406b6dafca4eb22bb494ad05843, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  speedVariance: 0.2
-  acceleration: 7
-  accelerationVariance: 1
-  attackRange: 1.3
-  attackCD: 0.6
-  playerDetectionDistance: 5
-  damage: 16
 --- !u!114 &2124211160060770884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,5 +193,25 @@ MonoBehaviour:
   refreshPath: 0
   newNodeDistance: 0.5
   dir: {x: 1, y: 0}
-  attackDistance: 0.85
-  attackRadius: 0.32
+  attackDistance: 0.4
+  attackRadius: 0.45
+--- !u!114 &3473983246778059230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4368807937532126786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a27a406b6dafca4eb22bb494ad05843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  speedVariance: 0.2
+  acceleration: 7
+  accelerationVariance: 1
+  attackRange: 0.81
+  attackCD: 0.6
+  playerDetectionDistance: 5
+  damage: 16

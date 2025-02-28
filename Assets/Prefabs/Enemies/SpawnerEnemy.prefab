@@ -117,8 +117,8 @@ MonoBehaviour:
   refreshPath: 0
   newNodeDistance: 0.5
   dir: {x: 1, y: 0}
-  attackDistance: 1
-  attackRadius: 0.18
+  attackDistance: 0.5
+  attackRadius: 0.6
 --- !u!114 &3375872128758062005
 MonoBehaviour:
   m_ObjectHideFlags: 0
