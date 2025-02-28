@@ -37,12 +37,44 @@ public class PauseText_TokenIconResolver : MonoBehaviour {
         InputSystem.onDeviceChange += OnDeviceChange; // Listen for device changes instead of polling every frame
     }
 
+    // Start
+    void Start() {
+        UpdateCurrentsBasedOnPlatform();
+        UpdateText();
+    }
+
     // Update is called once per frame
     void Update() {
         // Check if the current input scheme has changed
         if (playerInput != null && playerInput.currentControlScheme != currentInputScheme) {
             UpdateBasedOnCurrentSchemeAndDevice();
             currentInputScheme = playerInput.currentControlScheme;
+        }
+    }
+
+    private void UpdateCurrentsBasedOnPlatform() {
+        if (GlobalUIControls != null) {
+            switch (currentPlatform) {
+                case (PC):
+                    currentTokenIndexmap = GlobalUIControls.GetComponent<UIControls_Handler>().PC_UI_Controls_IndexMap;
+                    currentIconAtlas = GlobalUIControls.GetComponent<UIControls_Handler>().pcUIControlsAtlas;
+                    break;
+
+                case (PS4):
+                    currentTokenIndexmap = GlobalUIControls.GetComponent<UIControls_Handler>().PS4_UI_Controls_IndexMap;
+                    currentIconAtlas = GlobalUIControls.GetComponent<UIControls_Handler>().ps4UIControlsAtlas;
+                    break;
+
+                case (PS5):
+                    currentTokenIndexmap = GlobalUIControls.GetComponent<UIControls_Handler>().PS5_UI_Controls_IndexMap;
+                    currentIconAtlas = GlobalUIControls.GetComponent<UIControls_Handler>().ps5UIControlsAtlas;
+                    break;
+
+                case (XBOX):
+                    currentTokenIndexmap = GlobalUIControls.GetComponent<UIControls_Handler>().XBOX_UI_Controls_IndexMap;
+                    currentIconAtlas = GlobalUIControls.GetComponent<UIControls_Handler>().xboxUIControlsAtlas;
+                    break;
+            }
         }
     }
 
@@ -63,29 +95,7 @@ public class PauseText_TokenIconResolver : MonoBehaviour {
     
         if (newPlatform != currentPlatform) {
             currentPlatform = newPlatform;
-            if (GlobalUIControls != null) {
-                switch (currentPlatform) {
-                    case (PC):
-                        currentTokenIndexmap = GlobalUIControls.GetComponent<UIControls_Handler>().PC_UI_Controls_IndexMap;
-                        currentIconAtlas = GlobalUIControls.GetComponent<UIControls_Handler>().pcUIControlsAtlas;
-                        break;
-
-                    case (PS4):
-                        currentTokenIndexmap = GlobalUIControls.GetComponent<UIControls_Handler>().PS4_UI_Controls_IndexMap;
-                        currentIconAtlas = GlobalUIControls.GetComponent<UIControls_Handler>().ps4UIControlsAtlas;
-                        break;
-
-                    case (PS5):
-                        currentTokenIndexmap = GlobalUIControls.GetComponent<UIControls_Handler>().PS5_UI_Controls_IndexMap;
-                        currentIconAtlas = GlobalUIControls.GetComponent<UIControls_Handler>().ps5UIControlsAtlas;
-                        break;
-
-                    case (XBOX):
-                        currentTokenIndexmap = GlobalUIControls.GetComponent<UIControls_Handler>().XBOX_UI_Controls_IndexMap;
-                        currentIconAtlas = GlobalUIControls.GetComponent<UIControls_Handler>().xboxUIControlsAtlas;
-                        break;
-                }
-            }
+            UpdateCurrentsBasedOnPlatform();
             UpdateText(); // Update text only if platform has changed
         }
     }
@@ -132,7 +142,7 @@ public class PauseText_TokenIconResolver : MonoBehaviour {
             string token = match.Value;
             string tokenName = token.Trim('<', '>');
             if (currentTokenIndexmap.ContainsKey(token)) {
-                string spriteId = currentTokenIndexmap[tokenName];
+                string spriteId = currentTokenIndexmap[token];
                 string imageTag = $"<sprite=\"{currentIconAtlas.name}\" index={spriteId}>";
                 sb.Replace(token, imageTag);
             }
@@ -176,7 +186,7 @@ public class PauseText_TokenIconResolver : MonoBehaviour {
     void OnValidate() {
         if (!Application.isPlaying) return;
         if (tmpText == null) tmpText = GetComponent<TMP_Text>();
-        //UpdatePlatformIcons();
+        UpdateCurrentsBasedOnPlatform();
         UpdateText();
     }
 #endif
