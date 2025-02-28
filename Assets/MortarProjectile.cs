@@ -1,8 +1,11 @@
+using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class MortarProjectile : MonoBehaviour
 {
     public Vector2 targetPos;
+    public Vector2 inaccuracyModifier;
+    Vector2 startPos;
 
     public float damage;
     public float explosionRadius;
@@ -14,7 +17,8 @@ public class MortarProjectile : MonoBehaviour
     float startDistance;
     float distanceTravelled;
 
-    Vector2 startSize;
+    public Vector2 maxSize;
+    public Vector2 minSize;
     Vector2 dir;
 
     [SerializeField]
@@ -22,11 +26,17 @@ public class MortarProjectile : MonoBehaviour
 
     bool initiate = false;
 
+    float timeSinceStart;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void init()
     {
+        targetPos = new Vector2(targetPos.x + Random.Range(-inaccuracyModifier.x, inaccuracyModifier.x), targetPos.y + Random.Range(-inaccuracyModifier.y, inaccuracyModifier.y));
+
         startDistance = Vector2.Distance(transform.position, targetPos);
-        startSize = transform.localScale;
+        maxSize = transform.localScale;
+
+        startPos = transform.position;
 
         dir = targetPos - (Vector2)transform.position;
         dir.Normalize();
@@ -38,16 +48,14 @@ public class MortarProjectile : MonoBehaviour
     {
         if (!initiate) return;
 
-        distanceTravelled = startDistance - Vector2.Distance(transform.position, targetPos);
-
-        Debug.Log(startDistance + "   " + distanceTravelled);
-
-        transform.localScale = startSize * sizeCurve.Evaluate(distanceTravelled / startDistance);
-        if (distanceTravelled >= startDistance) {
+        timeSinceStart += Time.fixedDeltaTime;
+        transform.position = startPos + (dir * (startDistance * (timeSinceStart / travelTime)));
+        if(timeSinceStart >= travelTime) {
             Explode();
         }
 
-        transform.position += (Vector3)dir * (startDistance / travelTime) * Time.fixedDeltaTime;
+        Vector2 newSize = (maxSize - minSize) * sizeCurve.Evaluate(timeSinceStart / travelTime) + minSize;
+        transform.localScale = newSize;
     }
 
     void Explode() {
@@ -61,5 +69,9 @@ public class MortarProjectile : MonoBehaviour
         GameObject effect = Instantiate(explosionEffect, transform.position, Quaternion.identity);
         Destroy(effect, 5f);
         Destroy(gameObject);
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }

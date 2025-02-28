@@ -166,13 +166,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPos: {x: 0, y: 0}
+  inaccuracyModifier: {x: 1, y: 1}
   damage: 0
-  explosionRadius: 0
+  explosionRadius: 3
   travelTime: 0
   hitMask:
     serializedVersion: 2
     m_Bits: 8
-  explosionEffect: {fileID: 7373012356303855373, guid: e38575b5ee376d04ca2f8ec90796691b, type: 3}
+  explosionEffect: {fileID: 1871175920527810563, guid: 35ebb33f8de3bd544bc0a1a6613ea602, type: 3}
+  maxSize: {x: 5, y: 5}
+  minSize: {x: 0.8, y: 0.8}
   sizeCurve:
     serializedVersion: 2
     m_Curve:

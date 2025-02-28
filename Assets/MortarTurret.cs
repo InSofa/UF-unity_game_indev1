@@ -55,23 +55,20 @@ public class MortarTurret : MonoBehaviour {
             //pivot.right = target.transform.position - firePoint.position;
 
             float diff = Vector2.Distance(pivot.right, direction);
-            //Debug.Log(diff);
 
             if (shotCDTime >= shotCD && diff > shootLerpDiff) {
-                shootTarget(target.transform.position);
+                shootTarget(target);
                 shotCDTime = 0;
             }
 
-        } /*else {
-            if (Vector2.Distance(pivot.right, Vector2.right) > resetLerpDiff) {
-                pivot.right = Vector2.Lerp(pivot.right, Vector2.right, lerpSpeed * Time.deltaTime);
-            } else {
-                pivot.right = Vector2.right;
-            }
-        }*/
+        }
     }
 
-    private void shootTarget(Vector2 targetPos) {
+    private void shootTarget(GameObject target) {
+        if (target == null) {
+            return;
+        }
+
         //Creates the projectile and destroys it after 5 seconds to make sure the instance isn't left eventually affecting performance
         GameObject local_projectile = Instantiate(projectile, firePoint.position, firePoint.rotation);
         Destroy(local_projectile, 5);
@@ -79,7 +76,7 @@ public class MortarTurret : MonoBehaviour {
         MortarProjectile mortarProjectile = local_projectile.GetComponent<MortarProjectile>();
         mortarProjectile.damage = damage;
         mortarProjectile.travelTime = travelTime;
-        mortarProjectile.targetPos = targetPos;
+        mortarProjectile.targetPos = turret.predictMovementWithTime(target, travelTime);
         mortarProjectile.hitMask = targetable;
 
         mortarProjectile.init();
