@@ -254,13 +254,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da548654c925a124a82099110aa29730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 5
   projectileSpeed: 5
   shotCD: 0.5
   lerpSpeed: 8.59
   resetLerpDiff: 0.053
   shootLerpDiff: 0.044
-  projectile: {fileID: 6647337014671748361, guid: ad0dc174eaf8e1c44acde8c31d69a694, type: 3}
+  projectile: {fileID: 7474275185482358070, guid: 690cca7cd5950124bbd0a6b38d8c2c0e, type: 3}
   firePoint: {fileID: 5149646427696530168}
   pivot: {fileID: 8477526073306293416}
   targetable:
@@ -278,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f86d3eb589b8af3478e0f465033c6d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingScriptableObject: {fileID: 11400000, guid: 132174b85aff7ab4387ce814edb6aaa9, type: 2}
+  buildingScriptableObject: {fileID: 11400000, guid: 32abab8bafb48dc409ac58fabfe94f62, type: 2}
   currentHealth: 0
 --- !u!1 &6118166732574759255
 GameObject:
@@ -372,7 +371,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 14, y: 14, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8477526073306293416}

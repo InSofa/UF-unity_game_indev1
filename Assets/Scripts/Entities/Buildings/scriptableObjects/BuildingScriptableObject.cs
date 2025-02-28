@@ -8,9 +8,15 @@ public class BuildingScriptableObject : ScriptableObject
     public int buildingCost;
     public int buildingSellValue;
 
+    [Space]
     public int buildingHealth;
     public int buildingDamage;
     public float buildingRange;
+
+    [Space]
+    public float shotCD;
+    public float projectileSpeed;
+    [Space]
 
     public string buildingDescription;
 

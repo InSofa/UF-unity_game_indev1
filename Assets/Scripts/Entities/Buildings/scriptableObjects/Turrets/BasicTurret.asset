@@ -16,7 +16,9 @@ MonoBehaviour:
   buildingCost: 5
   buildingSellValue: 3
   buildingHealth: 20
-  buildingDamage: 23
+  buildingDamage: 4
   buildingRange: 5
+  shotCD: 0.05
+  projectileSpeed: 20
   buildingDescription: 
   buildingPrefab: {fileID: 6679143231120622472, guid: 2ca224368da4f4e4eb7bc68017fb228a, type: 3}

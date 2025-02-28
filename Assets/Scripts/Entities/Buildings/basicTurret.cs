@@ -7,10 +7,11 @@ public class BasicTurret : MonoBehaviour
     Turret turret;
     BuildingScriptableObject bs;
 
-    [SerializeField]
-    float range, projectileSpeed, shotCD, lerpSpeed;
-
+    float range, shotCD, projectileSpeed;
     int damage;
+
+    [SerializeField]
+    float lerpSpeed;
 
     [SerializeField]
     [Range(0f, .5f)]
@@ -41,6 +42,8 @@ public class BasicTurret : MonoBehaviour
         bs = GetComponent<BuildingHealth>().buildingScriptableObject;
         range = bs.buildingRange;
         damage = bs.buildingDamage;
+        shotCD = bs.shotCD;
+        projectileSpeed = bs.projectileSpeed;
     }
 
     // Update is called once per frame
@@ -74,7 +77,7 @@ public class BasicTurret : MonoBehaviour
     private void shootTarget()
     {
         //Creates the projectile and destroys it after 5 seconds to make sure the instance isn't left eventually affecting performance
-        GameObject local_projectile = Instantiate(projectile, firePoint.position, Quaternion.identity);
+        GameObject local_projectile = Instantiate(projectile, firePoint.position, firePoint.rotation);
         Destroy(local_projectile, 5);
 
         //Launches the projectile towards the target
