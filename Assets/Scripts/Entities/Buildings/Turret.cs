@@ -26,4 +26,27 @@ public class Turret {
 
         return returnTarget.gameObject;
     }
+
+    public Vector2 predictMovement(Transform firePoint, GameObject target, float projectileSpeed) {
+        Rigidbody2D targetRb = target.GetComponent<Rigidbody2D>();
+        if (targetRb != null) {
+            Vector2 targetPos = target.transform.position;
+            Vector2 targetVel = targetRb.linearVelocity;
+            float time = Vector2.Distance(firePoint.position, targetPos) / projectileSpeed;
+            return targetPos + (targetVel * time);
+        }
+
+        return target.transform.position;
+    }
+
+    public Vector2 predictMovementWithTime(GameObject target, float travelTime) {
+        Rigidbody2D targetRb = target.GetComponent<Rigidbody2D>();
+        if (targetRb != null) {
+            Vector2 targetPos = target.transform.position;
+            Vector2 targetVel = targetRb.linearVelocity;
+            return targetPos + (targetVel * travelTime);
+        }
+
+        return target.transform.position;
+    }
 }

@@ -35,18 +35,19 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     float minPillows, maxPillows, spawnRange;
 
-    private void Awake()
+    private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         originalMaterial = sr.material;
 
         health = maxHealth;
-
+        Debug.Log(EnemySpawner.instance);
         EnemySpawner.instance.currentEnemies.Add(this.gameObject);
     }
 
     public void TakeDamage(float damage)
     {
+        Debug.Log("took damage, i is enemy");
         health -= damage;
 
         StopAllCoroutines();
@@ -62,7 +63,15 @@ public class EnemyHealth : MonoBehaviour
 
             spawnPillows();
 
-            EnemySpawner.instance.currentEnemies.Remove(this.gameObject);
+            Debug.Log("Dead");
+            try  // try to remove this object from the list of current enemies
+            {
+                EnemySpawner.instance.currentEnemies.Remove(this.gameObject);
+            }
+            catch (System.Exception e)  // if it fails, log the error
+            {
+                Debug.LogError("Failed to remove enemy from currentEnemies list: " + e.Message);
+            }
             Destroy(this.gameObject);
             return;
         }

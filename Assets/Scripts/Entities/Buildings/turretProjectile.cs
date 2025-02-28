@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class TurretProjectile : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class TurretProjectile : MonoBehaviour
 
     public bool isPiercing;
 
-    EnemyHealth[] enemiesHit;
+    List<EnemyHealth> enemiesHit = new List<EnemyHealth>();
+    EnemyHealth check = null;
 
     public LayerMask hitMask;
 
@@ -20,7 +22,9 @@ public class TurretProjectile : MonoBehaviour
         if (enemyHealth != null)
         {
             if (isPiercing) {
-                EnemyHealth check = enemiesHit.FirstOrDefault(e => e == enemyHealth);
+
+                check = enemiesHit.FirstOrDefault(health => health == enemyHealth);
+                Debug.Log(enemiesHit.FirstOrDefault(health => health == enemyHealth));
                 if (check == null) {
                     enemyHealth.TakeDamage(damage);
                     enemiesHit.Append(enemyHealth);

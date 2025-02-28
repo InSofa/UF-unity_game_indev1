@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1c754323f588e84cadb4dc43c572146, type: 3}
-  m_Name: CannonTurret
+  m_Name: MortarTurret
   m_EditorClassIdentifier: 
-  buildingName: Cannon
+  buildingName: Mortar
   buildingCost: 7
   buildingSellValue: 5
-  buildingHealth: 20
+  buildingHealth: 30
   buildingDamage: 50
-  buildingRange: 10
+  buildingRange: 14
   shotCD: 1
+  projectileSpeed: 2
   buildingDescription: 
-  buildingPrefab: {fileID: 4822756726001539152, guid: 615e8527192181749aead7449045e84c, type: 3}
+  buildingPrefab: {fileID: 4913011913050603389, guid: 163e67ca7365ae143bcbd9018b9d7de7, type: 3}
