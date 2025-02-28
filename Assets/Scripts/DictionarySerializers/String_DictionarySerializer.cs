@@ -1,28 +1,29 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 [Serializable]
-public class GameObject_DictionaryEntry {
+public class String_DictionaryEntry {
     public string Key;
-    public GameObject Value; // Can be a ScriptableObject or GameObject
+    public string Value;
 }
 
-public class GameObject_DictionarySerializer : MonoBehaviour
+public class String_DictionarySerializer : MonoBehaviour
 {
-    [ReadOnly] public string inspectorDescription = "GameObject Serializer";
+    public string inspectorDescription = "String Serializer";
 
     [SerializeField]
-    private List<GameObject_DictionaryEntry> entries = new List<GameObject_DictionaryEntry>();
+    private List<String_DictionaryEntry> entries = new List<String_DictionaryEntry>();
 
-    private Dictionary<string, GameObject> linkedDictionary = new Dictionary<string, GameObject>();
+    private Dictionary<string, string> linkedDictionary = new Dictionary<string, string>();
 
     /// <summary>
     /// Links a dictionary to this serializer and synchronizes entries.
     /// </summary>
     /// <param name="dictionary">The dictionary to link to this serializer.</param>
-    public void LinkDictionary(Dictionary<string, GameObject> dictionary) {
+    public void LinkDictionary(Dictionary<string, string> dictionary) {
         linkedDictionary = dictionary;
         InitializeDictionarySync();
     }
@@ -54,7 +55,7 @@ public class GameObject_DictionarySerializer : MonoBehaviour
         entries.Clear();
 
         foreach (var kvp in linkedDictionary) {
-            entries.Add(new GameObject_DictionaryEntry { Key = kvp.Key, Value = kvp.Value });
+            entries.Add(new String_DictionaryEntry { Key = kvp.Key, Value = kvp.Value });
         }
     }
 
@@ -66,7 +67,7 @@ public class GameObject_DictionarySerializer : MonoBehaviour
     public void InitializeDictionarySync() {
         // Make sure we have the same entries in the linkedDictionary as in the serializer `SynchronizeFromDictionary()` is wrong
         // as it will remove any entries that are not in the linkedDictionary
-        List<GameObject_DictionaryEntry> savedEntries = new List<GameObject_DictionaryEntry>(entries);
+        List<String_DictionaryEntry> savedEntries = new List<String_DictionaryEntry>(entries);
 
         SynchronizeFromDictionary();
 

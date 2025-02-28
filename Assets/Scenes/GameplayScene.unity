@@ -3964,6 +3964,63 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &892015311
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 619424089503590496, guid: 21d48d7f3289d5c4b80a91bd7deb799b, type: 3}
+      propertyPath: m_Name
+      value: UIControls_Handler
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368141372544543113, guid: 21d48d7f3289d5c4b80a91bd7deb799b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 491.22412
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368141372544543113, guid: 21d48d7f3289d5c4b80a91bd7deb799b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 200.29662
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368141372544543113, guid: 21d48d7f3289d5c4b80a91bd7deb799b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.048169
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368141372544543113, guid: 21d48d7f3289d5c4b80a91bd7deb799b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368141372544543113, guid: 21d48d7f3289d5c4b80a91bd7deb799b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368141372544543113, guid: 21d48d7f3289d5c4b80a91bd7deb799b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368141372544543113, guid: 21d48d7f3289d5c4b80a91bd7deb799b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368141372544543113, guid: 21d48d7f3289d5c4b80a91bd7deb799b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368141372544543113, guid: 21d48d7f3289d5c4b80a91bd7deb799b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368141372544543113, guid: 21d48d7f3289d5c4b80a91bd7deb799b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 21d48d7f3289d5c4b80a91bd7deb799b, type: 3}
 --- !u!1 &927566703
 GameObject:
   m_ObjectHideFlags: 0
@@ -4658,6 +4715,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135466788}
   m_CullTransparentMesh: 1
+--- !u!1 &1170405900 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 619424089503590496, guid: 21d48d7f3289d5c4b80a91bd7deb799b, type: 3}
+  m_PrefabInstance: {fileID: 892015311}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1185554392
 GameObject:
   m_ObjectHideFlags: 0
@@ -8583,6 +8645,7 @@ GameObject:
   - component: {fileID: 1948469546}
   - component: {fileID: 1948469548}
   - component: {fileID: 1948469547}
+  - component: {fileID: 1948469549}
   m_Layer: 5
   m_Name: PauseText
   m_TagString: Untagged
@@ -8629,7 +8692,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press ESC to toggle pause menu
+  m_text: Press [?] to toggle pause menu.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8708,6 +8771,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948469545}
   m_CullTransparentMesh: 1
+--- !u!114 &1948469549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948469545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73519bbc4d83ed242aee365250f32d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalUIControls: {fileID: 1170405900}
+  playerInput: {fileID: 452178606}
+  textLine: Press <options_button> to toggle pause menu.
 --- !u!1 &1972177416
 GameObject:
   m_ObjectHideFlags: 0
@@ -9385,6 +9463,7 @@ SceneRoots:
   - {fileID: 2141674379048862757}
   - {fileID: 5396707015476762734}
   - {fileID: 5264632636553011319}
+  - {fileID: 892015311}
   - {fileID: 1465475015}
   - {fileID: 1663019739}
   - {fileID: 1014987191}

@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &619424089503590496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2368141372544543113}
+  - component: {fileID: 5021000813787750430}
+  - component: {fileID: 644931028119994860}
+  - component: {fileID: 6291452869856503082}
+  - component: {fileID: -5012815565342067651}
+  - component: {fileID: 2775285528953964897}
+  m_Layer: 0
+  m_Name: UIControls_Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2368141372544543113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619424089503590496}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 491.22412, y: 200.29662, z: -1.048169}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5021000813787750430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619424089503590496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95ed7a5f21fbf3049a81a4bb342ed16b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pcUIControlsAtlas: {fileID: 11400000, guid: 95c1e5d0e26ddcf46a950e4f728ae1e3, type: 2}
+  ps4UIControlsAtlas: {fileID: 11400000, guid: d3af3e316de9fa54db2bf1188ae9b563, type: 2}
+  ps5UIControlsAtlas: {fileID: 11400000, guid: 5b759e62fd2a5414ab26d5cf3a5bb3b2, type: 2}
+  xboxUIControlsAtlas: {fileID: 11400000, guid: b9190eb7f118af0489f65394841b1ada, type: 2}
+  pcUIControlsIndexSerializer: {fileID: 644931028119994860}
+  ps4UIControlsIndexSerializer: {fileID: 6291452869856503082}
+  ps5UIControlsIndexSerializer: {fileID: -5012815565342067651}
+  xboxUIControlsIndexSerializer: {fileID: 2775285528953964897}
+--- !u!114 &644931028119994860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619424089503590496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e978e73ffb0864bba33477721a2ecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inspectorDescription: PC UIControls
+  entries:
+  - Key: <options_button>
+    Value: 86
+--- !u!114 &6291452869856503082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619424089503590496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e978e73ffb0864bba33477721a2ecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inspectorDescription: PS4 UIControls
+  entries:
+  - Key: <options_button>
+    Value: 143
+--- !u!114 &-5012815565342067651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619424089503590496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e978e73ffb0864bba33477721a2ecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inspectorDescription: PS5 UIControls
+  entries:
+  - Key: <options_button>
+    Value: 153
+--- !u!114 &2775285528953964897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619424089503590496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e978e73ffb0864bba33477721a2ecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inspectorDescription: Xbox UIControls
+  entries:
+  - Key: <options_button>
+    Value: 68

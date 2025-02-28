@@ -49,9 +49,9 @@ public class EnemyHandler : MonoBehaviour {
         pathfinder = Pathfinding.instance;
     }
     IEnumerator GetPath(Vector2 targetPos) {
-        Debug.Log("Getting path");
+        //Debug.Log("Getting path");
         path = pathfinder.FindPath(transform.position, targetPos).ToList();
-        Debug.Log("Path found " + path.Count);
+        //Debug.Log("Path found " + path.Count);
         yield return path;
     }
 

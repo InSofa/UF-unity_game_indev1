@@ -57,7 +57,7 @@ using UnityEngine.InputSystem;
 /// Without these adjustments, the images will not render correctly in the TextMeshPro UI.
 /// </summary>
 
-public class Example_TokenIconResolver : MonoBehaviour {
+public class PsudoExample_TokenIconResolver : MonoBehaviour {
     // Constants for platform names to avoid hardcoded strings and typos
     private const string PC = "pc";
     private const string PS4 = "ps4";
