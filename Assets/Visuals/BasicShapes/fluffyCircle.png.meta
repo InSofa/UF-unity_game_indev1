@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fluffyCircle_0: 5753105282168529858
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1c754323f588e84cadb4dc43c572146, type: 3}
-  m_Name: MortarTurret
+  m_Name: ReinforcedWall
   m_EditorClassIdentifier: 
-  buildingName: Mortar
-  buildingCost: 7
-  buildingSellValue: 5
-  buildingHealth: 30
-  buildingDamage: 50
-  buildingRange: 14
-  shotCD: 2.2
-  projectileSpeed: 2
-  maxPredict: 4
+  buildingName: Reinforced wall
+  buildingCost: 2
+  buildingSellValue: 1
+  buildingHealth: 80
+  buildingDamage: 0
+  buildingRange: 0
+  shotCD: 0
+  projectileSpeed: 0
+  maxPredict: 0
   buildingDescription: 
-  buildingPrefab: {fileID: 4913011913050603389, guid: 163e67ca7365ae143bcbd9018b9d7de7, type: 3}
+  buildingPrefab: {fileID: 2735536206786261332, guid: b0a9b13ecbc902948a89ace5582b7a59, type: 3}

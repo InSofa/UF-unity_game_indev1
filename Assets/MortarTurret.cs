@@ -6,7 +6,7 @@ public class MortarTurret : MonoBehaviour {
     Turret turret;
     BuildingScriptableObject bs;
 
-    float range, shotCD, travelTime;
+    float range, shotCD, travelTime, maxPredict;
     int damage;
 
     [SerializeField]
@@ -41,6 +41,7 @@ public class MortarTurret : MonoBehaviour {
         damage = bs.buildingDamage;
         shotCD = bs.shotCD;
         travelTime = bs.projectileSpeed;
+        maxPredict = bs.maxPredict;
     }
 
     // Update is called once per frame
@@ -76,7 +77,7 @@ public class MortarTurret : MonoBehaviour {
         MortarProjectile mortarProjectile = local_projectile.GetComponent<MortarProjectile>();
         mortarProjectile.damage = damage;
         mortarProjectile.travelTime = travelTime;
-        mortarProjectile.targetPos = turret.predictMovementWithTime(target, travelTime);
+        mortarProjectile.targetPos = turret.predictMovementWithTime(target, travelTime, maxPredict);
         mortarProjectile.hitMask = targetable;
 
         mortarProjectile.init();

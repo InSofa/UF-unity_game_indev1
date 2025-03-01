@@ -16,6 +16,7 @@ public class BuildingScriptableObject : ScriptableObject
     [Space]
     public float shotCD;
     public float projectileSpeed;
+    public float maxPredict;
     [Space]
 
     public string buildingDescription;
