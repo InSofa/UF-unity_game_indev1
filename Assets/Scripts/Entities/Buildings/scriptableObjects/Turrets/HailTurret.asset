@@ -19,7 +19,7 @@ MonoBehaviour:
   buildingDamage: 9
   buildingRange: 4
   shotCD: 0.7
-  projectileSpeed: 18
+  projectileSpeed: 1
   maxPredict: 1
   buildingDescription: 
   buildingPrefab: {fileID: 7547064751309652710, guid: ffe38921d818d984aa2fc551cb2784ea, type: 3}

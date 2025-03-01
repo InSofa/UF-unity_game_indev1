@@ -24,7 +24,7 @@ public class TurretProjectile : MonoBehaviour
             if (isPiercing) {
 
                 check = enemiesHit.FirstOrDefault(health => health == enemyHealth);
-                Debug.Log(enemiesHit.FirstOrDefault(health => health == enemyHealth));
+                //Debug.Log(enemiesHit.FirstOrDefault(health => health == enemyHealth));
                 if (check == null) {
                     enemyHealth.TakeDamage(damage);
                     enemiesHit.Append(enemyHealth);

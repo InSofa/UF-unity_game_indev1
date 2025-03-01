@@ -6,7 +6,8 @@ using UnityEngine.UIElements;
 public class EnemyHealth : MonoBehaviour
 {
     //Health Values
-    float health;
+    [HideInInspector]
+    public float damageTaken;
 
     [SerializeField]
     float maxHealth;
@@ -35,25 +36,27 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     float minPillows, maxPillows, spawnRange;
 
+
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         originalMaterial = sr.material;
 
-        health = maxHealth;
+        damageTaken = 0;
+
         Debug.Log(EnemySpawner.instance);
         EnemySpawner.instance.currentEnemies.Add(this.gameObject);
     }
 
     public void TakeDamage(float damage)
     {
-        Debug.Log("took damage, i is enemy " + damage);
-        health -= damage;
+        //Debug.Log("took damage, i is enemy " + damage);
+        damageTaken += damage;
 
         StopAllCoroutines();
         StartCoroutine(flash());
 
-        if (health < 0)
+        if (maxHealth <= damageTaken)
         {
             if(destroyParticle != null)
             {
