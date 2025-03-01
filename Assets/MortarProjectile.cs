@@ -34,7 +34,8 @@ public class MortarProjectile : MonoBehaviour
         targetPos = new Vector2(targetPos.x + Random.Range(-inaccuracyModifier.x, inaccuracyModifier.x), targetPos.y + Random.Range(-inaccuracyModifier.y, inaccuracyModifier.y));
 
         startDistance = Vector2.Distance(transform.position, targetPos);
-        maxSize = transform.localScale;
+
+        transform.localScale = minSize;
 
         startPos = transform.position;
 
