@@ -168,10 +168,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88291b90c4b935c488dc2ad3c92f8d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageTaken: 0
   maxHealth: 40
   destroyParticle: {fileID: 0}
   flashMaterial: {fileID: 2100000, guid: eb0872da184994a468d3e91629d9c52d, type: 2}
-  flashTime: 0.1
+  flashTime: 0.08
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   pillowPrefab: {fileID: 4147960885588717861, guid: 4c69f4db61c8acd408e5bbcac22f6c3d, type: 3}
   minPillows: 1
@@ -189,6 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce6d26720c12534f81219c8a22f3a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effector: {fileID: 2486857422795829823, guid: 9243028d5109b43498e630d0e49a6184, type: 3}
   priority: 0
   refreshPath: 0
   newNodeDistance: 0.5

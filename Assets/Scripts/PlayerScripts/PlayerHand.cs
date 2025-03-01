@@ -241,6 +241,7 @@ public class PlayerHand : MonoBehaviour
 
         attackIndicator.gameObject.SetActive(true);
         buildIndicator.gameObject.SetActive(false);
+        buildingIndicator.gameObject.SetActive(false);
         placementIndicator.gameObject.SetActive(false);
     }
 

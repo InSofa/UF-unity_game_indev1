@@ -18,11 +18,35 @@ public class UIHandler : MonoBehaviour
 
     private int currentScene;
 
-    [SerializeField]
-    private GameObject pauseMenu, optionsMenu;
+    [Header("Menus")]
 
     [SerializeField]
-    GameObject[] pauseMenuInteractableObjects, optionsMenuInteractableObjects, mainInteractableObjects;
+    private GameObject pauseMenu;
+
+    [SerializeField]
+    private GameObject optionsMenu;
+
+    [SerializeField]
+    private GameObject turretMenu;
+
+    [SerializeField]
+    private GameObject wallMenu;
+
+    [Header("Interactable Objects")]
+    [SerializeField]
+    GameObject[] pauseMenuInteractableObjects;
+
+    [SerializeField]
+    GameObject[] optionsMenuInteractableObjects;
+
+    [SerializeField]
+    GameObject[] mainInteractableObjects;
+
+    [SerializeField]
+    GameObject[] turretSelectionInteractableObjects;
+
+    [SerializeField]
+    GameObject[] wallSelectionInteractableObjects;
 
     //0 = Gameplay/Main Menu, 1 = Pause Menu, 2 = Options Menu
     int currentMenu = 0;
@@ -117,6 +141,31 @@ public class UIHandler : MonoBehaviour
                 if (i == 0) {
                     selectable.Select();
                 }
+            }
+        }
+    }
+    public void expandMenu(int menu) {
+        switch (menu) {
+            case 1:
+                expandMenu(turretMenu, turretSelectionInteractableObjects);
+                break;
+            case 2:
+                expandMenu(wallMenu, wallSelectionInteractableObjects);
+                break;
+        }
+    }
+
+    public void expandMenu(GameObject menuToToggle, GameObject[] interactiveList) {
+        menuToToggle.SetActive(!menuToToggle.activeSelf);
+        for (int i = 0; i < interactiveList.Length; i++) {
+            Button button = interactiveList[i].GetComponent<Button>();
+            if (button != null) {
+                button.interactable = menuToToggle.activeSelf;
+                continue;
+            }
+            Slider slider = interactiveList[i].GetComponent<Slider>();
+            if (slider != null) {
+                slider.interactable = menuToToggle.activeSelf;
             }
         }
     }

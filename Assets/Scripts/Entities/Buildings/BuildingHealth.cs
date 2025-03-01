@@ -7,10 +7,16 @@ public class BuildingHealth : MonoBehaviour
     [HideInInspector]
     public int currentHealth;
 
+    [SerializeField]
+    RangeVisual rangeVisual;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHealth = buildingScriptableObject.buildingHealth;
+
+        rangeVisual.range = buildingScriptableObject.buildingRange;
+        rangeVisual.GenerateVisual();
     }
 
     public bool TakeDamage(int damage) {

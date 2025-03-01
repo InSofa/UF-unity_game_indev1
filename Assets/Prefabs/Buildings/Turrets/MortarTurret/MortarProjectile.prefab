@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPos: {x: 0, y: 0}
-  inaccuracyModifier: {x: 1, y: 1}
+  inaccuracyModifier: {x: 0.5, y: 0.5}
   damage: 0
   explosionRadius: 3
   travelTime: 0
@@ -174,16 +174,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   explosionEffect: {fileID: 1871175920527810563, guid: 35ebb33f8de3bd544bc0a1a6613ea602, type: 3}
-  maxSize: {x: 5, y: 5}
-  minSize: {x: 0.8, y: 0.8}
+  maxSize: {x: 2, y: 2}
+  minSize: {x: 0.6, y: 0.6}
   sizeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.0604421
-      outSlope: 0.0604421
+      inSlope: 3.8078532
+      outSlope: 3.8078532
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -200,11 +200,11 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.118559584
-      outSlope: -0.118559584
+      inSlope: -5.3609514
+      outSlope: -5.3609514
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.079571486
+      inWeight: 0.035195112
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
