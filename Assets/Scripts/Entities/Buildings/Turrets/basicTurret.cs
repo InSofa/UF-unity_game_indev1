@@ -14,8 +14,14 @@ public class BasicTurret : MonoBehaviour
     float lerpSpeed;
 
     [SerializeField]
-    [Range(0f, 5f)]
-    float resetLerpDiff, shootLerpDiff;
+    [Range(0f, .5f)]
+    [Tooltip("The distance when the turret decides its accurate enough and stops trying to adjust")]
+    float minLerpDiff;
+
+    [SerializeField]
+    [Range(0f, 2f)]
+    [Tooltip("The max distance between pointing towards the target and current angle while still choosing to shoot")]
+    float shootLerpDiff;
 
 
     float shotCDTime;
@@ -64,14 +70,12 @@ public class BasicTurret : MonoBehaviour
                 prediction = turret.predictMovement(firePoint, target, maxPredict, projectileSpeed);
             } 
 
+
             Vector2 direction = prediction - (Vector2)firePoint.position;
-            pivot.right = Vector2.Lerp(pivot.right, direction, lerpSpeed * Time.deltaTime);
-            //pivot.right = target.transform.position - firePoint.position;
 
-            float diff = Vector2.Distance(pivot.right, direction);
-            //Debug.Log($"Diff: {diff}  shootLerpDiff: {shootLerpDiff}");
+            bool shoot = turret.lerpPivot(pivot, direction, lerpSpeed, shootLerpDiff, minLerpDiff);
 
-            if (shotCDTime >= shotCD && diff <= shootLerpDiff) {
+            if (shotCDTime >= shotCD && shoot) {
                 shootTarget();
                 shotCDTime = 0;
             }

@@ -13,8 +13,14 @@ public class MortarTurret : MonoBehaviour {
     float lerpSpeed;
 
     [SerializeField]
-    [Range(0f, 5f)]
-    float resetLerpDiff, shootLerpDiff;
+    [Range(0f, .5f)]
+    [Tooltip("The distance when the turret decides its accurate enough and stops trying to adjust")]
+    float minLerpDiff;
+
+    [SerializeField]
+    [Range(0f, 2f)]
+    [Tooltip("The max distance between pointing towards the target and current angle while still choosing to shoot")]
+    float shootLerpDiff;
 
     float shotCDTime;
 
@@ -51,15 +57,18 @@ public class MortarTurret : MonoBehaviour {
         shotCDTime += Time.deltaTime;
         if (target != null) {
             //Gets the direction in the form of a Vector2 and lerps it to that direction
-            Vector2 direction = target.transform.position - firePoint.position;
-            pivot.right = Vector2.Lerp(pivot.right, direction, lerpSpeed * Time.deltaTime);
-            //pivot.right = target.transform.position - firePoint.position;
+
+            Vector2 prediction = target.transform.position;
+            if (maxPredict != 0) {
+                prediction = turret.predictMovement(firePoint, target, maxPredict, travelTime);
+            }
 
 
-            float diff = Vector2.Distance(pivot.right, direction);
-            Debug.Log($"Diff: {diff}  shootLerpDiff: {shootLerpDiff}");
+            Vector2 direction = prediction - (Vector2)firePoint.position;
 
-            if (shotCDTime >= shotCD && diff <= (shootLerpDiff * Time.deltaTime * 60)) {
+            bool shoot = turret.lerpPivot(pivot, direction, lerpSpeed, shootLerpDiff, minLerpDiff);
+
+            if (shotCDTime >= shotCD && shoot) {
                 shootTarget(target);
                 shotCDTime = 0;
             }

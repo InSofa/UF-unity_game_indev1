@@ -303,9 +303,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b05ab9d518d97640b234923564bb8ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpSpeed: 8.59
-  resetLerpDiff: 0.309
-  shootLerpDiff: 5
+  lerpSpeed: 1.4
+  minLerpDiff: 0.1
+  shootLerpDiff: 1.696
   projectile: {fileID: 2121594657702681215, guid: 7d8398b2af38de349b6622b3937b40aa, type: 3}
   firePoint: {fileID: 6142059471094295271}
   pivot: {fileID: 8498586199419201400}
