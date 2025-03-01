@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c27216992e9bc47851e64e052db59c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 23
+  damage: 0
   isPiercing: 0
   hitMask:
     serializedVersion: 2
@@ -334,3 +334,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   falloffStrenght: 5
   killVelocity: 0.5
+  startVel: 0

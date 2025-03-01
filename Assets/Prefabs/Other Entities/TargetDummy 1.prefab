@@ -194,7 +194,7 @@ MonoBehaviour:
   damagePerSecond: []
   dpsSamples: 100
   dpsCycleTime: 0.1
-  logDPS: 1
+  logDPS: 0
 --- !u!1 &8474419050980633780
 GameObject:
   m_ObjectHideFlags: 0

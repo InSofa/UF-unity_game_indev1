@@ -15,6 +15,8 @@ public class TurretProjectile : MonoBehaviour
 
     public LayerMask hitMask;
 
+    public bool init = false;
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         //Insert hit logic

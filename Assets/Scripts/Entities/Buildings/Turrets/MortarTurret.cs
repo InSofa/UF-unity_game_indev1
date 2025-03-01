@@ -13,7 +13,7 @@ public class MortarTurret : MonoBehaviour {
     float lerpSpeed;
 
     [SerializeField]
-    [Range(0f, .5f)]
+    [Range(0f, 5f)]
     float resetLerpDiff, shootLerpDiff;
 
     float shotCDTime;
@@ -55,9 +55,11 @@ public class MortarTurret : MonoBehaviour {
             pivot.right = Vector2.Lerp(pivot.right, direction, lerpSpeed * Time.deltaTime);
             //pivot.right = target.transform.position - firePoint.position;
 
-            float diff = Vector2.Distance(pivot.right, direction);
 
-            if (shotCDTime >= shotCD && diff > shootLerpDiff) {
+            float diff = Vector2.Distance(pivot.right, direction);
+            Debug.Log($"Diff: {diff}  shootLerpDiff: {shootLerpDiff}");
+
+            if (shotCDTime >= shotCD && diff <= (shootLerpDiff * Time.deltaTime * 60)) {
                 shootTarget(target);
                 shotCDTime = 0;
             }
