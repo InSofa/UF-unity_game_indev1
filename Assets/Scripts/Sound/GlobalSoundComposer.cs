@@ -178,7 +178,7 @@ public class GlobalSoundComposer : MonoBehaviour {
     }
 
     //Function for queuing tracks
-    IEnumerator QueueTrack(string currentTrack, string queueTrack) {
+    public IEnumerator QueueTrack(string currentTrack, string queueTrack) {
         if(TrackIsPlaying(currentTrack)) {
             yield return new WaitForSeconds(GetTracKRemainingTime(currentTrack));
         }
