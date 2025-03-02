@@ -31,7 +31,10 @@ public class GlobalSoundComposer : MonoBehaviour {
 
         // Link the dictionary serializers to the dictionaries
         registrySerializer.LinkDictionary(Registry);
+        registrySerializer.inspectorDescription = "Global SoundFX-Registry";
+
         trackListSerializer.LinkDictionary(TrackList);
+        trackListSerializer.inspectorDescription = "Global TrackList";
     }
 
     #region

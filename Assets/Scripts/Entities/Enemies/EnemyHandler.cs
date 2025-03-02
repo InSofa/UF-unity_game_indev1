@@ -60,7 +60,7 @@ public class EnemyHandler : MonoBehaviour {
         if(targetPos == null) {
             throw new System.ArgumentNullException("Target position is null");
         }
-
+      
         //Debug.Log("Getting path");
         path = pathfinder.FindPath(transform.position, targetPos).ToList();
         //Debug.Log("Path found " + path.Count);

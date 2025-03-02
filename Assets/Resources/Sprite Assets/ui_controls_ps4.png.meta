@@ -1,0 +1,1978 @@
+fileFormatVersion: 2
+guid: 702c117f0bf45b94b85b3d706724dff2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6577302787911597810
+    second: _TILEMAP__0
+  - first:
+      213: 4721079369319997548
+    second: _TILEMAP__1
+  - first:
+      213: 2799054842490857810
+    second: _TILEMAP__2
+  - first:
+      213: -488754307251248743
+    second: _TILEMAP__3
+  - first:
+      213: 496085012268210438
+    second: _TILEMAP__4
+  - first:
+      213: 4969693040921142199
+    second: _TILEMAP__5
+  - first:
+      213: 944283453912965232
+    second: _TILEMAP__6
+  - first:
+      213: -2991571075376626775
+    second: _TILEMAP__7
+  - first:
+      213: -2213474676065424580
+    second: _TILEMAP__8
+  - first:
+      213: -6719249586064303781
+    second: _TILEMAP__9
+  - first:
+      213: -9177178164120156647
+    second: _TILEMAP__10
+  - first:
+      213: 6132699664753840594
+    second: _TILEMAP__11
+  - first:
+      213: 2171749354967405721
+    second: _TILEMAP__12
+  - first:
+      213: 1905146785709159521
+    second: _TILEMAP__13
+  - first:
+      213: -459800939852583761
+    second: _TILEMAP__14
+  - first:
+      213: -2954480074545012012
+    second: _TILEMAP__15
+  - first:
+      213: -590609589758621344
+    second: _TILEMAP__16
+  - first:
+      213: 1133034528924822281
+    second: _TILEMAP__17
+  - first:
+      213: 850021578819166078
+    second: _TILEMAP__18
+  - first:
+      213: -6673302290003496894
+    second: _TILEMAP__19
+  - first:
+      213: 5679147103299474444
+    second: _TILEMAP__20
+  - first:
+      213: -7627123544095856588
+    second: _TILEMAP__21
+  - first:
+      213: 175238954872506859
+    second: _TILEMAP__22
+  - first:
+      213: 8347723835000005255
+    second: _TILEMAP__23
+  - first:
+      213: -5792210224193312431
+    second: _TILEMAP__24
+  - first:
+      213: -2420004779998364338
+    second: _TILEMAP__25
+  - first:
+      213: -769816779770976476
+    second: _TILEMAP__26
+  - first:
+      213: -6939503091885458692
+    second: _TILEMAP__27
+  - first:
+      213: 4027565896501747330
+    second: _TILEMAP__28
+  - first:
+      213: 2577920901695863866
+    second: _TILEMAP__29
+  - first:
+      213: -7011531876938056184
+    second: _TILEMAP__30
+  - first:
+      213: 1334832397647372706
+    second: _TILEMAP__31
+  - first:
+      213: 8942649307122910023
+    second: _TILEMAP__32
+  - first:
+      213: -4545722850426037347
+    second: _TILEMAP__33
+  - first:
+      213: 2634711805993250972
+    second: _TILEMAP__34
+  - first:
+      213: 5453524886949041145
+    second: _TILEMAP__35
+  - first:
+      213: -1261502807351110593
+    second: _TILEMAP__36
+  - first:
+      213: 5619995967942522594
+    second: _TILEMAP__37
+  - first:
+      213: 8297644636673380312
+    second: _TILEMAP__38
+  - first:
+      213: -6535486160325911507
+    second: _TILEMAP__39
+  - first:
+      213: -6864451184231976133
+    second: _TILEMAP__40
+  - first:
+      213: -7773501621099540310
+    second: _TILEMAP__41
+  - first:
+      213: 5713726327480527790
+    second: _TILEMAP__42
+  - first:
+      213: 2622709743443032341
+    second: _TILEMAP__43
+  - first:
+      213: 7269672451714524734
+    second: _TILEMAP__44
+  - first:
+      213: 2297866801969957259
+    second: _TILEMAP__45
+  - first:
+      213: 6191586608471154860
+    second: _TILEMAP__46
+  - first:
+      213: 8775470935283936828
+    second: _TILEMAP__47
+  - first:
+      213: 8793739220814122833
+    second: _TILEMAP__48
+  - first:
+      213: 4418389046582030544
+    second: _TILEMAP__49
+  - first:
+      213: -3047093404757217656
+    second: _TILEMAP__50
+  - first:
+      213: 4556967465749493997
+    second: _TILEMAP__51
+  - first:
+      213: 4390462778926387632
+    second: _TILEMAP__52
+  - first:
+      213: -6033206726941391893
+    second: _TILEMAP__53
+  - first:
+      213: 5795855775045186728
+    second: _TILEMAP__54
+  - first:
+      213: -3681297474902771609
+    second: _TILEMAP__55
+  - first:
+      213: -3939998578337619355
+    second: _TILEMAP__56
+  - first:
+      213: -5152417075080951152
+    second: _TILEMAP__57
+  - first:
+      213: -2123838286602913978
+    second: _TILEMAP__58
+  - first:
+      213: -3478795039549998701
+    second: _TILEMAP__59
+  - first:
+      213: -5467202483184517520
+    second: _TILEMAP__60
+  - first:
+      213: 2660462980879580730
+    second: _TILEMAP__61
+  - first:
+      213: 4618710814783560348
+    second: _TILEMAP__62
+  - first:
+      213: -5389981085441663335
+    second: _TILEMAP__63
+  - first:
+      213: -4984185390412977811
+    second: _TILEMAP__64
+  - first:
+      213: 2030500668022534107
+    second: _TILEMAP__65
+  - first:
+      213: -1869189649499373444
+    second: _TILEMAP__66
+  - first:
+      213: 6884847505365016553
+    second: _TILEMAP__67
+  - first:
+      213: -8421993094656703988
+    second: _TILEMAP__68
+  - first:
+      213: 5155854964887751370
+    second: _TILEMAP__69
+  - first:
+      213: 1543531603529874511
+    second: _TILEMAP__70
+  - first:
+      213: 8810892681010797484
+    second: _TILEMAP__71
+  - first:
+      213: 1172561867592390651
+    second: _TILEMAP__72
+  - first:
+      213: 4482833076178979336
+    second: _TILEMAP__73
+  - first:
+      213: 3326827261976125173
+    second: _TILEMAP__74
+  - first:
+      213: -1257600910393202509
+    second: _TILEMAP__75
+  - first:
+      213: -5750689659776522946
+    second: _TILEMAP__76
+  - first:
+      213: 5735555380352545950
+    second: _TILEMAP__77
+  - first:
+      213: -1020900420645890121
+    second: _TILEMAP__78
+  - first:
+      213: 1348058764466836949
+    second: _TILEMAP__79
+  - first:
+      213: -7827040839909450104
+    second: _TILEMAP__80
+  - first:
+      213: 3307924243923003471
+    second: _TILEMAP__81
+  - first:
+      213: 9176811195073018436
+    second: _TILEMAP__82
+  - first:
+      213: -8016140766267048849
+    second: _TILEMAP__83
+  - first:
+      213: 8690982839416136100
+    second: _TILEMAP__84
+  - first:
+      213: 211884943864841799
+    second: _TILEMAP__85
+  - first:
+      213: -6786450481623378705
+    second: _TILEMAP__86
+  - first:
+      213: -5878996761317367845
+    second: _TILEMAP__87
+  - first:
+      213: 694743633964318620
+    second: _TILEMAP__88
+  - first:
+      213: 6039486052065950562
+    second: _TILEMAP__89
+  - first:
+      213: -1810804992429431086
+    second: _TILEMAP__90
+  - first:
+      213: -8664523218268301864
+    second: _TILEMAP__91
+  - first:
+      213: -8242701793958463267
+    second: _TILEMAP__92
+  - first:
+      213: 2341374526531471013
+    second: _TILEMAP__93
+  - first:
+      213: -3814317643513791481
+    second: _TILEMAP__94
+  - first:
+      213: -1017976274582426199
+    second: _TILEMAP__95
+  - first:
+      213: -3027453224193117367
+    second: _TILEMAP__96
+  - first:
+      213: -7682927597627978202
+    second: _TILEMAP__97
+  - first:
+      213: 6935049888832467175
+    second: _TILEMAP__98
+  - first:
+      213: -1274964743952228914
+    second: _TILEMAP__99
+  - first:
+      213: -686475838341085896
+    second: _TILEMAP__100
+  - first:
+      213: 8157555771176052255
+    second: _TILEMAP__101
+  - first:
+      213: -5617936868431267273
+    second: _TILEMAP__102
+  - first:
+      213: -418297873206873115
+    second: _TILEMAP__103
+  - first:
+      213: -5827122322714911352
+    second: _TILEMAP__104
+  - first:
+      213: -4480227337071531520
+    second: _TILEMAP__105
+  - first:
+      213: -2204101583352432080
+    second: _TILEMAP__106
+  - first:
+      213: 1342314259460478447
+    second: _TILEMAP__107
+  - first:
+      213: -2698991721207944287
+    second: _TILEMAP__108
+  - first:
+      213: 287867475491186185
+    second: _TILEMAP__109
+  - first:
+      213: -4101483896775144531
+    second: _TILEMAP__110
+  - first:
+      213: 7215079022169397035
+    second: _TILEMAP__111
+  - first:
+      213: 1715333161380517567
+    second: _TILEMAP__112
+  - first:
+      213: 2686048980893886199
+    second: _TILEMAP__113
+  - first:
+      213: -1286983415840273413
+    second: _TILEMAP__114
+  - first:
+      213: 179556689214107671
+    second: _TILEMAP__115
+  - first:
+      213: 3671541204374055149
+    second: _TILEMAP__116
+  - first:
+      213: 7998098872865823210
+    second: _TILEMAP__117
+  - first:
+      213: -4285836777426460933
+    second: _TILEMAP__118
+  - first:
+      213: -3552446260956783410
+    second: _TILEMAP__119
+  - first:
+      213: 4582565726436060568
+    second: _TILEMAP__120
+  - first:
+      213: -7766419443594555478
+    second: _TILEMAP__121
+  - first:
+      213: 8402198676521278446
+    second: _TILEMAP__122
+  - first:
+      213: -3048847465014617845
+    second: _TILEMAP__123
+  - first:
+      213: -3039036845302959676
+    second: _TILEMAP__124
+  - first:
+      213: 8513599327263058578
+    second: _TILEMAP__125
+  - first:
+      213: -3776170412916826481
+    second: _TILEMAP__126
+  - first:
+      213: -3959956323246568223
+    second: _TILEMAP__127
+  - first:
+      213: 8917497961024846962
+    second: _TILEMAP__128
+  - first:
+      213: -8201749924363299925
+    second: _TILEMAP__129
+  - first:
+      213: -2233287280290147757
+    second: _TILEMAP__130
+  - first:
+      213: -3792331052067211093
+    second: _TILEMAP__131
+  - first:
+      213: 648162422621853737
+    second: _TILEMAP__132
+  - first:
+      213: -2972533453052350234
+    second: _TILEMAP__133
+  - first:
+      213: -182763158555829159
+    second: _TILEMAP__134
+  - first:
+      213: 7336993406568940380
+    second: _TILEMAP__135
+  - first:
+      213: -4841684475599858738
+    second: _TILEMAP__136
+  - first:
+      213: -2622136486309217681
+    second: _TILEMAP__137
+  - first:
+      213: -6103111894756368637
+    second: _TILEMAP__138
+  - first:
+      213: 5353023476243788268
+    second: _TILEMAP__139
+  - first:
+      213: -6268838187689668026
+    second: _TILEMAP__140
+  - first:
+      213: 2449747570514534024
+    second: _TILEMAP__141
+  - first:
+      213: 3350271548675450579
+    second: _TILEMAP__142
+  - first:
+      213: 3526317559898504970
+    second: _TILEMAP__143
+  - first:
+      213: 1071047869891023388
+    second: _TILEMAP__144
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ui_controls_ps4_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2520
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30cd3e48f63817f4d83392bd169caae4
+      internalID: 1755458688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_1
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 2520
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 335fc2b7871fdd74487b5ba7e3d49428
+      internalID: 1791641029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_2
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 2520
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 932f970df5c46fb459b51fbecf9d4310
+      internalID: -1715496377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_3
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 2520
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 658cd69496a88634aaa0f5f9ec70fcde
+      internalID: 1520724259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2352
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67ea886a10ec7a942b3cf6643b1c61ed
+      internalID: 406706430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_5
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 2352
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8bf34527dab46b479c87814320fe6f0
+      internalID: 1158795355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_6
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 2352
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a48632e78d59f84d86462e275311aa8
+      internalID: -1974743259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_7
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 2352
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37a6b356c76f3dc43a5531753d0621a2
+      internalID: 1250494287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2184
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f599ad2b7dc5f043ba633d21920eb36
+      internalID: 1646749275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_9
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 2184
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac26a611c4bb0824ca89b955909ccd88
+      internalID: 1874985051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_10
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 2184
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aff8c3a8ff20baf42b87f5df23395721
+      internalID: -434710099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_11
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 2184
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 534d822dd90561c4d8758378de90493f
+      internalID: -911915248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2016
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94b71367e6673fb4da7e6a68f24f677d
+      internalID: 1150489637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_13
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 2016
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f97eb80326b84d4f8a0790a7bf700cd
+      internalID: -1068900471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_14
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 2016
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 650749e547fa9a84186f6b4be20d3866
+      internalID: 411028969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_15
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 2016
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3325bd193bf65e418ca828e7b745798
+      internalID: -457822655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1848
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a198c854e7551504aa1e2c61575f2dfb
+      internalID: -103127829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_17
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 1848
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2d650ef48922df40b487a7ceb70a1b7
+      internalID: -904753235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_18
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1848
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51aeb4624919b634ba5ef65539bb6b2a
+      internalID: 1056651505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_19
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 1848
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 206eda71e2c40e049b82f9321be8aca0
+      internalID: -929777848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1680
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d30e0f2c8b643d64c9008420e6d00227
+      internalID: 738978835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_21
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 1680
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4215e0648681f4048a41e9acc52c6569
+      internalID: 554165384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_22
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1680
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14275b8e3373c074e967f2ed9c1ba083
+      internalID: -683793455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_23
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 1680
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c17bf265e53cc345999ceafde14c5b9
+      internalID: 697040643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64892bcfa919ed648b14d5d792757697
+      internalID: 735860645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_25
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 1512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62a74e06c6f56c346a100bc7479ffa66
+      internalID: 791720824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_26
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b59f1a417d3cadc4db4611c8b784d3d1
+      internalID: -1188439446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_27
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 1512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24baed9cfe288bc4bb9add4efaabf5a1
+      internalID: 179424045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1344
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9836ae4d6caf44449f56752724f121a
+      internalID: -1242652511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_29
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 1344
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28c951b6186c8be4ab9e50705f7919c6
+      internalID: -556341676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_30
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1344
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dc0b5d774643e94fb86adf34154c0b4
+      internalID: -1864800291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_31
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 1344
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37529d5e0155e544693301528c9c2d9a
+      internalID: 144970849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1176
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11872d4a1f240e64f9d7ce38826e4c47
+      internalID: 2075015023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_33
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 1176
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4be80d0bdbecd8d41b4ae7e4432defe4
+      internalID: -758990768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_34
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1176
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3868cde289e72b45bcaea46ca862489
+      internalID: 1605402433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_35
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 1176
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2e570095499dcb42ac83efb577dc747
+      internalID: 283633582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1008
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57a6c9c303cacfd468ac738bfefc6be7
+      internalID: 801392288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_37
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 1008
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9f6580a60904504a94aea64efd5def7
+      internalID: 1008416824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_38
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1008
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 662a9426cbe9a9542ab0cb195687cad4
+      internalID: -357043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_39
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 1008
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b03b68f4897cf34e9f7ebc37b9888bb
+      internalID: -151505056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 840
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eeb2f3cc814b144d8d05f95e0b7e047
+      internalID: 1321667860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_41
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 840
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a1e73ee261aa8f40be3caa59e3ed57b
+      internalID: 1387714328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_42
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 840
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e3e384c4adc7aa4cb6801b6c417d964
+      internalID: 1739243774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_43
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 840
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d7585fe03984a848b3008e9313d4a21
+      internalID: 2943462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 672
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00b1666742b4edc48a9b4682f9b37193
+      internalID: -264314413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_45
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 672
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 402044472fa3b1248941b46158c18f91
+      internalID: 605018395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_46
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 672
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf9d22deb89797f40a5be472f212ca0e
+      internalID: 303712923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_47
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 672
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1560c331db2f2894681a3033d4591f8f
+      internalID: 774115491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 504
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a19202e5893681488cb0babb222c271
+      internalID: 1421878074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_49
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 504
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fcf2cb87170362408633b9b5374a762
+      internalID: 1958277072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_50
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 504
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee0736770708e164cb5ec1ec69206350
+      internalID: -1834829060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_51
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 504
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 169685ac905fdf049a9fe0b67777166a
+      internalID: 968092270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 336
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4019f42cad9d07e44b17abb529a4bb90
+      internalID: -1780502616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_53
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 336
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 166af47b57b082344a8178706c239956
+      internalID: -848260310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_54
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 336
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75502f16d27c56146b229dec3aa32c9f
+      internalID: -1720532741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_55
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 336
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94937d9ee93e24f42be47099a1c5a60f
+      internalID: 939887459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 168
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37356ec2fc645674f9e35316d8a12782
+      internalID: -1981253898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_57
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 168
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecf23e359c84d1c4986b85a9bf988868
+      internalID: 359376265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_58
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 168
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66467c0ec98e5e840adf7b5533e41d58
+      internalID: 10709137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_59
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 168
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92535a1c0365b59419ffec3ebdacfeb8
+      internalID: -1100325525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a19b3f664767994cb22ff16cc558077
+      internalID: -521956462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_controls_ps4_61
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd5490dc55516914c8608f37897b8ea4
+      internalID: 10389742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 3135582ef9d1ea74ca3879fad3bfb915
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ui_controls_ps4_0: 1755458688
+      ui_controls_ps4_1: 1791641029
+      ui_controls_ps4_10: -434710099
+      ui_controls_ps4_11: -911915248
+      ui_controls_ps4_12: 1150489637
+      ui_controls_ps4_13: -1068900471
+      ui_controls_ps4_14: 411028969
+      ui_controls_ps4_15: -457822655
+      ui_controls_ps4_16: -103127829
+      ui_controls_ps4_17: -904753235
+      ui_controls_ps4_18: 1056651505
+      ui_controls_ps4_19: -929777848
+      ui_controls_ps4_2: -1715496377
+      ui_controls_ps4_20: 738978835
+      ui_controls_ps4_21: 554165384
+      ui_controls_ps4_22: -683793455
+      ui_controls_ps4_23: 697040643
+      ui_controls_ps4_24: 735860645
+      ui_controls_ps4_25: 791720824
+      ui_controls_ps4_26: -1188439446
+      ui_controls_ps4_27: 179424045
+      ui_controls_ps4_28: -1242652511
+      ui_controls_ps4_29: -556341676
+      ui_controls_ps4_3: 1520724259
+      ui_controls_ps4_30: -1864800291
+      ui_controls_ps4_31: 144970849
+      ui_controls_ps4_32: 2075015023
+      ui_controls_ps4_33: -758990768
+      ui_controls_ps4_34: 1605402433
+      ui_controls_ps4_35: 283633582
+      ui_controls_ps4_36: 801392288
+      ui_controls_ps4_37: 1008416824
+      ui_controls_ps4_38: -357043
+      ui_controls_ps4_39: -151505056
+      ui_controls_ps4_4: 406706430
+      ui_controls_ps4_40: 1321667860
+      ui_controls_ps4_41: 1387714328
+      ui_controls_ps4_42: 1739243774
+      ui_controls_ps4_43: 2943462
+      ui_controls_ps4_44: -264314413
+      ui_controls_ps4_45: 605018395
+      ui_controls_ps4_46: 303712923
+      ui_controls_ps4_47: 774115491
+      ui_controls_ps4_48: 1421878074
+      ui_controls_ps4_49: 1958277072
+      ui_controls_ps4_5: 1158795355
+      ui_controls_ps4_50: -1834829060
+      ui_controls_ps4_51: 968092270
+      ui_controls_ps4_52: -1780502616
+      ui_controls_ps4_53: -848260310
+      ui_controls_ps4_54: -1720532741
+      ui_controls_ps4_55: 939887459
+      ui_controls_ps4_56: -1981253898
+      ui_controls_ps4_57: 359376265
+      ui_controls_ps4_58: 10709137
+      ui_controls_ps4_59: -1100325525
+      ui_controls_ps4_6: -1974743259
+      ui_controls_ps4_60: -521956462
+      ui_controls_ps4_61: 10389742
+      ui_controls_ps4_7: 1250494287
+      ui_controls_ps4_8: 1646749275
+      ui_controls_ps4_9: 1874985051
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

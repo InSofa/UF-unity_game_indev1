@@ -12,6 +12,8 @@ public class SoundClass_DictionaryEntry {
 
 public class SoundClass_DictionarySerializer : MonoBehaviour
 {
+    [ReadOnly] public string inspectorDescription = "SoundClass Serializer";
+
     [SerializeField]
     private List<SoundClass_DictionaryEntry> entries = new List<SoundClass_DictionaryEntry>();
 
