@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class UIControls_Handler : MonoBehaviour {
@@ -140,6 +141,10 @@ public class UIControls_Handler : MonoBehaviour {
     [SerializeField]
     public TMP_SpriteAsset xboxUIControlsAtlas;
 
+    [Space]
+    [SerializeField]
+    EventSystem eventSystem;
+
     // Current state variables
     [System.NonSerialized]
     public string currentInputScheme = SCHEME_MnK;
@@ -196,6 +201,9 @@ public class UIControls_Handler : MonoBehaviour {
         if (playerInput.currentControlScheme == SCHEME_MnK) {
             newPlatform = PC;
         } else if (playerInput.currentControlScheme == SCHEME_Gamepad) {
+            //Resets the selected object to the first selected object in the event system
+            eventSystem.SetSelectedGameObject(eventSystem.firstSelectedGameObject);
+
             string deviceName = Gamepad.current.name.ToLower();
             if (deviceName.Contains("dualsense")) {
                 newPlatform = PS5;

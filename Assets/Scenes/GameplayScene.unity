@@ -12687,6 +12687,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1770936444914613661, guid: 21d48d7f3289d5c4b80a91bd7deb799b, type: 3}
+      propertyPath: eventSystem
+      value: 
+      objectReference: {fileID: 1342077545}
+    - target: {fileID: 1770936444914613661, guid: 21d48d7f3289d5c4b80a91bd7deb799b, type: 3}
       propertyPath: playerInput
       value: 
       objectReference: {fileID: 452178606}
