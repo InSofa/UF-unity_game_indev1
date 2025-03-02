@@ -245,7 +245,9 @@ public class PlayerHand : MonoBehaviour {
         }
 
         // Update mainTokenIconResolver's text
-        mainGameTokenIconResolver.UpdateMeleeMode(isMeleeMode);
+        if (mainGameTokenIconResolver) {
+            mainGameTokenIconResolver.UpdateMeleeMode(isMeleeMode);
+        }
 
     }
 

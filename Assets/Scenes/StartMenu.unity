@@ -1498,11 +1498,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8992ab935343a241b0a5f2e0a3cb6c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainGameTokenIconResolver: {fileID: 0}
   debugOverlay: {fileID: 0}
   debugButton: {fileID: 0}
   menuButton: {fileID: 0}
   pauseMenu: {fileID: 0}
   optionsMenu: {fileID: 1296876282}
+  turretMenu: {fileID: 0}
+  wallMenu: {fileID: 0}
   pauseMenuInteractableObjects: []
   optionsMenuInteractableObjects:
   - {fileID: 1605706392}
@@ -1512,6 +1515,8 @@ MonoBehaviour:
   mainInteractableObjects:
   - {fileID: 1091348267}
   - {fileID: 394720281}
+  turretSelectionInteractableObjects: []
+  wallSelectionInteractableObjects: []
   currentMenu: 0
 --- !u!1 &734885016
 GameObject:
@@ -5096,7 +5101,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -690, y: -315}
+  m_AnchoredPosition: {x: -690, y: -298}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1794493060

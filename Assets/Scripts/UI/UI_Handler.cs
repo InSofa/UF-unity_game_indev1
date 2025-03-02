@@ -97,7 +97,9 @@ public class UIHandler : MonoBehaviour
     //if newMenu = curentMenu, close menu and return to menu 0, else open newMenu
     public void switchMenu(int newMenu) {
         // Update mainTokenIconResolver's text
-        mainGameTokenIconResolver.UpdateCurrentMenu(newMenu);
+        if (mainGameTokenIconResolver) {
+            mainGameTokenIconResolver.UpdateCurrentMenu(newMenu);
+        }
 
         if (currentMenu == newMenu || newMenu == 0) {
             currentMenu = 0;
