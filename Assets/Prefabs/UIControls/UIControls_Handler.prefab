@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8133971595891119125
+--- !u!1 &4601999381977083888
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9050702966696319608}
-  - component: {fileID: 4359114345022587200}
-  - component: {fileID: 2243311924532039689}
-  - component: {fileID: 571327356878993672}
-  - component: {fileID: 3228655698450301384}
+  - component: {fileID: 8621897956773934045}
+  - component: {fileID: 1770936444914613661}
   m_Layer: 0
   m_Name: UIControls_Handler
   m_TagString: Untagged
@@ -20,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9050702966696319608
+--- !u!4 &8621897956773934045
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8133971595891119125}
+  m_GameObject: {fileID: 4601999381977083888}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 375.16397, y: 198.28064, z: -2.0027766}
@@ -35,13 +32,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4359114345022587200
+--- !u!114 &1770936444914613661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8133971595891119125}
+  m_GameObject: {fileID: 4601999381977083888}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95ed7a5f21fbf3049a81a4bb342ed16b, type: 3}
@@ -52,177 +49,3 @@ MonoBehaviour:
   ps4UIControlsAtlas: {fileID: 11400000, guid: d3af3e316de9fa54db2bf1188ae9b563, type: 2}
   ps5UIControlsAtlas: {fileID: 11400000, guid: 5b759e62fd2a5414ab26d5cf3a5bb3b2, type: 2}
   xboxUIControlsAtlas: {fileID: 11400000, guid: b9190eb7f118af0489f65394841b1ada, type: 2}
-  pcUIControlsIndexSerializer: {fileID: 2243311924532039689}
-  ps4UIControlsIndexSerializer: {fileID: 571327356878993672}
-  ps5UIControlsIndexSerializer: {fileID: 571327356878993672}
-  xboxUIControlsIndexSerializer: {fileID: 3228655698450301384}
---- !u!114 &2243311924532039689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8133971595891119125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3e978e73ffb0864bba33477721a2ecf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inspectorDescription: PC IndexMap Serializer
-  entries:
-  - Key: <look_around>
-    Value: 61
-  - Key: <move_around>
-    Value: 104
-  - Key: <options_button>
-    Value: 86
-  - Key: <select_button>
-    Value: 15
-  - Key: <west_button>
-    Value: 5
-  - Key: <east_button>
-    Value: 17
-  - Key: <right_button>
-    Value: 97
-  - Key: <up_button>
-    Value: 94
-  - Key: <left_button>
-    Value: 96
-  - Key: <down_button>
-    Value: 95
-  - Key: <west_trigger>
-    Value: 16
-  - Key: <east_trigger>
-    Value: 4
-  - Key: <left_click>
-    Value: 66
-  - Key: <right_click>
-    Value: 65
-  - Key: <mouse>
-    Value: 61
-  - Key: <ctrl>
-    Value: 87
-  - Key: <shift>
-    Value: 83
-  - Key: <dpad>
-    Value: 103
---- !u!114 &571327356878993672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8133971595891119125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3e978e73ffb0864bba33477721a2ecf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inspectorDescription: PS4/PS5 IndexMap Serializer
-  entries:
-  - Key: <look_around>
-    Value: 37
-  - Key: <move_around>
-    Value: 29
-  - Key: <options_button>
-    Value: 60
-  - Key: <select_button>
-    Value: 61
-  - Key: <west_button>
-    Value: 3
-  - Key: <north_button>
-    Value: 0
-  - Key: <east_button>
-    Value: 1
-  - Key: <south_button>
-    Value: 2
-  - Key: <right_button>
-    Value: 47
-  - Key: <up_button>
-    Value: 44
-  - Key: <left_button>
-    Value: 46
-  - Key: <down_button>
-    Value: 45
-  - Key: <west_trigger>
-    Value: 10
-  - Key: <east_trigger>
-    Value: 11
-  - Key: <dpad>
-    Value: 48
-  - Key: <left_joystick>
-    Value: 37
-  - Key: <right_joystick>
-    Value: 29
-  - Key: <left_click>
-    Value: 8
-  - Key: <right_click>
-    Value: 9
-  - Key: <ctrl>
-    Value: 59
-  - Key: <shift>
-    Value: 58
-  - Key: <dpad_y>
-    Value: 49
-  - Key: <dpad_x>
-    Value: 50
---- !u!114 &3228655698450301384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8133971595891119125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3e978e73ffb0864bba33477721a2ecf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inspectorDescription: XBOX IndexMap Serializer
-  entries:
-  - Key: <look_around>
-    Value: 37
-  - Key: <move_around>
-    Value: 17
-  - Key: <options_button>
-    Value: 68
-  - Key: <select_button>
-    Value: 69
-  - Key: <west_button>
-    Value: 3
-  - Key: <north_button>
-    Value: 0
-  - Key: <east_button>
-    Value: 1
-  - Key: <south_button>
-    Value: 2
-  - Key: <right_button>
-    Value: 15
-  - Key: <up_button>
-    Value: 12
-  - Key: <left_button>
-    Value: 14
-  - Key: <down_button>
-    Value: 13
-  - Key: <west_trigger>
-    Value: 10
-  - Key: <east_trigger>
-    Value: 11
-  - Key: <dpad>
-    Value: 56
-  - Key: <left_joystick>
-    Value: 37
-  - Key: <right_joystick>
-    Value: 17
-  - Key: <left_click>
-    Value: 8
-  - Key: <right_click>
-    Value: 9
-  - Key: <ctrl>
-    Value: 87
-  - Key: <shift>
-    Value: 83
-  - Key: <dpad_y>
-    Value: 57
-  - Key: <dpad_x>
-    Value: 58

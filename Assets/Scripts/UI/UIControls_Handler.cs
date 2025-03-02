@@ -27,26 +27,26 @@ public class UIControls_Handler : MonoBehaviour {
     // Index Maps (Mapping of tokens to sprite-atlas-indexes)
     public Dictionary<string, string> PC_UI_Controls_IndexMap = new Dictionary<string, string> {
         { "<look_around>", "61" },    // Mouse
-        { "<move_around>", "104" },   // WASD
-        { "<options_button>", "86" }, // ESC
+        { "<move_around>", "92" },    // WASD
+        { "<options_button>", "82" }, // ESC
         { "<select_button>", "15" },  // P
         { "<west_button>", "5" },     // F
         { "<north_button>", "" },
         { "<east_button>", "17" },    // R
         { "<south_button>", "" },
-        { "<right_button>", "97" },   // Arrow Right
-        { "<up_button>", "94" },      // Arrow Up
-        { "<left_button>", "96" },    // Arrow Left
-        { "<down_button>", "95" },    // Arrow Down
+        { "<right_button>", "95" },   // Arrow Right
+        { "<up_button>", "88" },      // Arrow Up
+        { "<left_button>", "94" },    // Arrow Left
+        { "<down_button>", "89" },    // Arrow Down
         { "<west_trigger>", "16" },   // Q
         { "<east_trigger>", "4" },    // E
 
         { "<left_click>", "66" },     // Left Click
         { "<right_click>", "65" },    // Right Click
         { "<mouse>", "61" },          // Mouse
-        { "<ctrl>", "87" },           // Control
-        { "<shift>", "83" },          // Shift
-        { "<dpad>", "103" }           // Arrow Keys
+        { "<ctrl>", "81" },           // Control
+        { "<shift>", "71" },          // Shift
+        { "<dpad>", "93" }            // Arrow Keys
     };
     public Dictionary<string, string> PS4_UI_Controls_IndexMap = new Dictionary<string, string> {
         { "<look_around>", "37" },    // Right Joystick
@@ -103,31 +103,31 @@ public class UIControls_Handler : MonoBehaviour {
         { "<dpad_x>", "50" }          // Dpad X
     };
     public Dictionary<string, string> XBOX_UI_Controls_IndexMap = new Dictionary<string, string> {
-        { "<look_around>", "37" },    // Right JoyStick
-        { "<move_around>", "17" },    // Left JoyStick
-        { "<options_button>", "68" }, // Menu
-        { "<select_button>", "69" },  // View
+        { "<look_around>", "26" },    // Right JoyStick
+        { "<move_around>", "18" },    // Left JoyStick
+        { "<options_button>", "44" }, // Menu
+        { "<select_button>", "45" },  // View
         { "<west_button>", "3" },     // X
         { "<north_button>", "0" },    // Y
         { "<east_button>", "1" },     // B
         { "<south_button>", "2" },    // A
-        { "<right_button>", "15" },   // Dpad Right
-        { "<up_button>", "12" },      // Dpad Up
-        { "<left_button>", "14" },    // Dpad Left
-        { "<down_button>", "13" },    // Dpad Down
+        { "<right_button>", "12" },   // Dpad Right
+        { "<up_button>", "14" },      // Dpad Up
+        { "<left_button>", "13" },    // Dpad Left
+        { "<down_button>", "15" },    // Dpad Down
         { "<west_trigger>", "10" },   // Left Trigger
         { "<east_trigger>", "11" },   // Right Trigger
 
-        { "<dpad>", "56" },           // Arrow Keys
-        { "<left_joystick>", "37" },  // Left Joystick
-        { "<right_joystick>", "17" }, // Right Joystick
+        { "<dpad>", "34" },           // Arrow Keys
+        { "<left_joystick>", "26" },  // Left Joystick
+        { "<right_joystick>", "18" }, // Right Joystick
 
         { "<left_click>", "8" },      // Press Left Boulder (L1)
         { "<right_click>", "9" },     // Press Right Boulder (R1)
-        { "<ctrl>", "87" },           // Press Right Joystick (R3)
-        { "<shift>", "83" },          // Press Left Joystick (L3)
-        { "<dpad_y>", "57" },           // Dpad Y
-        { "<dpad_x>", "58" }            // Dpad X
+        { "<ctrl>", "24" },           // Press Right Joystick (R3)
+        { "<shift>", "16" },          // Press Left Joystick (L3)
+        { "<dpad_y>", "35" },         // Dpad Y
+        { "<dpad_x>", "33" }          // Dpad X
     };
 
     // Reference the sprite-atlas for each platform
@@ -139,16 +139,6 @@ public class UIControls_Handler : MonoBehaviour {
     public TMP_SpriteAsset ps5UIControlsAtlas;
     [SerializeField]
     public TMP_SpriteAsset xboxUIControlsAtlas;
-
-    // Reference DictionarySerializers for sprite-atlas-index mappings per platform
-    [SerializeField]
-    public String_DictionarySerializer pcUIControlsIndexSerializer;
-    [SerializeField]
-    public String_DictionarySerializer ps4UIControlsIndexSerializer;
-    [SerializeField]
-    public String_DictionarySerializer ps5UIControlsIndexSerializer;
-    [SerializeField]
-    public String_DictionarySerializer xboxUIControlsIndexSerializer;
 
     // Current state variables
     [System.NonSerialized]
@@ -171,11 +161,9 @@ public class UIControls_Handler : MonoBehaviour {
             _instance = this;
         }
 
-        // Link the dictionary serializers to the dictionaries
-        pcUIControlsIndexSerializer.LinkDictionary(PC_UI_Controls_IndexMap);
-        ps4UIControlsIndexSerializer.LinkDictionary(PS4_UI_Controls_IndexMap);
-        ps5UIControlsIndexSerializer.LinkDictionary(PS5_UI_Controls_IndexMap);
-        xboxUIControlsIndexSerializer.LinkDictionary(XBOX_UI_Controls_IndexMap);
+        // Update the currents
+        currentTokenIndexmap = PC_UI_Controls_IndexMap;
+        currentIconAtlas = pcUIControlsAtlas;
 
         // Link listener for deviceChanges
         InputSystem.onDeviceChange += OnDeviceChange;

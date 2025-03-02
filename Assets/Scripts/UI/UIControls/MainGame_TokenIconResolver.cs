@@ -10,10 +10,6 @@ public class MainGame_TokenIconResolver : MonoBehaviour {
     // The UIControls_Handler prefab with the icon registry for each platform
     [SerializeField]
     private UIControls_Handler globalUIControls;
-    [SerializeField]
-    private UIHandler globalUIHandler;
-    [SerializeField]
-    private PlayerHand globalPlayerHand;
 
     // The text to tokenize and display
     [SerializeField]
@@ -34,6 +30,8 @@ public class MainGame_TokenIconResolver : MonoBehaviour {
     // Current state
     private TMP_Text tmpText;
     private string currentPlatform;
+    private int currentMenu;
+    private bool isMeleeMode;
 
     // Start
     void Start() {
@@ -50,18 +48,28 @@ public class MainGame_TokenIconResolver : MonoBehaviour {
         }
     }
 
+    public void UpdateCurrentMenu(int _currentMenu) {
+        currentMenu = _currentMenu;
+        UpdateText();
+    }
+
+    public void UpdateMeleeMode(bool _isMeleeMode) {
+        isMeleeMode = _isMeleeMode;
+        UpdateText();
+    }
+
     void UpdateText() {
 
         // Start with the base text
         StringBuilder sb = new StringBuilder("");
 
         // Get the general or ui text
-        if (globalUIHandler.currentMenu == 0) {
+        if (currentMenu == 0) {
             if (currentPlatform == "pc") {
                 // General PC
                 sb.Append(textline_general_pc+"\n");
                 // Melee/Build PC
-                if (globalPlayerHand.isMeleeMode) {
+                if (isMeleeMode) {
                     sb.Append(textline_melee);
                 } else {
                     sb.Append(textline_build_pc);
@@ -70,7 +78,7 @@ public class MainGame_TokenIconResolver : MonoBehaviour {
                 // General Rest
                 sb.Append(textline_general_rest+"\n");
                 // Melee/Build Rest
-                if (globalPlayerHand.isMeleeMode) {
+                if (isMeleeMode) {
                     sb.Append(textline_melee);
                 } else {
                     sb.Append(textline_build_rest);
@@ -88,8 +96,6 @@ public class MainGame_TokenIconResolver : MonoBehaviour {
         sb.Append("\n");
 
         string textToDisplay = sb.ToString();
-
-        Debug.Log(textToDisplay);
 
         // If we have a valid controls dictionary, replace tokens with proper sprite tags
         string pattern = @"<[^>]+>"; // Regex pattern to find tokens
@@ -110,6 +116,29 @@ public class MainGame_TokenIconResolver : MonoBehaviour {
 
         tmpText.text = textToDisplay;
         tmpText.ForceMeshUpdate();
+
+        // Adjust inline sprite vertices
+        TMP_TextInfo textInfo = tmpText.textInfo;
+        for (int i = 0; i < textInfo.characterCount; i++) {
+            if (textInfo.characterInfo[i].elementType == TMP_TextElementType.Sprite) {
+                int materialIndex = textInfo.characterInfo[i].materialReferenceIndex;
+                int vertexIndex = textInfo.characterInfo[i].vertexIndex;
+                Vector3[] vertices = textInfo.meshInfo[materialIndex].vertices;
+
+                // Calculate width & height
+                float width = Mathf.Abs(vertices[vertexIndex + 2].x - vertices[vertexIndex].x);
+                float height = Mathf.Abs(vertices[vertexIndex + 2].y - vertices[vertexIndex].y);
+
+                // Shift each vertex
+                Vector3 offset = new Vector3(width/2, height/2, 0);
+
+                vertices[vertexIndex] += offset;
+                vertices[vertexIndex + 1] += offset;
+                vertices[vertexIndex + 2] += offset;
+                vertices[vertexIndex + 3] += offset;
+            }
+        }
+        tmpText.UpdateVertexData();
     }
 
 #if UNITY_EDITOR

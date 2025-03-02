@@ -35,7 +35,7 @@ MonoBehaviour:
     m_StrikethroughOffset: 0
     m_StrikethroughThickness: 0
     m_TabWidth: 0
-  m_Material: {fileID: 7623696539425259218}
+  m_Material: {fileID: 8752092495563290159}
   spriteSheet: {fileID: 2800000, guid: a5cdad71312104b49b36fd434d019688, type: 3}
   m_SpriteCharacterTable:
   - m_ElementType: 2
@@ -1007,7 +1007,7 @@ MonoBehaviour:
     sprite: {fileID: 5155854964887751370, guid: a5cdad71312104b49b36fd434d019688, type: 3}
   spriteInfoList: []
   fallbackSpriteAssets: []
---- !u!21 &7623696539425259218
+--- !u!21 &8752092495563290159
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0

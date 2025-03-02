@@ -7,6 +7,10 @@ using UnityEngine.UI;
 
 public class UIHandler : MonoBehaviour
 {
+    // Reference to mainGameTokenIconResolver
+    [SerializeField]
+    public MainGame_TokenIconResolver mainGameTokenIconResolver;
+
     [SerializeField]
     public GameObject debugOverlay;
 
@@ -58,12 +62,20 @@ public class UIHandler : MonoBehaviour
     }
 
     public void togglePauseMenu(InputAction.CallbackContext obj) {
+        if (currentMenu == 1) {
+            switchMenu(0);
+            return;
+        }
+
         switchMenu(1);
     }
 
     //if newMenu = curentMenu, close menu and return to menu 0, else open newMenu
     public void switchMenu(int newMenu) {
-        if(currentMenu == newMenu || newMenu == 0) {
+        // Update mainTokenIconResolver's text
+        mainGameTokenIconResolver.UpdateCurrentMenu(newMenu);
+
+        if (currentMenu == newMenu || newMenu == 0) {
             currentMenu = 0;
             updateMenu(null, mainInteractableObjects);
             return;

@@ -6,8 +6,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class PlayerHand : MonoBehaviour
-{
+public class PlayerHand : MonoBehaviour {
+    // Reference to mainGameTokenIconResolver
+    [SerializeField]
+    public MainGame_TokenIconResolver mainGameTokenIconResolver;
+
     [SerializeField]
     int pillows = 5;
 
@@ -185,18 +188,20 @@ public class PlayerHand : MonoBehaviour
     }
 
     private void switchMeleeMode(InputAction.CallbackContext obj) {
-        if(isMeleeMode) {
+        if (isMeleeMode) {
             isMeleeMode = false;
             buildInput.action.started += placeBuilding;
             sellBuildingInput.action.started += removeBuilding;
             buildInput.action.started -= meleeAttack;
-            return;
+        } else {
+            isMeleeMode = true;
+            buildInput.action.started -= placeBuilding;
+            sellBuildingInput.action.started -= removeBuilding;
+            buildInput.action.started += meleeAttack;
         }
 
-        isMeleeMode = true;
-        buildInput.action.started -= placeBuilding;
-        sellBuildingInput.action.started -= removeBuilding;
-        buildInput.action.started += meleeAttack;
+        // Update mainTokenIconResolver's text
+        mainGameTokenIconResolver.UpdateMeleeMode(isMeleeMode);
     }
 
     private void OnDrawGizmos()

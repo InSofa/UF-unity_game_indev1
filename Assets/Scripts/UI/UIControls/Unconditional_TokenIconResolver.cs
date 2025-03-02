@@ -70,6 +70,29 @@ public class Unconditional_TokenIconResolver : MonoBehaviour {
 
         tmpText.text = textToDisplay;
         tmpText.ForceMeshUpdate();
+
+        // Adjust inline sprite vertices
+        TMP_TextInfo textInfo = tmpText.textInfo;
+        for (int i = 0; i < textInfo.characterCount; i++) {
+            if (textInfo.characterInfo[i].elementType == TMP_TextElementType.Sprite) {
+                int materialIndex = textInfo.characterInfo[i].materialReferenceIndex;
+                int vertexIndex = textInfo.characterInfo[i].vertexIndex;
+                Vector3[] vertices = textInfo.meshInfo[materialIndex].vertices;
+
+                // Calculate width & height
+                float width = Mathf.Abs(vertices[vertexIndex + 2].x - vertices[vertexIndex].x);
+                float height = Mathf.Abs(vertices[vertexIndex + 2].y - vertices[vertexIndex].y);
+
+                // Shift each vertex
+                Vector3 offset = new Vector3(width / 2, height / 2, 0);
+
+                vertices[vertexIndex] += offset;
+                vertices[vertexIndex + 1] += offset;
+                vertices[vertexIndex + 2] += offset;
+                vertices[vertexIndex + 3] += offset;
+            }
+        }
+        tmpText.UpdateVertexData();
     }
 
 #if UNITY_EDITOR
