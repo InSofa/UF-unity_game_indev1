@@ -201,6 +201,7 @@ public class GlobalSoundComposer : MonoBehaviour {
         return audioSource.time / audioSource.clip.length;
     }
 
+    
     public float GetTracKRemainingTime(string id) {
         GameObject instance = TrackList[id];
         AudioSource audioSource = instance.GetComponent<AudioSource>();
