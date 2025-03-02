@@ -90,8 +90,16 @@ public class UIHandler : MonoBehaviour
         if(currentMenu == newMenu || newMenu == 0) {
             currentMenu = 0;
             updateMenu(null, mainInteractableObjects);
+
+            //Unpauses the game
+            Time.timeScale = 1;
+
             return;
         }
+
+        //Pauses the game
+        Time.timeScale = 0;
+
         switch (newMenu) {
             case 1:
                 if (currentScene == 1) {
@@ -111,6 +119,11 @@ public class UIHandler : MonoBehaviour
 
         // Enable/Disable Interactable Objects to make sure they dont interfere with UI navigation
         for (int i = 0; i < pauseMenuInteractableObjects.Length; i++) {
+            if(pauseMenuInteractableObjects[i] == null) {
+                Debug.LogError("pauseMenuInteractableObjects[" + i + "] is null");
+                continue;
+            }
+
             Selectable selectable = pauseMenuInteractableObjects[i].GetComponent<Selectable>();
             if (selectable != null) {
                 selectable.interactable = false;
@@ -118,6 +131,11 @@ public class UIHandler : MonoBehaviour
         }
 
         for (int i = 0; i < optionsMenuInteractableObjects.Length; i++) {
+            if(optionsMenuInteractableObjects[i] == null) {
+                Debug.LogError("optionsMenuInteractableObjects[" + i + "] is null");
+                continue;
+            }
+
             Selectable selectable = optionsMenuInteractableObjects[i].GetComponent<Selectable>();
             if (selectable != null) {
                 selectable.interactable = false;
@@ -125,6 +143,11 @@ public class UIHandler : MonoBehaviour
         }
 
         for (int i = 0; i < mainInteractableObjects.Length; i++) {
+            if(mainInteractableObjects[i] == null) {
+                Debug.LogError("mainInteractableObjects[" + i + "] is null");
+                continue;
+            }
+
             Selectable selectable = mainInteractableObjects[i].GetComponent<Selectable>();
             if (selectable != null) {
                 selectable.interactable = false;

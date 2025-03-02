@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d1f21f0afb43254fb38c3f88447fc36, type: 3}
   m_Name: BackgroundLoop
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 3e16762d7dcfb8543a0a0aeb506d68cb, type: 3}
+  audioClip: {fileID: 8300000, guid: 7504070bd6ec0dd40a3417d15958f858, type: 3}
   audioMixerGroup: {fileID: -3084080913633758465, guid: 1ccc81ed0a7999146ad3d8584424956b, type: 2}
   priority: 0
-  volume: 1
+  volume: 0.8
   pitch: 0
   spatialBlend: 0

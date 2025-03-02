@@ -15815,6 +15815,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5115746639820666073, guid: 0378308a9ae6fcb4ba00392f0239d3bd, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7504070bd6ec0dd40a3417d15958f858, type: 3}
     - target: {fileID: 7117746038225080835, guid: 0378308a9ae6fcb4ba00392f0239d3bd, type: 3}
       propertyPath: m_Name
       value: GlobalSoundComposer
