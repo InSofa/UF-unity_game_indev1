@@ -11,6 +11,8 @@ public class GameObject_DictionaryEntry {
 
 public class GameObject_DictionarySerializer : MonoBehaviour
 {
+    [ReadOnly] public string inspectorDescription = "GameObject Serializer";
+
     [SerializeField]
     private List<GameObject_DictionaryEntry> entries = new List<GameObject_DictionaryEntry>();
 
