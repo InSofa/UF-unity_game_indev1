@@ -25,7 +25,7 @@ public class UIHandler : MonoBehaviour
     GameObject[] pauseMenuInteractableObjects, optionsMenuInteractableObjects, mainInteractableObjects;
 
     //0 = Gameplay/Main Menu, 1 = Pause Menu, 2 = Options Menu
-    int currentMenu = 0;
+    public int currentMenu = 0;                                    // Made public for UIControls system
 
 
     private void Start() {

@@ -6,15 +6,30 @@ using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using System.Linq;
 
-public class PauseText_TokenIconResolver : MonoBehaviour {
+public class MainGame_TokenIconResolver : MonoBehaviour {
     // The UIControls_Handler prefab with the icon registry for each platform
     [SerializeField]
-    private GameObject GlobalUIControls;
     private UIControls_Handler globalUIControls;
+    [SerializeField]
+    private UIHandler globalUIHandler;
+    [SerializeField]
+    private PlayerHand globalPlayerHand;
 
     // The text to tokenize and display
     [SerializeField]
-    private string textLine;
+    private string textline_ui_pc;
+    [SerializeField]
+    private string textline_ui_rest;
+    [SerializeField]
+    private string textline_general_pc;
+    [SerializeField]
+    private string textline_general_rest;
+    [SerializeField]
+    private string textline_melee;
+    [SerializeField]
+    private string textline_build_pc;
+    [SerializeField]
+    private string textline_build_rest;
 
     // Current state
     private TMP_Text tmpText;
@@ -23,7 +38,6 @@ public class PauseText_TokenIconResolver : MonoBehaviour {
     // Start
     void Start() {
         tmpText = GetComponent<TMP_Text>();
-        globalUIControls = GlobalUIControls.GetComponent<UIControls_Handler>();
         currentPlatform = globalUIControls.currentPlatform;
         UpdateText();
     }
@@ -37,10 +51,45 @@ public class PauseText_TokenIconResolver : MonoBehaviour {
     }
 
     void UpdateText() {
+
         // Start with the base text
-        StringBuilder sb = new StringBuilder(textLine + "\n");
+        StringBuilder sb = new StringBuilder("");
+
+        // Get the general or ui text
+        if (globalUIHandler.currentMenu == 0) {
+            if (currentPlatform == "pc") {
+                // General PC
+                sb.Append(textline_general_pc+"\n");
+                // Melee/Build PC
+                if (globalPlayerHand.isMeleeMode) {
+                    sb.Append(textline_melee);
+                } else {
+                    sb.Append(textline_build_pc);
+                }
+            } else {
+                // General Rest
+                sb.Append(textline_general_rest+"\n");
+                // Melee/Build Rest
+                if (globalPlayerHand.isMeleeMode) {
+                    sb.Append(textline_melee);
+                } else {
+                    sb.Append(textline_build_rest);
+                }
+            }
+        } else {
+            if (currentPlatform == "pc") {
+                // UI PC
+                sb.Append(textline_ui_pc);
+            } else {
+                // UI Rest
+                sb.Append(textline_ui_rest);
+            }
+        }
+        sb.Append("\n");
 
         string textToDisplay = sb.ToString();
+
+        Debug.Log(textToDisplay);
 
         // If we have a valid controls dictionary, replace tokens with proper sprite tags
         string pattern = @"<[^>]+>"; // Regex pattern to find tokens

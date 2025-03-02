@@ -60,7 +60,7 @@ public class PlayerHand : MonoBehaviour
     int meleeDamage;
 
     [SerializeField]
-    bool isMeleeMode = false;
+    public bool isMeleeMode = false; // Made public for UIControls system
 
     [SerializeField]
     LayerMask enemyLayer;
