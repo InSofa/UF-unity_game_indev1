@@ -6,11 +6,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class PlayerHand : MonoBehaviour {
-    // Reference to mainGameTokenIconResolver
-    [SerializeField]
-    public MainGame_TokenIconResolver mainGameTokenIconResolver;
-
+public class PlayerHand : MonoBehaviour
+{
     [SerializeField]
     int pillows = 5;
 
@@ -67,7 +64,7 @@ public class PlayerHand : MonoBehaviour {
     int meleeDamage;
 
     [SerializeField]
-    public bool isMeleeMode = false; // Made public for UIControls system
+    bool isMeleeMode = false;
 
     [SerializeField]
     LayerMask enemyLayer;
@@ -225,28 +222,27 @@ public class PlayerHand : MonoBehaviour {
     }
 
     private void switchMeleeMode(InputAction.CallbackContext obj) {
-        if (isMeleeMode) {
+        if(isMeleeMode) {
             isMeleeMode = false;
             buildInput.action.started += placeBuilding;
             sellBuildingInput.action.started += removeBuilding;
             buildInput.action.started -= meleeAttack;
+
             attackIndicator.gameObject.SetActive(false);
             buildIndicator.gameObject.SetActive(true);
             placementIndicator.gameObject.SetActive(true);
-        } else {
-            isMeleeMode = true;
-            buildInput.action.started -= placeBuilding;
-            sellBuildingInput.action.started -= removeBuilding;
-            buildInput.action.started += meleeAttack;
-            attackIndicator.gameObject.SetActive(true);
-            buildIndicator.gameObject.SetActive(false);
-            buildingIndicator.gameObject.SetActive(false);
-            placementIndicator.gameObject.SetActive(false);
+            return;
         }
 
-        // Update mainTokenIconResolver's text
-        mainGameTokenIconResolver.UpdateMeleeMode(isMeleeMode);
+        isMeleeMode = true;
+        buildInput.action.started -= placeBuilding;
+        sellBuildingInput.action.started -= removeBuilding;
+        buildInput.action.started += meleeAttack;
 
+        attackIndicator.gameObject.SetActive(true);
+        buildIndicator.gameObject.SetActive(false);
+        buildingIndicator.gameObject.SetActive(false);
+        placementIndicator.gameObject.SetActive(false);
     }
 
     public void OnDrawGizmos()
