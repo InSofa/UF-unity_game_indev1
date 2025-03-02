@@ -168,10 +168,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88291b90c4b935c488dc2ad3c92f8d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageTaken: 0
   maxHealth: 17
   destroyParticle: {fileID: 0}
   flashMaterial: {fileID: 2100000, guid: eb0872da184994a468d3e91629d9c52d, type: 2}
-  flashTime: 0.1
+  flashTime: 0.08
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   pillowPrefab: {fileID: 0}
   minPillows: 0
@@ -189,12 +190,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce6d26720c12534f81219c8a22f3a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effector: {fileID: 2486857422795829823, guid: 9243028d5109b43498e630d0e49a6184, type: 3}
   priority: 1
   refreshPath: 0
   newNodeDistance: 0.5
   dir: {x: 1, y: 0}
-  attackDistance: 0.64
-  attackRadius: 0.15
+  attackDistance: 0.4
+  attackRadius: 0.42
 --- !u!114 &151178664656866342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,11 +209,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a27a406b6dafca4eb22bb494ad05843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  speed: 5
   speedVariance: 0.4
   acceleration: 10
   accelerationVariance: 1
-  attackRange: 0.75
+  attackRange: 0.82
   attackCD: 0.4
   playerDetectionDistance: 5
   damage: 5

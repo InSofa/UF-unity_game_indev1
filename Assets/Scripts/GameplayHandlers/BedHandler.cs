@@ -12,6 +12,9 @@ public class BedHandler : MonoBehaviour
     [SerializeField]
     GameObject interactVisuals;
 
+    [SerializeField]
+    ParticleSystem waveStartParticles;
+
     // Update is called once per frame
     void Update()
     {
@@ -20,8 +23,10 @@ public class BedHandler : MonoBehaviour
         if (distance <= minInteractDistance) {
             interactVisuals.SetActive(true);
             if (startNewWave.action.triggered) {
-                if(EnemySpawner.instance.currentEnemies.Count == 0)
+                if(EnemySpawner.instance.currentEnemies.Count == 0) {
+                    waveStartParticles.Play();
                     EnemySpawner.instance.SpawnWave();
+                }
                 else {
                     Debug.Log("Enemies still alive");
                 }

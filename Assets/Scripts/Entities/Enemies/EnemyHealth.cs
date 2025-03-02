@@ -6,7 +6,8 @@ using UnityEngine.UIElements;
 public class EnemyHealth : MonoBehaviour
 {
     //Health Values
-    float health;
+    [HideInInspector]
+    public float damageTaken;
 
     [SerializeField]
     float maxHealth;
@@ -35,24 +36,27 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     float minPillows, maxPillows, spawnRange;
 
-    private void Awake()
+
+    private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         originalMaterial = sr.material;
 
-        health = maxHealth;
+        damageTaken = 0;
 
+        Debug.Log(EnemySpawner.instance);
         EnemySpawner.instance.currentEnemies.Add(this.gameObject);
     }
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
+        Debug.Log("took damage, i is enemy " + damage);
+        damageTaken += damage;
 
         StopAllCoroutines();
         StartCoroutine(flash());
 
-        if (health < 0)
+        if (maxHealth <= damageTaken)
         {
             if(destroyParticle != null)
             {
@@ -62,7 +66,15 @@ public class EnemyHealth : MonoBehaviour
 
             spawnPillows();
 
-            EnemySpawner.instance.currentEnemies.Remove(this.gameObject);
+            Debug.Log("Dead");
+            try  // try to remove this object from the list of current enemies
+            {
+                EnemySpawner.instance.currentEnemies.Remove(this.gameObject);
+            }
+            catch (System.Exception e)  // if it fails, log the error
+            {
+                Debug.LogError("Failed to remove enemy from currentEnemies list: " + e.Message);
+            }
             Destroy(this.gameObject);
             return;
         }

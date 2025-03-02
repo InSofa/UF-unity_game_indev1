@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1c754323f588e84cadb4dc43c572146, type: 3}
+  m_Name: MortarTurret
+  m_EditorClassIdentifier: 
+  buildingName: Mortar
+  buildingCost: 7
+  buildingSellValue: 5
+  buildingHealth: 30
+  buildingDamage: 30
+  buildingRange: 14
+  shotCD: 2.2
+  projectileSpeed: 2
+  maxPredict: 4
+  buildingDescription: 
+  buildingPrefab: {fileID: 4913011913050603389, guid: 163e67ca7365ae143bcbd9018b9d7de7, type: 3}

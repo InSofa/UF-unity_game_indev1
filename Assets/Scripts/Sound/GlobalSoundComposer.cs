@@ -180,10 +180,31 @@ public class GlobalSoundComposer : MonoBehaviour {
         }
     }
 
+    //Function for queuing tracks
+    public IEnumerator QueueTrack(string currentTrack, string queueTrack) {
+        if(TrackIsPlaying(currentTrack)) {
+            yield return new WaitForSeconds(GetTracKRemainingTime(currentTrack));
+        }
+
+        PlayTrack(queueTrack);
+    }
+
     public bool TrackIsPlaying(string id) {
         GameObject instance = TrackList[id];
         AudioSource audioSource = instance.GetComponent<AudioSource>();
         return audioSource.isPlaying;
+    }
+
+    public float GetTrackProgress(string id) {
+        GameObject instance = TrackList[id];
+        AudioSource audioSource = instance.GetComponent<AudioSource>();
+        return audioSource.time / audioSource.clip.length;
+    }
+
+    public float GetTracKRemainingTime(string id) {
+        GameObject instance = TrackList[id];
+        AudioSource audioSource = instance.GetComponent<AudioSource>();
+        return audioSource.clip.length - audioSource.time;
     }
 
     public void InitiallyUpdateSerializers() {

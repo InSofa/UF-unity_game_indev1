@@ -21,10 +21,11 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     Transform pivot;
 
+    /*
     [SerializeField]
     float timeBetweenWave = 15f;
     float time;
-
+    */
     // Start is called before the first frame update
     void Start()
     {

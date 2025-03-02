@@ -30,7 +30,7 @@ public class PlayerHand : MonoBehaviour {
     float buildRange = 1f;
 
     [SerializeField]
-    Transform buildIndicator, placementIndicator;
+    Transform buildIndicator, attackIndicator, placementIndicator, buildingIndicator;
 
 
     [SerializeField]
@@ -58,6 +58,10 @@ public class PlayerHand : MonoBehaviour {
 
     [SerializeField]
     float meleeRadius;
+
+    //Offsets the attack position from the lookDir
+    [SerializeField]
+    float attackOffset;
 
     [SerializeField]
     int meleeDamage;
@@ -94,7 +98,12 @@ public class PlayerHand : MonoBehaviour {
             Vector2 worldMousePos = cam.ScreenToWorldPoint(mousePos);
 
             lookDir = worldMousePos - (Vector2)transform.position;
-            if (lookDir.magnitude > buildRange) {
+            if (isMeleeMode) {
+                /*if (lookDir.magnitude > meleeRange) {*/
+                    lookDir.Normalize();
+                    lookDir *= meleeRange;
+                //}
+            } else  if(lookDir.magnitude > buildRange) {
                 lookDir.Normalize();
                 lookDir *= buildRange;
             }
@@ -114,9 +123,36 @@ public class PlayerHand : MonoBehaviour {
 
 
         buildPos = (Vector2)transform.position + lookDir;
-        buildIndicator.transform.position = buildPos;
+        if(isMeleeMode) {
+            attackIndicator.position = buildPos;
+            return;
+        } else {
+            buildIndicator.position = buildPos;
+            Node node = PathfindingGrid.instance.NodeFromWorldPoint(buildPos);
+            Node playerNode = PathfindingGrid.instance.NodeFromWorldPoint((Vector2)transform.position);
+            if(node.building != null) {
+                buildingIndicator.position = node.worldPosition;
 
-        placementIndicator.position = PathfindingGrid.instance.NodeFromWorldPoint(buildPos).worldPosition;
+                //If the hovered node is the same node as the node the player is standing on, dont show the preview
+                if(playerNode != node) {
+                    buildingIndicator.gameObject.SetActive(true);
+                } else {
+                    buildingIndicator.gameObject.SetActive(false);
+                }
+                placementIndicator.gameObject.SetActive(false);
+            } else {
+                placementIndicator.position = node.worldPosition;
+                buildingIndicator.gameObject.SetActive(false);
+
+                //See comment earlier
+                if (playerNode != node) {
+                    placementIndicator.gameObject.SetActive(true);
+                } else {
+                    placementIndicator.gameObject.SetActive(false);
+                }
+            }
+        }
+
     }
 
     
@@ -147,6 +183,7 @@ public class PlayerHand : MonoBehaviour {
         selectedBuilding = selection;
     }
 
+    //Playernode and placement node check is done in the grid logic
     private void placeBuilding(InputAction.CallbackContext obj)
     {
         if (pillows < buildings[selectedBuilding].buildingCost) {
@@ -175,7 +212,7 @@ public class PlayerHand : MonoBehaviour {
     }
 
     private void meleeAttack(InputAction.CallbackContext obj) {
-        Vector2 attackPos = (Vector2)transform.position + lookDir;
+        Vector2 attackPos = (Vector2)transform.position + lookDir - (attackOffset * lookDir.normalized);
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPos, meleeRadius, enemyLayer);
 
         foreach (Collider2D hitCollider in hitColliders) {
@@ -193,24 +230,32 @@ public class PlayerHand : MonoBehaviour {
             buildInput.action.started += placeBuilding;
             sellBuildingInput.action.started += removeBuilding;
             buildInput.action.started -= meleeAttack;
+            attackIndicator.gameObject.SetActive(false);
+            buildIndicator.gameObject.SetActive(true);
+            placementIndicator.gameObject.SetActive(true);
         } else {
             isMeleeMode = true;
             buildInput.action.started -= placeBuilding;
             sellBuildingInput.action.started -= removeBuilding;
             buildInput.action.started += meleeAttack;
+            attackIndicator.gameObject.SetActive(true);
+            buildIndicator.gameObject.SetActive(false);
+            buildingIndicator.gameObject.SetActive(false);
+            placementIndicator.gameObject.SetActive(false);
         }
 
         // Update mainTokenIconResolver's text
         mainGameTokenIconResolver.UpdateMeleeMode(isMeleeMode);
+
     }
 
-    private void OnDrawGizmos()
+    public void OnDrawGizmos()
     {
-        if (isMeleeMode) {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere((Vector2)transform.position + lookDir * meleeRange, meleeRadius);
-            return;
-        }
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, meleeRange);
+
+        //Added unnecessary logic to mimic attack logic
+        Gizmos.DrawWireSphere((Vector2)transform.position + lookDir - (attackOffset * lookDir.normalized), meleeRadius);
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(transform.position, buildRange);
     }

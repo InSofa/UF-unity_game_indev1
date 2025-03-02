@@ -16,6 +16,11 @@ public class EnemyHandler : MonoBehaviour {
 
     Vector2 currentTarget;
 
+    [SerializeField]
+    GameObject effector;
+
+    [Space]
+
     //Not used yet
     [SerializeField]
     entityPriority priority;
@@ -47,8 +52,15 @@ public class EnemyHandler : MonoBehaviour {
 
         PathfindingGrid.instance.enemies.Add(this);
         pathfinder = Pathfinding.instance;
+
+        effector = Instantiate(effector, transform.position, Quaternion.identity);
+        effector.transform.parent = transform;
     }
     IEnumerator GetPath(Vector2 targetPos) {
+        if(targetPos == null) {
+            throw new System.ArgumentNullException("Target position is null");
+        }
+      
         //Debug.Log("Getting path");
         path = pathfinder.FindPath(transform.position, targetPos).ToList();
         //Debug.Log("Path found " + path.Count);
