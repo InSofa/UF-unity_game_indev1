@@ -16,5 +16,5 @@ MonoBehaviour:
   audioMixerGroup: {fileID: -3084080913633758465, guid: 1ccc81ed0a7999146ad3d8584424956b, type: 2}
   priority: 0
   volume: 0.8
-  pitch: 0
+  pitch: 40.85
   spatialBlend: 0

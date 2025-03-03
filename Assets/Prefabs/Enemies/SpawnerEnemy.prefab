@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.55, y: 14.91, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,7 +99,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.06}
-  m_Size: {x: 1.07, y: 0.77}
+  m_Size: {x: 1.07, y: 0.91}
   m_Direction: 1
 --- !u!114 &1021668981759611643
 MonoBehaviour:
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageTaken: 0
-  maxHealth: 134
+  maxHealth: 350
   destroyParticle: {fileID: 0}
   flashMaterial: {fileID: 2100000, guid: eb0872da184994a468d3e91629d9c52d, type: 2}
   flashTime: 0.08
@@ -162,6 +162,7 @@ MonoBehaviour:
   attackCD: 0.8
   damage: 18
   spawnCD: 7
+  spawnVariance: 1
   minSpawns: 2
   maxSpawns: 3
   spawnPrefab: {fileID: 5134549907070756428, guid: c07e0eae6485163429bd9af71c6fc392, type: 3}
