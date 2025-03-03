@@ -33,6 +33,11 @@ public class SpawnerEnemy : MonoBehaviour
     [SerializeField]
     float spawnCD = 5f;
 
+    private float useSpawnCD;
+
+    [SerializeField]
+    float spawnVariance = 1f;
+
     [SerializeField]
     int minSpawns, maxSpawns;
 
@@ -58,8 +63,10 @@ public class SpawnerEnemy : MonoBehaviour
 
         bedPosition = GameObject.Find("Bed").transform;
 
+        useSpawnCD = Random.Range(spawnCD - spawnVariance, spawnCD + spawnVariance);
+
         attackTime = attackCD;
-        spawnTime = spawnCD;
+        spawnTime = useSpawnCD;
         spawnStopCD = spawnStopTime;
 
         speed = Random.Range(speed - speedVariance, speed + speedVariance);
@@ -81,7 +88,8 @@ public class SpawnerEnemy : MonoBehaviour
             SpawnEnemy();
 
             if(spawnStopTime < 0) {
-                spawnTime = spawnCD;
+                useSpawnCD = Random.Range(spawnCD - spawnVariance, spawnCD + spawnVariance);
+                spawnTime = useSpawnCD;
                 spawnStopTime = spawnStopCD;
             } else {
                 spawnStopTime -= Time.deltaTime;

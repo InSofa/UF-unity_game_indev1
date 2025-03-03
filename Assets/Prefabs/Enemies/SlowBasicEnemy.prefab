@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageTaken: 0
-  maxHealth: 80
+  maxHealth: 92
   destroyParticle: {fileID: 0}
   flashMaterial: {fileID: 2100000, guid: eb0872da184994a468d3e91629d9c52d, type: 2}
   flashTime: 0.08

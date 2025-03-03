@@ -68,7 +68,7 @@ public class Turret {
 
         //Normalization might be reduntant but it's here to make sure the values are correct
         float diff = Vector2.Distance(pivot.right.normalized, targetDir.normalized);
-        Debug.Log($"Diff: {diff}  shootLerpDiff: {shootLerpDiff}");
+        //Debug.Log($"Diff: {diff}  shootLerpDiff: {shootLerpDiff}");
 
         if(diff > minDiff * Time.deltaTime * 144) {
             pivot.right = Vector2.Lerp(pivot.right, targetDir, lerpSpeed * Time.deltaTime);
