@@ -205,6 +205,7 @@ public class UIControls_Handler : MonoBehaviour {
             eventSystem.SetSelectedGameObject(eventSystem.firstSelectedGameObject);
 
             string deviceName = Gamepad.current.name.ToLower();
+            Debug.Log("GamePad DeviceName: " + deviceName);
             if (deviceName.Contains("dualsense")) {
                 newPlatform = PS5;
             } else if (deviceName.Contains("xbox")) {
