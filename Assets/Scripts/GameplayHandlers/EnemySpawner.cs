@@ -11,28 +11,23 @@ public class EnemySpawner : MonoBehaviour
     public List<GameObject> currentEnemies;
 
     [SerializeField]
+    Wave[] waves;
+
+    public int currentWave = 0;
+
+    [SerializeField]
     float minSpawnDist = 25f;
 
     [SerializeField]
-    float wallRadius = 30f;
+    float maxSpawnDist = 30f;
 
     [SerializeField]
-    LineRenderer wall;
+    Vector2 wallClamp;
 
+    [Space]
     [SerializeField]
-    EdgeCollider2D wallCollider;
+    GameObject spawnEffect;
 
-    [SerializeField]
-    PolygonCollider2D wallCameraCollider;
-
-    [SerializeField]
-    GameObject enemy;
-
-    [SerializeField]
-    int enemiesToSpawn = 10;
-
-    [SerializeField]
-    Transform pivot;
 
     /*
     [SerializeField]
@@ -43,7 +38,6 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         instance = this;
-        GenerateWall();
         //SpawnWave();
     }
 
@@ -82,29 +76,32 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnWave()
     {
-        //Additional measures to make sure no new wave is started when a current one is still active
-        if(currentEnemies.Count > 0) {
-            Debug.Log("Enemies still alive");
-            return;
+        if (currentWave >= waves.Length) {
+            Debug.Log("No more waves to spawn, resetting count");
+            currentWave = 0;
         }
 
-        Vector2 spawnPos = transform.position + (pivot.up * minSpawnDist);
+        Pyle[] pylesToSpawn = waves[currentWave].pyles;
 
-        for (int i = 0; i < enemiesToSpawn; i++)
-        {
-            GameObject spawnObject = Instantiate(enemy, spawnPos, Quaternion.identity);
-        }
-    }
-
-    public void SpawnWaveAdvanced() {
-        int spawnPoints = 4;
-
-        for (int i = 0; i < spawnPoints; i++) {
+        for (int i = 0; i < pylesToSpawn.Length; i++) {
             float angle = Random.Range(0, 360);
+            float x = Mathf.Sin(Mathf.Deg2Rad * angle) * Random.Range(minSpawnDist, maxSpawnDist);
+            float y = Mathf.Cos(Mathf.Deg2Rad * angle) * Random.Range(minSpawnDist, maxSpawnDist);
+            Vector2 spawnPos = new Vector2(Mathf.Clamp(x, -wallClamp.x, wallClamp.x), Mathf.Clamp(y, -wallClamp.y, wallClamp.y));
 
-            float x = Mathf.Sin(Mathf.Deg2Rad * angle) * wallRadius;
-            float y = Mathf.Cos(Mathf.Deg2Rad * angle) * wallRadius;
-            //points.Add(new Vector2(x, y));
+            Pyle pyle = pylesToSpawn[i];
+
+            if (spawnEffect != null) {
+                GameObject effect = Instantiate(spawnEffect, spawnPos, Quaternion.identity);
+                Destroy(effect, 5f);
+            }
+
+            for (int j = 0; j < pyle.enemiesToSpawn.Length; j++) {
+                GameObject enemy = Instantiate(pyle.enemiesToSpawn[j], spawnPos, Quaternion.identity);
+                currentEnemies.Add(enemy);
+            }
         }
+
+        currentWave++;
     }
 }
