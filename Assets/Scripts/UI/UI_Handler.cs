@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,6 +9,8 @@ using UnityEngine.UI;
 
 public class UIHandler : MonoBehaviour
 {
+    EventSystem eventSystem;
+
     // Reference to mainGameTokenIconResolver
     [SerializeField]
     public MainGame_TokenIconResolver mainGameTokenIconResolver;
@@ -58,6 +62,8 @@ public class UIHandler : MonoBehaviour
 
     private void Start() {
         currentScene = SceneManager.GetActiveScene().buildIndex;
+
+        eventSystem = EventSystem.current;
     }
 
     private void Update()
@@ -82,6 +88,9 @@ public class UIHandler : MonoBehaviour
     }
 
     public void loadScene(int value) {
+        //To make sure the game is unpaused when loading a new scene
+        Time.timeScale = 1;
+
         SceneManager.LoadScene(value);
     }
 
@@ -205,6 +214,25 @@ public class UIHandler : MonoBehaviour
                 slider.interactable = menuToToggle.activeSelf;
             }
         }
+    }
+
+    
+    public void highlightBuildingSelected() {
+        GameObject gameObject = eventSystem.currentSelectedGameObject;
+        Debug.Log(gameObject.name);
+
+        List<GameObject> buildingButtons = new List<GameObject>();
+        buildingButtons.AddRange(turretSelectionInteractableObjects);
+        buildingButtons.AddRange(wallSelectionInteractableObjects);
+
+        //Disable child highlighter in all building buttons
+        for (int i = 0; i < buildingButtons.Count; i++) {
+            Debug.Log(buildingButtons[i].name);
+            GameObject child = buildingButtons[i].transform.GetChild(0).gameObject;
+            child.SetActive(false);
+        }
+
+        gameObject.transform.GetChild(0).gameObject.SetActive(true);
     }
 
     public void toggleDebugOverlay(InputAction.CallbackContext obj)

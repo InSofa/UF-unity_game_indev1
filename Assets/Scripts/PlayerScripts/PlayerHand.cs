@@ -7,6 +7,9 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerHand : MonoBehaviour {
+    [SerializeField]
+    UIHandler uiHandler;
+
     // Reference to mainGameTokenIconResolver
     [SerializeField]
     public MainGame_TokenIconResolver mainGameTokenIconResolver;
@@ -36,6 +39,7 @@ public class PlayerHand : MonoBehaviour {
     [SerializeField]
     float collisionRadius;
 
+    Vector2 lastLookDir = Vector2.right;
     Vector2 lookDir;
     PlayerInput pi;
 
@@ -58,6 +62,9 @@ public class PlayerHand : MonoBehaviour {
 
     [SerializeField]
     float meleeRadius;
+
+    [SerializeField]
+    float meleeLookSpeed;
 
     //Offsets the attack position from the lookDir
     [SerializeField]
@@ -122,11 +129,27 @@ public class PlayerHand : MonoBehaviour {
         }
 
 
-        buildPos = (Vector2)transform.position + lookDir;
+
         if(isMeleeMode) {
-            attackIndicator.position = buildPos;
+            if(lookDir.magnitude != 0) {
+                lastLookDir = lookDir;
+            }
+            float angle = Mathf.Atan2(lastLookDir.y, lastLookDir.x) * Mathf.Rad2Deg;
+
+            Vector2 attackDir = attackIndicator.position - transform.position;
+            float attackAngle = Mathf.Atan2(attackDir.y, attackDir.x) * Mathf.Rad2Deg;
+
+            float newAngle = Mathf.LerpAngle(attackAngle, angle, meleeLookSpeed * Time.deltaTime);
+
+            Vector2 newDir = new Vector2(Mathf.Cos(newAngle * Mathf.Deg2Rad), Mathf.Sin(newAngle * Mathf.Deg2Rad));
+
+            //Debug.Log($"Angle: {angle}, newAngle: {newAngle}, newDir: {newDir}");
+
+            attackIndicator.position = (Vector2)transform.position + newDir * meleeRange;
+
             return;
         } else {
+            buildPos = (Vector2)transform.position + lookDir;
             buildIndicator.position = buildPos;
             Node node = PathfindingGrid.instance.NodeFromWorldPoint(buildPos);
             Node playerNode = PathfindingGrid.instance.NodeFromWorldPoint((Vector2)transform.position);
@@ -180,6 +203,7 @@ public class PlayerHand : MonoBehaviour {
         {
             return;
         }
+        uiHandler.highlightBuildingSelected();
         selectedBuilding = selection;
     }
 
@@ -212,7 +236,7 @@ public class PlayerHand : MonoBehaviour {
     }
 
     private void meleeAttack(InputAction.CallbackContext obj) {
-        Vector2 attackPos = (Vector2)transform.position + lookDir - (attackOffset * lookDir.normalized);
+        Vector2 attackPos = (Vector2)attackIndicator.position - (attackOffset * lookDir.normalized);
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPos, meleeRadius, enemyLayer);
 
         foreach (Collider2D hitCollider in hitColliders) {
