@@ -43,9 +43,6 @@ public class EnemyHealth : MonoBehaviour
         originalMaterial = sr.material;
 
         damageTaken = 0;
-
-        if(EnemySpawner.instance != null)
-            EnemySpawner.instance.currentEnemies.Add(this.gameObject);
     }
 
     public void TakeDamage(float damage)

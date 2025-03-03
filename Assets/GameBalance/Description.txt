@@ -1,0 +1,7 @@
+This folder is for instances of scriptable objects relating to the game's balance such as:
+- Player stats (not implemented yet)
+- Enemy stats (not implemented yet)
+- Turret stats
+- Wave stats
+- Pyles
+etc etc
