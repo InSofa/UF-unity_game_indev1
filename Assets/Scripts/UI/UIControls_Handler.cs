@@ -208,7 +208,7 @@ public class UIControls_Handler : MonoBehaviour {
             Debug.Log("GamePad DeviceName: " + deviceName);
             if (deviceName.Contains("dualsense")) {
                 newPlatform = PS5;
-            } else if (deviceName.Contains("xbox")) {
+            } else if (deviceName.Contains("xbox") || deviceName.Contains("xinputcontrollerwindows")) {
                 newPlatform = XBOX;
             } else {
                 newPlatform = PS4;
