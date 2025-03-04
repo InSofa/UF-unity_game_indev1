@@ -10,8 +10,12 @@ public class LocalSoundComposer : MonoBehaviour
     private Dictionary<string, GameObject> TrackList = new Dictionary<string, GameObject>();
     private Dictionary<string, GameObject> LocalTrackList = new Dictionary<string, GameObject>();
 
+    [SerializeField]
+    float pitchModifier = 1f;
+
+
     public void Awake() {
-        globalSoundComposer = GameObject.FindGameObjectWithTag("GlobalSoundComposer").GetComponent<GlobalSoundComposer>();
+        globalSoundComposer = GlobalSoundComposer.Instance;
         soundEmitterPrefab = globalSoundComposer.soundEmitterPrefab;
         Registry = globalSoundComposer.Registry;
         TrackList = globalSoundComposer.TrackList;
@@ -19,6 +23,8 @@ public class LocalSoundComposer : MonoBehaviour
     }
 
     public void PlayFx(string id) {
+        Debug.Log("Playing sound: " + id);
+
         GameObject instance = Instantiate(soundEmitterPrefab, this.gameObject.transform);
         instance.transform.localPosition = Vector3.zero;
 
@@ -28,13 +34,25 @@ public class LocalSoundComposer : MonoBehaviour
         audioSource.outputAudioMixerGroup = soundInstance.audioMixerGroup;
         audioSource.priority = soundInstance.priority;
         audioSource.volume = soundInstance.volume;
-        audioSource.pitch = soundInstance.pitch;
+        audioSource.pitch = soundInstance.pitch * pitchModifier;
         audioSource.spatialBlend = soundInstance.spatialBlend;
         audioSource.playOnAwake = false;
         audioSource.loop = false;
 
         // Play after intializing
         audioSource.Play();
+
+        // Destroy after clip is done playing
+        Destroy(instance, audioSource.clip.length + 1);
+    }
+
+    public void PlayRandomFx(List<string> ids) {
+        if (ids.Count == 0) {
+            List<string> keys = new List<string>(Registry.Keys);
+            PlayFx(keys[Random.Range(0, keys.Count)]);
+        } else {
+            PlayFx(ids[Random.Range(0, ids.Count)]);
+        }
     }
 
     public void PlayTrack(string id) {

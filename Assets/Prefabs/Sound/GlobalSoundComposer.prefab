@@ -65,9 +65,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 833feb0240363504d8bacc0b9fcc40d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inspectorDescription: SoundClass Serializer
   entries:
   - Key: sfx:generic/debug
     Value: {fileID: 11400000, guid: 3cb3e6ff16b9d944d825de1d8caf297d, type: 2}
+  - Key: sfx:player/Esther_taking_damage_1
+    Value: {fileID: 11400000, guid: 2f94c3155b21bc84cb572a60c03a463b, type: 2}
+  - Key: sfx:player/Esther_taking_damage_2
+    Value: {fileID: 11400000, guid: 9e117318541c06a4daff4cc13ca8f3ce, type: 2}
+  - Key: sfx:player/Esther_taking_damage_3
+    Value: {fileID: 11400000, guid: cac57f1a3bac8714688ec66a45483d9f, type: 2}
+  - Key: sfx:generic/GameOver
+    Value: {fileID: 11400000, guid: 612b8c838ada1b44a8868f8a29a5692b, type: 2}
+  - Key: sfx:player/grassWalk1
+    Value: {fileID: 11400000, guid: 3253183c785e23145b650bc754ede2a7, type: 2}
+  - Key: sfx:player/grassWalk2
+    Value: {fileID: 11400000, guid: baf245f3cdfb0624eae4bb7d6c34912c, type: 2}
+  - Key: sfx:player/grassWalk3
+    Value: {fileID: 11400000, guid: cce1da4ae20339a4f8e2e1881c069b4e, type: 2}
+  - Key: sfx:player/grassWalk4
+    Value: {fileID: 11400000, guid: 3b70f6d13ccc91b429fb622766398dd2, type: 2}
 --- !u!114 &5814949452256541861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3f1fd1752513de4fad633828604159f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inspectorDescription: GameObject Serializer
   entries:
   - Key: music:generic/debug_track
     Value: {fileID: 7459538110833309619}
@@ -99,6 +117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 340d703be203ea444b61f59ed51bcc32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
+  introTrack: music:generic/BackgroundIntro
+  loopTrack: music:generic/BackgroundLoop
 --- !u!1001 &4681682289949187851
 PrefabInstance:
   m_ObjectHideFlags: 0

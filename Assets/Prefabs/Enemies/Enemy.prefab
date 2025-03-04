@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 8906873789553459016}
   - component: {fileID: 2124211160060770884}
   - component: {fileID: 3473983246778059230}
+  - component: {fileID: 3425642891269807525}
+  - component: {fileID: 4083409085631890762}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
@@ -217,3 +219,30 @@ MonoBehaviour:
   attackCD: 0.6
   playerDetectionDistance: 5
   damage: 16
+--- !u!114 &3425642891269807525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4368807937532126786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e750505b2d5d31c4b98344924792ffd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSounds:
+  - sfx:generic/debug
+  walkSoundDistanceInterval: 1
+--- !u!114 &4083409085631890762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4368807937532126786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c2b7876432cae84a95b872ee9df4543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
