@@ -75,8 +75,6 @@ MonoBehaviour:
     Value: {fileID: 11400000, guid: 9e117318541c06a4daff4cc13ca8f3ce, type: 2}
   - Key: sfx:player/Esther_taking_damage_3
     Value: {fileID: 11400000, guid: cac57f1a3bac8714688ec66a45483d9f, type: 2}
-  - Key: sfx:generic/GameOver
-    Value: {fileID: 11400000, guid: 612b8c838ada1b44a8868f8a29a5692b, type: 2}
   - Key: sfx:player/grassWalk1
     Value: {fileID: 11400000, guid: 3253183c785e23145b650bc754ede2a7, type: 2}
   - Key: sfx:player/grassWalk2
@@ -85,6 +83,26 @@ MonoBehaviour:
     Value: {fileID: 11400000, guid: cce1da4ae20339a4f8e2e1881c069b4e, type: 2}
   - Key: sfx:player/grassWalk4
     Value: {fileID: 11400000, guid: 3b70f6d13ccc91b429fb622766398dd2, type: 2}
+  - Key: sfx:enemy/pillow_monster_1
+    Value: {fileID: 11400000, guid: 595c5081c0dd1e2489412cc25a4bcd6f, type: 2}
+  - Key: sfx:enemy/pillow_monster_2
+    Value: {fileID: 11400000, guid: 37727ce09649044429c041c63140ee92, type: 2}
+  - Key: sfx:enemy/pillow_monster_3
+    Value: {fileID: 11400000, guid: db0f53af996b8254e8274c561c435fe4, type: 2}
+  - Key: sfx:player/Build_Mode
+    Value: {fileID: 11400000, guid: 03fe1814e55b3fc43bd162fa553b4098, type: 2}
+  - Key: sfx:player/Sword_Mode
+    Value: {fileID: 11400000, guid: 4bae1318e1e1cdd41af7ddf96812a87c, type: 2}
+  - Key: sfx:generic/GameOver
+    Value: {fileID: 11400000, guid: 612b8c838ada1b44a8868f8a29a5692b, type: 2}
+  - Key: sfx:generic/New_enemy_wave
+    Value: {fileID: 11400000, guid: 46d24dea9fdbb9249a91e392a48e4f24, type: 2}
+  - Key: sfx:player/Picking_up_pillow
+    Value: {fileID: 11400000, guid: be5fcd8b7d321db43ad2c1438b50033e, type: 2}
+  - Key: sfx:player/Placing_building_turret
+    Value: {fileID: 11400000, guid: a31f61acd3043114b92f67ae7366869a, type: 2}
+  - Key: sfx:player/Selling_building_turret
+    Value: {fileID: 11400000, guid: 5d721a0dd726cd54cbd8e762345febdd, type: 2}
 --- !u!114 &5814949452256541861
 MonoBehaviour:
   m_ObjectHideFlags: 0

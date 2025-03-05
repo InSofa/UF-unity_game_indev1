@@ -165,3 +165,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1457b206cf8c84e8366dcef8c4b057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pillowSFX: sfx:player/Picking_up_pillow

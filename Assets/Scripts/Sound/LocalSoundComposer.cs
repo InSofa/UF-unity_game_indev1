@@ -23,7 +23,7 @@ public class LocalSoundComposer : MonoBehaviour
     }
 
     public void PlayFx(string id) {
-        Debug.Log("Playing sound: " + id);
+        // Debug.Log("Playing sound: " + id);
 
         GameObject instance = Instantiate(soundEmitterPrefab, this.gameObject.transform);
         instance.transform.localPosition = Vector3.zero;

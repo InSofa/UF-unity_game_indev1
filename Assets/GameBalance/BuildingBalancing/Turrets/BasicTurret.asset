@@ -15,8 +15,8 @@ MonoBehaviour:
   buildingName: 
   buildingCost: 5
   buildingSellValue: 3
-  buildingHealth: 20
-  buildingDamage: 5
+  buildingHealth: 37
+  buildingDamage: 6
   buildingRange: 5
   shotCD: 0.05
   projectileSpeed: 22

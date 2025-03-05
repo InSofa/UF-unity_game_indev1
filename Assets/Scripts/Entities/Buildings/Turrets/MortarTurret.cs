@@ -38,6 +38,12 @@ public class MortarTurret : MonoBehaviour {
     [SerializeField]
     LayerMask targetable;
 
+    [Header("Effects")]
+    LocalSoundComposer lsc;
+
+    [SerializeField]
+    string shootSound;
+
     // Start is called before the first frame update
     void Start() {
         turret = new Turret();
@@ -48,6 +54,8 @@ public class MortarTurret : MonoBehaviour {
         shotCD = bs.shotCD;
         travelTime = bs.projectileSpeed;
         maxPredict = bs.maxPredict;
+
+        lsc = GetComponent<LocalSoundComposer>();
     }
 
     // Update is called once per frame
@@ -79,6 +87,9 @@ public class MortarTurret : MonoBehaviour {
     private void shootTarget(GameObject target) {
         if (target == null) {
             return;
+        }
+        if (shootSound != null && shootSound != "") {
+            lsc.PlayFx(shootSound);
         }
 
         //Creates the projectile and destroys it after 5 seconds to make sure the instance isn't left eventually affecting performance

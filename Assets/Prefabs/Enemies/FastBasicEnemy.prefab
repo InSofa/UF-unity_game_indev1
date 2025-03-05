@@ -171,12 +171,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageTaken: 0
-  maxHealth: 42
+  maxHealth: 60
   destroyParticle: {fileID: 0}
   flashMaterial: {fileID: 2100000, guid: eb0872da184994a468d3e91629d9c52d, type: 2}
   flashTime: 0.08
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  pillowPrefab: {fileID: 0}
+  pillowPrefab: {fileID: 4147960885588717861, guid: 4c69f4db61c8acd408e5bbcac22f6c3d, type: 3}
   minPillows: 1
   maxPillows: 3
   spawnRange: 0.5
@@ -232,8 +232,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSounds:
-  - sfx:generic/debug
+  - sfx:player/grassWalk1
+  - sfx:player/grassWalk2
+  - sfx:player/grassWalk3
+  - sfx:player/grassWalk4
   walkSoundDistanceInterval: 1
+  grunts:
+  - sfx:enemy/pillow_monster_1
+  - sfx:enemy/pillow_monster_2
+  - sfx:enemy/pillow_monster_2
+  gruntIntervalMax: 40
+  gruntIntervalMin: 20
 --- !u!114 &-5724176632058367043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,3 +255,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c2b7876432cae84a95b872ee9df4543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pitchModifier: 1

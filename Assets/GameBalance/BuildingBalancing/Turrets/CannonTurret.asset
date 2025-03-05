@@ -15,10 +15,10 @@ MonoBehaviour:
   buildingName: Drawer Cannon
   buildingCost: 7
   buildingSellValue: 5
-  buildingHealth: 20
-  buildingDamage: 50
+  buildingHealth: 47
+  buildingDamage: 40
   buildingRange: 10
-  shotCD: 2.1
+  shotCD: 2.4
   projectileSpeed: 6
   maxPredict: 3
   buildingDescription: 

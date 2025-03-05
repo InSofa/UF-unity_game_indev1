@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void updateVisuals() {
+        Debug.Log($"Input: {animator.GetInteger("State")}, is idle: {animator.GetBool("isIdle")}");
         if (movementInput.magnitude < 0.1f) {
             walkMagnitude = walkSoundInterval - 1;
             animator.SetBool("isIdle", true);
@@ -95,7 +96,8 @@ public class PlayerController : MonoBehaviour
          5 - Down
          */
 
-        switch (movementInput.x) {
+
+        switch (Mathf.Abs(movementInput.x)) {
             case < 0.3826834f:
                 if (movementInput.y > 0) {
                     animator.SetInteger("State", 1);
