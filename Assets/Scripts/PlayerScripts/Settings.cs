@@ -7,16 +7,12 @@ public class Settings : MonoBehaviour
     public static Settings instance;
 
     public static float joystickLookSensitivity = 1.0f;
-    public static bool rawJoystickInput = false;
 
     [SerializeField]
     Slider joystickSensitivitySlider;
 
     [SerializeField]
     TMP_InputField joystickSensitivityInput;
-
-    [SerializeField]
-    Toggle rawJoystickInputToggle;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,13 +26,10 @@ public class Settings : MonoBehaviour
 
         joystickLookSensitivity = PlayerPrefs.GetFloat("joystickLookSensitivity", 3f);
         joystickSensitivitySlider.value = joystickLookSensitivity;
+        joystickSensitivityInput.text = joystickLookSensitivity.ToString();
 
-        if (PlayerPrefs.HasKey("rawJoystickInput")) {
-            rawJoystickInput = PlayerPrefs.GetInt("rawJoystickInput") == 1;
-            rawJoystickInputToggle.isOn = rawJoystickInput;
-        } else {
-            PlayerPrefs.SetInt("rawJoystickInput", rawJoystickInput ? 1 : 0);
-        }
+        joystickSensitivitySlider.onValueChanged.AddListener(delegate { SetControllerSensitivity(true); });
+        joystickSensitivityInput.onEndEdit.AddListener(delegate { SetControllerSensitivity(false); });
     }
 
     public void SetControllerSensitivity(bool isSlider) {
@@ -53,10 +46,4 @@ public class Settings : MonoBehaviour
         joystickSensitivityInput.text = newSens.ToString();
         PlayerPrefs.SetFloat("joystickLookSensitivity", joystickLookSensitivity);
     }
-
-    public void SetRawJoystickInput() {
-        rawJoystickInput = rawJoystickInputToggle.isOn;
-        PlayerPrefs.SetInt("rawJoystickInput", rawJoystickInputToggle.isOn ? 1 : 0);
-    }
-
 }
