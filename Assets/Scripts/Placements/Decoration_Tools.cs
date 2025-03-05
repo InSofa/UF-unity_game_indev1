@@ -33,15 +33,19 @@ public class Decoration_Tools : MonoBehaviour {
     private float GrassPgenScale = 10;
 
 
-    private List<Vector2> grassPoints;
+    private List<Vector2> grassPoints = new List<Vector2>();
 
+
+    [Space]
+    [SerializeField]
+    private GameObject[] grassPrefabs;
 
     // Define a new struct for Bounds (center and width/height)
     [System.Serializable]
     public struct Bounds2D {
         public Vector2 center;
         public Vector2 size;
-
+            
         public Bounds2D(Vector2 center, Vector2 size) {
             this.center = center;
             this.size = size;
@@ -192,6 +196,12 @@ public class Decoration_Tools : MonoBehaviour {
                 GrassRMaxValidations,
                 GrassDebugLog
             );
+        }
+
+
+        for (int i = 0; i < grassPoints.Count; i++) {
+            GameObject prefab = grassPrefabs[UnityEngine.Random.Range(0, grassPrefabs.Length)];
+            Instantiate(prefab, grassPoints[i], Quaternion.identity);
         }
     }
 
