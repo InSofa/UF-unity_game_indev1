@@ -2,40 +2,39 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Decoration_Tools : MonoBehaviour {
-
-    // Serialized fields for the "Grass" decorations, for both perlin and not perlin
-    [SerializeField]
-    private bool Grass_UsePerlin = true;
-    [SerializeField]
-    private Texture2D Grass_Perlin_UseImage; // If not defined we generate
-
     // General Usage Parameters (things both random and perlin have in common ex nonosquares)
     [SerializeField]
-    private Bounds2D Grass_OuterBounds;
+    private Bounds2D GrassOuterBounds;
     [SerializeField]
-    private List<Bounds2D> Grass_NoNoSquares;
+    private List<Bounds2D> GrassNoNoSquares;
     [SerializeField]
-    private bool Grass_Debug = false;
-
-    // Perlin Generation Parameters
+    private bool GrassUsePerlin = true;
     [SerializeField]
-    private int Grass_Perlin_Gen_Seed = -1; // Negative gives random seed
-    [SerializeField]
-    private float Grass_Perlin_Gen_Scale = 10;
-    [SerializeField]
-    private int Grass_Perlin_Frequency = 50;
-
-    // Perlin Usage Parameters
-    [SerializeField]
-    private float Grass_Perlin_NoiseThreshold = 0.3f;
+    private bool GrassDebugLog = false;
 
     // Random Usage Parameters
     [SerializeField]
-    private int Grass_Random_MaxValidations = 100;
+    private int GrassRMaxValidations = 100;
     [SerializeField]
-    private int Grass_Random_Frequency = 200;
+    private int GrassRFreq = 1750;
+
+    // Perlin Usage Parameters
+    [SerializeField]
+    private Texture2D GrassPUseImage; // If not defined we generate
+    [SerializeField]
+    private int GrassPFreq = 15;
+    [SerializeField]
+    private float GrassPNoiseThreshold = 0.3f;
+
+    // Perlin Generation Parameters
+    [SerializeField]
+    private int GrassPgenSeed = -1; // Negative gives random seed
+    [SerializeField]
+    private float GrassPgenScale = 10;
+
 
     private List<Vector2> grassPoints;
+
 
     // Define a new struct for Bounds (center and width/height)
     [System.Serializable]
@@ -163,35 +162,35 @@ public class Decoration_Tools : MonoBehaviour {
     private void Start() {
 
         // Grass Decorations
-        if (Grass_UsePerlin) {
+        if (GrassUsePerlin) {
             // Generate or use existing image? (if make use bounds as width and height)
-            Texture2D perlinImage = Grass_Perlin_UseImage;
-            if (Grass_Perlin_Gen_Seed < 0) Grass_Perlin_Gen_Seed = UnityEngine.Random.Range(0, 1000000);
+            Texture2D perlinImage = GrassPUseImage;
+            if (GrassPgenSeed < 0) GrassPgenSeed = UnityEngine.Random.Range(0, 1000000);
             if (perlinImage == null) {
                 perlinImage = MakePerlinNoiseMap(
-                    Mathf.CeilToInt(Grass_OuterBounds.size.x),
-                    Mathf.CeilToInt(Grass_OuterBounds.size.y),
-                    Grass_Perlin_Gen_Scale,
-                    Grass_Perlin_Gen_Seed
+                    Mathf.CeilToInt(GrassOuterBounds.size.x),
+                    Mathf.CeilToInt(GrassOuterBounds.size.y),
+                    GrassPgenScale,
+                    GrassPgenSeed
                 );
             }
 
             // Generate the points using the perlin image
             grassPoints = Perlin(
                 perlinImage,
-                Grass_Perlin_Frequency,
-                Grass_OuterBounds,
-                Grass_NoNoSquares,
-                Grass_Perlin_NoiseThreshold,
-                Grass_Debug
+                GrassPFreq,
+                GrassOuterBounds,
+                GrassNoNoSquares,
+                GrassPNoiseThreshold,
+                GrassDebugLog
             );
         } else {
             grassPoints = Random(
-                Grass_Random_Frequency,
-                Grass_OuterBounds,
-                Grass_NoNoSquares,
-                Grass_Random_MaxValidations,
-                Grass_Debug
+                GrassRFreq,
+                GrassOuterBounds,
+                GrassNoNoSquares,
+                GrassRMaxValidations,
+                GrassDebugLog
             );
         }
     }
@@ -200,11 +199,11 @@ public class Decoration_Tools : MonoBehaviour {
         // Grass Decorations
         //// Bounds
         Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(Grass_OuterBounds.center, Grass_OuterBounds.size);
+        Gizmos.DrawWireCube(GrassOuterBounds.center, GrassOuterBounds.size);
 
         //// NoNoSquares
         Gizmos.color = Color.black;
-        foreach (Bounds2D bounds in Grass_NoNoSquares) {
+        foreach (Bounds2D bounds in GrassNoNoSquares) {
             Gizmos.DrawWireCube(bounds.center, bounds.size);
         }
 

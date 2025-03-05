@@ -10255,21 +10255,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8e2a2b01e29d694790974140e3784ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Grass_UsePerlin: 1
-  Grass_Perlin_UseImage: {fileID: 0}
-  Grass_OuterBounds:
+  GrassOuterBounds:
     center: {x: 0, y: 0}
     size: {x: 90, y: 90}
-  Grass_NoNoSquares:
+  GrassNoNoSquares:
   - center: {x: 0, y: 1}
     size: {x: 4, y: 2}
-  Grass_Debug: 1
-  Grass_Perlin_Gen_Seed: -1
-  Grass_Perlin_Gen_Scale: 10
-  Grass_Perlin_Frequency: 15
-  Grass_Perlin_NoiseThreshold: 0.3
-  Grass_Random_MaxValidations: 100
-  Grass_Random_Frequency: 1000
+  GrassUsePerlin: 1
+  GrassDebugLog: 0
+  GrassRMaxValidations: 100
+  GrassRFreq: 1750
+  GrassPUseImage: {fileID: 0}
+  GrassPFreq: 15
+  GrassPNoiseThreshold: 0.3
+  GrassPgenSeed: -1
+  GrassPgenScale: 10
 --- !u!4 &1084547455
 Transform:
   m_ObjectHideFlags: 0
