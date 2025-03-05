@@ -2070,12 +2070,17 @@ MonoBehaviour:
   meleeRange: 0.75
   meleeRadius: 0.57
   meleeLookSpeed: 20
+  meleeCD: 0.2
   attackOffset: 0.2
   meleeDamage: 1
   isMeleeMode: 0
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8
+  buildModeSFX: sfx:player/Build_Mode
+  meleeModeSFX: sfx:player/Sword_Mode
+  buildSFX: sfx:player/Placing_building_turret
+  sellSFX: sfx:player/Selling_building_turret
 --- !u!70 &452178608
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2843,6 +2848,7 @@ MonoBehaviour:
   maxSpawnDist: 100
   wallClamp: {x: 45, y: 45}
   spawnEffect: {fileID: 5750543231515361671, guid: c9958ad77af9a734bafd28e723bd8882, type: 3}
+  waveStartSound: sfx:generic/New_enemy_wave
 --- !u!4 &595954346
 Transform:
   m_ObjectHideFlags: 0
@@ -8707,7 +8713,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &854664950
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13887,6 +13893,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlobalSoundComposer
       objectReference: {fileID: 0}
+    - target: {fileID: 7164246254915599563, guid: 0378308a9ae6fcb4ba00392f0239d3bd, type: 3}
+      propertyPath: entries.Array.size
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7164246254915599563, guid: 0378308a9ae6fcb4ba00392f0239d3bd, type: 3}
+      propertyPath: entries.Array.data[18].Key
+      value: sfx:buildings/Watertower_turret
+      objectReference: {fileID: 0}
+    - target: {fileID: 7164246254915599563, guid: 0378308a9ae6fcb4ba00392f0239d3bd, type: 3}
+      propertyPath: entries.Array.data[19].Key
+      value: sfx:buildings/Katapult_beginning
+      objectReference: {fileID: 0}
+    - target: {fileID: 7164246254915599563, guid: 0378308a9ae6fcb4ba00392f0239d3bd, type: 3}
+      propertyPath: entries.Array.data[18].Value
+      value: 
+      objectReference: {fileID: 11400000, guid: ceb2e1a54a5a1ac44a9d368d0ffc1934, type: 2}
+    - target: {fileID: 7164246254915599563, guid: 0378308a9ae6fcb4ba00392f0239d3bd, type: 3}
+      propertyPath: entries.Array.data[19].Value
+      value: 
+      objectReference: {fileID: 11400000, guid: e5abc08586f818240930ac3d335e8cbd, type: 2}
     - target: {fileID: 8259877791490505470, guid: 0378308a9ae6fcb4ba00392f0239d3bd, type: 3}
       propertyPath: m_Volume
       value: 0.08

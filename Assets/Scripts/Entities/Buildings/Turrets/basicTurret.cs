@@ -51,6 +51,11 @@ public class BasicTurret : MonoBehaviour
     [SerializeField]
     SpriteRenderer sr;
 
+    LocalSoundComposer lsc;
+
+    [SerializeField]
+    string shootSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,7 +68,10 @@ public class BasicTurret : MonoBehaviour
         projectileSpeed = bs.projectileSpeed;
         maxPredict = bs.maxPredict;
 
-        originalSprite = sr.sprite;
+        if(sr != null)
+            originalSprite = sr.sprite;
+
+        lsc = GetComponent<LocalSoundComposer>();
     }
 
     // Update is called once per frame
@@ -112,6 +120,9 @@ public class BasicTurret : MonoBehaviour
             } else {
                 muzzleFlash.GetComponent<ParticleSystem>().Play();
             }
+        }
+        if(shootSound != null) {
+            lsc.PlayFx(shootSound);
         }
 
         //Creates the projectile and destroys it after 5 seconds to make sure the instance isn't left eventually affecting performance

@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerHand : MonoBehaviour {
+    LocalSoundComposer lsc;
+
     [SerializeField]
     UIHandler uiHandler;
 
@@ -66,6 +68,11 @@ public class PlayerHand : MonoBehaviour {
     [SerializeField]
     float meleeLookSpeed;
 
+    [SerializeField]
+    float meleeCD;
+
+    float meleeTimer;
+
     //Offsets the attack position from the lookDir
     [SerializeField]
     float attackOffset;
@@ -79,8 +86,23 @@ public class PlayerHand : MonoBehaviour {
     [SerializeField]
     LayerMask enemyLayer;
 
+    [Header("Sound")]
+    [SerializeField]
+    string buildModeSFX;
+
+    [SerializeField]
+    string meleeModeSFX;
+
+    [SerializeField]
+    string buildSFX;
+
+    [SerializeField]
+    string sellSFX;
+
     private void Start()
     {
+        lsc = GetComponent<LocalSoundComposer>();
+
         cam = Camera.main;
         pillowText.text = pillows.ToString();
 
@@ -95,6 +117,9 @@ public class PlayerHand : MonoBehaviour {
 
     private void Update()
     {
+        if (isMeleeMode) {
+            meleeTimer += Time.deltaTime;
+        }
         takeInput();
     }
 
@@ -211,31 +236,38 @@ public class PlayerHand : MonoBehaviour {
     private void placeBuilding(InputAction.CallbackContext obj)
     {
         if (pillows < buildings[selectedBuilding].buildingCost) {
-            Debug.Log("Not enough pillows");
+            //Debug.Log("Not enough pillows");
             return;
         }
 
         bool placed = PathfindingGrid.instance.CreateBuilding(buildings[selectedBuilding].buildingPrefab);
 
         if (placed) {
+            lsc.PlayFx(buildSFX);
             pillows -= buildings[selectedBuilding].buildingCost;
             pillowText.text = pillows.ToString();
             return;
         }
-        Debug.Log("Cannot place building here");
+        //Debug.Log("Cannot place building here");
     }
 
     private void removeBuilding(InputAction.CallbackContext obj) {
         int? sellAmount = PathfindingGrid.instance.RemoveBuilding(buildPos);
         if(sellAmount != null) {
-            Debug.Log("Sold building for " + sellAmount + " pillows");
+            lsc.PlayFx(sellSFX);
+            //Debug.Log("Sold building for " + sellAmount + " pillows");
             addPillow((int)sellAmount);
             return;
         }
-        Debug.Log("No building to sell here");
+        //Debug.Log("No building to sell here");
     }
 
     private void meleeAttack(InputAction.CallbackContext obj) {
+        if(meleeTimer < meleeCD) {
+            return;
+        }
+        meleeTimer = 0;
+
         Vector2 attackPos = (Vector2)attackIndicator.position - (attackOffset * lookDir.normalized);
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPos, meleeRadius, enemyLayer);
 
@@ -250,18 +282,24 @@ public class PlayerHand : MonoBehaviour {
 
     private void switchMeleeMode(InputAction.CallbackContext obj) {
         if (isMeleeMode) {
+            lsc.PlayFx(buildModeSFX);
+
             isMeleeMode = false;
             buildInput.action.started += placeBuilding;
             sellBuildingInput.action.started += removeBuilding;
             buildInput.action.started -= meleeAttack;
+
             attackIndicator.gameObject.SetActive(false);
             buildIndicator.gameObject.SetActive(true);
             placementIndicator.gameObject.SetActive(true);
         } else {
+            lsc.PlayFx(meleeModeSFX);
+
             isMeleeMode = true;
             buildInput.action.started -= placeBuilding;
             sellBuildingInput.action.started -= removeBuilding;
             buildInput.action.started += meleeAttack;
+
             attackIndicator.gameObject.SetActive(true);
             buildIndicator.gameObject.SetActive(false);
             buildingIndicator.gameObject.SetActive(false);

@@ -28,6 +28,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     GameObject spawnEffect;
 
+    [SerializeField]
+    string waveStartSound;
+
 
     /*
     [SerializeField]
@@ -76,6 +79,8 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnWave()
     {
+        GlobalSoundComposer.Instance.PlayFx(waveStartSound);
+
         if (currentWave >= waves.Length) {
             Debug.Log("No more waves to spawn, resetting count");
             currentWave = 0;

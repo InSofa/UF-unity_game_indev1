@@ -238,8 +238,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSounds:
-  - sfx:generic/debug
+  - sfx:player/grassWalk1
+  - sfx:player/grassWalk2
+  - sfx:player/grassWalk3
+  - sfx:player/grassWalk4
   walkSoundDistanceInterval: 1
+  grunts:
+  - sfx:enemy/pillow_monster_1
+  - sfx:enemy/pillow_monster_2
+  - sfx:enemy/pillow_monster_2
+  gruntIntervalMax: 40
+  gruntIntervalMin: 20
 --- !u!114 &-347208891175331941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,3 +261,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c2b7876432cae84a95b872ee9df4543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pitchModifier: 0.7
