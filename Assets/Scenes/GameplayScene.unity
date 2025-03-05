@@ -1933,7 +1933,9 @@ MonoBehaviour:
   - sfx:player/grassWalk2
   - sfx:player/grassWalk3
   - sfx:player/grassWalk4
-  walkSoundInterval: 100
+  walkSoundInterval: 80
+  animator: {fileID: 951489003}
+  sr: {fileID: 951489002}
 --- !u!50 &452178601
 Rigidbody2D:
   serializedVersion: 5
@@ -3686,6 +3688,18 @@ PrefabInstance:
     - target: {fileID: 5125468658534385600, guid: 02cfca211e6b8ea4f88f061a33374065, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5302883798201481153, guid: 02cfca211e6b8ea4f88f061a33374065, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1465475016}
+    - target: {fileID: 5302883798201481153, guid: 02cfca211e6b8ea4f88f061a33374065, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: switchMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5302883798201481153, guid: 02cfca211e6b8ea4f88f061a33374065, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8727,6 +8741,7 @@ GameObject:
   m_Component:
   - component: {fileID: 951489001}
   - component: {fileID: 951489002}
+  - component: {fileID: 951489003}
   m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
@@ -8793,7 +8808,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6362741225058424177, guid: 9895725fae6f5cb4984284dff4ce2a7e, type: 3}
+  m_Sprite: {fileID: 1005093928898239069, guid: 8489ca46edc9b934a89d4da83cb9c17c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8804,6 +8819,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &951489003
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951489000}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9df32b86ecc53504792369b026ce2f18, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &953827686
 GameObject:
   m_ObjectHideFlags: 0
