@@ -7,14 +7,25 @@ public class SoundMixer_Handler : MonoBehaviour
     [SerializeField]
     private AudioMixer audioMixer;
 
-    [SerializeField]
-    private Slider masterVolumeSlider, musicVolumeSlider, sfxVolumeSlider;
+    public Slider masterVolumeSlider;
+    public Slider musicVolumeSlider;
+    public Slider sfxVolumeSlider;
 
     private void Start() {
         // Set the volume levels to the saved values
-        SetMasterVolume(PlayerPrefs.GetFloat("masterVolume", 1f));
-        SetMusicVolume(PlayerPrefs.GetFloat("musicVolume", 1f));
-        SetSFXVolume(PlayerPrefs.GetFloat("sfxVolume", 1f));
+        float masterVolume = PlayerPrefs.GetFloat("masterVolume", 1f);
+        float musicVolume = PlayerPrefs.GetFloat("musicVolume", 1f);
+        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 1f);
+
+        Debug.Log($"Master: {masterVolume}, Music: {musicVolume}, SFX: {sfxVolume}");
+
+        SetMasterVolume(masterVolume);
+        SetMusicVolume(musicVolume);
+        SetSFXVolume(sfxVolume);
+
+        masterVolumeSlider.onValueChanged.AddListener(delegate { SetMasterVolume(); });
+        musicVolumeSlider.onValueChanged.AddListener(delegate { SetMusicVolume(); });
+        sfxVolumeSlider.onValueChanged.AddListener(delegate { SetSFXVolume(); });
     }
 
     public void SetMasterVolume(float level) {
@@ -35,6 +46,27 @@ public class SoundMixer_Handler : MonoBehaviour
         //audioMixer.SetFloat("sfxVolume", level);
         audioMixer.SetFloat("sfxVolume", Mathf.Log10(level) * 20f);
         sfxVolumeSlider.value = level;
+        PlayerPrefs.SetFloat("sfxVolume", level);
+    }
+
+    public void SetMasterVolume() {
+        //audioMixer.SetFloat("masterVolume", level);
+        float level = masterVolumeSlider.value;
+        audioMixer.SetFloat("masterVolume", Mathf.Log10(level) * 20f);
+        PlayerPrefs.SetFloat("masterVolume", level);
+    }
+
+    public void SetMusicVolume() {
+        //audioMixer.SetFloat("musicVolume", level);
+        float level = musicVolumeSlider.value;
+        audioMixer.SetFloat("musicVolume", Mathf.Log10(level) * 20f);
+        PlayerPrefs.SetFloat("musicVolume", level);
+    }
+
+    public void SetSFXVolume() {
+        //audioMixer.SetFloat("sfxVolume", level);
+        float level = sfxVolumeSlider.value;
+        audioMixer.SetFloat("sfxVolume", Mathf.Log10(level) * 20f);
         PlayerPrefs.SetFloat("sfxVolume", level);
     }
 }
