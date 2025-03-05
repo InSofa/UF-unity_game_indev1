@@ -2256,7 +2256,7 @@ MonoBehaviour:
   - sfx:player/grassWalk2
   - sfx:player/grassWalk3
   - sfx:player/grassWalk4
-  walkSoundInterval: 3
+  walkSoundInterval: 100
 --- !u!50 &452178601
 Rigidbody2D:
   serializedVersion: 5
@@ -10638,12 +10638,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7334331486590625589, guid: 66da955f9a633344fb70b854b66cd3e9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8474419050980633780, guid: 66da955f9a633344fb70b854b66cd3e9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 66da955f9a633344fb70b854b66cd3e9, type: 3}
 --- !u!1 &1185554392
 GameObject:

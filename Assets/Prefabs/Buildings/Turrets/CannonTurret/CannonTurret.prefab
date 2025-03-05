@@ -209,6 +209,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   muzzleFlash: {fileID: 0}
+  shotSprite: {fileID: -4791372531394265907, guid: 810aefe71ca50b14e808fce4d9796906, type: 3}
+  sr: {fileID: 3352731974353622495}
 --- !u!114 &5490673734300585333
 MonoBehaviour:
   m_ObjectHideFlags: 0

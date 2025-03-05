@@ -26,7 +26,7 @@ public class HailTurret : MonoBehaviour {
     float shotCDTime;
 
     [SerializeField]
-    GameObject projectile;
+    GameObject[] projectile;
 
     GameObject target;
 
@@ -98,7 +98,8 @@ public class HailTurret : MonoBehaviour {
     }
 
     private void shootProjectile(Transform point) {
-        GameObject local_projectile = Instantiate(projectile, point.position, point.rotation);
+        Quaternion randomAngle = Quaternion.Euler(new Vector3(0,0, Random.Range(0,90)));
+        GameObject local_projectile = Instantiate(projectile[Random.Range(0, projectile.Length)], point.position, randomAngle);
         Destroy(local_projectile, 5);
 
         Rigidbody2D local_projectileRb = local_projectile.GetComponent<Rigidbody2D>();

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 810aefe71ca50b14e808fce4d9796906
+guid: 78f6373914084d24ca7ef0eb41ad2ef5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4791372531394265907
-    second: PierceGun-1_0
+      213: 7921832824100459665
+    second: Vacuum Handle_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 800
+  spritePixelsToUnits: 630
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PierceGun-1_0
+      name: Vacuum Handle_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 26
         y: 0
-        width: 800
-        height: 400
+        width: 362
+        height: 458
       alignment: 9
-      pivot: {x: 0.5, y: 0.5708154}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dcc3ea78110a18db0800000000000000
-      internalID: -4791372531394265907
+      spriteID: 194998a5bf000fd60800000000000000
+      internalID: 7921832824100459665
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2966667a5c03ea44e965b0fb1c9854d0
+    spriteID: 55fbc9c24eaf13a4287da9f2f5109af4
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PierceGun-1_0: -4791372531394265907
+      Vacuum Handle_0: 7921832824100459665
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
