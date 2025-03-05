@@ -32,15 +32,32 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     InputActionReference move;
 
+    [Header("Sound")]
+    LocalSoundComposer lsc;
+
+    [SerializeField]
+    List<string> walkSounds;
+
+    [SerializeField]
+    float walkSoundInterval = 3f;
+
+    float walkMagnitude;
+
     // Start is called before the first frame update
     private void Start() {
         player = this.gameObject;
         rb = GetComponent<Rigidbody2D>();
+        lsc = GetComponent<LocalSoundComposer>();
     }
 
     // Update is called once per frame
     private void Update() {
         takeInput();
+
+        if (walkMagnitude >= walkSoundInterval) {
+            lsc.PlayRandomFx(walkSounds);
+            walkMagnitude = 0;
+        }
     }
 
     private void FixedUpdate() {
@@ -66,6 +83,8 @@ public class PlayerController : MonoBehaviour
         }
 
         velocity = Vector2.Lerp(velocity, movementInput * speed, lerpFloatValue * Time.fixedDeltaTime);
+        walkMagnitude += velocity.magnitude;
+
         rb.linearVelocity = velocity;
     }
 }

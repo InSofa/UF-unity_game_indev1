@@ -2251,6 +2251,12 @@ MonoBehaviour:
   accelerate: 10.2
   deAccelerate: 17.26
   move: {fileID: -8099256006018764938, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
+  walkSounds:
+  - sfx:player/grassWalk1
+  - sfx:player/grassWalk2
+  - sfx:player/grassWalk3
+  - sfx:player/grassWalk4
+  walkSoundInterval: 3
 --- !u!50 &452178601
 Rigidbody2D:
   serializedVersion: 5
@@ -2311,9 +2317,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2be080e426fda54d8209ed1a5be0ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hurtSounds:
+  - sfx:player/Esther_taking_damage_1
+  - sfx:player/Esther_taking_damage_2
+  - sfx:player/Esther_taking_damage_3
+  deathSound: sfx:generic/GameOver
   maxHealth: 100
   healthSlider: {fileID: 1501079777}
-  canDie: 1
+  canDie: 0
 --- !u!114 &452178606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2435,6 +2446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c2b7876432cae84a95b872ee9df4543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pitchModifier: 1
 --- !u!1 &453085765
 GameObject:
   m_ObjectHideFlags: 0
@@ -16498,12 +16510,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5115746639820666073, guid: 0378308a9ae6fcb4ba00392f0239d3bd, type: 3}
+      propertyPath: m_Volume
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115746639820666073, guid: 0378308a9ae6fcb4ba00392f0239d3bd, type: 3}
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 7504070bd6ec0dd40a3417d15958f858, type: 3}
     - target: {fileID: 7117746038225080835, guid: 0378308a9ae6fcb4ba00392f0239d3bd, type: 3}
       propertyPath: m_Name
       value: GlobalSoundComposer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8259877791490505470, guid: 0378308a9ae6fcb4ba00392f0239d3bd, type: 3}
+      propertyPath: m_Volume
+      value: 0.08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

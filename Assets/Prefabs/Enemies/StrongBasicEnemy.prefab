@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 78974402246906684}
   - component: {fileID: 4568781300580882706}
   - component: {fileID: 2907487656396636634}
+  - component: {fileID: 5369829785286687309}
+  - component: {fileID: 5379267679620914795}
   m_Layer: 3
   m_Name: StrongBasicEnemy
   m_TagString: Untagged
@@ -217,3 +219,30 @@ MonoBehaviour:
   attackCD: 0.8
   playerDetectionDistance: 2
   damage: 24
+--- !u!114 &5369829785286687309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791162891544579945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e750505b2d5d31c4b98344924792ffd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSounds:
+  - sfx:generic/debug
+  walkSoundDistanceInterval: 1
+--- !u!114 &5379267679620914795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791162891544579945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c2b7876432cae84a95b872ee9df4543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

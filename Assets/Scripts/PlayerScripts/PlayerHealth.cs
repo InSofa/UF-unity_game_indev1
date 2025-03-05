@@ -7,6 +7,19 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [Header("Sound Settings")]
+    LocalSoundComposer lsc;
+    [SerializeField]
+    List<String> hurtSounds;
+
+    [SerializeField]
+    string deathSound;
+
+
+    [Space]
+    [Header("Health Settings")]
+
+
     private float health;
     [SerializeField]
     private float maxHealth;
@@ -19,24 +32,32 @@ public class PlayerHealth : MonoBehaviour
 
     public void Start()
     {
+        lsc = GetComponent<LocalSoundComposer>();
+
         health = maxHealth;
         healthSlider.maxValue = maxHealth;
         healthSlider.value = health;
         healthSlider.gameObject.SetActive(true);
     }
 
+    IEnumerator Death() {
+        lsc.PlayFx(deathSound);
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(0);
+    }
+
+
     public void TakeDamage(float damage, GameObject source)
     {
-        Debug.Log("took damage");
         health -= damage;
         healthSlider.value = health;
         if (health < 0)
         {
             if (canDie == true) {
                 //Destroy(this.gameObject);
-                SceneManager.LoadScene(0);
+                StartCoroutine(Death());
+                //SceneManager.LoadScene(0);
             } else {
-
                 // [GLOBAL.TRACK]
                 /*
                 GlobalSoundComposer gsc = GameObject.Find("GlobalSoundComposer").GetComponent<GlobalSoundComposer>();
@@ -66,6 +87,9 @@ public class PlayerHealth : MonoBehaviour
                 */
 
             }
+            return;
         }
+
+        lsc.PlayRandomFx(hurtSounds);
     }
 }
