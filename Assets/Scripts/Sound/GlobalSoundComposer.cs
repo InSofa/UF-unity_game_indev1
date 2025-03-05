@@ -82,11 +82,23 @@ public class GlobalSoundComposer : MonoBehaviour {
 
         // Play after intializing
         audioSource.Play();
+
+        // Destroy after clip is done playing
+        Destroy(instance, audioSource.clip.length + 1);
     }
 
     // Overload for PlayFx, places in the middle of the scene
     public void PlayFx(string id) {
         PlayFx(id, Vector3.zero);
+    }
+
+    public void PlayRandomFx(List<string> ids) {
+        if (ids.Count == 0) {
+            List<string> keys = new List<string>(Registry.Keys);
+            PlayFx(keys[UnityEngine.Random.Range(0, keys.Count)]);
+        } else {
+            PlayFx(ids[UnityEngine.Random.Range(0, ids.Count)]);
+        }
     }
 
     public void PlayTrack(string id) {
