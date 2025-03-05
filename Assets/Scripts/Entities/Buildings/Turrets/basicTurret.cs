@@ -44,6 +44,13 @@ public class BasicTurret : MonoBehaviour
     [SerializeField]
     GameObject muzzleFlash;
 
+    [SerializeField]
+    Sprite shotSprite;
+    Sprite originalSprite;
+
+    [SerializeField]
+    SpriteRenderer sr;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +62,8 @@ public class BasicTurret : MonoBehaviour
         shotCD = bs.shotCD;
         projectileSpeed = bs.projectileSpeed;
         maxPredict = bs.maxPredict;
+
+        originalSprite = sr.sprite;
     }
 
     // Update is called once per frame
@@ -62,6 +71,10 @@ public class BasicTurret : MonoBehaviour
         target = turret.findTarget(transform, range, targetable);
 
         shotCDTime += Time.deltaTime;
+        if (shotCDTime > shotCD * .4f) {
+            sr.sprite = originalSprite;
+        }
+
         if (target != null) {
             //Gets the direction in the form of a Vector2 and lerps it to that direction
 
@@ -74,6 +87,8 @@ public class BasicTurret : MonoBehaviour
             Vector2 direction = prediction - (Vector2)firePoint.position;
 
             bool shoot = turret.lerpPivot(pivot, direction, lerpSpeed, shootLerpDiff, minLerpDiff);
+
+
 
             if (shotCDTime >= shotCD && shoot) {
                 shootTarget();
@@ -100,7 +115,8 @@ public class BasicTurret : MonoBehaviour
         }
 
         //Creates the projectile and destroys it after 5 seconds to make sure the instance isn't left eventually affecting performance
-        GameObject local_projectile = Instantiate(projectile, firePoint.position, firePoint.rotation);
+        Quaternion projectileAngle = Quaternion.Euler(0, 0, firePoint.eulerAngles.z + projectile.transform.eulerAngles.z);
+        GameObject local_projectile = Instantiate(projectile, firePoint.position, projectileAngle);
         Destroy(local_projectile, 5);
 
         //Launches the projectile towards the target
@@ -111,6 +127,10 @@ public class BasicTurret : MonoBehaviour
         TurretProjectile tp = local_projectile.GetComponent<TurretProjectile>();
         tp.damage = damage;
         tp.init = true;
+
+        if(shotSprite != null) {
+            sr.sprite = shotSprite;
+        }
     }
 
     private void OnDrawGizmos() {
