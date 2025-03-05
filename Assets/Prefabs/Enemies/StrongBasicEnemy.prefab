@@ -171,13 +171,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageTaken: 0
-  maxHealth: 84
+  maxHealth: 140
   destroyParticle: {fileID: 0}
   flashMaterial: {fileID: 2100000, guid: eb0872da184994a468d3e91629d9c52d, type: 2}
   flashTime: 0.08
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   pillowPrefab: {fileID: 4147960885588717861, guid: 4c69f4db61c8acd408e5bbcac22f6c3d, type: 3}
-  minPillows: 2
+  minPillows: 1
   maxPillows: 3
   spawnRange: 0.48
 --- !u!114 &4568781300580882706

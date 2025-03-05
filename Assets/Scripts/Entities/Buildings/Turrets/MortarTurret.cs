@@ -88,7 +88,7 @@ public class MortarTurret : MonoBehaviour {
         if (target == null) {
             return;
         }
-        if (shootSound != null) {
+        if (shootSound != null && shootSound != "") {
             lsc.PlayFx(shootSound);
         }
 

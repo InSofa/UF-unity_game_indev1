@@ -55,8 +55,8 @@ public class PlayerHealth : MonoBehaviour
         {
             if (canDie == true) {
                 //Destroy(this.gameObject);
-                StartCoroutine(Death());
-                //SceneManager.LoadScene(0);
+                //StartCoroutine(Death());
+                SceneManager.LoadScene(0);
             } else {
                 // [GLOBAL.TRACK]
                 /*

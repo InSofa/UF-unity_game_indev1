@@ -689,7 +689,7 @@ MonoBehaviour:
   targetable:
     serializedVersion: 2
     m_Bits: 8
-  muzzleFlash: {fileID: 8661776530367663952, guid: 088390a90abb41241af4d1d63c94bd18, type: 3}
+  muzzleFlash: {fileID: 0}
 --- !u!114 &5453379512187258381
 MonoBehaviour:
   m_ObjectHideFlags: 0

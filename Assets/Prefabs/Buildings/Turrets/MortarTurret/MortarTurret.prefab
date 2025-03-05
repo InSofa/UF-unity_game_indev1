@@ -313,7 +313,7 @@ MonoBehaviour:
   targetable:
     serializedVersion: 2
     m_Bits: 8
-  shootSound: sfx:buildings/Katapult_beginning
+  shootSound: 
 --- !u!114 &-3639130809181385761
 MonoBehaviour:
   m_ObjectHideFlags: 0

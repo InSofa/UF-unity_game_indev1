@@ -121,7 +121,7 @@ public class BasicTurret : MonoBehaviour
                 muzzleFlash.GetComponent<ParticleSystem>().Play();
             }
         }
-        if(shootSound != null) {
+        if(shootSound != null && shootSound != "") {
             lsc.PlayFx(shootSound);
         }
 

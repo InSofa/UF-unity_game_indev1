@@ -81,6 +81,9 @@ public class PlayerHand : MonoBehaviour {
     int meleeDamage;
 
     [SerializeField]
+    float knockbackForce;
+
+    [SerializeField]
     public bool isMeleeMode = false; // Made public for UIControls system
 
     [SerializeField]
@@ -277,6 +280,12 @@ public class PlayerHand : MonoBehaviour {
                 continue;
             }
             eh.TakeDamage(meleeDamage);
+
+            Rigidbody2D rb = hitCollider.GetComponent<Rigidbody2D>();
+            if (rb != null) {
+                Vector2 knockbackDir = (hitCollider.transform.position - transform.position).normalized;
+                rb.AddForce(knockbackDir * knockbackForce, ForceMode2D.Impulse);
+            }
         }
     }
 

@@ -1,8 +1,14 @@
 using NUnit.Framework.Constraints;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MortarProjectile : MonoBehaviour
 {
+    SpriteRenderer sr;
+    [SerializeField]
+    Sprite[] sprites;
+
+
     public Vector2 targetPos;
     public Vector2 inaccuracyModifier;
     Vector2 startPos;
@@ -28,6 +34,11 @@ public class MortarProjectile : MonoBehaviour
 
     float timeSinceStart;
 
+    private void Awake() {
+        sr = GetComponent<SpriteRenderer>();
+        sr.sprite = sprites[Random.Range(0, sprites.Length)];
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void init()
     {
@@ -42,6 +53,8 @@ public class MortarProjectile : MonoBehaviour
         dir = targetPos - (Vector2)transform.position;
         dir.Normalize();
         initiate = true;
+
+        GetComponent<Rigidbody2D>().AddTorque(Random.Range(100, 200));
     }
 
     // Update is called once per frame

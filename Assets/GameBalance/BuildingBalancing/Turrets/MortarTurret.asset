@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: MortarTurret
   m_EditorClassIdentifier: 
   buildingName: Mortar
-  buildingCost: 7
-  buildingSellValue: 5
-  buildingHealth: 30
-  buildingDamage: 30
+  buildingCost: 9
+  buildingSellValue: 7
+  buildingHealth: 40
+  buildingDamage: 40
   buildingRange: 14
   shotCD: 2.2
   projectileSpeed: 2

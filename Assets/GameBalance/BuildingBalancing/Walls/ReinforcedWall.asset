@@ -15,7 +15,7 @@ MonoBehaviour:
   buildingName: Reinforced wall
   buildingCost: 2
   buildingSellValue: 1
-  buildingHealth: 80
+  buildingHealth: 100
   buildingDamage: 0
   buildingRange: 0
   shotCD: 0

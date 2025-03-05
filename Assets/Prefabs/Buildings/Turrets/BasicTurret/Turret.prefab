@@ -5224,7 +5224,7 @@ MonoBehaviour:
   muzzleFlash: {fileID: 899215717878216607}
   shotSprite: {fileID: 0}
   sr: {fileID: 0}
-  shootSound: sfx:buildings/Watertower_turret
+  shootSound: 
 --- !u!114 &1699163923515895646
 MonoBehaviour:
   m_ObjectHideFlags: 0
