@@ -1933,7 +1933,7 @@ MonoBehaviour:
   - sfx:player/grassWalk2
   - sfx:player/grassWalk3
   - sfx:player/grassWalk4
-  walkSoundInterval: 100
+  walkSoundInterval: 80
   animator: {fileID: 951489003}
   sr: {fileID: 951489002}
 --- !u!50 &452178601
@@ -3688,6 +3688,18 @@ PrefabInstance:
     - target: {fileID: 5125468658534385600, guid: 02cfca211e6b8ea4f88f061a33374065, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5302883798201481153, guid: 02cfca211e6b8ea4f88f061a33374065, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1465475016}
+    - target: {fileID: 5302883798201481153, guid: 02cfca211e6b8ea4f88f061a33374065, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: switchMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5302883798201481153, guid: 02cfca211e6b8ea4f88f061a33374065, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8796,7 +8808,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6362741225058424177, guid: 9895725fae6f5cb4984284dff4ce2a7e, type: 3}
+  m_Sprite: {fileID: 1005093928898239069, guid: 8489ca46edc9b934a89d4da83cb9c17c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

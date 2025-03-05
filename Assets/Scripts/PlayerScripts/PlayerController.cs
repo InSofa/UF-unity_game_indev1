@@ -55,11 +55,6 @@ public class PlayerController : MonoBehaviour
         player = this.gameObject;
         rb = GetComponent<Rigidbody2D>();
         lsc = GetComponent<LocalSoundComposer>();
-
-        Vector2 BetweenDU = new Vector2(Mathf.Cos(67.5f), Mathf.Sin(67.5f));
-        Vector2 BetweenS = new Vector2(Mathf.Cos(22.5f), Mathf.Sin(22.5f));
-
-        Debug.Log($"BetweenDU: {BetweenDU}, BetweenS: {BetweenS}");
     }
 
     // Update is called once per frame
@@ -78,10 +73,12 @@ public class PlayerController : MonoBehaviour
     }
 
     void updateVisuals() {
-        if (movementInput.magnitude > 0.1f) {
-            animator.SetInteger("State", 0);
+        if (movementInput.magnitude < 0.1f) {
+            walkMagnitude = walkSoundInterval - 1;
+            animator.SetBool("isIdle", true);
             return;
         }
+        animator.SetBool("isIdle", false);
 
         if (movementInput.x > 0) {
             sr.flipX = true;

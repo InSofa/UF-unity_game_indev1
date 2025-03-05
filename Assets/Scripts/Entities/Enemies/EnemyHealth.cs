@@ -47,7 +47,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        Debug.Log("took damage, i is enemy " + damage);
+        //Debug.Log("took damage, i is enemy " + damage);
         damageTaken += damage;
 
         StopAllCoroutines();

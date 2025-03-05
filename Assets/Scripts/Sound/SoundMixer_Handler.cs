@@ -17,8 +17,6 @@ public class SoundMixer_Handler : MonoBehaviour
         float musicVolume = PlayerPrefs.GetFloat("musicVolume", 1f);
         float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 1f);
 
-        Debug.Log($"Master: {masterVolume}, Music: {musicVolume}, SFX: {sfxVolume}");
-
         SetMasterVolume(masterVolume);
         SetMusicVolume(musicVolume);
         SetSFXVolume(sfxVolume);
