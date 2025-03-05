@@ -1934,6 +1934,8 @@ MonoBehaviour:
   - sfx:player/grassWalk3
   - sfx:player/grassWalk4
   walkSoundInterval: 100
+  animator: {fileID: 951489003}
+  sr: {fileID: 951489002}
 --- !u!50 &452178601
 Rigidbody2D:
   serializedVersion: 5
@@ -8727,6 +8729,7 @@ GameObject:
   m_Component:
   - component: {fileID: 951489001}
   - component: {fileID: 951489002}
+  - component: {fileID: 951489003}
   m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
@@ -8804,6 +8807,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &951489003
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951489000}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9df32b86ecc53504792369b026ce2f18, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &953827686
 GameObject:
   m_ObjectHideFlags: 0
