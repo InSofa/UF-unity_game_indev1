@@ -10272,22 +10272,22 @@ MonoBehaviour:
   GrassPgenScale: 10
   grassPrefabs:
   - prefab: {fileID: 4703721132439959755, guid: 6a5220516845c3942a17d24bff1ff46a, type: 3}
-    weight: 0
+    weight: 3
     changeColor: 0
   - prefab: {fileID: 4392131435194438420, guid: 8bdb3a446bf22f54ca1ced1aa4756930, type: 3}
-    weight: 0
+    weight: 3
     changeColor: 0
   - prefab: {fileID: 4136477772521825572, guid: 18f200c41801eff49a78dc1b4446f4b8, type: 3}
-    weight: 0
+    weight: 3
     changeColor: 0
   - prefab: {fileID: 4687970018406295096, guid: 5d54d1d55609f9b48ba970b79afc9a96, type: 3}
-    weight: 0
+    weight: 1
     changeColor: 0
   - prefab: {fileID: 2738537151235639170, guid: 87ec015bd6f3f66499aa119865dad114, type: 3}
-    weight: 0
+    weight: 1
     changeColor: 0
   - prefab: {fileID: 5855768285469047131, guid: be55f032a0b1cc648ab854ac205ae39b, type: 3}
-    weight: 0
+    weight: 1
     changeColor: 0
   colors:
   - color: {r: 0, g: 0.30505562, b: 1, a: 0}

@@ -71,7 +71,7 @@ public class BasicTurret : MonoBehaviour
         target = turret.findTarget(transform, range, targetable);
 
         shotCDTime += Time.deltaTime;
-        if (shotCDTime > shotCD * .4f) {
+        if (shotCDTime > shotCD * .4f && sr != null) {
             sr.sprite = originalSprite;
         }
 
