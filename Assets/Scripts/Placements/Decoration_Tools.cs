@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static Decoration_Tools;
 
 public class Decoration_Tools : MonoBehaviour {
     // General Usage Parameters (things both random and perlin have in common ex nonosquares)
@@ -32,13 +33,41 @@ public class Decoration_Tools : MonoBehaviour {
     [SerializeField]
     private float GrassPgenScale = 10;
 
+    [Space]
+    [SerializeField]
+    private List<DecorationPrefab> grassPrefabs = new List<DecorationPrefab>();
+
+    [SerializeField]
+    private List<ColorOption> colors = new List<ColorOption>();
+
 
     private List<Vector2> grassPoints = new List<Vector2>();
 
 
-    [Space]
-    [SerializeField]
-    private GameObject[] grassPrefabs;
+    [System.Serializable]
+    public struct DecorationPrefab {
+        public GameObject prefab;
+        public float weight;
+        public bool changeColor;
+
+        public DecorationPrefab(GameObject prefab, float weight, bool changeColor) {
+            this.prefab = prefab;
+            this.weight = weight;
+            this.changeColor = changeColor;
+        }
+    }
+
+    [System.Serializable]
+    public struct ColorOption {
+        public Color color;
+        public float weight;
+
+        public ColorOption(Color color, float weight) {
+            this.color = color;
+            this.weight = weight;
+        }
+    }
+
 
     // Define a new struct for Bounds (center and width/height)
     [System.Serializable]
@@ -152,6 +181,26 @@ public class Decoration_Tools : MonoBehaviour {
         return bestTry;
     }
 
+    public int GetWeightedRandomIndex(List<float> weights) {
+        float totalWeight = 0;
+        foreach (var weight in weights) {
+            totalWeight += weight;
+        }
+
+        float randomValue = UnityEngine.Random.Range(0f, totalWeight);
+        float cumulativeWeight = 0f;
+
+        for (int i = 0; i < weights.Count; i++) {
+            cumulativeWeight += weights[i];
+            if (randomValue <= cumulativeWeight) {
+                return i;
+            }
+        }
+
+        return weights.Count - 1; // Fallback
+    }
+
+
     /// <summary>
     /// Checks if a point is inside any no-go zone.
     /// </summary>
@@ -199,9 +248,44 @@ public class Decoration_Tools : MonoBehaviour {
         }
 
 
+        /*
         for (int i = 0; i < grassPoints.Count; i++) {
             GameObject prefab = grassPrefabs[UnityEngine.Random.Range(0, grassPrefabs.Length)];
             Instantiate(prefab, grassPoints[i], Quaternion.identity);
+        }
+        */
+
+        // Pre-calc the weights
+        List<float> colorWeights = new List<float>();
+        foreach (var colorOption in colors) {
+            colorWeights.Add(colorOption.weight);
+        }
+
+        List<float> prefabWeights = new List<float>();
+        foreach (var decorationPrefab in grassPrefabs) {
+            prefabWeights.Add(decorationPrefab.weight);
+        }
+
+        for (int i = 0; i < grassPoints.Count; i++) {
+            // Select the prefab based on weight
+            int selectedPrefabIndex = GetWeightedRandomIndex(prefabWeights);
+            DecorationPrefab selectedPrefab = grassPrefabs[selectedPrefabIndex];
+
+            GameObject prefab = selectedPrefab.prefab;
+            GameObject instantiatedPrefab = Instantiate(prefab, grassPoints[i], Quaternion.identity);
+
+            // Handle color change if applicable
+            if (selectedPrefab.changeColor) {
+                // Select a color based on weight
+                int selectedColorIndex = GetWeightedRandomIndex(colorWeights);
+                Color selectedColor = colors[selectedColorIndex].color;
+
+                // Apply the color to the SpriteRenderer component
+                SpriteRenderer spriteRenderer = instantiatedPrefab.GetComponent<SpriteRenderer>();
+                if (spriteRenderer != null) {
+                    spriteRenderer.color = selectedColor;
+                }
+            }
         }
     }
 
