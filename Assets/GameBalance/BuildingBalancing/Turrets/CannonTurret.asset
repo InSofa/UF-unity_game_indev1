@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: CannonTurret
   m_EditorClassIdentifier: 
   buildingName: Drawer Cannon
-  buildingCost: 7
-  buildingSellValue: 5
+  buildingCost: 9
+  buildingSellValue: 7
   buildingHealth: 47
   buildingDamage: 40
   buildingRange: 10

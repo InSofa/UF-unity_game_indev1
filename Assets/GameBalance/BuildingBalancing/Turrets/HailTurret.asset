@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: HailTurret
   m_EditorClassIdentifier: 
   buildingName: 
-  buildingCost: 8
-  buildingSellValue: 6
+  buildingCost: 12
+  buildingSellValue: 8
   buildingHealth: 60
   buildingDamage: 11
   buildingRange: 4

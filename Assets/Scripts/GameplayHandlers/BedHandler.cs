@@ -22,14 +22,14 @@ public class BedHandler : MonoBehaviour
         float distance = Vector2.Distance(playerPos, transform.position);
         if (distance <= minInteractDistance) {
             interactVisuals.SetActive(true);
-            if (startNewWave.action.triggered) {
-                if(EnemySpawner.instance.currentEnemies.Count == 0) {
+            if(EnemySpawner.instance.currentEnemies.Count == 0) {
+                if (startNewWave.action.triggered) {
                     waveStartParticles.Play();
                     EnemySpawner.instance.SpawnWave();
                 }
-                else {
-                    Debug.Log("Enemies still alive");
-                }
+            } else {
+                interactVisuals.SetActive(false);
+                Debug.Log("Enemies still alive");
             }
         } else {
             interactVisuals.SetActive(false);

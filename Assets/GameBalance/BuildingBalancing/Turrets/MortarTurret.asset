@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: MortarTurret
   m_EditorClassIdentifier: 
   buildingName: Mortar
-  buildingCost: 9
-  buildingSellValue: 7
+  buildingCost: 17
+  buildingSellValue: 13
   buildingHealth: 40
   buildingDamage: 40
   buildingRange: 14

@@ -176,11 +176,13 @@ public class PlayerHand : MonoBehaviour {
             //Debug.Log($"Angle: {angle}, newAngle: {newAngle}, newDir: {newDir}");
 
             attackIndicator.position = (Vector2)transform.position + newDir * meleeRange;
-
+            
             if(oldSelect != null) {
-                oldSelect.building.GetComponent<BuildingHealth>().ShowRange = false;
+                //Fucks garbage collection if not saving in a variable
+                BuildingHealth oldHP = oldSelect.building.GetComponent<BuildingHealth>();
+                oldHP.SetRangeVisual(false);
+                oldSelect = null;
             }
-            return;
         } else {
             buildPos = (Vector2)transform.position + lookDir;
             buildIndicator.position = buildPos;
@@ -189,7 +191,8 @@ public class PlayerHand : MonoBehaviour {
             if(oldSelect != null )
 
             if(oldSelect != null && oldSelect.building != null) {
-                oldSelect.building.GetComponent<BuildingHealth>().SetRangeVisual(false);
+                BuildingHealth oldHP = oldSelect.building.GetComponent<BuildingHealth>();
+                oldHP.SetRangeVisual(false);
             }
 
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -30,6 +31,15 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField]
     string waveStartSound;
+
+    [SerializeField]
+    TextMeshProUGUI waveText;
+
+    [SerializeField]
+    GameObject textPrefab;
+
+    [SerializeField]
+    Transform textPos;
 
 
     /*
@@ -77,6 +87,13 @@ public class EnemySpawner : MonoBehaviour
         wall.SetPositions(points3D.ToArray());
     }*/
 
+    public void RemoveEnemy(GameObject enemy) {
+        currentEnemies.Remove(enemy);
+        if(currentEnemies.Count == 0) {
+            waveText.text = "Wave " + (currentWave + 1) + " Cleared!";
+        }
+    }
+
     public void SpawnWave()
     {
         GlobalSoundComposer.Instance.PlayFx(waveStartSound);
@@ -85,6 +102,10 @@ public class EnemySpawner : MonoBehaviour
             Debug.Log("No more waves to spawn, resetting count");
             currentWave = 0;
         }
+        waveText.text = "Wave " + (currentWave + 1);
+        GameObject textObject = Instantiate(textPrefab, textPos.position, Quaternion.identity);
+        textObject.GetComponent<TextMeshPro>().text = "Started Wave " + (currentWave + 1);
+        Destroy(textObject, 3f);
 
         Pyle[] pylesToSpawn = waves[currentWave].pyles;
 

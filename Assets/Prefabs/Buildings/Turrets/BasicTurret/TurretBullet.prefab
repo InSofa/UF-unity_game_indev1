@@ -320,6 +320,7 @@ MonoBehaviour:
   hitMask:
     serializedVersion: 2
     m_Bits: 8
+  init: 0
 --- !u!114 &-6780593917948388528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,3 +336,5 @@ MonoBehaviour:
   falloffStrenght: 5
   killVelocity: 0.5
   startVel: 0
+  startDamage: 0
+  minDamagePercent: 0.4

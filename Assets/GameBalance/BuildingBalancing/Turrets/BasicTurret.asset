@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: BasicTurret
   m_EditorClassIdentifier: 
   buildingName: 
-  buildingCost: 5
-  buildingSellValue: 3
+  buildingCost: 7
+  buildingSellValue: 5
   buildingHealth: 37
-  buildingDamage: 6
+  buildingDamage: 5
   buildingRange: 5
-  shotCD: 0.05
-  projectileSpeed: 22
+  shotCD: 0.055
+  projectileSpeed: 20
   maxPredict: 1
   buildingDescription: 
   buildingPrefab: {fileID: 6679143231120622472, guid: 2ca224368da4f4e4eb7bc68017fb228a, type: 3}

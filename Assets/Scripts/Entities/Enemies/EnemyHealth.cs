@@ -66,7 +66,7 @@ public class EnemyHealth : MonoBehaviour
             Debug.Log("Dead");
             try  // try to remove this object from the list of current enemies
             {
-                EnemySpawner.instance.currentEnemies.Remove(this.gameObject);
+                EnemySpawner.instance.RemoveEnemy(this.gameObject);
             }
             catch (System.Exception e)  // if it fails, log the error
             {
