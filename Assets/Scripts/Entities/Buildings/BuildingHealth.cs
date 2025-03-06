@@ -10,6 +10,8 @@ public class BuildingHealth : MonoBehaviour
     [SerializeField]
     RangeVisual rangeVisual;
 
+    public bool ShowRange { get { return ShowRange; } set { ShowRange = value;  SetRangeVisual(ShowRange); } }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,5 +33,12 @@ public class BuildingHealth : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void SetRangeVisual(bool value) {
+        if (rangeVisual == null) {
+            return;
+        }
+        rangeVisual.gameObject.SetActive(value);
     }
 }

@@ -3025,6 +3025,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6fcfbcc3d56618749a1b7cb817aed27c, type: 2}
   - {fileID: 11400000, guid: c9868a19418f7164dbd80551e5a796cb, type: 2}
   - {fileID: 11400000, guid: d3cf12bafb22d954baee516d27f71952, type: 2}
+  - {fileID: 11400000, guid: 7437f1ab7ecaa074abc0a0c2cadb2a6f, type: 2}
   currentWave: 0
   minSpawnDist: 35
   maxSpawnDist: 100
@@ -9665,10 +9666,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8474419050980633780, guid: 66da955f9a633344fb70b854b66cd3e9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66da955f9a633344fb70b854b66cd3e9, type: 3}
 --- !u!1 &1185554392
 GameObject:
@@ -9899,7 +9897,7 @@ MonoBehaviour:
   textline_general_pc: 'Walk: <move_around>, Start Wave: <west_button>'
   textline_general_rest: 'Look Around: <look_around>, Walk: <move_around>, Start
     Wave: <west_button>'
-  textline_melee: 'Attack: <left_click>, Build Mode: <east_button>'
+  textline_melee: 'Attack: <east_trigger>, Build Mode: <east_button>'
   textline_build_pc: 'Change Building: <left_click> / <dpad>, Place Building: <east_trigger>,
     Sell Building: <west_trigger>, Melee Mode: <east_button>'
   textline_build_rest: 'Navigate: <dpad>, Select: <south_button>, Place Building:

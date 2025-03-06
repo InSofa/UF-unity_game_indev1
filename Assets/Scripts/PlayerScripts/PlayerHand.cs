@@ -102,6 +102,8 @@ public class PlayerHand : MonoBehaviour {
     [SerializeField]
     string sellSFX;
 
+    Node oldSelect;
+
     private void Start()
     {
         lsc = GetComponent<LocalSoundComposer>();
@@ -144,7 +146,7 @@ public class PlayerHand : MonoBehaviour {
             }
         } else if(pi.currentControlScheme == "Gamepad") {
             Vector2 joystickInput = lookInput.action.ReadValue<Vector2>();
-            //Settings.rawJoystickInput
+            //Settings.rawJoystickInputf
             if (isMeleeMode) {
                 lookDir = joystickInput * meleeRange;
             } else {
@@ -175,14 +177,27 @@ public class PlayerHand : MonoBehaviour {
 
             attackIndicator.position = (Vector2)transform.position + newDir * meleeRange;
 
+            if(oldSelect != null) {
+                oldSelect.building.GetComponent<BuildingHealth>().ShowRange = false;
+            }
             return;
         } else {
             buildPos = (Vector2)transform.position + lookDir;
             buildIndicator.position = buildPos;
             Node node = PathfindingGrid.instance.NodeFromWorldPoint(buildPos);
+
+            if(oldSelect != null )
+
+            if(oldSelect != null && oldSelect.building != null) {
+                oldSelect.building.GetComponent<BuildingHealth>().SetRangeVisual(false);
+            }
+
+
             Node playerNode = PathfindingGrid.instance.NodeFromWorldPoint((Vector2)transform.position);
             if(node.building != null) {
                 buildingIndicator.position = node.worldPosition;
+                node.building.GetComponent<BuildingHealth>().SetRangeVisual(true);
+                oldSelect = node;
 
                 //If the hovered node is the same node as the node the player is standing on, dont show the preview
                 if(playerNode != node) {

@@ -1,0 +1,264 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4254301169584592498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7364057670822380255}
+  - component: {fileID: 1133480987472762032}
+  - component: {fileID: 1451631307499032474}
+  - component: {fileID: 8414238775109007145}
+  - component: {fileID: 6953483636791939852}
+  - component: {fileID: 1544605064255929956}
+  - component: {fileID: 5816505336602785825}
+  - component: {fileID: 4542231550405290844}
+  - component: {fileID: 1321575123956056457}
+  m_Layer: 3
+  m_Name: SpawnerEnemyCertainDeath
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7364057670822380255
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4254301169584592498}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.55, y: 14.91, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1133480987472762032
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4254301169584592498}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 20
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!70 &1451631307499032474
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4254301169584592498}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: -0.06}
+  m_Size: {x: 1.07, y: 0.91}
+  m_Direction: 1
+--- !u!114 &8414238775109007145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4254301169584592498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ce6d26720c12534f81219c8a22f3a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effector: {fileID: 2486857422795829823, guid: 9243028d5109b43498e630d0e49a6184, type: 3}
+  priority: 0
+  refreshPath: 0
+  newNodeDistance: 0.5
+  dir: {x: 1, y: 0}
+  attackDistance: 2.04
+  attackRadius: 1.58
+--- !u!114 &6953483636791939852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4254301169584592498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88291b90c4b935c488dc2ad3c92f8d0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTaken: 0
+  maxHealth: 2000
+  destroyParticle: {fileID: 0}
+  flashMaterial: {fileID: 2100000, guid: eb0872da184994a468d3e91629d9c52d, type: 2}
+  flashTime: 0.08
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  pillowPrefab: {fileID: 4147960885588717861, guid: 4c69f4db61c8acd408e5bbcac22f6c3d, type: 3}
+  minPillows: 4
+  maxPillows: 8
+  spawnRange: 1
+--- !u!114 &1544605064255929956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4254301169584592498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3763f6fb55177e240aec5c10a7c57e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  speedVariance: 0.3
+  acceleration: 5
+  accelerationVariance: 0.5
+  attackRange: 3
+  attackCD: 0.8
+  damage: 50
+  spawnCD: 7
+  spawnVariance: 1
+  minSpawns: 4
+  maxSpawns: 7
+  spawnPrefab: {fileID: 5134549907070756428, guid: c07e0eae6485163429bd9af71c6fc392, type: 3}
+  spawnRange: 1.46
+  spawnStopCD: 1
+--- !u!212 &5816505336602785825
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4254301169584592498}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 9040577882946015201, guid: 6f7b1d05bedee194abb356c9e537e982, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.5294117, y: 1.2141176}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &4542231550405290844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4254301169584592498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e750505b2d5d31c4b98344924792ffd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSounds:
+  - sfx:player/grassWalk1
+  - sfx:player/grassWalk2
+  - sfx:player/grassWalk3
+  - sfx:player/grassWalk4
+  walkSoundDistanceInterval: 1
+  grunts:
+  - sfx:enemy/pillow_monster_1
+  - sfx:enemy/pillow_monster_2
+  - sfx:enemy/pillow_monster_2
+  gruntIntervalMax: 30
+  gruntIntervalMin: 15
+--- !u!114 &1321575123956056457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4254301169584592498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c2b7876432cae84a95b872ee9df4543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pitchModifier: 0.7
