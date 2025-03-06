@@ -73,13 +73,12 @@ public class PlayerController : MonoBehaviour
     }
 
     void updateVisuals() {
-        Debug.Log($"Input: {animator.GetInteger("State")}, is idle: {animator.GetBool("isIdle")}");
-        if (movementInput.magnitude < 0.1f) {
+        animator.SetFloat("MovementMagnitude", movementInput.magnitude);
+
+        if (movementInput.magnitude == 0) {
             walkMagnitude = walkSoundInterval - 1;
-            animator.SetBool("isIdle", true);
             return;
         }
-        animator.SetBool("isIdle", false);
 
         if (movementInput.x > 0) {
             sr.flipX = true;
@@ -87,37 +86,8 @@ public class PlayerController : MonoBehaviour
             sr.flipX = false;
         }
 
-        /*States
-         0 - Idle
-         1 - Up
-         2 - Side Up
-         3 - Side
-         4 - Side Down
-         5 - Down
-         */
-
-
-        switch (Mathf.Abs(movementInput.x)) {
-            case < 0.3826834f:
-                if (movementInput.y > 0) {
-                    animator.SetInteger("State", 1);
-                } else if (movementInput.y < 0) {
-                    animator.SetInteger("State", 5);
-                }
-                break;
-            case > 0.3826834f:
-                if (movementInput.y > 0.3826834f) {
-                    animator.SetInteger("State", 2);
-                } else if (movementInput.y < -0.3826834f) {
-                    animator.SetInteger("State", 4);
-                } else {
-                    animator.SetInteger("State", 3);
-                }
-                break;
-            default:
-                animator.SetInteger("State", 0);
-                break;
-        }
+        animator.SetFloat("XValue", movementInput.x);
+        animator.SetFloat("YValue", movementInput.y);
     }
     void takeInput() {
         movementInput = move.action.ReadValue<Vector2>().normalized;
