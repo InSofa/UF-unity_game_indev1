@@ -11,7 +11,7 @@ public class SoundMixer_Handler : MonoBehaviour
     public Slider musicVolumeSlider;
     public Slider sfxVolumeSlider;
 
-    private void Start() {
+    private void Awake() {
         // Set the volume levels to the saved values
         float masterVolume = PlayerPrefs.GetFloat("masterVolume", 1f);
         float musicVolume = PlayerPrefs.GetFloat("musicVolume", 1f);

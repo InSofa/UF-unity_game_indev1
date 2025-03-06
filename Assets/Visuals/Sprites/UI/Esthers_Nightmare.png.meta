@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8c7df3a74177a3e47be2640b3d6c6def
+guid: 46a6da1574dc1a74b826de44dd0a58f4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8514368770708299193
-    second: Walk-4_0
+      213: 4132586288129280707
+    second: Esthers_Nightmare_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1024
+  spritePixelsToUnits: 3472
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Walk-4_0
+      name: Esthers_Nightmare_0
       rect:
         serializedVersion: 2
-        x: 202
-        y: 8
-        width: 518
-        height: 1003
+        x: 0
+        y: 0
+        width: 3472
+        height: 565
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 742a04fc6b2e6d980800000000000000
-      internalID: -8514368770708299193
+      spriteID: 3ca889b6555e95930800000000000000
+      internalID: 4132586288129280707
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Walk-4_0: -8514368770708299193
+      Esthers_Nightmare_0: 4132586288129280707
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -15,8 +15,10 @@ public class BuildingHealth : MonoBehaviour
     {
         currentHealth = buildingScriptableObject.buildingHealth;
 
-        rangeVisual.range = buildingScriptableObject.buildingRange;
-        rangeVisual.GenerateVisual();
+        if (rangeVisual != null) {
+            rangeVisual.range = buildingScriptableObject.buildingRange;
+            rangeVisual.GenerateVisual();
+        }
     }
 
     public bool TakeDamage(int damage) {
