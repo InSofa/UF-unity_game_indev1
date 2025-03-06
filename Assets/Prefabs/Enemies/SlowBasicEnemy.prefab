@@ -241,8 +241,8 @@ MonoBehaviour:
   - sfx:enemy/pillow_monster_1
   - sfx:enemy/pillow_monster_2
   - sfx:enemy/pillow_monster_2
-  gruntIntervalMax: 40
-  gruntIntervalMin: 20
+  gruntIntervalMax: 30
+  gruntIntervalMin: 15
 --- !u!114 &-8731365281716612122
 MonoBehaviour:
   m_ObjectHideFlags: 0
