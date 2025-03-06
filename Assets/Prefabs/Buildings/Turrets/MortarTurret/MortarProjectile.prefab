@@ -168,6 +168,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: c578b2b018016fa40b0603c054e4dc01, type: 3}
   - {fileID: 21300000, guid: c87e1f55a55f85145a45d1470839c74f, type: 3}
+  - {fileID: -3019416885370694485, guid: 310d0d7051e34e742a488a888f263d58, type: 3}
   targetPos: {x: 0, y: 0}
   inaccuracyModifier: {x: 0.5, y: 0.5}
   damage: 0
