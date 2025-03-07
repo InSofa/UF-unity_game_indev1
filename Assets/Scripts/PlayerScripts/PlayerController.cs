@@ -90,6 +90,13 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("YValue", movementInput.y);
     }
     void takeInput() {
+        if (DebugConsole.Instance != null) {
+            if (DebugConsole.Instance.inputIsFocused == true) {
+                movementInput = Vector2.zero;
+                return;
+            } // No bindings when Debug-Console is focused
+        }
+
         movementInput = move.action.ReadValue<Vector2>().normalized;
     }
 

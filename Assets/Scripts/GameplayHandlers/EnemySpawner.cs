@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using static Pyle;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -40,7 +41,6 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField]
     Transform textPos;
-
 
     /*
     [SerializeField]
@@ -123,8 +123,18 @@ public class EnemySpawner : MonoBehaviour
             }
 
             for (int j = 0; j < pyle.enemiesToSpawn.Length; j++) {
-                GameObject enemy = Instantiate(pyle.enemiesToSpawn[j], spawnPos, Quaternion.identity);
-                currentEnemies.Add(enemy);
+                EntityToSpawn enemiesToSpawn = pyle.enemiesToSpawn[j];
+                for (int k = 0; k < enemiesToSpawn.amount; k++) {
+                    if (enemiesToSpawn.entityID == null) {
+                        continue;
+                    }
+                    GameObject enemy_prefab = GlobalEntityHolder.Instance.Resolve(enemiesToSpawn.entityID);
+                    if (enemy_prefab == null) {
+                        continue;
+                    }
+                    GameObject enemy = Instantiate(enemy_prefab, spawnPos, Quaternion.identity);
+                    currentEnemies.Add(enemy);
+                }
             }
         }
 

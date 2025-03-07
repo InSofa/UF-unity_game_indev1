@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pyleName: 
   enemiesToSpawn:
-  - {fileID: 4368807937532126786, guid: ec5c6415c5d601b4a8fbe44c0bca6f48, type: 3}
-  - {fileID: 4368807937532126786, guid: ec5c6415c5d601b4a8fbe44c0bca6f48, type: 3}
-  - {fileID: 4368807937532126786, guid: ec5c6415c5d601b4a8fbe44c0bca6f48, type: 3}
+  - entityID: enemy:enemy
+    amount: 3
