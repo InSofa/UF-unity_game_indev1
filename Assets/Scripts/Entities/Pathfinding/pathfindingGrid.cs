@@ -106,6 +106,60 @@ public class PathfindingGrid : MonoBehaviour
         return null;
     }
 
+    public bool ForceBuildingAtNode(GameObject building, int NodeX, int NodeY) {
+        Node node = grid[NodeX, NodeY];
+        // If the node is not player bed or player position place the building
+        if (node.walkable && !node.isBed && node != NodeFromWorldPoint(PlayerController.player.transform.position)) {
+            // If the node has building remove it
+            if (node.building != null) {
+                Destroy(node.building);
+                node.building = null;
+            }
+            // Place the building
+            node.building = Instantiate(building, node.worldPosition, Quaternion.identity);
+            //// For the sake of a cleaner hierarchy
+            node.building.transform.parent = transform;
+            return true;
+        }
+        return false;
+    }
+
+    public GameObject GetBuildingAtNode(int NodeX, int NodeY) {
+        Node node = grid[NodeX, NodeY];
+        return node.building;
+    }
+
+    public void ForceRemoveBuildingAtNode(int NodeX, int NodeY) {
+        Node node = grid[NodeX, NodeY];
+        // If the node has building and is not bed
+        if (node.building != null && !node.isBed) {
+            Destroy(node.building);
+            node.building = null;
+        }
+    }
+
+    public void DEBUG_FillGridWith(GameObject building, bool overriding=false) {
+        // Fills the entire grid with the building, if overriding is true it will override the current building else it will only fill empty nodes
+        // The players node and bed nodes are always ignored
+        Node playerNode = NodeFromWorldPoint(PlayerController.player.transform.position);
+
+        for (int x = 0; x < gridSizeX; x++) {
+            for (int y = 0; y < gridSizeY; y++) {
+                Node node = grid[x, y];
+                if (node.walkable && !node.isBed && node != playerNode) {
+                    if (node.building == null || overriding) {
+                        if (node.building != null) {
+                            Destroy(node.building);
+                        }
+                        node.building = Instantiate(building, node.worldPosition, Quaternion.identity);
+                        node.building.transform.parent = transform; // For the sake of a cleaner hierarchy
+                    }
+                }
+            }
+        }
+
+    }
+
     public Node NodeFromWorldPoint(Vector3 worldPosition) {
         float percentX = (worldPosition.x + gridWorldSize.x / 2) / gridWorldSize.x;
         float percentY = (worldPosition.y + gridWorldSize.y / 2) / gridWorldSize.y;

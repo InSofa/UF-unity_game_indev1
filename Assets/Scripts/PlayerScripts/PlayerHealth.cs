@@ -46,13 +46,8 @@ public class PlayerHealth : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-
-    public void TakeDamage(float damage, GameObject source)
-    {
-        health -= damage;
-        healthSlider.value = health;
-        if (health < 0)
-        {
+    private void DeathCheck() {
+        if (health < 0) {
             if (canDie == true) {
                 //Destroy(this.gameObject);
                 //StartCoroutine(Death());
@@ -89,6 +84,29 @@ public class PlayerHealth : MonoBehaviour
             }
             return;
         }
+    }
+
+    public void SetHealth(float newHealth) {
+
+        if (newHealth < health) {
+            lsc.PlayRandomFx(hurtSounds);
+        }
+
+        health = newHealth;
+        healthSlider.value = health;
+
+        DeathCheck();
+    }
+
+    public float GetHealth() {
+        return health;
+    }
+
+    public void TakeDamage(float damage, GameObject source) {
+        health -= damage;
+        healthSlider.value = health;
+
+        DeathCheck();
 
         lsc.PlayRandomFx(hurtSounds);
     }

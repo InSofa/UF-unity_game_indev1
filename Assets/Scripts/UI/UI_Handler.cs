@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -10,6 +11,9 @@ using UnityEngine.UI;
 public class UIHandler : MonoBehaviour
 {
     EventSystem eventSystem;
+
+    [SerializeField]
+    public bool demoMode = false;
 
     // Reference to mainGameTokenIconResolver
     [SerializeField]
@@ -23,6 +27,12 @@ public class UIHandler : MonoBehaviour
 
     [SerializeField]
     public InputActionReference menuButton;
+
+    [SerializeField]
+    public InputActionReference quitButton;
+
+    [SerializeField]
+    public GameObject quitButtonObj;
 
     private int currentScene;
 
@@ -64,6 +74,13 @@ public class UIHandler : MonoBehaviour
         currentScene = SceneManager.GetActiveScene().buildIndex;
 
         eventSystem = EventSystem.current;
+
+        if (demoMode == true) {
+            // DeActivate the quit button
+            if (quitButtonObj != null) {
+                quitButtonObj.SetActive(false);
+            }
+        }
     }
 
     private void Update()
@@ -84,6 +101,10 @@ public class UIHandler : MonoBehaviour
         if (debugButton != null)
         {
             debugButton.action.started += toggleDebugOverlay;
+        }
+
+        if (quitButton != null) {
+            quitButton.action.started += quitGame;
         }
     }
 
@@ -233,6 +254,18 @@ public class UIHandler : MonoBehaviour
         }
 
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    public void QuitGame() {
+#if UNITY_EDITOR
+        EditorApplication.isPlaying = false; // Stop play mode in Unity Editor
+#else
+        Application.Quit(); // Quit standalone build
+#endif
+    }
+
+    public void quitGame(InputAction.CallbackContext obj) {
+        QuitGame();
     }
 
     public void toggleDebugOverlay(InputAction.CallbackContext obj)

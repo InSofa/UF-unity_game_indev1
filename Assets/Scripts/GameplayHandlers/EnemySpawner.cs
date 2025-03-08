@@ -94,8 +94,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    public void SpawnWave()
-    {
+    public void SpawnWave() {
         GlobalSoundComposer.Instance.PlayFx(waveStartSound);
 
         if (currentWave >= waves.Length) {

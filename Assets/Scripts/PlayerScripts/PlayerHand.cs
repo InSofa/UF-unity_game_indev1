@@ -239,9 +239,22 @@ public class PlayerHand : MonoBehaviour {
         sellBuildingInput.action.started -= removeBuilding;
     }
 
+    public BuildingScriptableObject GetSelectedBuilding() {
+        return buildings[selectedBuilding];
+    }
+
     public void addPillow(int amount)
     {
         pillows += amount;
+        pillowText.text = pillows.ToString();
+    }
+
+    public int getPillows() {
+        return pillows;
+    }
+
+    public void setPillows(int amount) {
+        pillows = amount;
         pillowText.text = pillows.ToString();
     }
 
@@ -287,6 +300,15 @@ public class PlayerHand : MonoBehaviour {
             return;
         }
         //Debug.Log("No building to sell here");
+    }
+
+    public void ForcePlaceBuildingAt(int NodeX, int NodeY) {
+        bool placed = PathfindingGrid.instance.ForceBuildingAtNode(buildings[selectedBuilding].buildingPrefab, NodeX, NodeY);
+        if (placed) {
+            lsc.PlayFx(buildSFX);
+            pillows -= buildings[selectedBuilding].buildingCost;
+            pillowText.text = pillows.ToString();
+        }
     }
 
     private void meleeAttack(InputAction.CallbackContext obj) {
