@@ -341,7 +341,7 @@ public class DebugConsole : MonoBehaviour {
                                 break;
 
                             case "place":
-                                if (args.Length < 4) output += "\n" + "Usage: build <place/remove/get> <x> <y> [<selection>]";
+                                if (args.Length < 4) output += "\n" + "Usage: build <place/remove/get> <x> <y> <selection>";
                                 int x = int.Parse(args[1]);
                                 int y = int.Parse(args[2]);
                                 int buildingIndex = int.Parse(args[3]);
