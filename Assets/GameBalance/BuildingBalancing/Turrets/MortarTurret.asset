@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c754323f588e84cadb4dc43c572146, type: 3}
   m_Name: MortarTurret
   m_EditorClassIdentifier: 
-  buildingName: Mortar
+  buildingName: Spoon
   buildingCost: 17
   buildingSellValue: 13
   buildingHealth: 40

@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c754323f588e84cadb4dc43c572146, type: 3}
   m_Name: BasicWall
   m_EditorClassIdentifier: 
-  buildingName: 
+  buildingName: Wall
   buildingCost: 1
   buildingSellValue: 1
   buildingHealth: 50
   buildingDamage: 0
   buildingRange: 0
+  shotCD: 0
+  projectileSpeed: 0
+  maxPredict: 0
   buildingDescription: 
   buildingPrefab: {fileID: 8234952303088971632, guid: a353dc4cb5fe1504b8bb56cb862ac15c, type: 3}

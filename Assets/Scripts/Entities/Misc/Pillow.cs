@@ -7,10 +7,14 @@ public class Pillow : MonoBehaviour
     [SerializeField]
     string pillowSFX;
 
+    [SerializeField]
+    public int value = 1;
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player")){
-            collision.GetComponent<PlayerHand>().addPillow(1);
+            PlayerHand playerHand = collision.GetComponent<PlayerHand>();
+            playerHand.addPillow(value * playerHand.GlobalPickupInflationMultiplier);
             GlobalSoundComposer.Instance.PlayFx(pillowSFX);
             Destroy(this.gameObject);
         }

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using System.Text.RegularExpressions;
 using UnityEngine.UI;
@@ -143,21 +143,21 @@ public class DebugConsole : MonoBehaviour {
         return result;
     }
 
-    public string ExecuteInput(string input_pre) {
+    public string ExecuteInput(string rawInput) {
 
-        List<string> inputs = SplitBySemicolonExcludingSpace(input_pre);
+        List<string> inputs = SplitBySemicolonExcludingSpace(rawInput);
 
         string output = "";
 
-        foreach (string input_mid in inputs) {
+        foreach (string preCleanedInputs in inputs) {
 
             // Remove any trailing or leading semicolons from input
-            string input = input_mid.Trim(';');
+            string input = preCleanedInputs.Trim(';');
             input = input.Trim();
             // If input is only whitespace, skip
             if (string.IsNullOrWhiteSpace(input)) continue;
 
-            Debug.Log("Executing: " + input_mid);
+            Debug.Log("Executing: " + input);
 
             //List<string> parts = SplitBySpaceExcludingQuotes(input);
             List<string> parts = new List<string>(input.Split(' '));
@@ -180,8 +180,11 @@ public class DebugConsole : MonoBehaviour {
 
                     case "health":
                         // Set health to Parseint of args[0]
-                        if (args.Length < 1) return $"Health: {player.GetComponent<PlayerHealth>().GetHealth()}";
-                        player.GetComponent<PlayerHealth>().SetHealth(int.Parse(args[0]));
+                        if (args.Length < 1) {
+                            output += "\n" + $"Health: {player.GetComponent<PlayerHealth>().GetHealth()}";
+                        } else {
+                            player.GetComponent<PlayerHealth>().SetHealth(int.Parse(args[0]));
+                        }
                         break;
 
                     case "startWave":
@@ -210,8 +213,11 @@ public class DebugConsole : MonoBehaviour {
 
                     case "pillows":
                         // Set health to Parseint of args[0]
-                        if (args.Length < 1) output += "\n" + $"Pillows: {player.GetComponent<PlayerHand>().getPillows()}";
-                        player.GetComponent<PlayerHand>().setPillows(int.Parse(args[0]));
+                        if (args.Length < 1) {
+                            output += "\n" + $"Pillows: {player.GetComponent<PlayerHand>().getPillows()}";
+                        } else {
+                            player.GetComponent<PlayerHand>().setPillows(int.Parse(args[0]));
+                        }
                         break;
 
                     case "player.playsfx":
@@ -251,7 +257,7 @@ public class DebugConsole : MonoBehaviour {
                                 x = int.Parse(args[1]);
                                 y = int.Parse(args[2]);
                                 GameObject building = PathfindingGrid.instance.GetBuildingAtNode(x, y);
-                                output += "\n" + building == null ? "No building at node" : building.name;
+                                output += "\n" + (building == null ? "No building at node" : building.name);
                                 break;
                             case "fill":
                                 if (args.Length < 2) output += "\n" + "Usage: build fill <selection> [<overriding>]";
@@ -272,23 +278,48 @@ public class DebugConsole : MonoBehaviour {
                         break;
 
                     case "summon":
-                        // "summon <enemy_id> <x> <y> [<u-nor>]"
-                        if (args.Length < 3) output += "\n" + "Usage: summon <enemy_id> <x> <y> [<u-nor>]";
-                        string enemyId = args[0];
-                        int summon_x = int.Parse(args[1]);
-                        int summon_y = int.Parse(args[2]);
-                        string uNor = "";
-                        if (args.Length > 3) {
-                            // Unor is space joined of al others args after the first 3
-                            uNor = string.Join(" ", args, 3, args.Length - 3);
-                        }
-                        // Get enemy from enemyId
-                        GameObject enemyPrefab = GlobalEntityHolder.Instance.Resolve(enemyId);
-                        // Instantiate enemy at x, y
-                        GameObject enemy = Instantiate(enemyPrefab, PathfindingGrid.instance.grid[summon_x, summon_y].worldPosition, Quaternion.identity);
-                        // If we got U-NOR data we use DebugConsole_UNOR_Properties.ParseAndApply
-                        if (args.Length > 3) {
-                            DebugConsole_UNOR_Properties.ParseAndApply(enemy, uNor);
+                        // "summon <entity_id> <x> <y> [<u-nor>]"
+                        if (args.Length < 2) output += "\n" + "Usage: summon <entity_id> <x> <y> [<u-nor>]" + "\n" + "summon fill <entity_id> [<u-nor>]";
+                        if (args[0] == "fill") {
+                            string entityId = args[1];
+                            string uNor = "";
+                            if (args.Length > 2) {
+                                // Unor is space joined of al others args after the first 2
+                                uNor = string.Join(" ", args, 2, args.Length - 2);
+                            }
+                            // Get entity from entityId
+                            GameObject entityPrefab = GlobalEntityHolder.Instance.Resolve(entityId);
+                            // For each node in the grid that is not bed or player we instantiate the entity
+                            for (int x = 0; x < PathfindingGrid.instance.grid.GetLength(0); x++) {
+                                for (int y = 0; y < PathfindingGrid.instance.grid.GetLength(1); y++) {
+                                    Node node = PathfindingGrid.instance.grid[x, y];
+                                    if (node.isBed || node.building != null) continue;
+                                    GameObject entity = Instantiate(entityPrefab, node.worldPosition, Quaternion.identity);
+                                    // If we got U-NOR data we use DebugConsole_UNOR_Properties.ParseAndApply
+                                    if (args.Length > 2) {
+                                        DebugConsole_UNOR_Properties.ParseAndApply(entity, uNor);
+                                    }
+                                }
+                            }
+                        } else {
+                            if (args.Length < 3) output += "\n" + "Usage: summon <entity_id> <x> <y> [<u-nor>]" + "\n" + "summon fill <entity_id> [<u-nor>]";
+
+                            string entityId = args[0];
+                            int summon_x = int.Parse(args[1]);
+                            int summon_y = int.Parse(args[2]);
+                            string uNor = "";
+                            if (args.Length > 3) {
+                                // Unor is space joined of al others args after the first 3
+                                uNor = string.Join(" ", args, 3, args.Length - 3);
+                            }
+                            // Get entity from enemyId
+                            GameObject entityPrefab = GlobalEntityHolder.Instance.Resolve(entityId);
+                            // Instantiate enemy at x, y
+                            GameObject entity = Instantiate(entityPrefab, PathfindingGrid.instance.grid[summon_x, summon_y].worldPosition, Quaternion.identity);
+                            // If we got U-NOR data we use DebugConsole_UNOR_Properties.ParseAndApply
+                            if (args.Length > 3) {
+                                DebugConsole_UNOR_Properties.ParseAndApply(entity, uNor);
+                            }
                         }
                         break;
 
@@ -307,6 +338,35 @@ public class DebugConsole : MonoBehaviour {
 #nullable disable
                         GameObject gameObject = selectionResult as GameObject;
                         DebugConsole_UNOR_Properties.ParseAndApply(gameObject, uNorData);
+                        break;
+
+                    case "inflation":
+                        // "inflation <buy/sell/pickup> <amount>" to set inflation for either buy or sell
+                        // "inflation <amount>" to set inflation for both buy and sell
+                        // "inflation" to get current inflation for both buy and sell
+                        if (args.Length == 0) {
+                            output += "\n" + $"Buy inflation: {player.GetComponent<PlayerHand>().GlobalBuyInflationMultiplier}";
+                            output += "\n" + $"Sell inflation: {player.GetComponent<PlayerHand>().GlobalSellInflationMultiplier}";
+                            output += "\n" + $"Pickup inflation: {player.GetComponent<PlayerHand>().GlobalPickupInflationMultiplier}";
+                        } else if (args.Length == 1) {
+                            int inflation = int.Parse(args[0]);
+                            player.GetComponent<PlayerHand>().GlobalBuyInflationMultiplier = inflation;
+                            player.GetComponent<PlayerHand>().GlobalSellInflationMultiplier = inflation;
+                            player.GetComponent<PlayerHand>().GlobalPickupInflationMultiplier = inflation;
+                        } else if (args.Length == 2) {
+                            int inflation = int.Parse(args[1]);
+                            if (args[0] == "buy") {
+                                player.GetComponent<PlayerHand>().GlobalBuyInflationMultiplier = inflation;
+                            } else if (args[0] == "sell") {
+                                player.GetComponent<PlayerHand>().GlobalSellInflationMultiplier = inflation;
+                            } else if (args[0] == "pickup") {
+                                player.GetComponent<PlayerHand>().GlobalPickupInflationMultiplier = inflation;
+                            } else {
+                                output += "\n" + "Usage: inflation <buy/sell> <amount>" + "\n" + "inflation <amount>";
+                            }
+                        } else {
+                            output += "\n" + "Usage: inflation <buy/sell> <amount>" + "\n" + "inflation <amount>";
+                        }
                         break;
 
                     case "quit":
@@ -355,6 +415,7 @@ public class DebugConsole : MonoBehaviour {
                             "<color=yellow>object</color> - Modify existing object\n" +
                             "<color=yellow>quit</color> - Quit the game\n" +
                             "<color=yellow>mainmenu</color> - Load main menu scene\n" +
+                            "<color=yellow>inflation</color> - Set inflation multiplier\n" +
 #if UNITY_EDITOR
                             "<color=yellow>log</color> - Log a message\n" +
                             "<color=yellow>error</color> - Log an error\n" +
@@ -372,6 +433,8 @@ public class DebugConsole : MonoBehaviour {
                 output += "\n" + $"<color=red>{ex.Message}</color>";
             }
         }
+        // Remove leading newlines
+        output = output.TrimStart('\n');
         return output;
     }
 }

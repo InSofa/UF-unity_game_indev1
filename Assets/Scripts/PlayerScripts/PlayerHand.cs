@@ -12,6 +12,13 @@ public class PlayerHand : MonoBehaviour {
     [SerializeField]
     UIHandler uiHandler;
 
+    [SerializeField]
+    public int GlobalBuyInflationMultiplier = 1;
+    [SerializeField]
+    public int GlobalSellInflationMultiplier = 1;
+    [SerializeField]
+    public int GlobalPickupInflationMultiplier = 1;
+
     // Reference to mainGameTokenIconResolver
     [SerializeField]
     public MainGame_TokenIconResolver mainGameTokenIconResolver;
@@ -25,7 +32,7 @@ public class PlayerHand : MonoBehaviour {
     Camera cam;
 
     [SerializeField]
-    BuildingScriptableObject[] buildings;
+    public BuildingScriptableObject[] buildings;
 
     int selectedBuilding = 0;
 
@@ -269,11 +276,12 @@ public class PlayerHand : MonoBehaviour {
     }
 
     //Playernode and placement node check is done in the grid logic
-    private void placeBuilding(InputAction.CallbackContext obj)
-    {
+    private void placeBuilding(InputAction.CallbackContext obj) {
         if (DebugConsole.Instance != null) { if (DebugConsole.Instance.inputIsFocused == true) { return; } } // No bindings when Debug-Console is focused
 
-        if (pillows < buildings[selectedBuilding].buildingCost) {
+        int buildingCost = buildings[selectedBuilding].buildingCost * GlobalBuyInflationMultiplier;
+
+        if (pillows < buildingCost) {
             //Debug.Log("Not enough pillows");
             return;
         }
@@ -282,7 +290,7 @@ public class PlayerHand : MonoBehaviour {
 
         if (placed) {
             lsc.PlayFx(buildSFX);
-            pillows -= buildings[selectedBuilding].buildingCost;
+            pillows -= buildingCost;
             pillowText.text = pillows.ToString();
             return;
         }
@@ -296,7 +304,7 @@ public class PlayerHand : MonoBehaviour {
         if(sellAmount != null) {
             lsc.PlayFx(sellSFX);
             //Debug.Log("Sold building for " + sellAmount + " pillows");
-            addPillow((int)sellAmount);
+            addPillow((int)sellAmount * GlobalSellInflationMultiplier);
             return;
         }
         //Debug.Log("No building to sell here");
@@ -306,7 +314,7 @@ public class PlayerHand : MonoBehaviour {
         bool placed = PathfindingGrid.instance.ForceBuildingAtNode(buildings[selectedBuilding].buildingPrefab, NodeX, NodeY);
         if (placed) {
             lsc.PlayFx(buildSFX);
-            pillows -= buildings[selectedBuilding].buildingCost;
+            pillows -= buildings[selectedBuilding].buildingCost * GlobalBuyInflationMultiplier;
             pillowText.text = pillows.ToString();
         }
     }

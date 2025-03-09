@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c754323f588e84cadb4dc43c572146, type: 3}
   m_Name: BasicTurret
   m_EditorClassIdentifier: 
-  buildingName: 
+  buildingName: Water gun
   buildingCost: 7
   buildingSellValue: 5
   buildingHealth: 37

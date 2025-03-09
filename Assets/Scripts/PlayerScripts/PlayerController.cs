@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     [Range(0f, 20f)]
-    float speed;
+    public float speed;
 
     [Header("Basic lerp variables")]
 
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     [Space]
 
-    Vector2 movementInput;
+    public Vector2 movementInput;
 
     [Header("Input table(?)")]
     [SerializeField]
