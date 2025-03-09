@@ -515,10 +515,10 @@ public class DebugConsole : MonoBehaviour {
                             } else if (args[0] == "pickup") {
                                 player.GetComponent<PlayerHand>().GlobalPickupInflationMultiplier = inflation;
                             } else {
-                                output += "\n" + "Usage: inflation <buy/sell> <amount>" + "\n" + "inflation <amount>";
+                                output += "\n" + "Usage: inflation <buy/sell/pickup> <amount>" + "\n" + "inflation <amount>";
                             }
                         } else {
-                            output += "\n" + "Usage: inflation <buy/sell> <amount>" + "\n" + "inflation <amount>";
+                            output += "\n" + "Usage: inflation <buy/sell/pickup> <amount>" + "\n" + "inflation <amount>";
                         }
                         break;
 
@@ -539,7 +539,7 @@ public class DebugConsole : MonoBehaviour {
                         Debug.LogError(sargs);
                         break;
 
-                    case "warning":
+                    case "warn":
                         Debug.LogWarning(sargs);
                         break;
 #endif
@@ -572,7 +572,7 @@ public class DebugConsole : MonoBehaviour {
 #if UNITY_EDITOR
                             "<color=yellow>log</color> - Log a message\n" +
                             "<color=yellow>error</color> - Log an error\n" +
-                            "<color=yellow>warning</color> - Log a warning\n" +
+                            "<color=yellow>warn</color> - Log a warning\n" +
 #endif
                             "<color=yellow>help</color> - Show this help message";
                         break;
