@@ -22,6 +22,8 @@ public class DebugStatsHUD : MonoBehaviour {
 
     private bool hasFirstFrame = false;
 
+    private float maxFrameTime = 0.0f;
+
     void Start() {
         debugText = GetComponent<TMP_Text>();
     }
@@ -38,6 +40,10 @@ public class DebugStatsHUD : MonoBehaviour {
             // Calculate FPS and frame time
             fps = frameCount / timeSinceLastUpdate;
             frameTime = Time.deltaTime * 1000f; // Frame time in milliseconds
+
+            if (frameTime > maxFrameTime) {
+                maxFrameTime = frameTime;
+            }
 
             // Reset counters
             timeSinceLastUpdate = 0;
@@ -63,6 +69,7 @@ public class DebugStatsHUD : MonoBehaviour {
 
         debugText.text = $"FPS: {fps:F2}\n" +
                          $"Frame Time: {frameTime:F2} ms\n" +
+                         $"Max Frame Time: {maxFrameTime:F2} ms\n" +
                          $"Object Count: {objectCount}\n" +
                          $"Memory Usage: {memoryUsage / (1024f * 1024f):F2} MB\n" +
                          $"Loaded Assets: {loadedAssets}\n" +

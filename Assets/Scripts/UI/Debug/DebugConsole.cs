@@ -4,6 +4,8 @@ using System.Text.RegularExpressions;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using UnityEngine.Audio;
+
 
 
 #if UNITY_EDITOR
@@ -24,6 +26,8 @@ public class DebugConsole : MonoBehaviour {
     private GameObject player;
     [SerializeField]
     private EnemySpawner enemySpawner;
+    [SerializeField]
+    private SoundMixer_Handler soundMixerHandler;
 
     // Singleton pattern deffinitions
     private static DebugConsole _instance;
@@ -42,6 +46,73 @@ public class DebugConsole : MonoBehaviour {
         if (inputField != null) {
             inputField.onSubmit.AddListener(HandleInput);
         }
+    }
+    private enum SpiralDirection {
+        Up,
+        Right,
+        Down,
+        Left
+    }
+
+    private List<(int x, int y)> GetSpiralNodes(
+        int startX,
+        int startY,
+        int amount,
+        bool skipBuildings = false
+    ) {
+        List<(int x, int y)> spiralNodes = new List<(int x, int y)>();
+        int gridWidth = PathfindingGrid.instance.grid.GetLength(0);
+        int gridHeight = PathfindingGrid.instance.grid.GetLength(1);
+
+        int placedCount = 0;
+        int xOffset = 0;
+        int yOffset = 1;
+        int moveCount = 1;
+        int moveIncrement = 1;
+        SpiralDirection currentDirection = SpiralDirection.Right;
+
+        while (placedCount < amount) {
+            for (int i = 0; i < moveCount; i++) {
+                int x = startX + xOffset;
+                int y = startY + yOffset;
+
+                if (x >= 0 && x < gridWidth && y >= 0 && y < gridHeight) {
+                    Node currentNode = PathfindingGrid.instance.grid[x, y];
+                    if (!currentNode.isBed && (!skipBuildings || currentNode.building == null)) {
+                        spiralNodes.Add((x, y));
+                        placedCount++;
+                        if (placedCount >= amount) break;
+                    }
+                }
+
+                // Move to the next position in the current direction
+                switch (currentDirection) {
+                    case SpiralDirection.Right:
+                        xOffset++;
+                        break;
+                    case SpiralDirection.Down:
+                        yOffset--;
+                        break;
+                    case SpiralDirection.Left:
+                        xOffset--;
+                        break;
+                    case SpiralDirection.Up:
+                        yOffset++;
+                        break;
+                }
+            }
+
+            if (currentDirection == SpiralDirection.Left ||
+                currentDirection == SpiralDirection.Right) {
+                moveIncrement++;
+            }
+            moveCount = moveIncrement;
+
+            // Change direction
+            currentDirection = (SpiralDirection)(((int)currentDirection + 1) % 4);
+        }
+
+        return spiralNodes;
     }
 
     public void HandleInput(string input) {
@@ -238,6 +309,37 @@ public class DebugConsole : MonoBehaviour {
 
                     case "build":
                         switch (args[0]) {
+                            case "spiral":
+                                if (args.Length < 3) {
+                                    output += "\n" + "Usage: build spiral <selection> <amount> [<skip-buildings=false>]";
+                                    break;
+                                }
+
+                                int spiral_selection = int.Parse(args[1]);
+                                int spiral_amount = int.Parse(args[2]);
+                                bool skipBuildings = args.Length > 3 ? bool.Parse(args[3]) : false;
+                                Node spiral_playerNode = PathfindingGrid.instance.NodeFromWorldPoint(
+                                    player.transform.position
+                                );
+                                int spiral_x = spiral_playerNode.gridX;
+                                int spiral_y = spiral_playerNode.gridY;
+
+                                List<(int x, int y)> spiralNodes = GetSpiralNodes(
+                                    spiral_x,
+                                    spiral_y,
+                                    spiral_amount,
+                                    skipBuildings
+                                );
+
+                                foreach (var node in spiralNodes) {
+                                    player.GetComponent<PlayerHand>().SwitchBuildSelection(spiral_selection);
+                                    player
+                                        .GetComponent<PlayerHand>()
+                                        .ForcePlaceBuildingAt(node.x, node.y);
+                                }
+
+                                break;
+
                             case "place":
                                 if (args.Length < 4) output += "\n" + "Usage: build <place/remove/get> <x> <y> [<selection>]";
                                 int x = int.Parse(args[1]);
@@ -277,9 +379,34 @@ public class DebugConsole : MonoBehaviour {
                         output += "\n" + $"Player node: {playerNode.gridX}, {playerNode.gridY}";
                         break;
 
+                    case "volume":
+                        // "volume master/sfx/music <volume>"
+                        // "volume"
+                        // soundMixerHandler.SetMasterVolume, soundMixerHandler.SetMusicVolume, soundMixerHandler.SetSFXVolume
+                        // PlayerPrefs.GetFloat("masterVolume", 1f), PlayerPrefs.GetFloat("musicVolume", 1f), PlayerPrefs.GetFloat("sfxVolume", 1f);
+                        if (args.Length == 0) {
+                            output += "\n" + $"Master volume: {PlayerPrefs.GetFloat("masterVolume", 1f)}";
+                            output += "\n" + $"Music volume: {PlayerPrefs.GetFloat("musicVolume", 1f)}";
+                            output += "\n" + $"SFX volume: {PlayerPrefs.GetFloat("sfxVolume", 1f)}";
+                        } else if (args.Length == 2) {
+                            float volume = float.Parse(args[1]);
+                            if (args[0] == "master") {
+                                soundMixerHandler.SetMasterVolume(volume);
+                            } else if (args[0] == "music") {
+                                soundMixerHandler.SetMusicVolume(volume);
+                            } else if (args[0] == "sfx") {
+                                soundMixerHandler.SetSFXVolume(volume);
+                            } else {
+                                output += "\n" + "Usage: volume master/sfx/music <volume>" + "\n" + "volume";
+                            }
+                        } else {
+                            output += "\n" + "Usage: volume master/sfx/music <volume>" + "\n" + "volume";
+                        }
+                        break;
+
                     case "summon":
                         // "summon <entity_id> <x> <y> [<u-nor>]"
-                        if (args.Length < 2) output += "\n" + "Usage: summon <entity_id> <x> <y> [<u-nor>]" + "\n" + "summon fill <entity_id> [<u-nor>]";
+                        if (args.Length < 2) output += "\n" + "Usage: summon <entity_id> <x> <y> [<u-nor>]" + "\nsummon fill <entity_id> [<u-nor>]" + "\nsummon spiral <entity_id> <amount> [<u-nor>]";
                         if (args[0] == "fill") {
                             string entityId = args[1];
                             string uNor = "";
@@ -299,6 +426,32 @@ public class DebugConsole : MonoBehaviour {
                                     if (args.Length > 2) {
                                         DebugConsole_UNOR_Properties.ParseAndApply(entity, uNor);
                                     }
+                                }
+                            }
+                        } else if (args[0] == "spiral") {
+                            if (args.Length < 3) output += "\n" + "Usage: summon spiral <entity_id> <amount> [<u-nor>]";
+                            string entityId = args[1];
+                            int spiral_amount = int.Parse(args[2]);
+                            string uNor = "";
+                            if (args.Length > 3) {
+                                // Unor is space joined of al others args after the first 3
+                                uNor = string.Join(" ", args, 3, args.Length - 3);
+                            }
+                            // Get entity from entityId
+                            GameObject entityPrefab = GlobalEntityHolder.Instance.Resolve(entityId);
+                            // Get player node
+                            Node spiral_summon_playerNode = PathfindingGrid.instance.NodeFromWorldPoint(player.transform.position);
+                            // Get spiral nodes
+                            List<(int x, int y)> spiralNodes = GetSpiralNodes(
+                                spiral_summon_playerNode.gridX,
+                                spiral_summon_playerNode.gridY,
+                                spiral_amount
+                            );
+                            foreach (var node in spiralNodes) {
+                                GameObject entity = Instantiate(entityPrefab, PathfindingGrid.instance.grid[node.x, node.y].worldPosition, Quaternion.identity);
+                                // If we got U-NOR data we use DebugConsole_UNOR_Properties.ParseAndApply
+                                if (args.Length > 3) {
+                                    DebugConsole_UNOR_Properties.ParseAndApply(entity, uNor);
                                 }
                             }
                         } else {
