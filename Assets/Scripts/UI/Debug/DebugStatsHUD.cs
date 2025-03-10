@@ -63,9 +63,6 @@ public class DebugStatsHUD : MonoBehaviour {
     }
 
     void UpdateDebugStats() {
-        // Replace placeholders for CPU and GPU usage with your actual implementation
-        string cpuUsage = "CPU: N/A (NotImplemented)"; // Placeholder (requires custom implementation or external library)
-        string gpuUsage = "GPU: N/A (NotImplemented)"; // Placeholder (requires custom implementation or external library)
 
         debugText.text = $"FPS: {fps:F2}\n" +
                          $"Frame Time: {frameTime:F2} ms\n" +

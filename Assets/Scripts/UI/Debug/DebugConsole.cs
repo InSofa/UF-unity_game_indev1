@@ -5,6 +5,10 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine.Audio;
+using System.IO;
+
+using System;
+
 
 
 
@@ -28,6 +32,8 @@ public class DebugConsole : MonoBehaviour {
     private EnemySpawner enemySpawner;
     [SerializeField]
     private SoundMixer_Handler soundMixerHandler;
+    [SerializeField]
+    private Camera mainCameraInstance;
 
     // Singleton pattern deffinitions
     private static DebugConsole _instance;
@@ -213,6 +219,144 @@ public class DebugConsole : MonoBehaviour {
 
         return result;
     }
+
+    public struct AreaCaptureReturn {
+        public string filePath;
+        public int width;
+        public int height;
+
+        public AreaCaptureReturn(string filePath, int width, int height) {
+            this.filePath = filePath;
+            this.width = width;
+            this.height = height;
+        }
+    }
+
+    public static AreaCaptureReturn CaptureArea(Camera mainCamera, Vector2 center, float width, float height, string outputFolderPath) {
+        // Calculate resolution scale based on the current camera
+        float screenWidth = Screen.width;
+        float screenHeight = Screen.height;
+        float cameraSize = mainCamera.orthographicSize;
+        float aspectRatio = screenWidth / screenHeight;
+
+        float unitWidth = cameraSize * 2 * aspectRatio;
+        float unitHeight = cameraSize * 2;
+
+        float scaleX = screenWidth / unitWidth;
+        float scaleY = screenHeight / unitHeight;
+
+        int renderWidth = Mathf.RoundToInt(width * scaleX);
+        int renderHeight = Mathf.RoundToInt(height * scaleY);
+
+        // Create a temporary camera
+        GameObject tempCameraObj = new GameObject("TempScreenshotCamera");
+        Camera tempCamera = tempCameraObj.AddComponent<Camera>();
+        tempCamera.CopyFrom(mainCamera);
+        tempCamera.transform.position = new Vector3(center.x, center.y, mainCamera.transform.position.z);
+        tempCamera.orthographicSize = height / 2f;
+
+        // Create a render texture
+        RenderTexture renderTexture = new RenderTexture(renderWidth, renderHeight, 24);
+        tempCamera.targetTexture = renderTexture;
+        tempCamera.Render();
+
+        // Read pixels from render texture
+        RenderTexture.active = renderTexture;
+        Texture2D screenshot = new Texture2D(renderWidth, renderHeight, TextureFormat.RGB24, false);
+        screenshot.ReadPixels(new Rect(0, 0, renderWidth, renderHeight), 0, 0);
+        screenshot.Apply();
+
+        // Reset active RenderTexture
+        RenderTexture.active = null;
+        tempCamera.targetTexture = null;
+
+        // Destroy temporary camera
+        GameObject.Destroy(tempCameraObj);
+
+        // Ensure the folder exists
+        if (!Directory.Exists(outputFolderPath)) {
+            Directory.CreateDirectory(outputFolderPath);
+        }
+
+        // Save to file
+        string timestamp = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
+        string filename = $"{timestamp}_screenres_esthers-nightmare.png";
+        string fullPath = Path.Combine(outputFolderPath, filename);
+        File.WriteAllBytes(fullPath, screenshot.EncodeToPNG());
+
+        // Clean up
+        GameObject.Destroy(screenshot);
+        GameObject.Destroy(renderTexture);
+
+        // Return struct with file info
+        return new AreaCaptureReturn(fullPath, renderWidth, renderHeight);
+    }
+
+    public static AreaCaptureReturn CaptureArea_WithForcedRes(Camera mainCamera, Vector2 center, float width, float height, string outputFolderPath, Vector2? targetRes = null) {
+        // Calculate resolution scale based on the current camera
+        float screenWidth = Screen.width;
+        float screenHeight = Screen.height;
+        float cameraSize = mainCamera.orthographicSize;
+        float aspectRatio = screenWidth / screenHeight;
+
+        // If targetRes is provided, use its values, otherwise use screen dimensions
+        float targetWidth = targetRes.HasValue ? targetRes.Value.x : screenWidth;
+        float targetHeight = targetRes.HasValue ? targetRes.Value.y : screenHeight;
+
+        // Adjust units and scales based on the selected target resolution
+        float unitWidth = cameraSize * 2 * aspectRatio;
+        float unitHeight = cameraSize * 2;
+
+        float scaleX = targetWidth / unitWidth;
+        float scaleY = targetHeight / unitHeight;
+
+        int renderWidth = Mathf.RoundToInt(width * scaleX);
+        int renderHeight = Mathf.RoundToInt(height * scaleY);
+
+        // Create a temporary camera
+        GameObject tempCameraObj = new GameObject("TempScreenshotCamera");
+        Camera tempCamera = tempCameraObj.AddComponent<Camera>();
+        tempCamera.CopyFrom(mainCamera);
+        tempCamera.transform.position = new Vector3(center.x, center.y, mainCamera.transform.position.z);
+        tempCamera.orthographicSize = height / 2f;
+
+        // Create a render texture
+        RenderTexture renderTexture = new RenderTexture(renderWidth, renderHeight, 24);
+        tempCamera.targetTexture = renderTexture;
+        tempCamera.Render();
+
+        // Read pixels from render texture
+        RenderTexture.active = renderTexture;
+        Texture2D screenshot = new Texture2D(renderWidth, renderHeight, TextureFormat.RGB24, false);
+        screenshot.ReadPixels(new Rect(0, 0, renderWidth, renderHeight), 0, 0);
+        screenshot.Apply();
+
+        // Reset active RenderTexture
+        RenderTexture.active = null;
+        tempCamera.targetTexture = null;
+
+        // Destroy temporary camera
+        GameObject.Destroy(tempCameraObj);
+
+        // Ensure the folder exists
+        if (!Directory.Exists(outputFolderPath)) {
+            Directory.CreateDirectory(outputFolderPath);
+        }
+
+        // Save to file
+        string timestamp = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
+        string filename = $"{timestamp}_forcedres-{targetWidth}x{targetHeight}_esthers-nightmare.png";
+        string fullPath = Path.Combine(outputFolderPath, filename);
+        File.WriteAllBytes(fullPath, screenshot.EncodeToPNG());
+
+        // Clean up
+        GameObject.Destroy(screenshot);
+        GameObject.Destroy(renderTexture);
+
+        // Return struct with file info
+        return new AreaCaptureReturn(fullPath, renderWidth, renderHeight);
+    }
+
 
     public string ExecuteInput(string rawInput) {
 
@@ -549,6 +693,46 @@ public class DebugConsole : MonoBehaviour {
                         uiHandler.loadScene(0);
                         break;
 
+                    case "worldCapture":
+                        // Capture a screenshot of the world (100x100 around 0,0) and save it to the same folder as the built-executable.
+                        string capturesFolder = Path.Combine(Application.dataPath, "..", "Captures");
+                        if (!Directory.Exists(capturesFolder)) {
+                            Directory.CreateDirectory(capturesFolder);
+                        }
+
+                        AreaCaptureReturn capture;
+                        if (args.Length == 1) {
+                            Vector2? targetRes = null;
+                            bool captureIsValid = true;
+                            switch (args[0]) {
+                                case "480p":
+                                    targetRes = new Vector2(640, 480);
+                                    break;
+                                case "720p":
+                                    targetRes = new Vector2(1280, 720);
+                                    break;
+                                case "1080p":
+                                    targetRes = new Vector2(1920, 1080);
+                                    break;
+                                case "1440p":
+                                    targetRes = new Vector2(2560, 1440);
+                                    break;
+                                default:
+                                    output += "\n" + "Invalid resolution, valid resolutions are 480p, 720p, 1080p, 1440p";
+                                    captureIsValid = false;
+                                    break;
+                            }
+                            if (!captureIsValid) {
+                                break;
+                            }
+                            capture = CaptureArea_WithForcedRes(mainCameraInstance, Vector2.zero, 100, 100, capturesFolder, targetRes);
+                        } else {
+                            capture = CaptureArea(mainCameraInstance, Vector2.zero, 100, 100, capturesFolder);
+                        }
+                        string fileName = "/Captures/" + Path.GetFileName(capture.filePath);
+                        output += "\n" + $"Captured world to \"{fileName}\" ({capture.width}x{capture.height} px)";
+                        break;
+
                     case "help":
                         // Returned strings with colors
                         output += "\n" +
@@ -569,6 +753,8 @@ public class DebugConsole : MonoBehaviour {
                             "<color=yellow>quit</color> - Quit the game\n" +
                             "<color=yellow>mainmenu</color> - Load main menu scene\n" +
                             "<color=yellow>inflation</color> - Set inflation multiplier\n" +
+                            "<color=yellow>volume</color> - Set volume\n" +
+                            "<color=yellow>worldCapture</color> - Capture a screenshot of the world (Freezes Game Until Done!)\n" +
 #if UNITY_EDITOR
                             "<color=yellow>log</color> - Log a message\n" +
                             "<color=yellow>error</color> - Log an error\n" +

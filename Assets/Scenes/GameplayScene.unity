@@ -2548,6 +2548,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397182369}
   m_CullTransparentMesh: 1
+--- !u!114 &400289273 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8626364610983399634, guid: 4fad628d07580d14da5c7ae04c6ce004, type: 3}
+  m_PrefabInstance: {fileID: 5396707015476762734}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054b26dd7a0f21d40888a0b306a91464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &403791409
 GameObject:
   m_ObjectHideFlags: 0
@@ -11570,6 +11581,8 @@ MonoBehaviour:
   uiHandler: {fileID: 1465475016}
   player: {fileID: 452178598}
   enemySpawner: {fileID: 257325728}
+  soundMixerHandler: {fileID: 400289273}
+  mainCameraInstance: {fileID: 519420031}
 --- !u!114 &1322418072
 MonoBehaviour:
   m_ObjectHideFlags: 0
