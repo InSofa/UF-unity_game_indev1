@@ -60,12 +60,7 @@ public class DebugConsole : MonoBehaviour {
         Left
     }
 
-    private List<(int x, int y)> GetSpiralNodes(
-        int startX,
-        int startY,
-        int amount,
-        bool skipBuildings = false
-    ) {
+    private List<(int x, int y)> GetSpiralNodes(int startX, int startY, int amount, bool skipBuildings = false) {
         List<(int x, int y)> spiralNodes = new List<(int x, int y)>();
         int gridWidth = PathfindingGrid.instance.grid.GetLength(0);
         int gridHeight = PathfindingGrid.instance.grid.GetLength(1);
@@ -120,6 +115,35 @@ public class DebugConsole : MonoBehaviour {
 
         return spiralNodes;
     }
+
+    private (int xlow, int xhigh, int ylow, int yhigh) GetOuterNodeBounds() {
+        int xlow = int.MaxValue;
+        int xhigh = int.MinValue;
+        int ylow = int.MaxValue;
+        int yhigh = int.MinValue;
+        bool foundNode = false;
+
+        for (int x = 0; x < PathfindingGrid.instance.grid.GetLength(0); x++) {
+            for (int y = 0; y < PathfindingGrid.instance.grid.GetLength(1); y++) {
+                Node node = PathfindingGrid.instance.grid[x, y];
+                if (node.building == null && node.isBed == false) continue;
+
+                foundNode = true;
+
+                if (x < xlow) xlow = x;
+                if (x > xhigh) xhigh = x;
+                if (y < ylow) ylow = y;
+                if (y > yhigh) yhigh = y;
+            }
+        }
+
+        if (!foundNode) {
+            return (0, 0, 0, 0);
+        }
+
+        return (xlow, xhigh, ylow, yhigh);
+    }
+
 
     public void HandleInput(string input) {
         if (string.IsNullOrWhiteSpace(input)) return;
@@ -232,7 +256,7 @@ public class DebugConsole : MonoBehaviour {
         }
     }
 
-    public static AreaCaptureReturn CaptureArea(Camera mainCamera, Vector2 center, float width, float height, string outputFolderPath) {
+    public static AreaCaptureReturn CaptureArea(Camera mainCamera, Vector2 center, float width, float height, string outputFolderPath, string outputFile= "%timestamp%_screenres_esthers-nightmare.png") {
         // Calculate resolution scale based on the current camera
         float screenWidth = Screen.width;
         float screenHeight = Screen.height;
@@ -280,7 +304,7 @@ public class DebugConsole : MonoBehaviour {
 
         // Save to file
         string timestamp = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
-        string filename = $"{timestamp}_screenres_esthers-nightmare.png";
+        string filename = outputFile.Replace("%timestamp%", timestamp);
         string fullPath = Path.Combine(outputFolderPath, filename);
         File.WriteAllBytes(fullPath, screenshot.EncodeToPNG());
 
@@ -292,7 +316,7 @@ public class DebugConsole : MonoBehaviour {
         return new AreaCaptureReturn(fullPath, renderWidth, renderHeight);
     }
 
-    public static AreaCaptureReturn CaptureArea_WithForcedRes(Camera mainCamera, Vector2 center, float width, float height, string outputFolderPath, Vector2? targetRes = null) {
+    public static AreaCaptureReturn CaptureArea_WithForcedRes(Camera mainCamera, Vector2 center, float width, float height, string outputFolderPath, Vector2? targetRes = null, string outputFile = "%timestamp%_forcedres-%targetWidth%x%targetHeight%_esthers-nightmare.png") {
         // Calculate resolution scale based on the current camera
         float screenWidth = Screen.width;
         float screenHeight = Screen.height;
@@ -345,7 +369,7 @@ public class DebugConsole : MonoBehaviour {
 
         // Save to file
         string timestamp = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
-        string filename = $"{timestamp}_forcedres-{targetWidth}x{targetHeight}_esthers-nightmare.png";
+        string filename = outputFile.Replace("%timestamp%", timestamp).Replace("%targetWidth%", targetWidth.ToString()).Replace("%targetHeight%", targetHeight.ToString());
         string fullPath = Path.Combine(outputFolderPath, filename);
         File.WriteAllBytes(fullPath, screenshot.EncodeToPNG());
 
@@ -731,6 +755,12 @@ public class DebugConsole : MonoBehaviour {
                         }
                         string fileName = "/Captures/" + Path.GetFileName(capture.filePath);
                         output += "\n" + $"Captured world to \"{fileName}\" ({capture.width}x{capture.height} px)";
+                        break;
+
+                    case "buildBounds":
+                        // Get the outer bounds of the world
+                        (int xlow, int xhigh, int ylow, int yhigh) = GetOuterNodeBounds();
+                        output += "\n" + $"Outer bounds: x: {xlow}-{xhigh}, y: {ylow}-{yhigh}";
                         break;
 
                     case "help":

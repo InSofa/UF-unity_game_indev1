@@ -16735,23 +16735,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0378308a9ae6fcb4ba00392f0239d3bd, type: 3}
---- !u!1 &2163015377523615881
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6021008179807512124}
-  - component: {fileID: 5287381667780565169}
-  m_Layer: 0
-  m_Name: Explosion
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1001 &5264632636553011319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16821,26 +16804,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0747e48cfd9b5d43b922bdee7da0a23, type: 3}
---- !u!114 &5287381667780565169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2163015377523615881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0048471318b6e954ab36e48ffaa3db83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionEffect: {fileID: 7373012356303855373, guid: e38575b5ee376d04ca2f8ec90796691b, type: 3}
-  explosionRadius: 1
-  explosionForce: 1
-  explosionDamage: 0
-  parent: {fileID: 0}
-  damageLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1001 &5396707015476762734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16950,21 +16913,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fad628d07580d14da5c7ae04c6ce004, type: 3}
---- !u!4 &6021008179807512124
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2163015377523615881}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -16987,4 +16935,3 @@ SceneRoots:
   - {fileID: 1342077546}
   - {fileID: 1169956823}
   - {fileID: 1583128190}
-  - {fileID: 6021008179807512124}
