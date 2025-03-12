@@ -140,7 +140,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 0.3
+  bundleVersion: 0.4
   preloadedAssets:
   - {fileID: -944628639613478452, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
   - {fileID: 11400000, guid: b45b3954e0fe6484e81eba7930755894, type: 2}
@@ -632,7 +632,7 @@ PlayerSettings:
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: UF-UnityGame-Indev1
-  metroPackageVersion: 
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -640,7 +640,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: UF-UnityGame-Indev1
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Esther's Nightmare
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
