@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,12 @@ public class Pillow : MonoBehaviour
     {
         if (collision.CompareTag("Player")){
             PlayerHand playerHand = collision.GetComponent<PlayerHand>();
-            playerHand.addPillow(value * playerHand.GlobalPickupInflationMultiplier);
+            playerHand.addPillow(
+                (int)Math.Round(
+                    value * playerHand.GlobalPickupInflationMultiplier,
+                    MidpointRounding.AwayFromZero
+                )
+            );
             GlobalSoundComposer.Instance.PlayFx(pillowSFX);
             Destroy(this.gameObject);
         }

@@ -13,11 +13,11 @@ public class PlayerHand : MonoBehaviour {
     UIHandler uiHandler;
 
     [SerializeField]
-    public int GlobalBuyInflationMultiplier = 1;
+    public float GlobalBuyInflationMultiplier = 1;
     [SerializeField]
-    public int GlobalSellInflationMultiplier = 1;
+    public float GlobalSellInflationMultiplier = 1;
     [SerializeField]
-    public int GlobalPickupInflationMultiplier = 1;
+    public float GlobalPickupInflationMultiplier = 1;
 
     // Reference to mainGameTokenIconResolver
     [SerializeField]
@@ -279,7 +279,10 @@ public class PlayerHand : MonoBehaviour {
     private void placeBuilding(InputAction.CallbackContext obj) {
         if (DebugConsole.Instance != null) { if (DebugConsole.Instance.inputIsFocused == true) { return; } } // No bindings when Debug-Console is focused
 
-        int buildingCost = buildings[selectedBuilding].buildingCost * GlobalBuyInflationMultiplier;
+        int buildingCost = (int)Math.Round(
+            buildings[selectedBuilding].buildingCost * GlobalBuyInflationMultiplier,
+            MidpointRounding.AwayFromZero
+        );
 
         if (pillows < buildingCost) {
             //Debug.Log("Not enough pillows");
@@ -304,7 +307,13 @@ public class PlayerHand : MonoBehaviour {
         if(sellAmount != null) {
             lsc.PlayFx(sellSFX);
             //Debug.Log("Sold building for " + sellAmount + " pillows");
-            addPillow((int)sellAmount * GlobalSellInflationMultiplier);
+            //MARK: Simplify casting?
+            addPillow(
+                (int)Math.Round(
+                    (int)sellAmount * GlobalSellInflationMultiplier,
+                    MidpointRounding.AwayFromZero
+                )
+            );
             return;
         }
         //Debug.Log("No building to sell here");
@@ -314,7 +323,10 @@ public class PlayerHand : MonoBehaviour {
         bool placed = PathfindingGrid.instance.ForceBuildingAtNode(buildings[selectedBuilding].buildingPrefab, NodeX, NodeY);
         if (placed) {
             lsc.PlayFx(buildSFX);
-            pillows -= buildings[selectedBuilding].buildingCost * GlobalBuyInflationMultiplier;
+            pillows -= (int)Math.Round(
+                buildings[selectedBuilding].buildingCost * GlobalBuyInflationMultiplier,
+                MidpointRounding.AwayFromZero
+            );
             pillowText.text = pillows.ToString();
         }
     }

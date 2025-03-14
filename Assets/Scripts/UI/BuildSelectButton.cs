@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class BuildSelectButton : MonoBehaviour {
 
@@ -26,6 +27,9 @@ public class BuildSelectButton : MonoBehaviour {
             building = playerHand.buildings[buildingIndex];
         }
         nameDisplay.GetComponent<TMP_Text>().text = building.buildingName;
-        costDisplay.GetComponent<TMP_Text>().text = (building.buildingCost * playerHand.GlobalBuyInflationMultiplier).ToString();
+        costDisplay.GetComponent<TMP_Text>().text = ((int)Math.Round(
+            building.buildingCost * playerHand.GlobalBuyInflationMultiplier,
+            MidpointRounding.AwayFromZero
+       )).ToString();
     }
 }

@@ -11,7 +11,7 @@ public class PathfindingGrid : MonoBehaviour
     [SerializeField]
     private Vector2 gridWorldSize;
     [SerializeField]
-    private float nodeRadius;
+    public float nodeRadius;
 
     public Node[,] grid;
 

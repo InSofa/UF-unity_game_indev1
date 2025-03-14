@@ -670,12 +670,12 @@ public class DebugConsole : MonoBehaviour {
                             output += "\n" + $"Sell inflation: {player.GetComponent<PlayerHand>().GlobalSellInflationMultiplier}";
                             output += "\n" + $"Pickup inflation: {player.GetComponent<PlayerHand>().GlobalPickupInflationMultiplier}";
                         } else if (args.Length == 1) {
-                            int inflation = int.Parse(args[0]);
+                            float inflation = float.Parse(args[0]);
                             player.GetComponent<PlayerHand>().GlobalBuyInflationMultiplier = inflation;
                             player.GetComponent<PlayerHand>().GlobalSellInflationMultiplier = inflation;
                             player.GetComponent<PlayerHand>().GlobalPickupInflationMultiplier = inflation;
                         } else if (args.Length == 2) {
-                            int inflation = int.Parse(args[1]);
+                            float inflation = float.Parse(args[1]);
                             if (args[0] == "buy") {
                                 player.GetComponent<PlayerHand>().GlobalBuyInflationMultiplier = inflation;
                             } else if (args[0] == "sell") {
@@ -683,10 +683,10 @@ public class DebugConsole : MonoBehaviour {
                             } else if (args[0] == "pickup") {
                                 player.GetComponent<PlayerHand>().GlobalPickupInflationMultiplier = inflation;
                             } else {
-                                output += "\n" + "Usage: inflation <buy/sell/pickup> <amount>" + "\n" + "inflation <amount>";
+                                output += "\n" + "Usage: inflation <buy/sell/pickup> <amount>" + "\n" + "inflation <float>";
                             }
                         } else {
-                            output += "\n" + "Usage: inflation <buy/sell/pickup> <amount>" + "\n" + "inflation <amount>";
+                            output += "\n" + "Usage: inflation <buy/sell/pickup> <amount>" + "\n" + "inflation <float>";
                         }
                         break;
 
@@ -762,6 +762,24 @@ public class DebugConsole : MonoBehaviour {
                         (int xlow, int xhigh, int ylow, int yhigh) = GetOuterNodeBounds();
                         output += "\n" + $"Outer bounds: x: {xlow}-{xhigh}, y: {ylow}-{yhigh}";
                         break;
+
+                    case "buildBoundsWu":
+                        // Get the outer bounds of the world (in nodes)
+                        (int xlow_2, int xhigh_2, int ylow_2, int yhigh_2) = GetOuterNodeBounds();
+                        // Use the PathfindingGrid to convert x,y to worldUnits
+                        float xlow_midPx = PathfindingGrid.instance.grid[xlow_2, ylow_2].worldPosition.x;
+                        float xhigh_midPx = PathfindingGrid.instance.grid[xhigh_2, ylow_2].worldPosition.x;
+                        float ylow_midPx = PathfindingGrid.instance.grid[xlow_2, ylow_2].worldPosition.y;
+                        float yhigh_midPx = PathfindingGrid.instance.grid[xlow_2, yhigh_2].worldPosition.y;
+                        // Get the non-midpoints using PathfindingGrid.instance.nodeRadius which is half width
+                        float xlowPx = xlow_midPx - PathfindingGrid.instance.nodeRadius;
+                        float xhighPx = xhigh_midPx + PathfindingGrid.instance.nodeRadius;
+                        float ylowPx = ylow_midPx - PathfindingGrid.instance.nodeRadius;
+                        float yhighPx = yhigh_midPx + PathfindingGrid.instance.nodeRadius;
+                        // Display
+                        output += "\n" + $"Outer bounds: x: {xlowPx}-{xhighPx}, y: {ylowPx}-{yhighPx} (NodeRad:{PathfindingGrid.instance.nodeRadius})";
+                        break;
+
 
                     case "help":
                         // Returned strings with colors
