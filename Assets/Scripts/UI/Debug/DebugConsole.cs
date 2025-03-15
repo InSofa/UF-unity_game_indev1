@@ -3,19 +3,16 @@ using TMPro;
 using System.Text.RegularExpressions;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using Newtonsoft.Json;
-using UnityEngine.Audio;
 using System.IO;
-
 using System;
-
-
+using Newtonsoft.Json.Linq;
+using UnityEditor.Experimental.GraphView;
+using UnityEngine.UIElements;
 
 
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-using System.Xml;
 
 public class DebugConsole : MonoBehaviour {
     public TMP_InputField inputField;
@@ -477,6 +474,16 @@ public class DebugConsole : MonoBehaviour {
 
                     case "build":
                         switch (args[0]) {
+                            case "select":
+                                if (args.Length < 2) {
+                                    output += "\n" + "Usage: build select <selection>";
+                                    break;
+                                }
+
+                                int selection2 = int.Parse(args[1]);
+                                player.GetComponent<PlayerHand>().SwitchBuildSelection(selection2);
+                                break;
+
                             case "spiral":
                                 if (args.Length < 3) {
                                     output += "\n" + "Usage: build spiral <selection> <amount> [<skip-buildings=false>]";
@@ -509,7 +516,7 @@ public class DebugConsole : MonoBehaviour {
                                 break;
 
                             case "place":
-                                if (args.Length < 4) output += "\n" + "Usage: build <place/remove/get> <x> <y> <selection>";
+                                if (args.Length < 4) output += "\n" + "Usage: build <place/remove/get/fill/spiral/select> <x> <y> <selection>";
                                 int x = int.Parse(args[1]);
                                 int y = int.Parse(args[2]);
                                 int buildingIndex = int.Parse(args[3]);
@@ -780,6 +787,78 @@ public class DebugConsole : MonoBehaviour {
                         output += "\n" + $"Outer bounds: x: {xlowPx}-{xhighPx}, y: {ylowPx}-{yhighPx} (NodeRad:{PathfindingGrid.instance.nodeRadius})";
                         break;
 
+                    case "exportGrid":
+                        // Exports the grid to a json file
+                        // args[0] is json filename
+                        // args[1] is either "true" or "false"
+                        // Use DebugConsole_GridSerializer
+                        if (args.Length < 1) {
+                            output += "\n" + "Usage: exportGrid <filename>";
+                            break;
+                        }
+
+                        string jsonFilename = args[0];
+
+                        // If filename does not end of .json, add it
+                        if (!jsonFilename.EndsWith(".json")) {
+                            jsonFilename += ".json";
+                        }
+
+                        // Get the folderPath as /Exports
+                        string exportsFolder = Path.Combine(Application.dataPath, "..", "Exports");
+                        if (!Directory.Exists(exportsFolder)) {
+                            Directory.CreateDirectory(exportsFolder);
+                        }
+                        string jsonPath = Path.Combine(exportsFolder, jsonFilename);
+
+                        bool includeEmpty = false;
+                        if (args.Length > 1) {
+                            includeEmpty = bool.Parse(args[1]);
+                        }
+
+                        JObject json = DebugConsole_GridSerializer.GridToJson(player.GetComponent<PlayerHand>().buildings, includeEmpty);
+
+                        File.WriteAllText(jsonPath, json.ToString());
+                        output += "\n" + $"Exported grid to {jsonPath}";
+                        break;
+
+                    case "importGrid":
+                        // Exports the grid to a json file
+                        // args[0] is json filename
+                        // args[1] is either "true" or "false"
+                        // Use DebugConsole_GridSerializer
+                        if (args.Length < 1) {
+                            output += "\n" + "Usage: exportGrid <filename>";
+                            break;
+                        }
+
+                        string jsonFilename2 = args[0];
+
+                        // If filename does not end of .json, throw
+                        if (!jsonFilename2.EndsWith(".json")) {
+                            output += "\n" + "Filename must end with .json";
+                            break;
+                        }
+
+                        // Get the folderPath as /Exports
+                        string exportsFolder2 = Path.Combine(Application.dataPath, "..", "Exports");
+                        if (!Directory.Exists(exportsFolder2)) {
+                            Directory.CreateDirectory(exportsFolder2);
+                        }
+                        string jsonPath2 = Path.Combine(exportsFolder2, jsonFilename2);
+
+                        JObject json2 = JObject.Parse(File.ReadAllText(jsonPath2));
+
+                        bool ovverideExisting = false;
+                        if (args.Length > 1) {
+                            ovverideExisting = bool.Parse(args[1]);
+                        }
+
+                        DebugConsole_GridSerializer.JsonToGrid(json2, player.GetComponent<PlayerHand>().buildings, ovverideExisting);
+
+                        output += "\n" + $"Imported grid from {jsonPath2}";
+
+                        break;
 
                     case "help":
                         // Returned strings with colors

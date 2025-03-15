@@ -2859,6 +2859,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 32abab8bafb48dc409ac58fabfe94f62, type: 2}
   - {fileID: 11400000, guid: 446ab1c8bd8fe0c4fadc69b9d7bf88d2, type: 2}
   - {fileID: 11400000, guid: 9c19cbc0a4996694781c4c272232e396, type: 2}
+  - {fileID: 11400000, guid: 4083b42baf4d37c4d9c1144ecf8f1a4f, type: 2}
   buildRange: 2
   buildIndicator: {fileID: 1450019685}
   attackIndicator: {fileID: 155556760}
@@ -10715,7 +10716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2702212061584023938, guid: 66da955f9a633344fb70b854b66cd3e9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 3.73
       objectReference: {fileID: 0}
     - target: {fileID: 2702212061584023938, guid: 66da955f9a633344fb70b854b66cd3e9, type: 3}
       propertyPath: m_LocalPosition.z
