@@ -9,14 +9,25 @@ public class Pathfinding : MonoBehaviour {
     public static Pathfinding instance;
     PathfindingGrid grid;
 
+    [SerializeField]
+    Transform seeker, target;
+
+    float time;
+
     void Awake() {
         grid = PathfindingGrid.instance;
         instance = this;
     }
 
+    /*
     void Update() {
-        //FindPath(seeker.position, target.position);
-    }
+        time += Time.deltaTime;
+        if (time > 2) {
+            FindPath(seeker.position, target.position);
+            time = 0;
+        }
+    }*/
+
     public SimpleNode[] FindPath(Vector3 startPos, Vector3 targetPos) {
 
         Node startNode = grid.NodeFromWorldPoint(startPos);
