@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Unity.Mathematics;
 
 public class Node : IHeapItem<Node> {
 
@@ -28,7 +29,9 @@ public class Node : IHeapItem<Node> {
     public int fCost {
         get {
             if(building != null) {
-                return gCost + hCost + Mathf.RoundToInt(building.GetComponent<BuildingHealth>().currentHealth * 2f);
+                int buildingAdditionalValue = Mathf.RoundToInt(building.GetComponent<BuildingHealth>().currentHealth * 100f);
+                Debug.Log(buildingAdditionalValue);
+                return gCost + hCost + buildingAdditionalValue;
             }
             return gCost + hCost;
         }

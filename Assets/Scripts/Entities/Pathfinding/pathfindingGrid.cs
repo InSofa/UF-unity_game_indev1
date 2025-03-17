@@ -87,7 +87,7 @@ public class PathfindingGrid : MonoBehaviour
             BuildingHealth buildingHealth = node.building.GetComponent<BuildingHealth>();
 
             // Assert if buildingHealth_ is null
-            Assert.IsNull(buildingHealth, "BuildingHealth component is missing on the building prefab");
+            Assert.IsNull(buildingHealth, $"BuildingHealth component is missing on this building prefab: {node.building.name}");
 
             // If the buildingHealth.buildingIndex is ensure the BuildingTag component is present on the node.building and set its buildingIndex
             BuildingTag buildingTag = node.building.GetComponent<BuildingTag>();

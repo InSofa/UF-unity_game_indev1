@@ -71,10 +71,14 @@ public class BasicEnemy : MonoBehaviour
         }
 
         //Needs error handling, returns "index out of range. must be non negative and less than the size of the collection" (still works tho)
+        Vector2? newDir;
         if (playerDistance <= playerDetectionDistance && playerDistance < bedDistance) {
-            dir = enemyHandler.moveDir(playerPosition.position);
+            newDir = enemyHandler.moveDir(playerPosition.position);
         } else {
-            dir = enemyHandler.moveDir(bedPosition.position);
+            newDir = enemyHandler.moveDir(bedPosition.position);
+        }
+        if (newDir != null) {
+            dir = (Vector2)newDir;
         }
 
         //This was replaced by the above code, this would be more optimized if done properly

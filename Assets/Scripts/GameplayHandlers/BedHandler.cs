@@ -32,7 +32,7 @@ public class BedHandler : MonoBehaviour
                 }
             } else {
                 interactVisuals.SetActive(false);
-                Debug.Log("Enemies still alive");
+                //Debug.Log("Enemies still alive");
             }
         } else {
             interactVisuals.SetActive(false);
