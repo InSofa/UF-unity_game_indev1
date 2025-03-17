@@ -4,6 +4,8 @@ public class BuildingHealth : MonoBehaviour
 {
     public BuildingScriptableObject buildingScriptableObject;
 
+    public int buildingIndex = -1;
+
     [HideInInspector]
     public int currentHealth;
 
@@ -23,6 +25,9 @@ public class BuildingHealth : MonoBehaviour
         }
     }
 
+    public int GetMaxHealth() {
+        return this.buildingScriptableObject.buildingHealth;
+    }
     public bool TakeDamage(int damage) {
 
         currentHealth -= damage;

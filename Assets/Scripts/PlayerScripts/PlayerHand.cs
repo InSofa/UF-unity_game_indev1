@@ -289,7 +289,7 @@ public class PlayerHand : MonoBehaviour {
             return;
         }
 
-        bool placed = PathfindingGrid.instance.CreateBuilding(buildings[selectedBuilding].buildingPrefab, selectedBuilding);
+        bool placed = PathfindingGrid.instance.CreateBuilding(buildings[selectedBuilding].buildingPrefab);
 
         if (placed) {
             lsc.PlayFx(buildSFX);
@@ -320,7 +320,7 @@ public class PlayerHand : MonoBehaviour {
     }
 
     public void ForcePlaceBuildingAt(int NodeX, int NodeY) {
-        bool placed = PathfindingGrid.instance.ForceBuildingAtNode(buildings[selectedBuilding].buildingPrefab, NodeX, NodeY, selectedBuilding);
+        bool placed = PathfindingGrid.instance.ForceBuildingAtNode(buildings[selectedBuilding].buildingPrefab, NodeX, NodeY);
         if (placed) {
             lsc.PlayFx(buildSFX);
             pillows -= (int)Math.Round(

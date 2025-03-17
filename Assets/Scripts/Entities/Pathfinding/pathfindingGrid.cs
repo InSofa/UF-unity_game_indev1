@@ -74,7 +74,7 @@ public class PathfindingGrid : MonoBehaviour
         }
     }
 
-    public bool CreateBuilding(GameObject building, int? buildingTag = null) {
+    public bool CreateBuilding(GameObject building) {
         Node node = NodeFromWorldPoint(buildPlacement.position);
         Node playerNode = NodeFromWorldPoint(PlayerController.player.transform.position);
         if (node.walkable && !node.isBed && node != playerNode && node.building == null) {
@@ -83,12 +83,18 @@ public class PathfindingGrid : MonoBehaviour
             //For the sake of a cleaner hierarchy
             node.building.transform.parent = transform;
 
-            //If tag is given tag the building
-            if (buildingTag != null) {
-                BuildingTag tagComponent = node.building.GetComponent<BuildingTag>();
-                if (tagComponent == null) { tagComponent = node.building.AddComponent<BuildingTag>(); }
-                tagComponent.buildingIndex = (int)buildingTag;
+            // Get node.building buildingHealth component
+            BuildingHealth buildingHealth = node.building.GetComponent<BuildingHealth>();
+
+            // Assert if buildingHealth_ is null
+            Assert.IsNull(buildingHealth, "BuildingHealth component is missing on the building prefab");
+
+            // If the buildingHealth.buildingIndex is ensure the BuildingTag component is present on the node.building and set its buildingIndex
+            BuildingTag buildingTag = node.building.GetComponent<BuildingTag>();
+            if (buildingTag == null) {
+                buildingTag = node.building.AddComponent<BuildingTag>();
             }
+            buildingTag.buildingIndex = buildingHealth.buildingIndex;
 
             //Clear path for all enemies if a building is placed => they need to find a new path
             enemies.ForEach(enemy => enemy.refreshPath = true);
@@ -113,7 +119,7 @@ public class PathfindingGrid : MonoBehaviour
         return null;
     }
 
-    public bool ForceBuildingAtNode(GameObject building, int NodeX, int NodeY, int? buildingTag = null) {
+    public bool ForceBuildingAtNode(GameObject building, int NodeX, int NodeY) {
         Node node = grid[NodeX, NodeY];
         // If the node is not player bed or player position place the building
         if (node.walkable && !node.isBed && node != NodeFromWorldPoint(PlayerController.player.transform.position)) {
@@ -124,14 +130,23 @@ public class PathfindingGrid : MonoBehaviour
             }
             // Place the building
             node.building = Instantiate(building, node.worldPosition, Quaternion.identity);
-            ////If tag is given tag the building
-            if (buildingTag != null) {
-                BuildingTag tagComponent = node.building.GetComponent<BuildingTag>();
-                if (tagComponent == null) { tagComponent = node.building.AddComponent<BuildingTag>(); }
-                tagComponent.buildingIndex = (int)buildingTag;
+
+            // Get node.building buildingHealth component
+            BuildingHealth buildingHealth = node.building.GetComponent<BuildingHealth>();
+
+            // Assert if buildingHealth_ is null
+            Assert.IsNull(buildingHealth, "BuildingHealth component is missing on the building prefab");
+
+            // If the buildingHealth.buildingIndex is ensure the BuildingTag component is present on the node.building and set its buildingIndex
+            BuildingTag buildingTag = node.building.GetComponent<BuildingTag>();
+            if (buildingTag == null) {
+                buildingTag = node.building.AddComponent<BuildingTag>();
             }
-            //// For the sake of a cleaner hierarchy
+            buildingTag.buildingIndex = buildingHealth.buildingIndex;
+
+            // For the sake of a cleaner hierarchy
             node.building.transform.parent = transform;
+
             return true;
         }
         return false;

@@ -2,6 +2,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using System.Linq;
 
 public class DebugConsole_GridSerializer : MonoBehaviour {
     /*
@@ -12,8 +13,9 @@ public class DebugConsole_GridSerializer : MonoBehaviour {
     *         "unity": <6000.0.40f1>
     *     },
     *     "supported": false,
+    *     "current_wave": <int>,
     *     "grid": [
-    *         {"x":<int:node_x>, "y":<int:node_y> "world.x":<float:x>, "world.y":<float:y>, "building":<int:index>, "isbed":<bool>, "building_name":<string>}
+    *         {"x":<int:node_x>, "y":<int:node_y> "world.x":<float:x>, "world.y":<float:y>, "building":<int:index>, "isbed":<bool>, "building_name":<string>, "building_health":<int>}
     *     ],
     *     "enemies": [],
     *     "options": {
@@ -214,6 +216,9 @@ public class DebugConsole_GridSerializer : MonoBehaviour {
         options["grid_overrides_bed"] = false;
         json["options"] = options;
 
+        // Add wave info
+        json["current_wave"] = EnemySpawner.instance.currentWave;
+
         // Add grid data
         json["grid"] = new JArray();
         for (int x = 0; x < grid.GetLength(0); x++) {
@@ -232,14 +237,23 @@ public class DebugConsole_GridSerializer : MonoBehaviour {
 
                 nodeData["building"] = -1;
                 if (node.building != null) {
-                    // Check so the building has the BuildingTag component and that the buildingIndex is int >= 0 and exists in the buildings array
-                    BuildingTag buildingTag = node.building.GetComponent<BuildingTag>();
-                    if (buildingTag != null && buildingTag.buildingIndex >= 0 && buildingTag.buildingIndex < buildings.Length) {
-                        nodeData["building"] = buildingTag.buildingIndex;
+                    // Check if building has BuildingHealth component, if so get the buildingScriptableObject from it and use it to get index
+                    BuildingHealth buildingHealth = node.building.GetComponent<BuildingHealth>();
+                    if (buildingHealth != null) {
+                        nodeData["building"] = buildingHealth.buildingIndex;
+                        // Get health
+                        nodeData["building_health"] = buildingHealth.currentHealth;
+
+                        nodeData["building_name"] = node.building.name;
+
+                        if (buildingHealth.buildingScriptableObject) {
+                            // Get building name from buildingHealth.buildingScriptableObject.buildingName if it exists else node.building.name
+                            if (buildingHealth.buildingScriptableObject != null) {
+                                nodeData["building_name"] = buildingHealth.buildingScriptableObject.buildingName;
+                            }
+                        }
                     }
                 }
-
-                nodeData["building_name"] = node.building != null ? node.building.name : null;
                 nodeData["isbed"] = node.isBed;
                 ((JArray)json["grid"]).Add(nodeData);
             }
@@ -271,6 +285,12 @@ public class DebugConsole_GridSerializer : MonoBehaviour {
         string unityVersion = version["unity"].Value<string>();
         if (!IsValidUnityVersion(unityVersion)) {
             throw new Exception("Invalid unity version: " + unityVersion);
+        }
+
+        // Set currentWave
+        if (json["current_wave"] != null) {
+            EnemySpawner.instance.currentWave = json["current_wave"].Value<int>();
+            EnemySpawner.instance.UpdateWaveText();
         }
 
         // Parse the grid data (if options.grid_overrides_bed is true, include nodes with isbed set to true else just skip them entirely)
@@ -323,6 +343,14 @@ public class DebugConsole_GridSerializer : MonoBehaviour {
                         } else {
                             if (node.building == null) {
                                 node.building = Instantiate(building.buildingPrefab, new Vector3(worldX, worldY, 0), Quaternion.identity);
+                            }
+                        }
+
+                        // If node.building is not null now set currentHealth to building_health
+                        if (node.building != null) {
+                            BuildingHealth buildingHealth = node.building.GetComponent<BuildingHealth>();
+                            if (buildingHealth != null) {
+                                buildingHealth.currentHealth = serializedGridEntry["building_health"].Value<int>();
                             }
                         }
                     }

@@ -87,10 +87,14 @@ public class EnemySpawner : MonoBehaviour
         wall.SetPositions(points3D.ToArray());
     }*/
 
+    public void UpdateWaveText() {
+        waveText.text = "Wave " + currentWave + " Cleared!";
+    }
+
     public void RemoveEnemy(GameObject enemy) {
         currentEnemies.Remove(enemy);
         if(currentEnemies.Count == 0) {
-            waveText.text = "Wave " + (currentWave + 1) + " Cleared!";
+            UpdateWaveText();
         }
     }
 
