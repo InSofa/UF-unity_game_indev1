@@ -240,7 +240,7 @@ public class UIHandler : MonoBehaviour
     
     public void highlightBuildingSelected() {
         GameObject gameObject = eventSystem.currentSelectedGameObject;
-        Debug.Log(gameObject.name);
+        //Debug.Log(gameObject.name);
 
         List<GameObject> buildingButtons = new List<GameObject>();
         buildingButtons.AddRange(turretSelectionInteractableObjects);
