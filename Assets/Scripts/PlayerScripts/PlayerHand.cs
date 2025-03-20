@@ -140,10 +140,9 @@ public class PlayerHand : MonoBehaviour {
         if (isMeleeMode) {
             meleeTimer += Time.deltaTime;
         }
-        takeInput();
     }
 
-    private void takeInput()
+    public void takeInput(Vector2 cursor, string currentControlScheme, bool useHand)
     {
         if (DebugConsole.Instance != null) { if (DebugConsole.Instance.inputIsFocused == true) { return; } } // No bindings when Debug-Console is focused
 

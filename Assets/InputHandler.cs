@@ -16,6 +16,8 @@ public class InputHandler : MonoBehaviour
     [SerializeField]
     private UIControls_Handler uiControlsHandler;
 
+    [SerializeField]
+    EventSystem eventSystem;
 
     // Constants
     private const string PC = "pc";
@@ -73,15 +75,35 @@ public class InputHandler : MonoBehaviour
 
         currentInputScheme = playerInput.currentControlScheme;
 
+        // Updates the values for the uiControlsHandler as we're storing those value here and want to avoid double storage
+        uiControlsHandler.PC = PC;
+        uiControlsHandler.PS4 = PS4;
+        uiControlsHandler.PS5 = PS5;
+        uiControlsHandler.XBOX = XBOX;
+
         // Link listener for deviceChanges
         InputSystem.onDeviceChange += OnDeviceChange;
     }
 
-    private void LateUpdate() {
+    //Should be called after input is taken, hopefully (logic to avoid double inputs are here)
+    private void Update() {
         // Check if the current input scheme has changed
         if (playerInput != null && playerInput.currentControlScheme != currentInputScheme) {
             UpdateCurrentPlatform();
             currentInputScheme = playerInput.currentControlScheme;
+        }
+
+        //Logic handling PlayerHandInput
+        if (currentInputScheme == SCHEME_MnK) {
+            //Making sure that the player isn't just pushing a button
+            bool playerUse = playerUseRequested && !buttonPressed;
+            PlayerHand.Instance.takeInput(playerCursorInput.action.ReadValue<Vector2>(), currentInputScheme, playerUse);
+
+            //Reset the variables
+            playerUseRequested = false;
+            buttonPressed = false;
+        } else {
+            PlayerHand.Instance.takeInput(playerCursorInput.action.ReadValue<Vector2>(), currentInputScheme, playerUseRequested);
         }
     }
 
@@ -114,7 +136,7 @@ public class InputHandler : MonoBehaviour
 
         if (newPlatform != currentPlatform) {
             currentPlatform = newPlatform;
-            UpdateCurrentMaps();
+            uiControlsHandler.UpdateCurrentMaps(currentPlatform);
         }
     }
 
