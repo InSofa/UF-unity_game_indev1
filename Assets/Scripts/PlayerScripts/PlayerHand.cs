@@ -7,10 +7,11 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerHand : MonoBehaviour {
-    LocalSoundComposer lsc;
+    private static PlayerHand instance;
+    public static PlayerHand Instance {  get { return instance; } }
 
-    [SerializeField]
-    UIHandler uiHandler;
+
+    LocalSoundComposer lsc;
 
     [SerializeField]
     public float GlobalBuyInflationMultiplier = 1;
@@ -113,6 +114,13 @@ public class PlayerHand : MonoBehaviour {
 
     private void Start()
     {
+        //Singleton logic
+        if (instance == null) {
+            instance = this;
+        } else {
+            Destroy(gameObject);
+        }
+
         lsc = GetComponent<LocalSoundComposer>();
 
         cam = Camera.main;
@@ -271,7 +279,7 @@ public class PlayerHand : MonoBehaviour {
         {
             return;
         }
-        uiHandler.highlightBuildingSelected();
+        UIHandler.Instance.highlightBuildingSelected();
         selectedBuilding = selection;
     }
 

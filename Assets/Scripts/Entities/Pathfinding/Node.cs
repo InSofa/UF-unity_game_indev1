@@ -29,7 +29,7 @@ public class Node : IHeapItem<Node> {
     public int fCost {
         get {
             if(building != null) {
-                int buildingAdditionalValue = Mathf.RoundToInt(building.GetComponent<BuildingHealth>().currentHealth * 100f);
+                int buildingAdditionalValue = Mathf.RoundToInt(building.GetComponent<BuildingHealth>().currentHealth * 20f);
                 Debug.Log(buildingAdditionalValue + " " + building.name);
                 return Mathf.Abs(gCost + hCost + buildingAdditionalValue);
             }

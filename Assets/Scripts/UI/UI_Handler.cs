@@ -10,6 +10,10 @@ using UnityEngine.UI;
 
 public class UIHandler : MonoBehaviour
 {
+    private static UIHandler instance;
+    public static UIHandler Instance {  get { return instance; } }
+
+
     EventSystem eventSystem;
 
     [SerializeField]
@@ -71,6 +75,13 @@ public class UIHandler : MonoBehaviour
 
 
     private void Start() {
+        if (instance == null) {
+            instance = this;
+        } else {
+            Destroy(this);
+        }
+
+
         currentScene = SceneManager.GetActiveScene().buildIndex;
 
         eventSystem = EventSystem.current;
