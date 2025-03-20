@@ -1993,6 +1993,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266203ec8a008dc46ac696af092b2362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
+  uiControlsHandler: {fileID: 0}
+  eventSystem: {fileID: 0}
+  UIInteractionDelay: 0.1
+  playerUse: {fileID: 0}
+  playerMove: {fileID: 0}
+  playerCursorInput: {fileID: 0}
+  playerCursorMove: {fileID: 0}
 --- !u!4 &269456627
 Transform:
   m_ObjectHideFlags: 0
@@ -2889,7 +2897,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb7961d1b44ab14696c9b0d18d7cfa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiHandler: {fileID: 1465475016}
   GlobalBuyInflationMultiplier: 1
   GlobalSellInflationMultiplier: 1
   GlobalPickupInflationMultiplier: 1
@@ -17054,6 +17061,8 @@ SceneRoots:
   - {fileID: 2141674379048862757}
   - {fileID: 5396707015476762734}
   - {fileID: 5264632636553011319}
+  - {fileID: 269456627}
+  - {fileID: 1583128190}
   - {fileID: 216528457}
   - {fileID: 1084547455}
   - {fileID: 1465475015}
@@ -17068,6 +17077,4 @@ SceneRoots:
   - {fileID: 611761199}
   - {fileID: 1342077546}
   - {fileID: 1169956823}
-  - {fileID: 1583128190}
   - {fileID: 910708115}
-  - {fileID: 269456627}

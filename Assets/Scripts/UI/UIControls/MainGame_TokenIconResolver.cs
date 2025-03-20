@@ -36,14 +36,14 @@ public class MainGame_TokenIconResolver : MonoBehaviour {
     // Start
     void Start() {
         tmpText = GetComponent<TMP_Text>();
-        currentPlatform = globalUIControls.currentPlatform;
+        currentPlatform = InputHandler.Instance.currentPlatform;
         UpdateText();
     }
 
     // Update is called once per frame
     void Update() {
-        if (globalUIControls.currentPlatform != currentPlatform) {
-            currentPlatform = globalUIControls.currentPlatform;
+        if (InputHandler.Instance.currentPlatform != currentPlatform) {
+            currentPlatform = InputHandler.Instance.currentPlatform;
             UpdateText();
         }
     }
