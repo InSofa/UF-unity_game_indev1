@@ -259,7 +259,7 @@ public class UIHandler : MonoBehaviour
 
         //Disable child highlighter in all building buttons
         for (int i = 0; i < buildingButtons.Count; i++) {
-            Debug.Log(buildingButtons[i].name);
+            //Debug.Log(buildingButtons[i].name);
             GameObject child = buildingButtons[i].transform.GetChild(0).gameObject;
             child.SetActive(false);
         }

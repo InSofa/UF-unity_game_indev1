@@ -53,7 +53,7 @@ public class InputHandler : MonoBehaviour
     private InputActionReference playerCursorInput;
 
     [SerializeField]
-    private InputActionReference playerCursorMove;
+    private InputActionReference playerMeleeSwitch;
 
 
     #region Private Variables
@@ -85,8 +85,7 @@ public class InputHandler : MonoBehaviour
     }
 
     //Should be called after input is taken, hopefully (logic to avoid double inputs are here)
-    private void Update() {
-        /*
+    private void LateUpdate() {
         // Check if the current input scheme has changed
         if (playerInput != null && playerInput.currentControlScheme != currentInputScheme) {
             UpdateCurrentPlatform();
@@ -96,6 +95,7 @@ public class InputHandler : MonoBehaviour
         //Logic handling PlayerHandInput
         if (currentInputScheme == SCHEME_MnK) {
             //Making sure that the player isn't just pushing a button
+            Debug.Log("Making sure that the player isn't just pushing a button");
             bool playerUse = playerUseRequested && !buttonPressed;
             PlayerHand.Instance.takeInput(playerCursorInput.action.ReadValue<Vector2>(), currentInputScheme, playerUse);
 
@@ -105,7 +105,6 @@ public class InputHandler : MonoBehaviour
         } else {
             PlayerHand.Instance.takeInput(playerCursorInput.action.ReadValue<Vector2>(), currentInputScheme, playerUseRequested);
         }
-        */
     }
 
     // Listener for device changes
@@ -145,11 +144,13 @@ public class InputHandler : MonoBehaviour
         buttonPressed = true;
 
         string[] strings = buttonInfo.Split(" ");
-        Debug.Log(strings);
         if (strings.Length <= 0) {
             Debug.LogWarning($"Button info not formatted properly: {buttonInfo}");
             return;
         }
+
+
+        Debug.Log(strings[0]);
 
 
         bool success = false;
@@ -158,6 +159,8 @@ public class InputHandler : MonoBehaviour
         } else {
             success = buttonWithoutMessage(strings[0]);
         }
+
+        Debug.Log($"{success} : {strings[1]}");
 
         if (!success) {
             Debug.LogError($"Failed to execute button logic: {strings}");
