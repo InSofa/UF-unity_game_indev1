@@ -7,10 +7,11 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerHand : MonoBehaviour {
-    LocalSoundComposer lsc;
+    private static PlayerHand instance;
+    public static PlayerHand Instance {  get { return instance; } }
 
-    [SerializeField]
-    UIHandler uiHandler;
+
+    LocalSoundComposer lsc;
 
     [SerializeField]
     public float GlobalBuyInflationMultiplier = 1;
@@ -113,6 +114,13 @@ public class PlayerHand : MonoBehaviour {
 
     private void Start()
     {
+        //Singleton logic
+        if (instance == null) {
+            instance = this;
+        } else {
+            Destroy(gameObject);
+        }
+
         lsc = GetComponent<LocalSoundComposer>();
 
         cam = Camera.main;
@@ -125,6 +133,8 @@ public class PlayerHand : MonoBehaviour {
         buildInput.action.started += placeBuilding;
         sellBuildingInput.action.started += removeBuilding;
         meleeSwitch.action.started += switchMeleeMode;
+
+        Debug.Log(buildInput.action.bindings);
     }
 
     private void Update()
@@ -132,10 +142,9 @@ public class PlayerHand : MonoBehaviour {
         if (isMeleeMode) {
             meleeTimer += Time.deltaTime;
         }
-        takeInput();
     }
 
-    private void takeInput()
+    public void takeInput(Vector2 cursor, string currentControlScheme, bool useHand)
     {
         if (DebugConsole.Instance != null) { if (DebugConsole.Instance.inputIsFocused == true) { return; } } // No bindings when Debug-Console is focused
 
@@ -271,12 +280,14 @@ public class PlayerHand : MonoBehaviour {
         {
             return;
         }
-        uiHandler.highlightBuildingSelected();
+        UIHandler.Instance.highlightBuildingSelected();
         selectedBuilding = selection;
     }
 
     //Playernode and placement node check is done in the grid logic
     private void placeBuilding(InputAction.CallbackContext obj) {
+        Debug.Log(obj);
+        Debug.Log("reached");
         if (DebugConsole.Instance != null) { if (DebugConsole.Instance.inputIsFocused == true) { return; } } // No bindings when Debug-Console is focused
 
         int buildingCost = (int)Math.Round(
