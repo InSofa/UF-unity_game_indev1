@@ -133,6 +133,8 @@ public class PlayerHand : MonoBehaviour {
         buildInput.action.started += placeBuilding;
         sellBuildingInput.action.started += removeBuilding;
         meleeSwitch.action.started += switchMeleeMode;
+
+        Debug.Log(buildInput.action.bindings);
     }
 
     private void Update()
@@ -284,6 +286,8 @@ public class PlayerHand : MonoBehaviour {
 
     //Playernode and placement node check is done in the grid logic
     private void placeBuilding(InputAction.CallbackContext obj) {
+        Debug.Log(obj);
+        Debug.Log("reached");
         if (DebugConsole.Instance != null) { if (DebugConsole.Instance.inputIsFocused == true) { return; } } // No bindings when Debug-Console is focused
 
         int buildingCost = (int)Math.Round(

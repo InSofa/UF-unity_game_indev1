@@ -60,7 +60,6 @@ public class InputHandler : MonoBehaviour
     private bool buttonPressed = false;
 
     private bool playerUseRequested = false;
-
     #endregion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -87,6 +86,7 @@ public class InputHandler : MonoBehaviour
 
     //Should be called after input is taken, hopefully (logic to avoid double inputs are here)
     private void Update() {
+        /*
         // Check if the current input scheme has changed
         if (playerInput != null && playerInput.currentControlScheme != currentInputScheme) {
             UpdateCurrentPlatform();
@@ -105,6 +105,7 @@ public class InputHandler : MonoBehaviour
         } else {
             PlayerHand.Instance.takeInput(playerCursorInput.action.ReadValue<Vector2>(), currentInputScheme, playerUseRequested);
         }
+        */
     }
 
     // Listener for device changes
@@ -144,6 +145,7 @@ public class InputHandler : MonoBehaviour
         buttonPressed = true;
 
         string[] strings = buttonInfo.Split(" ");
+        Debug.Log(strings);
         if (strings.Length <= 0) {
             Debug.LogWarning($"Button info not formatted properly: {buttonInfo}");
             return;

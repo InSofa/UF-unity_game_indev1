@@ -169,6 +169,17 @@
                 },
                 {
                     "name": "",
+                    "id": "c3ba2315-2a4a-4504-889d-b7025238eaa0",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";MnK",
+                    "action": "Building",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "944c0362-9ac1-433d-8ca9-e049acaa8d72",
                     "path": "<Mouse>/position",
                     "interactions": "",
