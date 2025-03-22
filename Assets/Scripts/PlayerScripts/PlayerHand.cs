@@ -7,8 +7,10 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerHand : MonoBehaviour {
+    /*
     private static PlayerHand instance;
     public static PlayerHand Instance {  get { return instance; } }
+    */
 
 
     LocalSoundComposer lsc;
@@ -114,12 +116,12 @@ public class PlayerHand : MonoBehaviour {
 
     private void Start()
     {
-        //Singleton logic
+        /*Singleton logic
         if (instance == null) {
             instance = this;
         } else {
             Destroy(gameObject);
-        }
+        }*/
 
         lsc = GetComponent<LocalSoundComposer>();
 
@@ -129,12 +131,6 @@ public class PlayerHand : MonoBehaviour {
         PathfindingGrid.instance.buildPlacement = buildIndicator;
 
         pi = GetComponent<PlayerInput>();
-
-        buildInput.action.started += placeBuilding;
-        sellBuildingInput.action.started += removeBuilding;
-        meleeSwitch.action.started += switchMeleeMode;
-
-        Debug.Log(buildInput.action.bindings);
     }
 
     private void Update()
@@ -144,7 +140,7 @@ public class PlayerHand : MonoBehaviour {
         }
     }
 
-    public void takeInput(Vector2 cursor, string currentControlScheme, bool useHand)
+    public void takeInput(Vector2 cursor, string currentControlScheme)
     {
         if (DebugConsole.Instance != null) { if (DebugConsole.Instance.inputIsFocused == true) { return; } } // No bindings when Debug-Console is focused
 
@@ -242,24 +238,11 @@ public class PlayerHand : MonoBehaviour {
 
     }
 
-    
-    private void OnEnable()
-    {
-        buildInput.action.started += placeBuilding;
-        sellBuildingInput.action.started += removeBuilding;
-    }
-
-    private void OnDisable()
-    {
-        buildInput.action.started -= placeBuilding;
-        sellBuildingInput.action.started -= removeBuilding;
-    }
-
     public BuildingScriptableObject GetSelectedBuilding() {
         return buildings[selectedBuilding];
     }
 
-    public void addPillow(int amount)
+    public void changePillowAmount(int amount)
     {
         pillows += amount;
         pillowText.text = pillows.ToString();
@@ -284,19 +267,25 @@ public class PlayerHand : MonoBehaviour {
         selectedBuilding = selection;
     }
 
-    //Playernode and placement node check is done in the grid logic
-    private void placeBuilding(InputAction.CallbackContext obj) {
-        Debug.Log(obj);
-        Debug.Log("reached");
-        if (DebugConsole.Instance != null) { if (DebugConsole.Instance.inputIsFocused == true) { return; } } // No bindings when Debug-Console is focused
+    public void playerUseFunc() {
+        if (isMeleeMode) {
+            meleeAttack();
+        } else {
+            placeBuilding();
+        }
+    }
 
+    //Playernode and placement node check is done in the grid logic
+    private void placeBuilding() {
+        if (DebugConsole.Instance != null) { if (DebugConsole.Instance.inputIsFocused == true) { return; } } // No bindings when Debug-Console is focused
         int buildingCost = (int)Math.Round(
             buildings[selectedBuilding].buildingCost * GlobalBuyInflationMultiplier,
             MidpointRounding.AwayFromZero
         );
+        Debug.Log(buildingCost);
 
         if (pillows < buildingCost) {
-            //Debug.Log("Not enough pillows");
+            Debug.Log("Not enough pillows");
             return;
         }
 
@@ -304,14 +293,36 @@ public class PlayerHand : MonoBehaviour {
 
         if (placed) {
             lsc.PlayFx(buildSFX);
-            pillows -= buildingCost;
-            pillowText.text = pillows.ToString();
+            changePillowAmount(-buildingCost);
             return;
         }
-        //Debug.Log("Cannot place building here");
+        Debug.Log("Cannot place building here");
     }
 
-    private void removeBuilding(InputAction.CallbackContext obj) {
+    private void meleeAttack() {
+        if (meleeTimer < meleeCD) {
+            return;
+        }
+        meleeTimer = 0;
+
+        Vector2 attackPos = (Vector2)attackIndicator.position - (attackOffset * lookDir.normalized);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPos, meleeRadius, enemyLayer);
+
+        foreach (Collider2D hitCollider in hitColliders) {
+            EnemyHealth eh = hitCollider.GetComponent<EnemyHealth>();
+            if (eh == null) {
+                continue;
+            }
+            eh.TakeDamage(meleeDamage);
+
+            Rigidbody2D rb = hitCollider.GetComponent<Rigidbody2D>();
+            if (rb != null) {
+                Vector2 knockbackDir = (hitCollider.transform.position - transform.position).normalized;
+                rb.AddForce(knockbackDir * knockbackForce, ForceMode2D.Impulse);
+            }
+        }
+    }
+    public void removeBuilding(InputAction.CallbackContext obj) {
         if (DebugConsole.Instance != null) { if (DebugConsole.Instance.inputIsFocused == true) { return; } } // No bindings when Debug-Console is focused
 
         int? sellAmount = PathfindingGrid.instance.RemoveBuilding(buildPos);
@@ -319,7 +330,7 @@ public class PlayerHand : MonoBehaviour {
             lsc.PlayFx(sellSFX);
             //Debug.Log("Sold building for " + sellAmount + " pillows");
             //MARK: Simplify casting?
-            addPillow(
+            changePillowAmount(
                 (int)Math.Round(
                     (int)sellAmount * GlobalSellInflationMultiplier,
                     MidpointRounding.AwayFromZero
@@ -342,51 +353,17 @@ public class PlayerHand : MonoBehaviour {
         }
     }
 
-    private void meleeAttack(InputAction.CallbackContext obj) {
-        if(meleeTimer < meleeCD) {
-            return;
-        }
-        meleeTimer = 0;
 
-        Vector2 attackPos = (Vector2)attackIndicator.position - (attackOffset * lookDir.normalized);
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPos, meleeRadius, enemyLayer);
-
-        foreach (Collider2D hitCollider in hitColliders) {
-            EnemyHealth eh = hitCollider.GetComponent<EnemyHealth>();
-            if(eh == null) {
-                continue;
-            }
-            eh.TakeDamage(meleeDamage);
-
-            Rigidbody2D rb = hitCollider.GetComponent<Rigidbody2D>();
-            if (rb != null) {
-                Vector2 knockbackDir = (hitCollider.transform.position - transform.position).normalized;
-                rb.AddForce(knockbackDir * knockbackForce, ForceMode2D.Impulse);
-            }
-        }
-    }
-
-    private void switchMeleeMode(InputAction.CallbackContext obj) {
-        if (DebugConsole.Instance != null) { if (DebugConsole.Instance.inputIsFocused == true) { return; } } // No bindings when Debug-Console is focused
-
+    public void switchMeleeMode(bool newMeleeMode) {
+        isMeleeMode = newMeleeMode;
         if (isMeleeMode) {
             lsc.PlayFx(buildModeSFX);
-
-            isMeleeMode = false;
-            buildInput.action.started += placeBuilding;
-            sellBuildingInput.action.started += removeBuilding;
-            buildInput.action.started -= meleeAttack;
 
             attackIndicator.gameObject.SetActive(false);
             buildIndicator.gameObject.SetActive(true);
             placementIndicator.gameObject.SetActive(true);
         } else {
             lsc.PlayFx(meleeModeSFX);
-
-            isMeleeMode = true;
-            buildInput.action.started -= placeBuilding;
-            sellBuildingInput.action.started -= removeBuilding;
-            buildInput.action.started += meleeAttack;
 
             attackIndicator.gameObject.SetActive(true);
             buildIndicator.gameObject.SetActive(false);
@@ -398,7 +375,6 @@ public class PlayerHand : MonoBehaviour {
         if (mainGameTokenIconResolver) {
             mainGameTokenIconResolver.UpdateMeleeMode(isMeleeMode);
         }
-
     }
 
     public void OnDrawGizmos()

@@ -15,7 +15,7 @@ public class Pillow : MonoBehaviour
     {
         if (collision.CompareTag("Player")){
             PlayerHand playerHand = collision.GetComponent<PlayerHand>();
-            playerHand.addPillow(
+            playerHand.changePillowAmount(
                 (int)Math.Round(
                     value * playerHand.GlobalPickupInflationMultiplier,
                     MidpointRounding.AwayFromZero

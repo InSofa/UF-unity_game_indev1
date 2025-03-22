@@ -4,10 +4,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using static UnityEditor.PlayerSettings;
 
-public class InputHandler : MonoBehaviour
-{
+public class InputHandler : MonoBehaviour {
     private static InputHandler instance;
-    public static InputHandler Instance {  get { return instance; } }
+    public static InputHandler Instance { get { return instance; } }
 
     //References
     [SerializeField]
@@ -18,6 +17,12 @@ public class InputHandler : MonoBehaviour
 
     [SerializeField]
     EventSystem eventSystem;
+
+    [SerializeField]
+    PlayerHand playerHand;
+
+    [SerializeField]
+    PlayerController playerController;
 
     // Constants
     private const string PC = "pc";
@@ -35,15 +40,12 @@ public class InputHandler : MonoBehaviour
     [System.NonSerialized]
     public string currentPlatform = PC;
 
-    [Header("Settings")]
-
-    //The delay after a button is pressed and the player can use the left mouse for other actions
-    [SerializeField]
-    private float UIInteractionDelay = .1f;
-
     [Header("Input actions")]
     [SerializeField]
     private InputActionReference playerUse;
+
+    [SerializeField]
+    private InputActionReference playerSecondaryUse;
 
     [SerializeField]
     private InputActionReference playerMove;
@@ -57,20 +59,20 @@ public class InputHandler : MonoBehaviour
 
 
     #region Private Variables
-    private bool buttonPressed = false;
+    private bool isHoveringButton = false;
 
-    private bool playerUseRequested = false;
+    private bool playing = true;
     #endregion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        if(instance == null) {
+    void Start() {
+        if (instance == null) {
             instance = this;
-        }
-        else {
+        } else {
             Destroy(gameObject);
         }
+
+        eventSystem.IsPointerOverGameObject();
 
         currentInputScheme = playerInput.currentControlScheme;
 
@@ -82,29 +84,34 @@ public class InputHandler : MonoBehaviour
 
         // Link listener for deviceChanges
         InputSystem.onDeviceChange += OnDeviceChange;
+
+        playerUse.action.started += PlayerUseHandler;
+        playerSecondaryUse.action.started += playerHand.removeBuilding;
+        playerMeleeSwitch.action.started += SwitchMeleeModeHandler;
     }
 
     //Should be called after input is taken, hopefully (logic to avoid double inputs are here)
-    private void LateUpdate() {
+    private void Update() {
         // Check if the current input scheme has changed
         if (playerInput != null && playerInput.currentControlScheme != currentInputScheme) {
             UpdateCurrentPlatform();
             currentInputScheme = playerInput.currentControlScheme;
         }
 
-        //Logic handling PlayerHandInput
-        if (currentInputScheme == SCHEME_MnK) {
-            //Making sure that the player isn't just pushing a button
-            Debug.Log("Making sure that the player isn't just pushing a button");
-            bool playerUse = playerUseRequested && !buttonPressed;
-            PlayerHand.Instance.takeInput(playerCursorInput.action.ReadValue<Vector2>(), currentInputScheme, playerUse);
-
-            //Reset the variables
-            playerUseRequested = false;
-            buttonPressed = false;
-        } else {
-            PlayerHand.Instance.takeInput(playerCursorInput.action.ReadValue<Vector2>(), currentInputScheme, playerUseRequested);
+        if (DebugConsole.Instance != null) {
+            if (DebugConsole.Instance.inputIsFocused == true) {
+                playerController.takeInput(Vector2.zero);
+                playing = false;
+                return;
+            } // No bindings when Debug-Console is focused
         }
+
+        playing = true;
+
+        playerHand.takeInput(playerCursorInput.action.ReadValue<Vector2>(), currentInputScheme);
+        playerController.takeInput(playerMove.action.ReadValue<Vector2>());
+
+        isHoveringButton = eventSystem.IsPointerOverGameObject();
     }
 
     // Listener for device changes
@@ -140,8 +147,30 @@ public class InputHandler : MonoBehaviour
         }
     }
 
+    private void PlayerUseHandler(InputAction.CallbackContext obj) {
+        if (isHoveringButton && currentInputScheme == SCHEME_MnK && playing){
+            return;
+        }
+        playerHand.playerUseFunc();
+    }
+
+    private void SwitchMeleeModeHandler(InputAction.CallbackContext obj) {
+        if (DebugConsole.Instance != null) { if (DebugConsole.Instance.inputIsFocused == true) { return; } } // No bindings when Debug-Console is focused
+
+        bool newIsMeleeMode = !playerHand.isMeleeMode;
+        if (newIsMeleeMode) {
+            playerSecondaryUse.action.started -= playerHand.removeBuilding;
+        } else {
+            playerSecondaryUse.action.started += playerHand.removeBuilding;
+        }
+
+        playerHand.switchMeleeMode(newIsMeleeMode);
+    }
+
+    //This section would be usefull if we decide to centralize the buttons through this sole script
+    #region to be removed?
+    /*
     public void buttonClick(string buttonInfo) {
-        buttonPressed = true;
 
         string[] strings = buttonInfo.Split(" ");
         if (strings.Length <= 0) {
@@ -184,4 +213,6 @@ public class InputHandler : MonoBehaviour
         }
         return false;
     }
+    */
+    #endregion
 }
