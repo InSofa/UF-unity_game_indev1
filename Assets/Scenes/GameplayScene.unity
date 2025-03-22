@@ -1996,8 +1996,10 @@ MonoBehaviour:
   playerInput: {fileID: 452178606}
   uiControlsHandler: {fileID: 1044793262}
   eventSystem: {fileID: 1342077545}
-  UIInteractionDelay: 0.1
+  playerHand: {fileID: 452178607}
+  playerController: {fileID: 452178599}
   playerUse: {fileID: 8184959716252747568, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
+  playerSecondaryUse: {fileID: -1683533180203926604, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
   playerMove: {fileID: -8099256006018764938, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
   playerCursorInput: {fileID: 7663556139590389150, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
   playerMeleeSwitch: {fileID: 3197935253736536625, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
@@ -11899,10 +11901,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 269456626}
-        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
-        m_MethodName: buttonClick
-        m_Mode: 5
+      - m_Target: {fileID: 452178607}
+        m_TargetAssemblyTypeName: PlayerHand, Assembly-CSharp
+        m_MethodName: SwitchBuildSelection
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

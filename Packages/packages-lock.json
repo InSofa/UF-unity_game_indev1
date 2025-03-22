@@ -92,16 +92,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.adaptiveperformance": {
-      "version": "5.1.2",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.profiling.core": "1.0.2",
-        "com.unity.modules.subsystems": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.ads": {
       "version": "4.4.2",
       "depth": 0,
@@ -253,13 +243,6 @@
       "dependencies": {
         "com.unity.modules.physics": "1.0.0"
       },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.profiling.core": {
-      "version": "1.0.2",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.purchasing": {

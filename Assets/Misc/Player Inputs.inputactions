@@ -15,7 +15,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Building",
+                    "name": "PrimaryUse",
                     "type": "Button",
                     "id": "54063b23-2430-46bb-8a28-45729a083ec5",
                     "expectedControlType": "",
@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SellBuilding",
+                    "name": "SecondaryUse",
                     "type": "Button",
                     "id": "ab13e8d8-d4d5-4bfd-8d97-b078d6434b6a",
                     "expectedControlType": "",
@@ -148,11 +148,11 @@
                 {
                     "name": "",
                     "id": "a320bac0-f36a-48ff-98c6-17bd113eceea",
-                    "path": "<Keyboard>/e",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "MnK",
-                    "action": "Building",
+                    "action": "PrimaryUse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -163,18 +163,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Building",
+                    "action": "PrimaryUse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "c3ba2315-2a4a-4504-889d-b7025238eaa0",
-                    "path": "<Mouse>/leftButton",
+                    "id": "04e66a40-ea99-42b9-9e24-5f5fad6f887d",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": ";MnK",
-                    "action": "Building",
+                    "action": "PrimaryUse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -273,7 +273,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";MnK",
-                    "action": "SellBuilding",
+                    "action": "SecondaryUse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -284,7 +284,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "SellBuilding",
+                    "action": "SecondaryUse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
