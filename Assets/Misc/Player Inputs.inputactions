@@ -169,7 +169,7 @@
                 },
                 {
                     "name": "",
-                    "id": "04e66a40-ea99-42b9-9e24-5f5fad6f887d",
+                    "id": "95ab71c8-1d3a-4ab6-9532-58bacafa3c67",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
@@ -268,22 +268,22 @@
                 },
                 {
                     "name": "",
-                    "id": "97a579e8-d390-4260-98f6-9d188973df5e",
-                    "path": "<Keyboard>/q",
+                    "id": "f6a9105a-adcb-4ede-848d-390b854bad34",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";MnK",
+                    "groups": ";Gamepad",
                     "action": "SecondaryUse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "f6a9105a-adcb-4ede-848d-390b854bad34",
-                    "path": "<Gamepad>/leftTrigger",
+                    "id": "e45176a7-fdd5-4d58-839b-c69aa7303932",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
+                    "groups": ";MnK",
                     "action": "SecondaryUse",
                     "isComposite": false,
                     "isPartOfComposite": false

@@ -2,7 +2,6 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using static UnityEditor.PlayerSettings;
 
 public class InputHandler : MonoBehaviour {
     private static InputHandler instance;
