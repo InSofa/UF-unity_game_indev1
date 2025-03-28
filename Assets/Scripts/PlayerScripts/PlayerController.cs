@@ -59,7 +59,6 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     private void Update() {
-        takeInput();
         updateVisuals();
 
         if (walkMagnitude >= walkSoundInterval) {
@@ -89,15 +88,8 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("XValue", movementInput.x);
         animator.SetFloat("YValue", movementInput.y);
     }
-    void takeInput() {
-        if (DebugConsole.Instance != null) {
-            if (DebugConsole.Instance.inputIsFocused == true) {
-                movementInput = Vector2.zero;
-                return;
-            } // No bindings when Debug-Console is focused
-        }
-
-        movementInput = move.action.ReadValue<Vector2>().normalized;
+    public void takeInput(Vector2 movementInput) {
+        this.movementInput = movementInput;
     }
 
     void movementLogic() {

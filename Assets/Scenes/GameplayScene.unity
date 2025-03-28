@@ -1999,6 +1999,60 @@ MonoBehaviour:
   waveText: {fileID: 1313666842}
   textPrefab: {fileID: 7265664511093915334, guid: c0c8cfd3d47cd034fb4f9b114e0e0e8c, type: 3}
   textPos: {fileID: 1116455081}
+--- !u!1 &269456625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 269456627}
+  - component: {fileID: 269456626}
+  m_Layer: 0
+  m_Name: InputHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &269456626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269456625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266203ec8a008dc46ac696af092b2362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 452178606}
+  uiControlsHandler: {fileID: 1044793262}
+  eventSystem: {fileID: 1342077545}
+  playerHand: {fileID: 452178607}
+  playerController: {fileID: 452178599}
+  playerUse: {fileID: 8184959716252747568, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
+  playerSecondaryUse: {fileID: -1683533180203926604, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
+  playerMove: {fileID: -8099256006018764938, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
+  playerCursorInput: {fileID: 7663556139590389150, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
+  playerMeleeSwitch: {fileID: 3197935253736536625, guid: b273f38447cfe4348a58614cb0b758b0, type: 3}
+--- !u!4 &269456627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269456625}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &284803335
 GameObject:
   m_ObjectHideFlags: 0
@@ -2916,7 +2970,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb7961d1b44ab14696c9b0d18d7cfa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiHandler: {fileID: 1465475016}
   GlobalBuyInflationMultiplier: 1
   GlobalSellInflationMultiplier: 1
   GlobalPickupInflationMultiplier: 1
@@ -3477,7 +3530,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 5.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4059,7 +4112,7 @@ MonoBehaviour:
   m_Follow: {fileID: 452178603}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 6
+    OrthographicSize: 5.5
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -11048,15 +11101,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7334331486590625589, guid: 66da955f9a633344fb70b854b66cd3e9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8474419050980633780, guid: 66da955f9a633344fb70b854b66cd3e9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66da955f9a633344fb70b854b66cd3e9, type: 3}
 --- !u!1 &1185554392
 GameObject:
@@ -12100,7 +12150,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: SwitchSelection 2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1348539628
@@ -17367,6 +17417,8 @@ SceneRoots:
   - {fileID: 2141674379048862757}
   - {fileID: 5396707015476762734}
   - {fileID: 5264632636553011319}
+  - {fileID: 269456627}
+  - {fileID: 1583128190}
   - {fileID: 216528457}
   - {fileID: 1084547455}
   - {fileID: 1465475015}
@@ -17381,5 +17433,4 @@ SceneRoots:
   - {fileID: 611761199}
   - {fileID: 1342077546}
   - {fileID: 1169956823}
-  - {fileID: 1583128190}
   - {fileID: 910708115}

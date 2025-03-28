@@ -14,7 +14,7 @@ public class LocalSoundComposer : MonoBehaviour
     float pitchModifier = 1f;
 
 
-    public void Awake() {
+    public void Start() {
         globalSoundComposer = GlobalSoundComposer.Instance;
         soundEmitterPrefab = globalSoundComposer.soundEmitterPrefab;
         Registry = globalSoundComposer.Registry;
@@ -24,6 +24,11 @@ public class LocalSoundComposer : MonoBehaviour
 
     public void PlayFx(string id) {
         // Debug.Log("Playing sound: " + id);
+
+        if(soundEmitterPrefab == null) {
+            Debug.LogError("Missing soundEmitterPrefab");
+            return;
+        }
 
         GameObject instance = Instantiate(soundEmitterPrefab, this.gameObject.transform);
         instance.transform.localPosition = Vector3.zero;

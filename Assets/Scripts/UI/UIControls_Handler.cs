@@ -6,17 +6,8 @@ using UnityEngine.InputSystem;
 
 public class UIControls_Handler : MonoBehaviour {
 
-    // Constants
-    private const string PC = "pc";
-    private const string PS4 = "ps4";
-    private const string PS5 = "ps5";
-    private const string XBOX = "xbox";
-    private const string SCHEME_MnK = "MnK";
-    private const string SCHEME_Gamepad = "Gamepad";
-
-    // The player to grab the current input device from
-    [SerializeField]
-    private PlayerInput playerInput;
+    [HideInInspector]
+    public string PC, PS4, PS5, XBOX;
 
     /*
     // Index Maps (Mapping of tokens to sprite-atlas-indexes)
@@ -142,14 +133,8 @@ public class UIControls_Handler : MonoBehaviour {
     public TMP_SpriteAsset xboxUIControlsAtlas;
 
     [Space]
-    [SerializeField]
-    EventSystem eventSystem;
 
     // Current state variables
-    [System.NonSerialized]
-    public string currentInputScheme = SCHEME_MnK;
-    [System.NonSerialized]
-    public string currentPlatform = PC;
     [System.NonSerialized]
     public Dictionary<string, string> currentTokenIndexmap;
     [System.NonSerialized]
@@ -169,74 +154,25 @@ public class UIControls_Handler : MonoBehaviour {
         // Update the currents
         currentTokenIndexmap = PC_UI_Controls_IndexMap;
         currentIconAtlas = pcUIControlsAtlas;
-
-        // Link listener for deviceChanges
-        InputSystem.onDeviceChange += OnDeviceChange;
     }
 
-    // Start is called before the first frame update
-    void Start() {
-        UpdateCurrentMaps();
-    }
-
-    // Update is called once per frame
-    void Update() {
-        // Check if the current input scheme has changed
-        if (playerInput != null && playerInput.currentControlScheme != currentInputScheme) {
-            UpdateCurrentPlatform();
-            currentInputScheme = playerInput.currentControlScheme;
-        }
-    }
-
-    // Listener for device changes
-    private void OnDeviceChange(InputDevice device, InputDeviceChange change) {
-        if (change == InputDeviceChange.Added || change == InputDeviceChange.Removed) {
-            UpdateCurrentPlatform();
-        }
-    }
-
-    // Function to update current platform
-    private void UpdateCurrentPlatform() {
-        string newPlatform = currentPlatform;
-        if (playerInput.currentControlScheme == SCHEME_MnK) {
-            newPlatform = PC;
-        } else if (playerInput.currentControlScheme == SCHEME_Gamepad) {
-            //Resets the selected object to the first selected object in the event system
-            eventSystem.SetSelectedGameObject(eventSystem.firstSelectedGameObject);
-
-            string deviceName = Gamepad.current.name.ToLower();
-            Debug.Log("GamePad DeviceName: " + deviceName);
-            if (deviceName.Contains("dualsense")) {
-                newPlatform = PS5;
-            } else if (deviceName.Contains("xbox") || deviceName.Contains("xinputcontrollerwindows")) {
-                newPlatform = XBOX;
-            } else {
-                newPlatform = PS4;
-            }
-        }
-
-        if (newPlatform != currentPlatform) {
-            currentPlatform = newPlatform;
-            UpdateCurrentMaps();
-        }
-    }
 
     // Function to update current sprite-atlas and indexmap based on platform
-    private void UpdateCurrentMaps() {
+    public void UpdateCurrentMaps(string currentPlatform) {
         switch (currentPlatform) {
-            case (PC):
+            case string value when value == PC:
                 currentTokenIndexmap = PC_UI_Controls_IndexMap;
                 currentIconAtlas = pcUIControlsAtlas;
                 break;
-            case (PS4):
+            case string value when value == PS4:
                 currentTokenIndexmap = PS4_UI_Controls_IndexMap;
                 currentIconAtlas = ps4UIControlsAtlas;
                 break;
-            case (PS5):
+            case string value when value == PS5:
                 currentTokenIndexmap = PS5_UI_Controls_IndexMap;
                 currentIconAtlas = ps5UIControlsAtlas;
                 break;
-            case (XBOX):
+            case string value when value == XBOX:
                 currentTokenIndexmap = XBOX_UI_Controls_IndexMap;
                 currentIconAtlas = xboxUIControlsAtlas;
                 break;

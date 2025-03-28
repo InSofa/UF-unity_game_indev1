@@ -15,7 +15,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Building",
+                    "name": "PrimaryUse",
                     "type": "Button",
                     "id": "54063b23-2430-46bb-8a28-45729a083ec5",
                     "expectedControlType": "",
@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SellBuilding",
+                    "name": "SecondaryUse",
                     "type": "Button",
                     "id": "ab13e8d8-d4d5-4bfd-8d97-b078d6434b6a",
                     "expectedControlType": "",
@@ -148,11 +148,11 @@
                 {
                     "name": "",
                     "id": "a320bac0-f36a-48ff-98c6-17bd113eceea",
-                    "path": "<Keyboard>/e",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "MnK",
-                    "action": "Building",
+                    "action": "PrimaryUse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -163,7 +163,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Building",
+                    "action": "PrimaryUse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "95ab71c8-1d3a-4ab6-9532-58bacafa3c67",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";MnK",
+                    "action": "PrimaryUse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -257,23 +268,23 @@
                 },
                 {
                     "name": "",
-                    "id": "97a579e8-d390-4260-98f6-9d188973df5e",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";MnK",
-                    "action": "SellBuilding",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "f6a9105a-adcb-4ede-848d-390b854bad34",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "SellBuilding",
+                    "action": "SecondaryUse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e45176a7-fdd5-4d58-839b-c69aa7303932",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";MnK",
+                    "action": "SecondaryUse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

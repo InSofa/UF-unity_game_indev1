@@ -1,4 +1,4 @@
-using NUnit.Framework;
+using UnityEngine.Assertions;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -87,7 +87,10 @@ public class PathfindingGrid : MonoBehaviour
             BuildingHealth buildingHealth = node.building.GetComponent<BuildingHealth>();
 
             // Assert if buildingHealth_ is null
-            Assert.IsNull(buildingHealth, $"BuildingHealth component is missing on this building prefab: {node.building.name}");
+            //Assert.IsNull(buildingHealth, $"BuildingHealth component is missing on this building prefab: {node.building.name}");
+            if(buildingHealth == null) {
+                Debug.LogError($"Missing building health for: {node.building.name}");
+            }
 
             // If the buildingHealth.buildingIndex is ensure the BuildingTag component is present on the node.building and set its buildingIndex
             BuildingTag buildingTag = node.building.GetComponent<BuildingTag>();
