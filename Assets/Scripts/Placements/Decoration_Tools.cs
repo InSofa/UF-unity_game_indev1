@@ -272,7 +272,8 @@ public class Decoration_Tools : MonoBehaviour {
             DecorationPrefab selectedPrefab = grassPrefabs[selectedPrefabIndex];
 
             GameObject prefab = selectedPrefab.prefab;
-            GameObject instantiatedPrefab = Instantiate(prefab, grassPoints[i], Quaternion.identity);
+            GameObject instantiatedPrefab = Instantiate(prefab, grassPoints[i], Quaternion.identity, transform);
+            
 
             // Handle color change if applicable
             if (selectedPrefab.changeColor) {

@@ -142,9 +142,10 @@ public class PlayerHand : MonoBehaviour {
 
     public void takeInput(Vector2 cursor, string currentControlScheme)
     {
+        Debug.Log(cursor);
         if (DebugConsole.Instance != null) { if (DebugConsole.Instance.inputIsFocused == true) { return; } } // No bindings when Debug-Console is focused
 
-        if (pi.currentControlScheme == "MnK") {
+        if (currentControlScheme == "MnK") {
             Vector2 mousePos = lookInput.action.ReadValue<Vector2>();
             Vector2 worldMousePos = cam.ScreenToWorldPoint(mousePos);
 
@@ -158,7 +159,7 @@ public class PlayerHand : MonoBehaviour {
                 lookDir.Normalize();
                 lookDir *= buildRange;
             }
-        } else if(pi.currentControlScheme == "Gamepad") {
+        } else if(currentControlScheme == "Gamepad") {
             Vector2 joystickInput = lookInput.action.ReadValue<Vector2>();
             //Settings.rawJoystickInputf
             if (isMeleeMode) {
@@ -356,11 +357,12 @@ public class PlayerHand : MonoBehaviour {
 
     public void switchMeleeMode(bool newMeleeMode) {
         isMeleeMode = newMeleeMode;
-        if (isMeleeMode) {
+        if (!isMeleeMode) {
             lsc.PlayFx(buildModeSFX);
 
             attackIndicator.gameObject.SetActive(false);
             buildIndicator.gameObject.SetActive(true);
+            buildingIndicator.gameObject.SetActive(true);
             placementIndicator.gameObject.SetActive(true);
         } else {
             lsc.PlayFx(meleeModeSFX);
