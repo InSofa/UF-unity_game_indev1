@@ -99,6 +99,9 @@ public class PlayerHand : MonoBehaviour {
     [SerializeField]
     LayerMask enemyLayer;
 
+    [SerializeField]
+    GameObject attackEffect;
+
     [Header("Sound")]
     [SerializeField]
     string buildModeSFX;
@@ -142,8 +145,7 @@ public class PlayerHand : MonoBehaviour {
 
     public void takeInput(Vector2 cursor, string currentControlScheme)
     {
-        Debug.Log(cursor);
-        if (DebugConsole.Instance != null) { if (DebugConsole.Instance.inputIsFocused == true) { return; } } // No bindings when Debug-Console is focused
+         if (DebugConsole.Instance != null) { if (DebugConsole.Instance.inputIsFocused == true) { return; } } // No bindings when Debug-Console is focused
 
         if (currentControlScheme == "MnK") {
             Vector2 mousePos = lookInput.action.ReadValue<Vector2>();
@@ -322,6 +324,9 @@ public class PlayerHand : MonoBehaviour {
                 rb.AddForce(knockbackDir * knockbackForce, ForceMode2D.Impulse);
             }
         }
+
+        GameObject slashEffect = Instantiate(attackEffect, attackPos, Quaternion.identity);
+        slashEffect.transform.right = lookDir;
     }
     public void removeBuilding(InputAction.CallbackContext obj) {
         if (DebugConsole.Instance != null) { if (DebugConsole.Instance.inputIsFocused == true) { return; } } // No bindings when Debug-Console is focused
