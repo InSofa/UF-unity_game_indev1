@@ -36,15 +36,19 @@ public class MainGame_TokenIconResolver : MonoBehaviour {
     // Start
     void Start() {
         tmpText = GetComponent<TMP_Text>();
-        currentPlatform = InputHandler.Instance.currentPlatform;
+        if (PlatformInputHandler.Instance && PlatformInputHandler.Instance.currentPlatform != null) {
+            currentPlatform = PlatformInputHandler.Instance.currentPlatform;
+        }
         UpdateText();
     }
 
     // Update is called once per frame
     void Update() {
-        if (InputHandler.Instance.currentPlatform != currentPlatform) {
-            currentPlatform = InputHandler.Instance.currentPlatform;
-            UpdateText();
+        if (PlatformInputHandler.Instance && PlatformInputHandler.Instance.currentPlatform != null && currentPlatform != null) {
+            if (PlatformInputHandler.Instance.currentPlatform != currentPlatform) {
+                currentPlatform = PlatformInputHandler.Instance.currentPlatform;
+                UpdateText();
+            }
         }
     }
 
@@ -59,6 +63,10 @@ public class MainGame_TokenIconResolver : MonoBehaviour {
     }
 
     void UpdateText() {
+
+        if (tmpText == null) {
+            return;
+        }
 
         // Start with the base text
         StringBuilder sb = new StringBuilder("");
@@ -102,13 +110,15 @@ public class MainGame_TokenIconResolver : MonoBehaviour {
         MatchCollection matches = Regex.Matches(textToDisplay, pattern);
 
         // Foreach match, check if the token is in the currentTokenIndexmap, to get it's index, then get the name for the currentIconAtlas which we use as sprite.
-        foreach (Match match in matches) {
-            string token = match.Value;
-            string tokenName = token.Trim('<', '>');
-            if (globalUIControls.currentTokenIndexmap.ContainsKey(token)) {
-                string spriteId = globalUIControls.currentTokenIndexmap[token];
-                string imageTag = $"<sprite=\"{globalUIControls.currentIconAtlas.name}\" index={spriteId}>";
-                sb.Replace(token, imageTag);
+        if (globalUIControls && globalUIControls.currentTokenIndexmap != null) {
+            foreach (Match match in matches) {
+                string token = match.Value;
+                string tokenName = token.Trim('<', '>');
+                if (globalUIControls.currentTokenIndexmap.ContainsKey(token)) {
+                    string spriteId = globalUIControls.currentTokenIndexmap[token];
+                    string imageTag = $"<sprite=\"{globalUIControls.currentIconAtlas.name}\" index={spriteId}>";
+                    sb.Replace(token, imageTag);
+                }
             }
         }
 

@@ -634,7 +634,9 @@ public class DebugConsole_UNOR_Properties : MonoBehaviour {
                     if (asset == null) {
                         return null;
                     }
-                    GameObject gameObject = GameObject.Instantiate(asset as GameObject);
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type. (Ignored since checked above)
+                    GameObject gameObject = Instantiate(asset as GameObject);
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
                     if (unor != null) {
                         gameObject = ParseAndApply(gameObject, unor);
