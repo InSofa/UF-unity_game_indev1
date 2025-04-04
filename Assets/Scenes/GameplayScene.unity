@@ -11749,9 +11749,8 @@ MonoBehaviour:
   textline_general_rest: 'Look Around: <look_around>, Walk: <move_around>, Start
     Wave: <west_button>'
   textline_melee: 'Attack: <left_click> / <east_trigger>, Build Mode: <east_button>'
-  textline_build_pc: 'Change Building: <left_click> / <dpad>, Place Building: <left_click>
-    / <east_trigger>, Sell Building: <right_click> / <west_trigger>, Melee Mode:
-    <east_button> '
+  textline_build_pc: 'Change Building: <left_click> / <dpad>, Place Building: <left_click>,
+    Sell Building: <right_click>, Melee Mode: <east_button> '
   textline_build_rest: 'Navigate: <dpad>, Select: <south_button>, Place Building:
     <east_trigger>, Sell Building: <west_trigger>, Melee Mode: <east_button>'
 --- !u!114 &1289010572
