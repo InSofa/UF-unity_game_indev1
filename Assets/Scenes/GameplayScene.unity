@@ -3048,6 +3048,7 @@ MonoBehaviour:
   deathSound: sfx:generic/GameOver
   maxHealth: 200
   healthSlider: {fileID: 1501079777}
+  healthText: {fileID: 1078263022}
   canDie: 1
 --- !u!114 &452178606
 MonoBehaviour:

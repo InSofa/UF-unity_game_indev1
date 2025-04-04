@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField]
     Slider healthSlider;
+    [SerializeField]
+    TMP_Text healthText;
 
     public bool canDie = true;
 
@@ -36,8 +39,13 @@ public class PlayerHealth : MonoBehaviour
 
         health = maxHealth;
         healthSlider.maxValue = maxHealth;
-        healthSlider.value = health;
+        UpdateHpUI();
         healthSlider.gameObject.SetActive(true);
+    }
+
+    private void UpdateHpUI() {
+        healthSlider.value = health;
+        healthText.text = $"{Mathf.Clamp(health,0,Mathf.Infinity).ToString()}hp / {maxHealth.ToString()}hp";
     }
 
     IEnumerator Death() {
@@ -93,7 +101,7 @@ public class PlayerHealth : MonoBehaviour
         }
 
         health = newHealth;
-        healthSlider.value = health;
+        UpdateHpUI();
 
         DeathCheck();
     }
@@ -104,7 +112,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float damage, GameObject source) {
         health -= damage;
-        healthSlider.value = health;
+        UpdateHpUI();
 
         DeathCheck();
 
