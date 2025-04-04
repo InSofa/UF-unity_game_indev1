@@ -30,6 +30,8 @@ public class DebugConsole : MonoBehaviour {
     private SoundMixer_Handler soundMixerHandler;
     [SerializeField]
     private Camera mainCameraInstance;
+    [SerializeField]
+    private UnityEngine.UI.Image consoleFocusShower;
 
     // Singleton pattern deffinitions
     private static DebugConsole _instance;
@@ -49,6 +51,15 @@ public class DebugConsole : MonoBehaviour {
             inputField.onSubmit.AddListener(HandleInput);
         }
     }
+
+    private void Update() {
+        if (Instance.inputIsFocused) {
+            consoleFocusShower.color = new Color(1f, 0f, 0f, 1f);
+        } else {
+            consoleFocusShower.color = new Color(0f, 0f, 0f, 1f);
+        }
+    }
+
     private enum SpiralDirection {
         Up,
         Right,

@@ -75,6 +75,14 @@ public class InputHandler : MonoBehaviour {
     }
 
     private void PlayerUseHandler(InputAction.CallbackContext obj) {
+        if (DebugConsole.Instance != null) {
+            if (DebugConsole.Instance.inputIsFocused == true) {
+                playerController.takeInput(Vector2.zero);
+                playing = false;
+                return;
+            }
+        }
+
         if (isHoveringButton && PlatformInputHandler.Instance.currentInputScheme == PlatformInputHandler.SCHEME_MnK && playing){
             return;
         }
