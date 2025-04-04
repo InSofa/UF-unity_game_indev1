@@ -68,8 +68,8 @@ public class InputHandler : MonoBehaviour {
 
         playing = true;
 
-        playerHand.takeInput(playerCursorInput.action.ReadValue<Vector2>(), PlatformInputHandler.Instance.currentInputScheme);
         playerController.takeInput(playerMove.action.ReadValue<Vector2>());
+        playerHand.takeInput(playerCursorInput.action.ReadValue<Vector2>(), PlatformInputHandler.Instance.currentInputScheme);
 
         isHoveringButton = eventSystem.IsPointerOverGameObject();
     }

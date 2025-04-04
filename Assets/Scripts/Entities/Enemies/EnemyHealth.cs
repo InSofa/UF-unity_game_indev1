@@ -63,7 +63,6 @@ public class EnemyHealth : MonoBehaviour
 
             spawnPillows();
 
-            Debug.Log("Dead");
             try  // try to remove this object from the list of current enemies
             {
                 EnemySpawner.instance.RemoveEnemy(this.gameObject);
