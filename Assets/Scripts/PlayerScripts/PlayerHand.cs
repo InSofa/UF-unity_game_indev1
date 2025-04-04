@@ -285,7 +285,6 @@ public class PlayerHand : MonoBehaviour {
             buildings[selectedBuilding].buildingCost * GlobalBuyInflationMultiplier,
             MidpointRounding.AwayFromZero
         );
-        Debug.Log(buildingCost);
 
         if (pillows < buildingCost) {
             Debug.Log("Not enough pillows");
